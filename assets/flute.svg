@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="340" viewBox="0 0 500 340">
+<rect width="500" height="340" fill="#fafafa"/>
+<rect x="70" y="70" width="160" height="130" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
+<rect x="230" y="70" width="140" height="100" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
+<rect x="70" y="200" width="160" height="70" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
+<text x="250" y="315" text-anchor="middle" font-size="28" font-weight="700" fill="#444">FLUTE</text>
+</svg>
