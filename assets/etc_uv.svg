@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="360" viewBox="0 0 500 360">
+<rect width="500" height="360" fill="#fafafa"/>
+<rect x="75" y="70" width="350" height="190" rx="8" fill="#e9f8ff" stroke="#a49a8d" stroke-width="2"/>
+<path d="M85 95 H415" stroke="rgba(255,255,255,.25)" stroke-width="2"/>
+<path d="M85 135 H415" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+<path d="M85 175 H415" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
+<circle cx="120" cy="285" r="8" fill="#8a8a8a"/>
+<text x="140" y="295" font-size="28" font-weight="700" fill="#555">UV광택코팅</text>
+<text x="75" y="330" font-size="18" fill="#666">가공 안내</text>
+</svg>
