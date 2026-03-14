@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+<rect width="520" height="360" rx="20" fill="#fbfbfb"/>
+
+<polygon points="120,210 340,150 370,175 150,235" fill="#f0d895" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="120,210 150,235 145,275 115,250" fill="#e0c37d" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="340,150 370,175 365,215 335,190" fill="#cfa851" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="145,275 365,215 335,190 115,250" fill="#cfa851" stroke="#9d7b38" stroke-width="3"/>
+
+<text x="260.0" y="342" text-anchor="middle" font-size="22" font-weight="800" fill="#444">포스터형</text>
+</svg>

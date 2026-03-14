@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+<rect width="520" height="360" rx="20" fill="#fbfbfb"/>
+
+<polygon points="135,130 240,100 320,140 215,170" fill="#f0d895" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="100,165 135,130 215,170 180,205" fill="#e0c37d" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="215,170 320,140 320,265 215,300" fill="#cfa851" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="180,205 215,170 215,300 180,335" fill="#e0c37d" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="100,165 180,205 180,335 100,295" fill="#cfa851" stroke="#9d7b38" stroke-width="3"/>
+<path d="M195 128 q25 -28 50 0" fill="none" stroke="#9d7b38" stroke-width="8" stroke-linecap="round"/>
+<path d="M215 128 q25 -28 50 0" fill="none" stroke="#9d7b38" stroke-width="8" stroke-linecap="round"/>
+
+<text x="260.0" y="342" text-anchor="middle" font-size="22" font-weight="800" fill="#444">Y형 손잡이박스</text>
+</svg>

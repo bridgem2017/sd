@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+<rect width="520" height="360" rx="20" fill="#f8fcff"/>
+
+<polygon points="120,165 220,135 320,165 220,195" fill="#d8f7ff" stroke="#6b9bb0" stroke-width="3"/>
+<polygon points="120,165 220,195 220,290 120,260" fill="#9fe4f6" stroke="#6b9bb0" stroke-width="3"/>
+<polygon points="220,195 320,165 320,260 220,290" fill="#6dc8e2" stroke="#6b9bb0" stroke-width="3"/>
+<polygon points="160,110 260,80 320,165 220,135" fill="#d8f7ff" stroke="#6b9bb0" stroke-width="3"/>
+<polygon points="220,135 320,165 355,130 260,80" fill="#6dc8e2" stroke="#6b9bb0" stroke-width="3"/>
+<polygon points="160,110 120,165 220,135 260,80" fill="#9fe4f6" stroke="#6b9bb0" stroke-width="3"/>
+
+<text x="260.0" y="342" text-anchor="middle" font-size="22" font-weight="800" fill="#444">T형 박스</text>
+</svg>

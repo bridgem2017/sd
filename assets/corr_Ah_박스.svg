@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+<rect width="520" height="360" rx="20" fill="#fbfbfb"/>
+
+<polygon points="155,120 255,90 335,140 235,170" fill="#f0d895" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="95,150 155,120 235,170 175,200" fill="#e0c37d" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="235,170 335,140 335,250 235,280" fill="#cfa851" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="175,200 235,170 235,280 175,310" fill="#e0c37d" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="95,150 175,200 175,310 95,260" fill="#cfa851" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="95,150 155,120 125,65 70,98" fill="#f0d895" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="155,120 255,90 230,48 125,65" fill="#f0d895" stroke="#9d7b38" stroke-width="3"/>
+<polygon points="255,90 335,140 378,95 230,48" fill="#f0d895" stroke="#9d7b38" stroke-width="3"/>
+
+<text x="260.0" y="342" text-anchor="middle" font-size="22" font-weight="800" fill="#444">A형 박스</text>
+</svg>
