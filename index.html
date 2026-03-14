@@ -1,12 +1,166 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>에스디컴퍼니 | 맞춤 박스 주문제작 | box.re.kr</title><meta name="description" content="에스디컴퍼니 맞춤 박스 주문제작. 골판박스 주문제작, 칼라박스 주문제작, 소량인쇄 자동 견적 문의 시스템."/><meta name="keywords" content="골판박스 주문제작, 칼라박스 주문제작, 소량인쇄, 박스 제작, 맞춤 박스, 패키지 제작, 에스디컴퍼니"/><link rel="canonical" href="https://box.re.kr/"/><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/><script src="config/site-config.js"></script><script src="config/box-data.js"></script></head><body>
-<header class="topbar"><div class="container flex-between"><div class="brand-wrap"><div class="brand-title">에스디컴퍼니</div><div class="brand-sub">SD COMPANY · 맞춤 박스 주문제작 · box.re.kr</div></div><div class="contact-wrap"><div id="companyPhone"></div><div id="companyEmail"></div></div></div></header>
-<nav class="mainnav"><div class="container nav-scroll"><a href="#hero">홈</a><a href="#corrugated">골판박스 주문제작</a><a href="#colorbox">칼라박스 주문제작</a><a href="#smallprint">소량인쇄</a><a href="#process">제조공정</a><a href="#quote">견적 문의</a><a href="#member">회원가입</a></div></nav>
-<section id="hero" class="hero"><div class="container hero-grid"><div><div class="eyebrow">자동 견적 문의 시스템 · 관리자 없이 운영 가능</div><h1>골판박스, 칼라박스, 소량인쇄를 <span>빠르게 선택</span>하고<br>필요 항목만 메일로 바로 전달하세요</h1><p class="hero-desc">소비자가 선택한 항목이 에스디컴퍼니 메일로 자동 전달되도록 설계된 완성형 박스 주문제작 홈페이지입니다. 자동 견적 금액 노출 대신, 실제 문의에 필요한 선택 항목 중심으로 구성했습니다.</p><div class="hero-actions"><a class="btn primary" href="#quote">견적 문의 시작</a><a class="btn line" href="#member">회원가입 보기</a></div></div><div class="hero-card"><div class="hero-card-head">주요 서비스</div><div class="service-cards"><button class="service-card" data-jump="#corrugated"><div class="service-icon">📦</div><strong>골판박스 주문제작</strong><span>A형·B형·T형·Y형 등</span></button><button class="service-card" data-jump="#colorbox"><div class="service-icon">🎨</div><strong>칼라박스 주문제작</strong><span>지류·가공·박인쇄 안내</span></button><button class="service-card" data-jump="#smallprint"><div class="service-icon">🖨️</div><strong>소량인쇄</strong><span>소량 제작 장점 및 형태 안내</span></button></div></div></div></section>
-<section id="corrugated" class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Service 01</div><h2>골판박스 주문제작</h2><p>골판 박스 형태, 색상별 재질, 두께 정보를 보고 바로 견적 문의 페이지로 이동할 수 있습니다.</p></div><a class="btn primary" href="#quote" data-prefill="골판박스 주문제작">견적페이지 이동</a></div><h3 class="subhead">1. 박스 형태</h3><div class="card-grid" id="corrugatedShapeGrid"></div><h3 class="subhead">2. 골판지 색상별 재질</h3><div class="info-grid" id="corrugatedMaterialGrid"></div><h3 class="subhead">3. 골판지 두께정보</h3><div class="info-grid" id="corrugatedFluteGrid"></div></div></section>
-<section id="colorbox" class="section alt"><div class="container"><div class="section-head"><div><div class="eyebrow">Service 02</div><h2>칼라박스 주문제작</h2><p>칼라박스 형태, 종이정보, 코팅/박인쇄/기타 가공 안내를 제공하고 바로 문의로 연결합니다.</p></div><a class="btn primary" href="#quote" data-prefill="칼라박스 주문제작">견적페이지 이동</a></div><h3 class="subhead">1. 박스 형태</h3><div class="card-grid" id="colorShapeGrid"></div><h3 class="subhead">2. 칼라박스 종이정보</h3><div class="info-grid" id="colorPaperGrid"></div><h3 class="subhead">3. 가공 안내</h3><div class="info-grid" id="colorFinishGrid"></div></div></section>
-<section id="smallprint" class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Service 03</div><h2>소량인쇄</h2><p>소량 제작의 장점과 에스디컴퍼니의 소량 인쇄 대응 장점, 그리고 가능 박스 형태를 한 번에 확인할 수 있습니다.</p></div><a class="btn primary" href="#quote" data-prefill="소량인쇄">견적페이지 이동</a></div><h3 class="subhead">1. 소량인쇄 장점 / 2. 에스디컴퍼니 소량 인쇄 장점</h3><div class="info-grid" id="smallAdvGrid"></div><h3 class="subhead">3. 소량인쇄 박스형태</h3><div class="card-grid small" id="smallShapeGrid"></div></div></section>
-<section id="process" class="section alt"><div class="container"><div class="section-head"><div><div class="eyebrow">Manufacturing Process</div><h2>제조공정 안내</h2><p>골판박스 주문제작과 칼라박스 주문제작의 대표적인 제조공정을 설명과 이미지로 안내합니다.</p></div></div><div class="process-grid"><article class="process-card"><img src="assets/proc_corrugated.svg" alt="골판박스 제조공정"/><div class="process-copy"><h3>골판박스 주문제작 공정</h3><p>원단 입고 → 인쇄 → 톰슨 → 접합 → 검수 → 포장 순으로 진행되며, 골판 두께와 구조에 따라 공정 조건이 달라집니다.</p></div></article><article class="process-card"><img src="assets/proc_colorbox.svg" alt="칼라박스 제조공정"/><div class="process-copy"><h3>칼라박스 주문제작 공정</h3><p>인쇄 → 표면가공 → 합지 → 톰슨 → 접착 → 포장 순으로 진행되며, 코팅·박인쇄·후가공 선택에 따라 추가 공정이 반영됩니다.</p></div></article></div></div></section>
-<section id="quote" class="section quote-section"><div class="container quote-layout"><div><div class="eyebrow">Inquiry Workflow</div><h2>선택 항목이 에스디컴퍼니 메일로 전달되는 견적 문의</h2><p class="quote-lead">자동견적금액을 노출하지 않고, 소비자가 선택한 서비스 유형, 박스형태, 재질/지류, 두께/가공, 수량, 인쇄 여부 등 핵심 항목을 정리해 메일로 전달합니다.</p><ul class="check-list"><li>골판박스 주문제작 / 칼라박스 주문제작 / 소량인쇄 선택 가능</li><li>서비스별 상세 옵션 자동 노출</li><li>선택 항목 요약 후 문의 메일 전송</li><li>관리자 없이 FormSubmit 방식으로 운영 가능</li></ul></div><div class="quote-card"><form id="quoteForm" class="form-grid" action="#" method="POST"><div class="field full"><label>서비스 유형</label><div class="segmented"><button type="button" class="seg active" data-service="골판박스 주문제작">골판박스 주문제작</button><button type="button" class="seg" data-service="칼라박스 주문제작">칼라박스 주문제작</button><button type="button" class="seg" data-service="소량인쇄">소량인쇄</button></div></div><div class="field"><label for="customerName">담당자명</label><input id="customerName" name="customerName" required/></div><div class="field"><label for="companyNameInput">회사명</label><input id="companyNameInput" name="companyNameInput"/></div><div class="field"><label for="phone">연락처</label><input id="phone" name="phone" required/></div><div class="field"><label for="email">이메일</label><input id="email" name="email" type="email" required/></div><div class="field full service-block" data-block="골판박스 주문제작"><label>골판박스 형태</label><select id="corrShapeSelect"></select></div><div class="field full service-block" data-block="골판박스 주문제작"><label>골판지 색상별 재질</label><select id="corrMatSelect"></select></div><div class="field full service-block" data-block="골판박스 주문제작"><label>골판지 두께정보</label><select id="corrFluteSelect"></select></div><div class="field full service-block hidden" data-block="칼라박스 주문제작"><label>칼라박스 형태</label><select id="colorShapeSelect"></select></div><div class="field full service-block hidden" data-block="칼라박스 주문제작"><label>칼라박스 종이정보</label><select id="colorPaperSelect"></select></div><div class="field full service-block hidden" data-block="칼라박스 주문제작"><label>가공 안내</label><select id="colorFinishSelect"></select></div><div class="field full service-block hidden" data-block="소량인쇄"><label>소량인쇄 박스형태</label><select id="smallShapeSelect"></select></div><div class="field"><label for="width">가로(mm)</label><input id="width" name="width"/></div><div class="field"><label for="depth">세로(mm)</label><input id="depth" name="depth"/></div><div class="field"><label for="height">높이(mm)</label><input id="height" name="height"/></div><div class="field"><label for="qty">수량</label><input id="qty" name="qty"/></div><div class="field"><label for="printOption">인쇄 여부</label><select id="printOption" name="printOption"><option>무인쇄</option><option>1도 인쇄</option><option>2도 인쇄</option><option>4도 컬러 인쇄</option></select></div><div class="field"><label for="deliveryRegion">납품지역</label><input id="deliveryRegion" name="deliveryRegion" placeholder="예: 서울, 경기, 인천"/></div><div class="field full"><label for="note">추가 요청사항</label><textarea id="note" name="note" rows="4"></textarea></div><div class="summary full" id="selectionSummary"></div><div class="field full form-actions"><button type="submit" class="btn primary full">문의 항목 메일로 보내기</button><button type="button" class="btn line full" id="openMailClientBtn">메일앱으로 바로 보내기</button></div></form></div></div></section>
-<section id="member" class="section alt"><div class="container"><div class="section-head"><div><div class="eyebrow">회원가입 / 로그인</div><h2>실운영용 회원가입 구조 안내</h2><p>사이트가입, 카카오톡가입, 네이버가입을 위해서는 각 서비스의 개발자 등록과 인증키 연결이 필요합니다. 이 업로드용 완성파일에는 즉시 배포 가능한 UI와 설정 연결 지점이 포함되어 있습니다.</p></div></div><div class="member-grid"><div class="member-card"><h3>사이트가입</h3><p>실운영용으로는 Supabase 또는 Firebase 연결이 필요합니다. 현재 파일에는 연결 위치와 예시 UI가 포함되어 있습니다.</p><form id="siteSignupForm" class="simple-form"><input placeholder="이름" id="signupName"/><input placeholder="이메일" id="signupEmail"/><input placeholder="비밀번호" id="signupPassword" type="password"/><button type="button" class="btn primary" id="siteSignupBtn">사이트 가입(설정 필요)</button></form></div><div class="member-card"><h3>카카오톡가입</h3><p>카카오 디벨로퍼스에서 JavaScript 키, Redirect URI 설정 후 연결해야 실제 작동합니다.</p><button type="button" class="btn kakao" id="kakaoLoginBtn">카카오로 시작하기(설정 필요)</button></div><div class="member-card"><h3>네이버가입</h3><p>네이버 개발자센터에서 Client ID, Callback URL 설정 후 연결해야 실제 작동합니다.</p><button type="button" class="btn naver" id="naverLoginBtn">네이버로 시작하기(설정 필요)</button></div></div><div class="notice-box"><strong>중요:</strong> 카카오 / 네이버 / 실운영용 사이트가입은 이 파일만으로 즉시 활성화되지 않습니다. 실제 연동에는 앱 등록, Redirect URI, API 키, 개인정보처리방침 페이지가 필요합니다. 이 파일에는 바로 붙일 수 있도록 연결 위치와 UI가 준비되어 있습니다.</div></div></section>
-<footer class="footer"><div class="container footer-grid"><div><div class="footer-title">에스디컴퍼니</div><div id="footerPhone"></div><div id="footerEmail"></div></div><div><div class="footer-title">주요 서비스</div><div>골판박스 주문제작</div><div>칼라박스 주문제작</div><div>소량인쇄</div></div><div><div class="footer-title">운영 방식</div><div>관리자 없이 메일 전달</div><div>Vercel + GitHub 배포</div><div>모바일 최적화</div></div></div></footer>
-<script src="script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>에스디컴퍼니 | 박스 자동 추천 포함 | box.re.kr</title>
+<meta name="description" content="에스디컴퍼니 맞춤 박스 사이트. 박스 사이즈 자동 추천, 제품 크기 입력 → 박스 추천, 박스 DB 300개, AI 박스 추천 알고리즘, 추천 결과 메일 전송 포함."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+<script src="config/site-config.js"></script>
+<script src="config/box-db.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="container row between">
+    <div class="row logo-wrap">
+      <img src="assets/sd-company-logo.png" alt="에스디컴퍼니 로고" class="logo"/>
+      <div>
+        <div class="brand">에스디컴퍼니</div>
+        <div class="sub">SD COMPANY · We Package Your Growth · box.re.kr</div>
+      </div>
+    </div>
+    <div class="sub right" id="contactInfo"></div>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="container navscroll">
+    <a href="#overview">자동 견적 구조</a>
+    <a href="#recommend">박스 자동 추천</a>
+    <a href="#db300">박스 DB 300개</a>
+    <a href="#logic">AI 추천 알고리즘</a>
+    <a href="#quote">문의 메일</a>
+  </div>
+</nav>
+
+<section id="overview" class="hero">
+  <div class="container grid2">
+    <div>
+      <div class="chip">적절하게 추가 완료</div>
+      <h1>📦 박스 사이즈 자동 추천<br>📐 제품 크기 입력 → 박스 추천<br>📊 박스 DB 300개<br>🧠 AI 박스 추천 알고리즘</h1>
+      <p class="lead">기존 sd_box_re_complete_upload 구조는 유지하면서, 제품 크기 기반 박스 추천과 DB 300개, 추천 알고리즘, 추천 결과 메일 전송 기능을 추가했습니다. 추천 결과에서는 <strong>선택한 형태 + 규격 + 박스샘플</strong>이 함께 보이도록 설계했습니다.</p>
+      <div class="actions">
+        <a class="btn primary" href="#recommend">추천 시작</a>
+        <a class="btn line" href="#quote">문의 폼 이동</a>
+      </div>
+    </div>
+    <div class="cards4">
+      <article class="card"><strong>자동 추천</strong><span>제품 크기 기준 추천</span></article>
+      <article class="card"><strong>DB 300개</strong><span>서비스·형태·규격·용도 데이터</span></article>
+      <article class="card"><strong>AI 로직</strong><span>규칙 기반 점수화</span></article>
+      <article class="card"><strong>메일 전송</strong><span>sales@box.re.kr</span></article>
+    </div>
+  </div>
+</section>
+
+<section id="recommend" class="section">
+  <div class="container">
+    <div class="sectionhead">
+      <div>
+        <div class="chip">📐 제품 크기 입력 → 박스 추천</div>
+        <h2>박스 자동 추천</h2>
+        <p>서비스 유형, 제품 용도, 제품 크기, 수량을 입력하면 DB 300개에서 적합한 박스를 추천하고, 각 추천 결과에 형태와 규격, 박스샘플 이미지를 함께 보여줍니다.</p>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="grid2 inner-grid">
+          <div class="field"><label>서비스 유형</label><select id="serviceType"><option>골판박스 주문제작</option><option>칼라박스 주문제작</option><option>소량인쇄</option></select></div>
+          <div class="field"><label>제품 용도</label><input id="usageInput" placeholder="예: 택배, 화장품, 선물"></div>
+          <div class="field"><label>제품 가로(mm)</label><input id="productW" type="number" placeholder="200"></div>
+          <div class="field"><label>제품 세로(mm)</label><input id="productL" type="number" placeholder="150"></div>
+          <div class="field"><label>제품 높이(mm)</label><input id="productH" type="number" placeholder="80"></div>
+          <div class="field"><label>예상 수량</label><input id="productQty" type="number" placeholder="500"></div>
+        </div>
+        <button class="btn primary full" id="recommendBtn">추천 박스 찾기</button>
+      </div>
+      <div class="panel">
+        <div class="smalltitle">추천 결과</div>
+        <div id="recommendList" class="empty">입력 후 추천 버튼을 눌러주세요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="db300" class="section alt">
+  <div class="container">
+    <div class="sectionhead row between">
+      <div>
+        <div class="chip">📊 박스 DB 300개</div>
+        <h2>박스 데이터베이스</h2>
+        <p>형태, 내부 규격, 최소수량, 용도, 재질뿐 아니라 박스샘플 이미지까지 연결했습니다.</p>
+      </div>
+      <div class="count" id="dbCount"></div>
+    </div>
+    <div class="toolbar">
+      <select id="dbServiceFilter"><option value="전체">전체</option><option>골판박스 주문제작</option><option>칼라박스 주문제작</option><option>소량인쇄</option></select>
+      <input id="dbSearch" placeholder="형태 또는 용도 검색"/>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>ID</th><th>서비스</th><th>형태</th><th>규격</th><th>용도</th><th>최소수량</th><th>재질</th></tr></thead>
+        <tbody id="dbTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="logic" class="section">
+  <div class="container">
+    <div class="sectionhead">
+      <div>
+        <div class="chip">🧠 AI 박스 추천 알고리즘</div>
+        <h2>추천 로직 설계</h2>
+        <p>생성형 AI가 아니라 실제 운영이 쉬운 규칙 기반 추천 엔진으로 설계했습니다.</p>
+      </div>
+    </div>
+    <div class="cards4 logic">
+      <article class="card text"><strong>1. 사이즈 적합도</strong><span>제품보다 작은 박스는 제외하고, 여유 공간이 과도하지 않은 후보를 우선합니다.</span></article>
+      <article class="card text"><strong>2. 용도 키워드 가중치</strong><span>택배, 화장품, 식품, 굿즈 같은 입력 키워드와 DB 용도를 비교합니다.</span></article>
+      <article class="card text"><strong>3. 서비스 유형 우선순위</strong><span>골판박스 / 칼라박스 / 소량인쇄 서비스에 따라 후보군을 먼저 나눕니다.</span></article>
+      <article class="card text"><strong>4. 최소수량 적합도</strong><span>입력 수량이 최소수량을 만족하면 가산점을 부여합니다.</span></article>
+    </div>
+    <pre class="code">추천 점수 = 사이즈 적합도 + 용도 매칭 + 서비스 일치 + 수량 적합도</pre>
+  </div>
+</section>
+
+<section id="quote" class="section alt">
+  <div class="container grid2">
+    <div>
+      <div class="chip">✉ 추천 결과를 메일로 보내는 문의 폼</div>
+      <h2>추천 결과 + 선택 항목 메일 전달</h2>
+      <p class="lead">추천 박스를 선택한 뒤 담당자 정보를 입력하면, 최종 선택값이 <strong>sales@box.re.kr</strong> 로 전송되도록 설정돼 있습니다.</p>
+    </div>
+    <div class="panel">
+      <form id="quoteForm" class="grid2 inner-grid">
+        <div class="field"><label>담당자명</label><input id="customerName" required></div>
+        <div class="field"><label>회사명</label><input id="companyNameInput"></div>
+        <div class="field"><label>연락처</label><input id="phone" required></div>
+        <div class="field"><label>이메일</label><input id="email" type="email" required></div>
+        <div class="field full"><label>추천 박스 선택</label><select id="recommendedBoxSelect"></select></div>
+        <div class="field full"><label>추가 요청사항</label><textarea id="note" rows="4"></textarea></div>
+        <div class="summary full" id="selectionSummary"></div>
+        <div class="field full actions2">
+          <button type="submit" class="btn primary full">선택 항목 메일로 보내기</button>
+          <button type="button" class="btn line full" id="openMailClientBtn">메일앱으로 보내기</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container row between">
+    <div class="row logo-wrap">
+      <img src="assets/sd-company-logo.png" alt="에스디컴퍼니 로고" class="logo small"/>
+      <div><strong>에스디컴퍼니</strong><div id="footerInfo" class="sub"></div></div>
+    </div>
+    <div class="sub">GitHub + Vercel + FormSubmit 구조</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

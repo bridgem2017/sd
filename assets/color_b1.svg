@@ -5,5 +5,5 @@
 <polygon points="230,170 330,145 330,250 230,280" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
 <polygon points="170,200 230,170 230,280 170,310" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
 <polygon points="90,150 170,200 170,310 90,260" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<text x="240" y="330" text-anchor="middle" font-size="24" font-weight="800" fill="#404040">D형</text>
+<text x="240" y="330" text-anchor="middle" font-size="24" font-weight="800" fill="#404040">B형 원터치박스</text>
 </svg>
