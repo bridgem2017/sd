@@ -1,12 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
-<rect width="500" height="420" fill="#f7f7f7"/>
-<polygon points="150,120 250,95 330,145 230,170" fill="#d4efff" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="90,150 150,120 230,170 170,200" fill="#8fd0f4" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="230,170 330,145 330,250 230,280" fill="#5ab2e6" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="170,200 230,170 230,280 170,310" fill="#8fd0f4" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="90,150 170,200 170,310 90,260" fill="#5ab2e6" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="90,150 150,120 120,65 65,100" fill="#d4efff" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="150,120 250,95 225,50 120,65" fill="#d4efff" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="250,95 330,145 375,92 225,50" fill="#d4efff" stroke="#4d91ba" stroke-width="3"/>
-<text x="250" y="392" text-anchor="middle" font-size="30" font-weight="700" fill="#4a4a4a">A형(RRP)박스</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="340" viewBox="0 0 520 340">
+<rect width="520" height="340" fill="#ffffff"/>
+
+<g stroke="#ef6b73" stroke-width="2" fill="none" stroke-linecap="round">
+  <path d="M60 255 H220"/>
+  <path d="M75 245 l-15 10 l15 10"/>
+  <path d="M205 245 l15 10 l-15 10"/>
+  <path d="M54 135 V255"/>
+  <path d="M44 150 l10 -15 l10 15"/>
+  <path d="M44 240 l10 15 l10 -15"/>
+  <path d="M92 210 L40 210"/>
+</g>
+<g fill="#777" font-size="16" font-weight="600">
+  <text x="134" y="277">가로</text>
+  <text x="18" y="192" transform="rotate(-90 18 192)">높이</text>
+  <text x="62" y="230">세로</text>
+</g>
+<g stroke="#6b9bb0" stroke-width="3">
+<polygon points="155,120 255,90 335,140 235,170" fill="#d8f7ff"/>
+<polygon points="95,150 155,120 235,170 175,200" fill="#9fe4f6"/>
+<polygon points="235,170 335,140 335,250 235,280" fill="#6dc8e2"/>
+<polygon points="175,200 235,170 235,280 175,310" fill="#9fe4f6"/>
+<polygon points="95,150 175,200 175,310 95,260" fill="#6dc8e2"/>
+<polygon points="95,150 155,120 125,65 70,98" fill="#d8f7ff"/>
+<polygon points="155,120 255,90 230,48 125,65" fill="#eefcff"/>
+<polygon points="255,90 335,140 378,95 230,48" fill="#d8f7ff"/>
+</g>
+<text x="260.0" y="324" text-anchor="middle" font-size="20" font-weight="700" fill="#555">A형 박스(RRP겸용)</text>
 </svg>

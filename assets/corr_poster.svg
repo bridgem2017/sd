@@ -1,7 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
-<rect width="500" height="420" fill="#f7f7f7"/>
-<path d="M110 140 C170 95, 275 95, 335 140 L310 280 C250 325, 170 325, 110 280 Z" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<path d="M110 140 C170 180, 275 180, 335 140" fill="none" stroke="#8d6b2f" stroke-width="3"/>
-<path d="M110 280 C170 240, 275 240, 335 280" fill="none" stroke="#8d6b2f" stroke-width="3"/>
-<text x="250" y="392" text-anchor="middle" font-size="30" font-weight="700" fill="#4a4a4a">포스터형</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="340" viewBox="0 0 520 340">
+<rect width="520" height="340" fill="#ffffff"/>
+
+<g stroke="#b08538" stroke-width="3">
+<polygon points="80,220 330,150 360,170 110,240" fill="#edd18b"/>
+<polygon points="110,240 360,170 350,205 100,275" fill="#cfa64b"/>
+<polygon points="80,220 100,275 70,255 50,200" fill="#dfbc66"/>
+</g>
+<g stroke="#ef6b73" stroke-width="2" fill="none">
+  <path d="M90 285 H355"/><path d="M105 275 l-15 10 l15 10"/><path d="M340 275 l15 10 l-15 10"/>
+</g>
+<text x="220" y="308" font-size="16" font-weight="600" fill="#777">가로</text>
+<text x="260.0" y="324" text-anchor="middle" font-size="20" font-weight="700" fill="#555">포스터형</text>
 </svg>

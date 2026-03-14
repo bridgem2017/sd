@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
-<rect width="500" height="420" fill="#f7f7f7"/>
-<polygon points="90,170 170,135 300,160 220,195" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,170 220,195 220,300 90,275" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="220,195 300,160 300,265 220,300" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="170,135 300,160 300,120 170,95" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,170 170,135 170,95 90,130" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,130 170,95 210,125 130,155" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<text x="250" y="392" text-anchor="middle" font-size="30" font-weight="700" fill="#4a4a4a">D형 박스</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="340" viewBox="0 0 520 340">
+<rect width="520" height="340" fill="#ffffff"/>
+
+<g stroke="#b08538" stroke-width="3">
+<polygon points="70,205 160,170 285,205 195,240" fill="#edd18b"/>
+<polygon points="70,205 195,240 195,275 70,240" fill="#dfbc66"/>
+<polygon points="195,240 285,205 365,235 240,270" fill="#edd18b"/>
+<polygon points="160,170 285,205 365,125 240,90" fill="#f0d995"/>
+</g>
+<text x="260.0" y="324" text-anchor="middle" font-size="20" font-weight="700" fill="#555">D형 보자가형</text>
 </svg>

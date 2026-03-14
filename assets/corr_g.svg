@@ -1,10 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
-<rect width="500" height="420" fill="#f7f7f7"/>
-<polygon points="90,170 170,135 300,160 220,195" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,170 220,195 220,300 90,275" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="220,195 300,160 300,265 220,300" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="170,135 300,160 300,120 170,95" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,170 170,135 170,95 90,130" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,130 170,95 210,125 130,155" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<text x="250" y="392" text-anchor="middle" font-size="30" font-weight="700" fill="#4a4a4a">G형 박스</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="340" viewBox="0 0 520 340">
+<rect width="520" height="340" fill="#ffffff"/>
+
+<g stroke="#ef6b73" stroke-width="2" fill="none" stroke-linecap="round">
+  <path d="M60 255 H220"/>
+  <path d="M75 245 l-15 10 l15 10"/>
+  <path d="M205 245 l15 10 l-15 10"/>
+  <path d="M54 135 V255"/>
+  <path d="M44 150 l10 -15 l10 15"/>
+  <path d="M44 240 l10 15 l10 -15"/>
+  <path d="M92 210 L40 210"/>
+</g>
+<g fill="#777" font-size="16" font-weight="600">
+  <text x="134" y="277">가로</text>
+  <text x="18" y="192" transform="rotate(-90 18 192)">높이</text>
+  <text x="62" y="230">세로</text>
+</g>
+<g stroke="#b08538" stroke-width="3">
+<polygon points="95,195 185,165 270,195 180,225" fill="#edd18b"/>
+<polygon points="95,195 180,225 180,285 95,255" fill="#dfbc66"/>
+<polygon points="180,225 270,195 270,255 180,285" fill="#cfa64b"/>
+<polygon points="140,145 230,115 270,195 185,165" fill="#f0d995"/>
+<polygon points="140,145 185,165 145,115 100,140" fill="#edd18b"/>
+</g>
+<text x="260.0" y="324" text-anchor="middle" font-size="20" font-weight="700" fill="#555">G형 박스</text>
 </svg>

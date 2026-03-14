@@ -1,10 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
-<rect width="500" height="420" fill="#f7f7f7"/>
-<polygon points="90,170 170,135 300,160 220,195" fill="#d4efff" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="90,170 220,195 220,300 90,275" fill="#8fd0f4" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="220,195 300,160 300,265 220,300" fill="#5ab2e6" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="170,135 300,160 300,120 170,95" fill="#d4efff" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="90,170 170,135 170,95 90,130" fill="#8fd0f4" stroke="#4d91ba" stroke-width="3"/>
-<polygon points="90,130 170,95 210,125 130,155" fill="#5ab2e6" stroke="#4d91ba" stroke-width="3"/>
-<text x="250" y="392" text-anchor="middle" font-size="30" font-weight="700" fill="#4a4a4a">C형 박스</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="340" viewBox="0 0 520 340">
+<rect width="520" height="340" fill="#ffffff"/>
+
+<g stroke="#6b9bb0" stroke-width="3">
+<polygon points="70,205 160,170 285,205 195,240" fill="#d8f7ff"/>
+<polygon points="70,205 195,240 195,275 70,240" fill="#9fe4f6"/>
+<polygon points="195,240 285,205 365,235 240,270" fill="#d8f7ff"/>
+<polygon points="160,170 285,205 365,125 240,90" fill="#eefcff"/>
+</g>
+<text x="260.0" y="324" text-anchor="middle" font-size="20" font-weight="700" fill="#555">C형 상하짝박스</text>
 </svg>

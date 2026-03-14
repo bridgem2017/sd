@@ -1,12 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
-<rect width="500" height="420" fill="#f7f7f7"/>
-<polygon points="150,120 250,95 330,145 230,170" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,150 150,120 230,170 170,200" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="230,170 330,145 330,250 230,280" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="170,200 230,170 230,280 170,310" fill="#d9b15a" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,150 170,200 170,310 90,260" fill="#c79a3c" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="90,150 150,120 120,65 65,100" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="150,120 250,95 225,50 120,65" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<polygon points="250,95 330,145 375,92 225,50" fill="#ead08b" stroke="#8d6b2f" stroke-width="3"/>
-<text x="250" y="392" text-anchor="middle" font-size="30" font-weight="700" fill="#4a4a4a">P형 박스</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="340" viewBox="0 0 520 340">
+<rect width="520" height="340" fill="#ffffff"/>
+
+<g stroke="#ef6b73" stroke-width="2" fill="none" stroke-linecap="round">
+  <path d="M60 255 H220"/>
+  <path d="M75 245 l-15 10 l15 10"/>
+  <path d="M205 245 l15 10 l-15 10"/>
+  <path d="M54 135 V255"/>
+  <path d="M44 150 l10 -15 l10 15"/>
+  <path d="M44 240 l10 15 l10 -15"/>
+  <path d="M92 210 L40 210"/>
+</g>
+<g fill="#777" font-size="16" font-weight="600">
+  <text x="134" y="277">가로</text>
+  <text x="18" y="192" transform="rotate(-90 18 192)">높이</text>
+  <text x="62" y="230">세로</text>
+</g>
+<g stroke="#b08538" stroke-width="3">
+<polygon points="80,200 165,170 250,200 165,230" fill="#edd18b"/>
+<polygon points="80,200 165,230 165,285 80,255" fill="#dfbc66"/>
+<polygon points="165,230 250,200 250,255 165,285" fill="#cfa64b"/>
+<polygon points="125,150 210,120 250,200 165,170" fill="#f0d995"/>
+<polygon points="125,150 165,170 120,120 80,145" fill="#edd18b"/>
+</g>
+<text x="260.0" y="324" text-anchor="middle" font-size="20" font-weight="700" fill="#555">P형 박스</text>
 </svg>
