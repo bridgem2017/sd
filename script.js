@@ -1,29 +1,70 @@
-const cfg=window.SD_SITE_CONFIG||{};const db=window.SD_BOX_DB||[];
-const qs=(s,r=document)=>r.querySelector(s);const qsa=(s,r=document)=>[...r.querySelectorAll(s)];
-const corrGuide=[{"title": "A형 박스", "image": "assets/corr_Ah_박스.svg", "desc": "골판박스의 가장 기본형으로 택배, 물류, 일반 출고에 적합합니다."}, {"title": "B형 박스", "image": "assets/corr_Bh_박스.svg", "desc": "측면 조립과 상단 결합이 안정된 구조입니다."}, {"title": "T형 박스", "image": "assets/corr_Th_박스.svg", "desc": "상부 덮개 구조로 개봉 편의성과 보호성을 고려한 형태입니다."}, {"title": "P형 박스", "image": "assets/corr_Ph_박스.svg", "desc": "프로모션 및 내부 고정이 필요한 제품에 쓰입니다."}, {"title": "G형 박스", "image": "assets/corr_Gh_박스.svg", "desc": "고급형 브랜드 택배박스에 많이 사용되는 구조입니다."}, {"title": "포스터형", "image": "assets/corr_포스터h.svg", "desc": "긴 제품과 포스터 포장에 적합한 구조입니다."}, {"title": "D형 보자가형", "image": "assets/corr_Dh_보자가h.svg", "desc": "얕고 넓은 구조로 의류나 납작한 제품에 적합합니다."}, {"title": "Y형 손잡이박스", "image": "assets/corr_Yh_손잡이박스.svg", "desc": "손잡이가 있어 휴대성이 필요한 포장에 적합합니다."}];
-const colorGuide=[{"title": "T형 박스", "image": "assets/color_Th_박스.svg", "desc": "칼라박스의 기본형 구조입니다."}, {"title": "B형 조립박스", "image": "assets/color_Bh_조립박스.svg", "desc": "조립성이 좋아 다양한 제품 포장에 사용됩니다."}, {"title": "B형 원터치박스", "image": "assets/color_Bh_원터치박스.svg", "desc": "작업 효율을 높인 원터치형 구조입니다."}, {"title": "슬리브박스", "image": "assets/color_슬리브박스.svg", "desc": "슬리브 구조의 프리미엄 패키지입니다."}, {"title": "필로우 박스", "image": "assets/color_필로우_박스.svg", "desc": "곡선형으로 소형 제품 포장에 적합합니다."}, {"title": "C형 상하짝박스", "image": "assets/color_Ch_상하짝박스.svg", "desc": "상하짝 형태의 대표적인 칼라박스 구조입니다."}, {"title": "P형 박스", "image": "assets/color_Ph_박스.svg", "desc": "내부 보강이 필요한 구조에 적합합니다."}, {"title": "G형 박스", "image": "assets/color_Gh_박스.svg", "desc": "브랜드 패키지와 굿즈 박스에 적합합니다."}, {"title": "A형 박스(RRP겸용)", "image": "assets/color_Ah_박스(RRP겸용).svg", "desc": "진열과 판매를 함께 고려한 구조입니다."}, {"title": "Y형 박스", "image": "assets/color_Yh_박스.svg", "desc": "손잡이형 칼라박스 구조입니다."}];
-const corrMaterials=[{"title": "표면지(연한 크라프트색)", "image": "assets/mat_light_kraft.svg", "desc": "밝은 색감의 기본 골판 표면지"}, {"title": "표면지(진한 크라프트색)", "image": "assets/mat_dark_kraft.svg", "desc": "진한 내추럴 톤의 크라프트 표면지"}, {"title": "표면지(흰색)", "image": "assets/mat_white.svg", "desc": "인쇄 발색이 뛰어난 흰색 표면지"}, {"title": "이면지", "image": "assets/mat_back.svg", "desc": "골판 후면에 적용되는 이면지"}];
-const corrFlutes=[{"title": "A골", "image": "assets/flute_a.svg", "desc": "약 4.5~5mm, 완충성과 압축강도에 유리"}, {"title": "B골", "image": "assets/flute_b.svg", "desc": "약 2.5~3mm, 인쇄성과 강도 균형"}, {"title": "E골", "image": "assets/flute_e.svg", "desc": "약 1.3~1.5mm, 얇고 고급 포장에 적합"}, {"title": "BA골", "image": "assets/flute_ba.svg", "desc": "A골+B골 조합, 강도 우수"}, {"title": "BB골", "image": "assets/flute_bb.svg", "desc": "B골+B골 조합, 중량물용"}];
-const colorPapers=[{"title": "SC마닐라지", "image": "assets/paper_scmanila.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "아이보리지", "image": "assets/paper_ivory.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "MGB지", "image": "assets/paper_mgb.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "로얄아이보리지", "image": "assets/paper_royal.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "SC마닐라지+골판지(흰색)", "image": "assets/paper_scwhite.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "CCP지", "image": "assets/paper_ccp.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "아코팩웜화이트", "image": "assets/paper_warm.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "아코팩엑스트라화이트", "image": "assets/paper_extra.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "올드밀비앙코", "image": "assets/paper_oldmill.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "KB무염료(단면)", "image": "assets/paper_kb.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "뉴크라프트보드", "image": "assets/paper_newkraft.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "Earth Pact", "image": "assets/paper_earth.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "Bamboo lux", "image": "assets/paper_bamboo.svg", "desc": "칼라박스 제작에 사용되는 지류"}, {"title": "흑기사", "image": "assets/paper_black.svg", "desc": "칼라박스 제작에 사용되는 지류"}];
-const colorFinishes=[{"title": "오버코팅", "image": "assets/fin_over.svg", "desc": "후가공/박인쇄 안내"}, {"title": "CR코팅", "image": "assets/fin_cr.svg", "desc": "후가공/박인쇄 안내"}, {"title": "유광라미네이팅", "image": "assets/fin_gloss.svg", "desc": "후가공/박인쇄 안내"}, {"title": "무광라미네이팅", "image": "assets/fin_matte.svg", "desc": "후가공/박인쇄 안내"}, {"title": "금박(유광)", "image": "assets/foil_gold_g.svg", "desc": "후가공/박인쇄 안내"}, {"title": "금박(무광)", "image": "assets/foil_gold_m.svg", "desc": "후가공/박인쇄 안내"}, {"title": "은박(유광)", "image": "assets/foil_silver_g.svg", "desc": "후가공/박인쇄 안내"}, {"title": "은박(무광)", "image": "assets/foil_silver_m.svg", "desc": "후가공/박인쇄 안내"}, {"title": "청박(유광)", "image": "assets/foil_blue.svg", "desc": "후가공/박인쇄 안내"}, {"title": "적박(유광)", "image": "assets/foil_red.svg", "desc": "후가공/박인쇄 안내"}, {"title": "녹박(유광)", "image": "assets/foil_green.svg", "desc": "후가공/박인쇄 안내"}, {"title": "동박(유광)", "image": "assets/foil_copper.svg", "desc": "후가공/박인쇄 안내"}, {"title": "홀로그램박", "image": "assets/foil_holo.svg", "desc": "후가공/박인쇄 안내"}, {"title": "형압 엠보싱", "image": "assets/etc_emboss.svg", "desc": "후가공/박인쇄 안내"}, {"title": "UV광택코팅", "image": "assets/etc_uv.svg", "desc": "후가공/박인쇄 안내"}, {"title": "필름창 가공", "image": "assets/etc_window.svg", "desc": "후가공/박인쇄 안내"}, {"title": "헤더상자", "image": "assets/etc_header.svg", "desc": "후가공/박인쇄 안내"}];
-const smallAdv=[{"title": "소량인쇄 장점", "image": "assets/sp_adv1.svg", "desc": "소량 제작으로 재고 부담을 줄이고 다양한 SKU를 테스트할 수 있습니다."}, {"title": "에스디컴퍼니 소량 인쇄 장점", "image": "assets/sp_adv2.svg", "desc": "상담, 제작, 납품 일정을 한 번에 조율해 운영 부담을 줄입니다."}];
-const smallGuide=[{"title": "A형", "image": "assets/corr_Ah_박스.svg", "desc": "소량 제작 가능한 형태"}, {"title": "B형", "image": "assets/corr_Bh_박스.svg", "desc": "소량 제작 가능한 형태"}, {"title": "B형(원터치)", "image": "assets/corr_Bh_박스.svg", "desc": "소량 제작 가능한 형태"}, {"title": "D형", "image": "assets/corr_Dh_보자가h.svg", "desc": "소량 제작 가능한 형태"}, {"title": "N형", "image": "assets/corr_Yh_손잡이박스.svg", "desc": "소량 제작 가능한 형태"}, {"title": "N형(슬리브)", "image": "assets/corr_Yh_손잡이박스.svg", "desc": "소량 제작 가능한 형태"}, {"title": "Y형", "image": "assets/corr_Yh_손잡이박스.svg", "desc": "소량 제작 가능한 형태"}];
 
-function infoText(){return `${cfg.phone||''} · ${cfg.inquiryEmail||''}`;}
-function renderGrid(target,data){qs(target).innerHTML=data.map(i=>`<article class="${target.includes('Guide')?'guide-card':'info-card'}"><img src="${i.image}" alt="${i.title}"><h4>${i.title}</h4><p>${i.desc}</p></article>`).join('');}
-function renderDB(rows){qs('#dbTableBody').innerHTML=rows.map(r=>`<tr><td>${r.id}</td><td>${r.service}</td><td>${r.type}</td><td>${r.innerW}×${r.innerL}×${r.innerH}</td><td>${r.usage}</td><td>${r.minQty}</td><td>${r.material}</td></tr>`).join('');}
-function score(box,service,usage,w,l,h,qty){if(box.service!==service)return-9999;if(box.innerW<w||box.innerL<l||box.innerH<h)return-9999;let s=0;const gap=(box.innerW-w)+(box.innerL-l)+(box.innerH-h);s+=Math.max(0,220-gap);if(usage&&box.usage.includes(usage))s+=80;if(Number(qty||0)>=box.minQty)s+=30;else s-=30;return s;}
-function recommend(){const service=qs('#serviceType').value,usage=qs('#usageInput').value.trim(),w=+qs('#productW').value,l=+qs('#productL').value,h=+qs('#productH').value,qty=+qs('#productQty').value;if(!w||!l||!h){qs('#recommendList').innerHTML='<div class="empty">가로, 세로, 높이를 입력해 주세요.</div>';return;}const result=db.map(b=>({...b,score:score(b,service,usage,w,l,h,qty)})).filter(b=>b.score>-9999).sort((a,b)=>b.score-a.score).slice(0,5);if(!result.length){qs('#recommendList').innerHTML='<div class="empty">조건에 맞는 박스를 찾지 못했습니다.</div>';qs('#recommendedBoxSelect').innerHTML='<option>직접 상담 필요</option>';buildSummary();return;}qs('#recommendList').innerHTML=result.map(b=>`<article class="recommend-item"><img src="${b.sampleImage}" alt="${b.type}"><div><strong>${b.type}</strong><small>${b.service}</small><small>추천 규격: ${b.innerW}×${b.innerL}×${b.innerH}mm</small><small>용도: ${b.usage} · 최소수량 ${b.minQty}개</small><small>재질: ${b.material}</small></div></article>`).join('');qs('#recommendedBoxSelect').innerHTML=result.map(b=>`<option data-img="${b.sampleImage}">${b.id} | ${b.type} | ${b.innerW}×${b.innerL}×${b.innerH}mm | ${b.material}</option>`).join('');buildSummary();}
-function filterDB(){const f=qs('#dbServiceFilter').value,q=qs('#dbSearch').value.trim();let rows=db;if(f!=='전체')rows=rows.filter(r=>r.service===f);if(q)rows=rows.filter(r=>(r.type+' '+r.usage+' '+r.material).includes(q));renderDB(rows);}
-function activeTab(){return qs('.qtab.active')?.dataset.qtab || 'corr';}
-function updateQuoteVisual(){let img='assets/corr_Ah_박스.svg'; if(activeTab()==='corr'){ const val=qs('#corrShapeSelect').value; const found=db.find(x=>x.type===val && x.service==='골판박스 주문제작'); if(found) img=found.sampleImage; } if(activeTab()==='color'){ const val=qs('#colorShapeSelect').value; const found=db.find(x=>x.type===val && x.service==='칼라박스 주문제작'); if(found) img=found.sampleImage; } if(activeTab()==='small'){ const val=qs('#smallShapeSelect').value; const found=db.find(x=>x.type===val && x.service==='소량인쇄'); if(found) img=found.sampleImage; } qs('#quoteVisual').src=img; }
-function buildSummary(){let lines=[]; if(activeTab()==='corr'){ lines=[`서비스: 골판박스 견적`,`형태: ${qs('#corrShapeSelect').value||'-'}`,`규격: ${qs('#corrW').value||'-'} × ${qs('#corrL').value||'-'} × ${qs('#corrH').value||'-'} mm`,`골판지 두께: ${qs('#corrFluteSelect').value||'-'}`,`종이 재질/색상/강도: ${qs('#corrPaperSpec').value||'-'}`,`수량: ${qs('#corrQty').value||'-'}`,`인쇄: ${qs('#corrPrint').value||'-'}`,`배송지역: ${qs('#corrDelivery').value||'-'}`]; } if(activeTab()==='color'){ lines=[`서비스: 칼라박스 견적`,`형태: ${qs('#colorShapeSelect').value||'-'}`,`규격: ${qs('#colorW').value||'-'} × ${qs('#colorL').value||'-'} × ${qs('#colorH').value||'-'} mm`,`종이선택: ${qs('#colorPaperSelect').value||'-'}`,`가공: ${qs('#colorFinishSelect').value||'-'}`,`디자인 서비스: ${qs('#designService').value||'-'}`,`수량: ${qs('#colorQty').value||'-'}`,`인쇄사양: ${qs('#colorPrintSpec').value||'-'}`,`배송지역: ${qs('#colorDelivery').value||'-'}`]; } if(activeTab()==='small'){ lines=[`서비스: 소량인쇄 문의`,`형태: ${qs('#smallShapeSelect').value||'-'}`,`규격: ${qs('#smallW').value||'-'} × ${qs('#smallL').value||'-'} × ${qs('#smallH').value||'-'} mm`,`수량: ${qs('#smallQty').value||'-'}`,`용도: ${qs('#smallUsage').value||'-'}`]; } qs('#selectionSummary').innerHTML=lines.map(v=>`<div>${v}</div>`).join(''); updateQuoteVisual(); }
-function setQtab(tab){qsa('.qtab').forEach(b=>b.classList.toggle('active', b.dataset.qtab===tab)); qs('#corrFields').classList.toggle('hidden', tab!=='corr'); qs('#colorFields').classList.toggle('hidden', tab!=='color'); qs('#smallFields').classList.toggle('hidden', tab!=='small'); buildSummary();}
-function submitForm(e){e.preventDefault(); const form=e.currentTarget; ['input[name="_subject"]','input[name="_captcha"]','textarea[name="selectionSummary"]'].forEach(sel=>{const old=form.querySelector(sel);if(old)old.remove();}); let a=document.createElement('input');a.type='hidden';a.name='_subject';a.value=`[${cfg.companyName}] 견적 문의`; let b=document.createElement('input');b.type='hidden';b.name='_captcha';b.value='false'; let c=document.createElement('textarea');c.name='selectionSummary';c.style.display='none'; c.value=qs('#selectionSummary').innerText+'\n\n추가 요청사항:\n'+(qs('#note').value||'없음'); form.append(a,b,c); form.action=cfg.formSubmitAction; form.method='POST'; form.submit(); }
-function openMail(){const body=encodeURIComponent(qs('#selectionSummary').innerText+'\n\n추가 요청사항:\n'+(qs('#note').value||'없음')); location.href=`mailto:${cfg.inquiryEmail}?subject=${encodeURIComponent('['+cfg.companyName+'] 견적 문의')}&body=${body}`;}
-document.addEventListener('DOMContentLoaded',()=>{qs('#contactInfo').textContent=infoText(); qs('#footerInfo').textContent=infoText(); qs('#dbCount').textContent=`총 ${db.length}개`; renderDB(db); renderGrid('#corrGuideGrid', corrGuide); renderGrid('#colorGuideGrid', colorGuide); renderGrid('#corrMaterialGrid', corrMaterials); renderGrid('#corrFluteGrid', corrFlutes); renderGrid('#colorPaperGrid', colorPapers); renderGrid('#colorFinishGrid', colorFinishes); renderGrid('#smallAdvGrid', smallAdv); renderGrid('#smallGuideGrid', smallGuide);
-qs('#recommendBtn').addEventListener('click', recommend); qs('#dbServiceFilter').addEventListener('change', filterDB); qs('#dbSearch').addEventListener('input', filterDB);
-qsa('.qtab').forEach(b=>b.addEventListener('click',()=>setQtab(b.dataset.qtab)));
-qs('#corrShapeSelect').innerHTML=corrGuide.map(i=>`<option>${i.title}</option>`).join(''); qs('#corrFluteSelect').innerHTML=corrFlutes.map(i=>`<option>${i.title}</option>`).join(''); qs('#colorShapeSelect').innerHTML=colorGuide.map(i=>`<option>${i.title}</option>`).join(''); qs('#colorPaperSelect').innerHTML=colorPapers.map(i=>`<option>${i.title}</option>`).join(''); qs('#colorFinishSelect').innerHTML=colorFinishes.map(i=>`<option>${i.title}</option>`).join(''); qs('#smallShapeSelect').innerHTML=smallGuide.map(i=>`<option>${i.title}</option>`).join('');
-qsa('#quoteForm input, #quoteForm select, #quoteForm textarea').forEach(el=>el.addEventListener('input', buildSummary));
-qs('#quoteForm').addEventListener('submit', submitForm); qs('#openMailClientBtn').addEventListener('click', openMail); setQtab('corr'); buildSummary(); });
+const cfg = window.SD_SITE_CONFIG || {};
+const data = window.SD_BOX_DATA || {};
+const qs = (s,r=document)=>r.querySelector(s);
+const qsa = (s,r=document)=>[...r.querySelectorAll(s)];
+function setText(id,v){const el=document.getElementById(id); if(el) el.textContent=v||'';}
+function card(item){return `<article class="${item.image || item.file ? 'shape-card':'info-card'}"><img src="${item.image || ('assets/'+item.file)}" alt="${item.name || item.title}"><div class="copy"><h4>${item.name || item.title}</h4><p>${item.desc || ''}</p></div></article>`;}
+function fill(sel, items, labelKey='name'){ sel.innerHTML = items.map(i=>`<option>${i[labelKey] || i.title}</option>`).join(''); }
+function render(){
+  qs('#corrugatedShapeGrid').innerHTML = data.corrugatedShapes.map(card).join('');
+  qs('#corrugatedMaterialGrid').innerHTML = data.corrugatedMaterials.map(card).join('');
+  qs('#corrugatedFluteGrid').innerHTML = data.corrugatedFlutes.map(card).join('');
+  qs('#colorShapeGrid').innerHTML = data.colorShapes.map(card).join('');
+  qs('#colorPaperGrid').innerHTML = data.colorPapers.map(card).join('');
+  qs('#colorFinishGrid').innerHTML = data.colorFinishes.map(card).join('');
+  qs('#smallAdvGrid').innerHTML = data.smallAdvantages.map(card).join('');
+  qs('#smallShapeGrid').innerHTML = data.smallShapes.map(card).join('');
+}
+function setService(service){
+  qsa('.seg').forEach(btn=>btn.classList.toggle('active', btn.dataset.service===service));
+  qsa('.service-block').forEach(block=>block.classList.toggle('hidden', block.dataset.block!==service));
+  buildSummary();
+}
+function buildSummary(){
+  const service = qs('.seg.active')?.dataset.service || '골판박스 주문제작';
+  const lines=[`서비스 유형: ${service}`];
+  if(service==='골판박스 주문제작'){ lines.push(`박스 형태: ${qs('#corrShapeSelect').value}`); lines.push(`골판지 재질: ${qs('#corrMatSelect').value}`); lines.push(`골판지 두께: ${qs('#corrFluteSelect').value}`); }
+  if(service==='칼라박스 주문제작'){ lines.push(`박스 형태: ${qs('#colorShapeSelect').value}`); lines.push(`칼라박스 종이정보: ${qs('#colorPaperSelect').value}`); lines.push(`가공 안내: ${qs('#colorFinishSelect').value}`); }
+  if(service==='소량인쇄'){ lines.push(`소량인쇄 박스형태: ${qs('#smallShapeSelect').value}`); }
+  lines.push(`사이즈: ${qs('#width').value || '-'} × ${qs('#depth').value || '-'} × ${qs('#height').value || '-'} mm`);
+  lines.push(`수량: ${qs('#qty').value || '-'}`);
+  lines.push(`인쇄 여부: ${qs('#printOption').value || '-'}`);
+  lines.push(`납품지역: ${qs('#deliveryRegion').value || '-'}`);
+  qs('#selectionSummary').innerHTML = lines.map(t=>`<div>${t}</div>`).join('');
+}
+function submitForm(e){
+  e.preventDefault();
+  if(!cfg.formSubmitAction || cfg.formSubmitAction.includes('CHANGE_ME')){
+    alert('config/site-config.js 에 문의 이메일과 formSubmitAction 을 먼저 입력해 주세요.');
+    return;
+  }
+  const form = e.currentTarget;
+  const service = qs('.seg.active')?.dataset.service || '';
+  const subject = `[${cfg.companyName || '에스디컴퍼니'}] ${service} 견적 문의`;
+  const hiddenSubject = document.createElement('input'); hiddenSubject.type='hidden'; hiddenSubject.name='_subject'; hiddenSubject.value=subject;
+  const hiddenCaptcha = document.createElement('input'); hiddenCaptcha.type='hidden'; hiddenCaptcha.name='_captcha'; hiddenCaptcha.value='false';
+  const hiddenSummary = document.createElement('textarea'); hiddenSummary.name='selectionSummary'; hiddenSummary.style.display='none'; hiddenSummary.value=qs('#selectionSummary').innerText + '\n\n추가 요청사항:\n' + (qs('#note').value || '없음');
+  form.append(hiddenSubject, hiddenCaptcha, hiddenSummary);
+  form.action = cfg.formSubmitAction; form.method = 'POST'; form.submit();
+}
+function openMailClient(){
+  const service = qs('.seg.active')?.dataset.service || '';
+  const body = encodeURIComponent(qs('#selectionSummary').innerText + '\n\n추가 요청사항:\n' + (qs('#note').value || '없음'));
+  location.href = `mailto:${cfg.inquiryEmail}?subject=${encodeURIComponent('['+(cfg.companyName||'에스디컴퍼니')+'] '+service+' 견적 문의')}&body=${body}`;
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+  setText('companyPhone', cfg.phone); setText('companyEmail', cfg.inquiryEmail); setText('footerPhone', cfg.phone); setText('footerEmail', cfg.inquiryEmail);
+  render();
+  fill(qs('#corrShapeSelect'), data.corrugatedShapes); fill(qs('#corrMatSelect'), data.corrugatedMaterials, 'title'); fill(qs('#corrFluteSelect'), data.corrugatedFlutes, 'title');
+  fill(qs('#colorShapeSelect'), data.colorShapes); fill(qs('#colorPaperSelect'), data.colorPapers, 'title'); fill(qs('#colorFinishSelect'), data.colorFinishes, 'title'); fill(qs('#smallShapeSelect'), data.smallShapes);
+  qsa('.seg').forEach(btn=>btn.addEventListener('click', ()=>setService(btn.dataset.service)));
+  qsa('#quote input, #quote select, #quote textarea').forEach(el=>el.addEventListener('input', buildSummary));
+  qsa('[data-prefill]').forEach(el=>el.addEventListener('click', ()=>setService(el.dataset.prefill)));
+  qsa('[data-jump]').forEach(el=>el.addEventListener('click', ()=>document.querySelector(el.dataset.jump)?.scrollIntoView({behavior:'smooth'})));
+  qs('#quoteForm').addEventListener('submit', submitForm); qs('#openMailClientBtn').addEventListener('click', openMailClient);
+  qs('#siteSignupBtn').addEventListener('click', ()=>alert('실운영용 사이트가입은 Supabase 또는 Firebase 연결이 필요합니다. README를 참고하세요.'));
+  qs('#kakaoLoginBtn').addEventListener('click', ()=>alert('카카오 로그인은 Kakao Developers 앱 등록과 키 입력이 필요합니다.'));
+  qs('#naverLoginBtn').addEventListener('click', ()=>alert('네이버 로그인은 네이버 개발자센터 앱 등록과 Client ID 입력이 필요합니다.'));
+  buildSummary();
+});
