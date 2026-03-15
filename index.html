@@ -1,1 +1,65 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에스디컴퍼니 | 맞춤 패키지 제작</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script></head><body><main><section class="hero"><div class="container hero-grid"><div><div class="kicker">샘플부터 실제 제작까지</div><h1>직접 보고 선택하는<br>에스디컴퍼니 패키지</h1><p>레이아웃과 UI를 전체 리뉴얼하고, 실사 느낌의 패키지 이미지를 적용했습니다. 카테고리·포트폴리오·견적 문의까지 더 직관적으로 구성했습니다.</p><div class="hero-actions"><a class="btn primary" href="quote.html">샘플 주문하기</a><a class="btn line" href="portfolio.html">포트폴리오 보기</a></div></div><div class="hero-visual"><img id="heroPortfolioImage" src="assets/products/prod_knockdown.png" alt="포트폴리오 이미지" style="border-radius:22px;width:100%;aspect-ratio:1.2/0.82;object-fit:cover"></div></div></section><section class="section"><div class="container"><div class="kicker">포트폴리오</div><h2>에스디컴퍼니와 함께한 고객</h2><p class="desc">관리자가 등록한 포트폴리오와 대표 사례를 한눈에 확인할 수 있게 구성했습니다.</p><div class="grid-4" id="portfolioPreview"></div><div class="center-cta"><a class="outline-pill" href="portfolio.html">더 많은 포트폴리오 보기 →</a></div></div></section><section class="section" style="padding-top:0"><div class="container"><div class="kicker">제품 분류</div><h2>패키지 형태 추천</h2><p class="desc">형태별로 실제 제품에 가까운 느낌의 이미지를 적용했습니다.</p><div class="grid-4" id="shapeGrid"></div></div></section><section class="section" style="padding-top:0"><div class="container"><div class="kicker">산업별 제품</div><h2>에스디컴퍼니의 산업별 패키지</h2><div class="category-band" id="industryBand"></div></div></section><section class="section" style="padding-top:0"><div class="container"><div class="kicker">에스디컴퍼니 가이드</div><h2>제작 전 꼭 확인할 정보</h2><div class="article-grid" id="guidesGrid"></div></div></section><section class="section" style="padding-top:0"><div class="container"><div class="kicker">고객 후기</div><h2>에스디컴퍼니 후기</h2><div class="review-grid" id="reviewGrid"></div><div class="big-cta"><div><h3 style="margin:0 0 8px;font-size:28px">맞춤 브랜드와 에스디컴퍼니 선택 이유<br>직접 경험해보세요</h3><p style="margin:0;color:#e9d5ff">상담부터 샘플, 제작, 납품까지 빠르게 연결합니다.</p></div><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn line" style="background:#fff" href="quote.html">견적문의</a><a class="btn primary" style="background:#fff;color:#6d28d9" href="portfolio.html">포트폴리오</a></div></div></div></section></main><script>mountLayout('');const stored=JSON.parse(localStorage.getItem('sd_portfolio_items')||'[]');const items=stored.length?stored:DATA.portfolio;document.getElementById('heroPortfolioImage').src=items[0].img;document.getElementById('portfolioPreview').innerHTML=items.slice(0,8).map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');document.getElementById('shapeGrid').innerHTML=[...DATA.paperProducts.slice(0,4),...DATA.corrugatedProducts.slice(0,4)].map(productCard).join('');document.getElementById('industryBand').innerHTML=DATA.industryCards.map(i=>`<article class="overlay-card"><img src="${i.img}" alt="${i.name}" style="width:100%;height:100%;object-fit:cover"><div class="overlay"><strong style="font-size:22px">${i.name}</strong><span>${i.desc}</span></div></article>`).join('');document.getElementById('guidesGrid').innerHTML=DATA.guides.map(g=>`<a class="card" href="${g.href}"><img src="${g.img}" alt="${g.title}"><div class="body"><h4>${g.title}</h4><p>${g.desc}</p></div></a>`).join('');document.getElementById('reviewGrid').innerHTML=DATA.portfolio.map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');</script></body></html>
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에스디컴퍼니 | 맞춤 패키지 제작</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script></head><body><main>
+<section class="hero"><div class="container asym-shell">
+  <div class="hero-left">
+    <div>
+      <div class="kicker">샘플 · 구조 제안 · 견적 · 납품 원스톱</div>
+      <h1>박스를 파는 사이트가 아니라,<br>브랜드의 포장 구조를 설계하는<br>에스디컴퍼니</h1>
+      <p>형태 추천, 재질 가이드, 포트폴리오, 견적 문의를 각각 분리하지 않고 한 흐름으로 이어지는 구조로 다시 설계했습니다. 비대칭 레이아웃과 강한 시선 흐름으로 에스디컴퍼니만의 첫 인상을 만듭니다.</p>
+      <div class="hero-actions"><a class="btn primary" href="quote.html">견적문의</a><a class="btn line" href="portfolio.html">포트폴리오</a></div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat"><b>250+</b><span class="small">골판지 기본 대응 수량</span></div>
+      <div class="hero-stat"><b>50+</b><span class="small">칼라박스 / 소량 제작 시작</span></div>
+      <div class="hero-stat"><b>1:1</b><span class="small">상담부터 납품까지 직접 연결</span></div>
+    </div>
+  </div>
+  <div class="hero-mosaic">
+    <article class="mosaic-card large"><img src="assets/products/prod_corr_g.png" alt="골판지 패키지"><div class="overlay-copy"><strong style="font-size:22px">골판지박스</strong><div class="small">배송형 · 보호형 · 맞춤 구조</div></div></article>
+    <article class="mosaic-card"><img src="assets/products/prod_paper_single.png" alt="칼라박스"><div class="overlay-copy"><strong>칼라박스</strong><div class="small">브랜딩 중심의 인쇄형 박스</div></div></article>
+    <article class="mosaic-card"><img src="assets/products/prod_rigid_cover.png" alt="싸바리박스"><div class="overlay-copy"><strong>싸바리박스</strong><div class="small">선물형 · 프리미엄 하드박스</div></div></article>
+  </div>
+</div><div class="container"><div class="logo-row" id="clientLogos"></div></div></section>
+
+<section class="diag-section"><div class="container section-inner">
+  <div class="split-feature">
+    <div class="feature-stack">
+      <div class="feature-card"><div class="kicker">WHY SD</div><h2>제품군보다 먼저,<br>브랜드 상황을 읽는 구조</h2><p class="desc">단순 상품 진열형 메인 대신, 상담 유도·사례 확인·가이드 탐색이 동시에 보이는 레이어형 화면으로 바꿨습니다.</p></div>
+      <div class="feature-card alt"><strong style="font-size:22px">자동 추천 + 견적 연결</strong><p class="desc" style="margin:8px 0 0">제품 크기, 수량, 재질, 박스 구조를 한 번에 선택하고 바로 메일로 넘기는 흐름을 강화했습니다.</p></div>
+    </div>
+    <div>
+      <div class="kicker">포트폴리오</div><h2>에스디컴퍼니와 함께한 패키지</h2><p class="desc">대표 사례를 먼저 보고, 바로 구조와 견적으로 이어질 수 있게 큐레이션했습니다.</p>
+      <div class="grid-4" id="portfolioPreview"></div>
+      <div class="center-cta"><a class="outline-pill" href="portfolio.html">더 많은 포트폴리오 보기 →</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" style="padding-top:20px"><div class="container">
+  <div class="kicker">제품 분류</div><h2>형태별 패키지 추천</h2><p class="desc">골판지박스, 칼라박스, 싸바리박스를 같은 방식으로 나열하지 않고 용도별 진입이 되도록 다시 배열했습니다.</p>
+  <div class="category-band" id="industryBand"></div>
+</div></section>
+
+<section class="section" style="padding-top:20px"><div class="container">
+  <div class="split-feature">
+    <div><div class="kicker">형태 추천</div><h2>바로 선택할 수 있는 대표 구조</h2><p class="desc">실사 느낌의 박스 이미지를 적용해 구조 차이가 한눈에 들어오도록 정리했습니다.</p><div class="grid-3" id="shapeGrid"></div></div>
+    <div class="feature-stack">
+      <div class="feature-card"><div class="kicker">GUIDE</div><h2>제작 전에 꼭 봐야 할 정보</h2><p class="desc">박스 구조, 종이 선택, 제작 과정, 견적 문의 가이드를 서브 허브처럼 연결했습니다.</p></div>
+      <div class="article-grid" id="guidesGrid"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" style="padding-top:0"><div class="container">
+  <div class="kicker">고객 후기</div><h2>업종별 반응과 실제 사용 사례</h2><div class="review-grid" id="reviewGrid"></div>
+  <div class="skew-cta" style="margin-top:34px"><div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div><h3 style="margin:0 0 10px;font-size:44px;line-height:1.15">맞춤 브랜드와 에스디컴퍼니 선택 이유<br>직접 경험해보세요</h3><p style="margin:0;color:#dbf8f6;font-size:18px">상담부터 샘플, 제작, 납품까지 빠르게 연결합니다.</p></div><div style="display:flex;gap:14px;flex-wrap:wrap"><a class="btn line" style="background:#fff;color:#14233d" href="quote.html">견적문의</a><a class="btn primary" style="background:#fff;color:#d84f26" href="portfolio.html">포트폴리오</a></div></div></div>
+</div></section>
+</main><script>
+mountLayout('');
+const items=DATA.portfolio;
+document.getElementById('clientLogos').innerHTML = DATA.clients.map(c=>`<div class="logo-chip"><img src="${c.img}" alt="${c.name}"></div>`).join('');
+document.getElementById('portfolioPreview').innerHTML = items.slice(0,4).map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
+document.getElementById('industryBand').innerHTML = DATA.industryCards.map(i=>`<article class="overlay-card"><img src="${i.img}" alt="${i.name}" style="width:100%;height:100%;object-fit:cover"><div class="overlay"><strong style="font-size:24px">${i.name}</strong><span>${i.desc}</span></div></article>`).join('');
+document.getElementById('shapeGrid').innerHTML = [...DATA.corrugatedProducts.slice(0,3),...DATA.colorProducts.slice(0,3)].map(productCard).join('');
+document.getElementById('guidesGrid').innerHTML = DATA.guides.map(g=>`<a class="card" href="${g.href}"><img src="${g.img}" alt="${g.title}"><div class="body"><h4>${g.title}</h4><p>${g.desc}</p></div></a>`).join('');
+document.getElementById('reviewGrid').innerHTML = items.slice(0,8).map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
+</script></body></html>
