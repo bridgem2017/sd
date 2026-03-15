@@ -467,3 +467,21 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
 @media (max-width:1200px){.hero-roll-card{width:350px !important;min-width:350px !important;height:250px !important}.roll-overlay h3{font-size:40px !important}.roll-overlay h3 small{font-size:20px !important}}
 @media (max-width:700px){.hero-roll-card{width:300px !important;min-width:300px !important;height:220px !important}.roll-overlay h3{font-size:32px !important}.roll-overlay h3 small{font-size:18px !important}}
 
+
+/* v18 search sidebar 2-column compact layout */
+.search-shell{grid-template-columns:300px 1fr !important; gap:16px !important;}
+.search-grid{grid-template-columns:1fr 1fr !important; gap:8px 10px !important;}
+.search-grid .field{min-width:0;}
+.search-grid .field label{font-size:13px !important; margin-bottom:4px !important;}
+.search-grid .field input,.search-grid .field select{padding:9px 11px !important; font-size:14px !important;}
+.search-sidebar .search-panel{padding:12px !important;}
+.search-sidebar .search-panel h3{font-size:20px !important; margin-bottom:8px !important;}
+.search-sidebar .hero-actions{grid-template-columns:1fr 1fr !important; gap:8px !important;}
+.search-sidebar .hero-actions .btn:last-child{grid-column:1 / -1;}
+#calcBox .metrics-grid{grid-template-columns:1fr !important;}
+@media (max-width:1100px){
+  .search-shell{grid-template-columns:1fr !important;}
+}
+@media (max-width:620px){
+  .search-grid{grid-template-columns:1fr !important;}
+}
