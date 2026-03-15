@@ -3,7 +3,7 @@
 <h1>완전한 박스 검색엔진</h1>
 <p>사이즈, 형태, 골두께, 용도, 산업군으로 300개 박스 DB를 실제로 검색할 수 있고, 추천 알고리즘 v2와 박스 규격 계산기까지 함께 사용할 수 있습니다.</p>
 <div class="search-shell">
-  <aside class="search-sidebar">
+  <aside class="search-sidebar" aria-label="검색 필터 사이드바">
     <div class="search-panel">
       <h3>박스 검색</h3>
       <div class="search-grid">
@@ -24,7 +24,7 @@
         <a href="#" class="btn line" onclick="resetEngine();return false">초기화</a>
       </div>
     </div>
-    <div class="search-panel">
+    <div class="search-panel" style="margin-top:0">
       <h3>박스 규격 계산기</h3>
       <p class="small" style="margin-top:0">제품 규격에 기본 여유를 더해 권장 내부 치수와 권장 골두께를 계산합니다.</p>
       <div class="metrics-grid">
@@ -48,9 +48,9 @@
       <div>
         <div class="kicker">검색 결과</div>
         <h2 style="margin:10px 0 6px;font-size:38px" id="resultTitle">전체 박스 DB</h2>
-        <p class="small" id="resultMeta">300개 전체 데이터를 불러왔습니다.</p>
+        <p class="small" id="resultMeta">300개 전체 데이터를 불러왔습니다. 결과는 가로형 카드 목록으로 정렬됩니다.</p>
       </div>
-      <div class="search-toolbar">
+      <div class="search-toolbar" style="justify-content:flex-end">
         <select id="sortBy" onchange="applyRender()">
           <option value="score">추천순</option>
           <option value="sizeAsc">규격 작은순</option>

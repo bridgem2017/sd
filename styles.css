@@ -173,3 +173,84 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
 .algobox{padding:18px;border-radius:20px;background:linear-gradient(145deg,#f1fbf9,#fff);border:1px solid #d9ece8}
 @media (max-width:1100px){.search-shell{grid-template-columns:1fr}.search-sidebar{position:static}.result-grid{grid-template-columns:repeat(2,1fr)}.engine-launch{grid-template-columns:1fr}}
 @media (max-width:640px){.search-grid,.metrics-grid,.result-grid{grid-template-columns:1fr}.search-toolbar{flex-direction:column}.engine-launch h3{font-size:28px}}
+
+/* v12 search page layout */
+.search-shell{align-items:start}
+.search-sidebar{gap:20px}
+.search-panel{overflow:hidden}
+#engineGrid.result-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+#engineGrid .result-card{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  align-items:stretch;
+  border-radius:24px;
+  overflow:hidden;
+}
+#engineGrid .result-card img{
+  width:100%;
+  height:100%;
+  max-height:180px;
+  object-fit:contain;
+  background:#faf8f5;
+  border-right:1px solid #efe5da;
+  padding:16px;
+}
+#engineGrid .result-card .body{
+  padding:22px;
+}
+#engineGrid .result-card .body h4{
+  min-height:auto;
+  font-size:30px;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+#engineGrid .result-card .tag-row{
+  margin-top:12px;
+}
+#engineGrid .result-card .btn{
+  width:auto;
+  min-width:220px;
+}
+.search-sidebar > .search-panel + .search-panel{
+  margin-top:0;
+}
+.search-panel h3{
+  margin-bottom:16px;
+}
+.metrics-grid{
+  margin-top:12px;
+}
+.search-shell .search-sidebar{
+  position:sticky;
+  top:120px;
+}
+.search-sidebar .search-panel:nth-child(2){
+  margin-top:0;
+}
+@media (max-width:1100px){
+  .search-shell{grid-template-columns:1fr!important}
+  .search-sidebar{position:static}
+  #engineGrid .result-card{
+    grid-template-columns:180px 1fr;
+  }
+  #engineGrid .result-card img{
+    max-height:160px;
+  }
+}
+@media (max-width:700px){
+  #engineGrid .result-card{
+    grid-template-columns:1fr;
+  }
+  #engineGrid .result-card img{
+    border-right:none;
+    border-bottom:1px solid #efe5da;
+    max-height:170px;
+  }
+  #engineGrid .result-card .body h4{
+    font-size:24px;
+  }
+}
