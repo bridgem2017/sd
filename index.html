@@ -21,10 +21,53 @@
 </div><div class="container"><div class="logo-row" id="clientLogos"></div></div>
 
 <div class="container">
-  <div class="slide-band">
-    <article class="slide-banner b1"><div><span class="mini-badge">실크인쇄 · 소량제작</span><h3>인쇄로<br>브랜드 이미지 UP!</h3></div><img src="assets/box-db/box_127.jpg" alt="칼라박스 배너"></article>
-    <article class="slide-banner b2"><div><span class="mini-badge">300개 박스 DB</span><h3>주문제작견적<br><small>(칼라박스)</small></h3><ul><li>10가지 박스형태</li><li>합지/인쇄/후가공 필터</li><li>추천 알고리즘으로 빠른 확인</li></ul></div><img src="assets/box-db/box_145.jpg" alt="칼라박스 배너2"></article>
-    <article class="slide-banner b3"><div><span class="mini-badge">자동 주문제작견적</span><h3>주문제작견적<br><small>(카톤박스)</small></h3><ul><li>8가지 박스형태 중 선택</li><li>기본 2색 인쇄 가능</li><li>규격별 DB + 즉시 상담 연결</li></ul></div></article>
+  <div class="rolling-banner" aria-label="주요 서비스 배너">
+    <div class="rolling-track">
+      <article class="hero-roll-card c1">
+        <img src="assets/banners/banner_brand_print.jpg" alt="소량제작 브랜드 인쇄 비즈니스 현장">
+        <div class="roll-overlay">
+          <span class="mini-badge">소량제작</span>
+          <h3>인쇄로 브랜드 이미지를<br>높여보세요.</h3>
+        </div>
+      </article>
+      <article class="hero-roll-card c2">
+        <img src="assets/banners/banner_quote_algo.jpg" alt="박스 맞춤 견적 상담 비즈니스 현장">
+        <div class="roll-overlay">
+          <span class="mini-badge">300개 박스 DB</span>
+          <h3>박스 맞춤 견적<br><small>(골판지 박스 / 칼라박스)</small></h3>
+          <ul><li>추천 알고리즘으로 빠른 확인</li></ul>
+        </div>
+      </article>
+      <article class="hero-roll-card c3">
+        <img src="assets/banners/banner_design_delivery.jpg" alt="디자인 제작 납품 비즈니스 물류 현장">
+        <div class="roll-overlay">
+          <span class="mini-badge">원스톱 진행</span>
+          <h3>박스 주문제작<br><small>디자인, 인쇄, 제작, 납품을 한번에~</small></h3>
+        </div>
+      </article>
+      <article class="hero-roll-card c1">
+        <img src="assets/banners/banner_brand_print.jpg" alt="소량제작 브랜드 인쇄 비즈니스 현장">
+        <div class="roll-overlay">
+          <span class="mini-badge">소량제작</span>
+          <h3>인쇄로 브랜드 이미지를<br>높여보세요.</h3>
+        </div>
+      </article>
+      <article class="hero-roll-card c2">
+        <img src="assets/banners/banner_quote_algo.jpg" alt="박스 맞춤 견적 상담 비즈니스 현장">
+        <div class="roll-overlay">
+          <span class="mini-badge">300개 박스 DB</span>
+          <h3>박스 맞춤 견적<br><small>(골판지 박스 / 칼라박스)</small></h3>
+          <ul><li>추천 알고리즘으로 빠른 확인</li></ul>
+        </div>
+      </article>
+      <article class="hero-roll-card c3">
+        <img src="assets/banners/banner_design_delivery.jpg" alt="디자인 제작 납품 비즈니스 물류 현장">
+        <div class="roll-overlay">
+          <span class="mini-badge">원스톱 진행</span>
+          <h3>박스 주문제작<br><small>디자인, 인쇄, 제작, 납품을 한번에~</small></h3>
+        </div>
+      </article>
+    </div>
   </div>
 </div>
 </section>
@@ -80,7 +123,7 @@
   <button class="quick-chip" data-mode="shipping">택배/물류</button>
 </div>
 <div class="result-head"><strong id="dbResultTitle">전체 박스 DB</strong><span class="small" id="dbResultCount">총 300개 중 상위 12개 표시</span></div>
-  <div class="grid-4" id="dbRecommendGrid"></div>
+  <div class="quick-db-list" id="dbRecommendGrid"></div>
 </div></section>
 
 <section class="diag-section"><div class="container section-inner">
@@ -150,8 +193,27 @@ function scoreBox(b, input){
 }
 function renderRecommend(arr, title='전체 박스 DB'){
   document.getElementById('dbResultTitle').textContent = title;
-  document.getElementById('dbResultCount').textContent = `총 ${arr.length}개 중 상위 ${Math.min(12, arr.length)}개 표시`;
-  document.getElementById('dbRecommendGrid').innerHTML = arr.slice(0,12).map(b=>`<article class="card db-card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute} · 최소 ${b.minQty}개</p><div class="tag-row"><span class="tag">${b.category}</span><span class="tag">${b.shape}</span><span class="tag">${b.use}</span></div><div style="margin-top:12px"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&category=${encodeURIComponent(b.category)}&shape=${encodeURIComponent(b.shape)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}&qty=${encodeURIComponent(b.minQty)}&use=${encodeURIComponent(b.use)}">견적문의로 연결</a></div></div></article>`).join('');
+  const visible = arr.slice(0,10);
+  const hasMore = arr.length > 10;
+  document.getElementById('dbResultCount').innerHTML = hasMore
+    ? `총 ${arr.length}개 중 10개 표시 <a class="more-link" href="box-search.html">더보기</a>`
+    : `총 ${arr.length}개 표시`;
+  document.getElementById('dbRecommendGrid').innerHTML = visible.map(b=>`<article class="quick-db-row">
+      <div class="row-thumb"><img src="${b.img}" alt="${b.name}"></div>
+      <div class="row-main">
+        <h4>${b.name}</h4>
+        <div class="quick-inline-meta">
+          <span class="meta-chip"><span class="meta-label">사이즈</span><span class="meta-value">${b.width} × ${b.length} × ${b.height} mm</span></span>
+          <span class="meta-chip"><span class="meta-label">형태</span><span class="meta-value">${b.shape}</span></span>
+          <span class="meta-chip"><span class="meta-label">골두께</span><span class="meta-value">${b.flute}</span></span>
+          <span class="meta-chip"><span class="meta-label">용도</span><span class="meta-value">${b.use}</span></span>
+          <span class="meta-chip"><span class="meta-label">산업군</span><span class="meta-value">${b.industry}</span></span>
+          <span class="meta-chip"><span class="meta-label">최소수량</span><span class="meta-value">${b.minQty}개</span></span>
+        </div>
+        <div class="tag-row"><span class="tag">${b.category}</span>${b.tag ? `<span class="tag">${b.tag}</span>` : ''}</div>
+      </div>
+      <div class="row-action"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&category=${encodeURIComponent(b.category)}&shape=${encodeURIComponent(b.shape)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}&qty=${encodeURIComponent(b.minQty)}&use=${encodeURIComponent(b.use)}">견적문의로 연결</a></div>
+    </article>`).join('');
 }
 function runRecommend(){
   const input = {
