@@ -254,3 +254,108 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
     font-size:24px;
   }
 }
+
+/* v13 box DB text-row layout */
+#engineGrid.result-grid{
+  display:flex !important;
+  flex-direction:column;
+  gap:0;
+}
+#engineGrid .result-card{
+  display:grid !important;
+  grid-template-columns:96px 1fr auto;
+  align-items:center;
+  gap:18px;
+  border-radius:0;
+  overflow:visible;
+  padding:18px 0;
+  border:none;
+  border-bottom:1px solid #ded7cd;
+  background:transparent;
+  box-shadow:none;
+}
+#engineGrid .result-card img{
+  width:84px !important;
+  height:84px !important;
+  max-height:none !important;
+  object-fit:contain;
+  background:#faf8f5;
+  border:1px solid #efe5da;
+  border-radius:14px;
+  padding:8px;
+}
+#engineGrid .result-card .body{
+  padding:0 !important;
+}
+#engineGrid .result-card .body h4{
+  font-size:18px !important;
+  line-height:1.45;
+  margin:0 0 8px 0 !important;
+  min-height:auto !important;
+}
+#engineGrid .result-card .body p{
+  margin:0 0 8px 0;
+}
+#engineGrid .result-card .tag-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:6px !important;
+}
+#engineGrid .result-card .tag{
+  border-radius:10px;
+  padding:6px 10px;
+  font-size:13px;
+}
+#engineGrid .result-card .action-col{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+#engineGrid .result-card .btn{
+  min-width:170px !important;
+  width:auto !important;
+  justify-content:center;
+  white-space:nowrap;
+}
+#pager{display:none !important;}
+.search-results-head{
+  align-items:flex-end;
+}
+.db-inline-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 14px;
+  margin:8px 0 4px;
+}
+.db-inline-meta .meta-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+}
+.db-inline-meta .meta-label{
+  background:#efefef;
+  color:#666;
+  border-radius:10px;
+  padding:6px 10px;
+  font-weight:700;
+}
+.db-inline-meta .meta-value{
+  font-weight:800;
+  color:#18263d;
+}
+@media (max-width:900px){
+  #engineGrid .result-card{
+    grid-template-columns:72px 1fr;
+  }
+  #engineGrid .result-card .action-col{
+    grid-column:1 / -1;
+    justify-content:flex-start;
+    margin-top:10px;
+  }
+  #engineGrid .result-card img{
+    width:64px !important;
+    height:64px !important;
+  }
+}

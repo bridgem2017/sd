@@ -48,7 +48,7 @@
       <div>
         <div class="kicker">검색 결과</div>
         <h2 style="margin:10px 0 6px;font-size:38px" id="resultTitle">전체 박스 DB</h2>
-        <p class="small" id="resultMeta">300개 전체 데이터를 불러왔습니다. 결과는 가로형 카드 목록으로 정렬됩니다.</p>
+        <p class="small" id="resultMeta">300개 전체 데이터를 한 페이지에서 가로 텍스트 행 구조로 확인할 수 있습니다.</p>
       </div>
       <div class="search-toolbar" style="justify-content:flex-end">
         <select id="sortBy" onchange="applyRender()">
@@ -179,14 +179,33 @@ function applyRender(){
   renderPage(arr);
 }
 function renderPage(arr){
-  const start = (currentPage-1)*pageSize;
-  const pageArr = arr.slice(start, start+pageSize);
-  document.getElementById('engineGrid').innerHTML = pageArr.map(b=>`<article class="card result-card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute} · 최소 ${b.minQty}개</p><div class="tag-row"><span class="tag">${b.category}</span><span class="tag">${b.shape}</span><span class="tag">${b.use}</span><span class="tag">${b.industry}</span></div><div style="margin-top:12px"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}">견적문의로 연결</a></div></div></article>`).join('');
-  const totalPages = Math.max(1, Math.ceil(arr.length / pageSize));
-  document.getElementById('pager').innerHTML = Array.from({length: totalPages}, (_,i)=>`<button class="${i+1===currentPage?'active':''}" onclick="goPage(${i+1})">${i+1}</button>`).join('');
-  document.getElementById('resultMeta').textContent = `검색 결과 ${arr.length}개 · ${currentPage}/${totalPages} 페이지`;
+  const pageArr = arr;
+  document.getElementById('engineGrid').innerHTML = pageArr.map(b=>`
+    <article class="card result-card">
+      <img src="${b.img}" alt="${b.name}">
+      <div class="body">
+        <h4>${b.name}</h4>
+        <div class="db-inline-meta">
+          <span class="meta-chip"><span class="meta-label">사이즈</span><span class="meta-value">${b.width} × ${b.length} × ${b.height} mm</span></span>
+          <span class="meta-chip"><span class="meta-label">형태</span><span class="meta-value">${b.shape}</span></span>
+          <span class="meta-chip"><span class="meta-label">골두께</span><span class="meta-value">${b.flute}</span></span>
+          <span class="meta-chip"><span class="meta-label">용도</span><span class="meta-value">${b.use}</span></span>
+          <span class="meta-chip"><span class="meta-label">산업군</span><span class="meta-value">${b.industry}</span></span>
+          <span class="meta-chip"><span class="meta-label">최소수량</span><span class="meta-value">${b.minQty}개</span></span>
+        </div>
+        <div class="tag-row">
+          <span class="tag">${b.category}</span>
+          ${b.tag ? `<span class="tag">${b.tag}</span>` : ''}
+        </div>
+      </div>
+      <div class="action-col">
+        <a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}">견적문의로 연결</a>
+      </div>
+    </article>`).join('');
+  document.getElementById('resultMeta').textContent = `총 ${arr.length}개 DB가 한 페이지에 표시됩니다.`;
+  document.getElementById('pager').innerHTML = '';
 }
-function goPage(n){ currentPage = n; applyRender(); }
+function goPage(n){ currentPage = 1; applyRender(); }
 function runSearch(){
   currentPage = 1;
   const input = collectInput();
