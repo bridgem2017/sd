@@ -1,106 +1,39 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>견적문의</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script></head><body><main class="section" style="padding-top:32px"><div class="container">
 <div class="note-box" style="background:#eef8f7;border:1px solid #cfeae8">메일은 <strong>sales@box.re.kr</strong> 로 자동 연결됩니다. 파일 업로드는 10MB 이하 권장입니다.</div>
-<h2>견적문의</h2><p class="desc">파일 업로드, 구글드라이브 링크, 디자인 원본 여부, 박스 구조 선택, 수량 계산, 자동 견적까지 한 번에 진행할 수 있도록 업그레이드했습니다.</p>
+<h2>견적문의</h2><p class="desc">파일 업로드, 구글드라이브 링크, 디자인파일 체크, 박스 구조 선택, 수량 계산, 자동 견적까지 한 번에 진행할 수 있도록 업그레이드했습니다.</p>
 <div class="quote-layout">
 <div class="form-panel">
 <h3>1. 상품종류*</h3>
 <div class="radio-pills"><label><input type="radio" name="productType" value="골판지박스" checked> 골판지박스</label><label><input type="radio" name="productType" value="칼라박스"> 칼라박스</label><label><input type="radio" name="productType" value="싸바리박스"> 싸바리박스</label><label><input type="radio" name="productType" value="기타"> 기타</label></div>
-
 <h3 style="margin-top:26px">2. 박스 구조 선택</h3>
 <div class="choice-grid" id="quoteChoices"></div>
-
 <h3 style="margin-top:26px">3. 박스 내부 크기 / 수량 계산</h3>
-<div class="field-grid">
-  <div class="field"><label>가로(mm)</label><input id="sizeW" type="number" placeholder="200"></div>
-  <div class="field"><label>세로(mm)</label><input id="sizeL" type="number" placeholder="150"></div>
-  <div class="field"><label>높이(mm)</label><input id="sizeH" type="number" placeholder="80"></div>
-  <div class="field"><label>주문 수량*</label><input id="qty" type="number" placeholder="500"></div>
-</div>
-<div class="price-box" style="margin-top:14px">
-  <div class="calc-grid">
-    <div><div class="small">예상 체적(mm³)</div><strong id="calcVolume">-</strong></div>
-    <div><div class="small">예상 단가</div><strong id="calcUnit">-</strong></div>
-    <div><div class="small">예상 총액</div><strong id="calcTotal">-</strong></div>
-  </div>
-  <div class="small" style="margin-top:10px">자동 견적은 문의 전 참고용 간이 계산입니다. 실제 금액은 재질, 인쇄, 후가공, 납품지에 따라 달라질 수 있습니다.</div>
-</div>
-
+<div class="field-grid"><div class="field"><label>가로(mm)</label><input id="sizeW" type="number"></div><div class="field"><label>세로(mm)</label><input id="sizeL" type="number"></div><div class="field"><label>높이(mm)</label><input id="sizeH" type="number"></div><div class="field"><label>주문 수량*</label><input id="qty" type="number"></div></div>
+<div class="price-box" style="margin-top:14px"><div class="calc-grid"><div><div class="small">예상 체적(mm³)</div><strong id="calcVolume">-</strong></div><div><div class="small">예상 단가</div><strong id="calcUnit">-</strong></div><div><div class="small">예상 총액</div><strong id="calcTotal">-</strong></div></div><div class="small" style="margin-top:10px">자동 견적은 문의 전 참고용 간이 계산입니다. 실제 금액은 재질, 인쇄, 후가공, 납품지에 따라 달라질 수 있습니다.</div></div>
 <h3 style="margin-top:26px">4. 인쇄 / 재질 옵션</h3>
-<div class="field-grid">
-  <div class="field"><label>외부 인쇄</label><select id="outerPrint"><option>없음</option><option>1도</option><option>2도</option><option>4도</option></select></div>
-  <div class="field"><label>내부 인쇄</label><select id="innerPrint"><option>없음</option><option>1도</option><option>2도</option><option>4도</option></select></div>
-  <div class="field"><label>외부 재질</label><select id="outerMaterial"><option>화이트</option><option>크라프트</option><option>아이보리</option></select></div>
-  <div class="field"><label>내부 재질</label><select id="innerMaterial"><option>화이트</option><option>크라프트</option><option>아이보리</option></select></div>
-</div>
-
+<div class="field-grid"><div class="field"><label>외부 인쇄</label><select id="outerPrint"><option>없음</option><option>1도</option><option>2도</option><option>4도</option></select></div><div class="field"><label>내부 인쇄</label><select id="innerPrint"><option>없음</option><option>1도</option><option>2도</option><option>4도</option></select></div><div class="field"><label>외부 재질</label><select id="outerMaterial"><option>화이트</option><option>크라프트</option><option>아이보리</option></select></div><div class="field"><label>내부 재질</label><select id="innerMaterial"><option>화이트</option><option>크라프트</option><option>아이보리</option></select></div></div>
 <h3 style="margin-top:26px">5. 문의자 정보</h3>
 <form id="quoteForm" class="field-grid" action="https://formsubmit.co/sales@box.re.kr" method="POST" enctype="multipart/form-data">
-  <div class="field"><label>이름*</label><input name="name" required></div>
-  <div class="field"><label>이메일*</label><input name="email" type="email" required></div>
-  <div class="field"><label>전화번호*</label><input name="phone" required></div>
-  <div class="field"><label>회사 이름</label><input name="company"></div>
-  <div class="field"><label>제품 업종</label><input name="industry"></div>
-  <div class="field"><label>유입 경로</label><input name="source"></div>
-  <div class="field-full"><label>디자인 원본 파일이 있나요?</label><div class="radio-pills"><label><input type="radio" name="design_file_ready" value="있음" checked> 있음</label><label><input type="radio" name="design_file_ready" value="없음"> 없음</label></div></div>
-  <div class="field-full"><label>구글드라이브 링크</label><input name="gdrive_link" placeholder="https://drive.google.com/..."></div>
-  <div class="field-full"><label>포장물 제품 설명</label><textarea name="product_desc" rows="4"></textarea></div>
-  <div class="field-full"><label>참고 자료 업로드</label><input name="attachment" type="file" accept=".ai,.pdf,.png,.jpg,.jpeg,.doc,.docx,.ppt,.pptx,.zip"></div>
-  <div class="quote-note">참고 자료 업로드 (10MB 이하)<br><br>대용량 파일은 아래 메일로 보내주세요<br><br><strong>sales@box.re.kr</strong></div>
-  <div class="field-full summary-box" id="summaryBox"></div>
-  <input type="hidden" name="_subject" value="[에스디컴퍼니] 홈페이지 견적문의">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="selected_summary" id="selectedSummaryInput">
-  <div class="field-full"><button class="btn primary" type="submit" style="width:100%">제출하기 →</button></div>
-</form>
+<div class="field"><label>이름*</label><input name="name" required></div><div class="field"><label>이메일*</label><input name="email" type="email" required></div><div class="field"><label>전화번호*</label><input name="phone" required></div><div class="field"><label>회사 이름</label><input name="company"></div>
+<div class="field"><label>제품 업종</label><input name="industry"></div><div class="field"><label>유입 경로</label><input name="source"></div>
+<div class="field-full"><label>디자인 원본 파일이 있나요?</label><div class="radio-pills"><label><input type="radio" name="design_file_ready" value="있음" checked> 있음</label><label><input type="radio" name="design_file_ready" value="없음"> 없음</label></div></div>
+<div class="field-full"><label>구글드라이브 링크</label><input name="gdrive_link" placeholder="https://drive.google.com/..."></div>
+<div class="field-full"><label>포장물 제품 설명</label><textarea name="product_desc" rows="4"></textarea></div>
+<div class="field-full"><label>참고 자료 업로드</label><input name="attachment" type="file" accept=".ai,.pdf,.png,.jpg,.jpeg,.doc,.docx,.ppt,.pptx,.zip"></div>
+<div class="quote-note">참고 자료 업로드 (10MB 이하)<br><br>대용량 파일은 아래 메일로 보내주세요<br><br><strong>sales@box.re.kr</strong></div>
+<div class="field-full summary-box" id="summaryBox"></div>
+<input type="hidden" name="_subject" value="[에스디컴퍼니] 홈페이지 견적문의"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="selected_summary" id="selectedSummaryInput">
+<div class="field-full"><button class="btn primary" type="submit" style="width:100%">제출하기 →</button></div></form>
 </div>
 <div class="form-panel">
-  <img src="assets/guides/guide-quote.png" alt="견적문의 가이드" style="width:100%;border-radius:16px;border:1px solid var(--line)">
-  <div class="note-box"><strong>자동 메일 발송 안내</strong><p class="small">문의는 sales@box.re.kr 로 전송됩니다. FormSubmit 기본 정책상 첨부파일은 용량 제한이 있으며, 대용량 자료는 별도 메일 또는 구글드라이브 링크로 전달하는 구성이 가장 안정적입니다.</p></div>
-</div>
-</div></div></main>
+<div class="note-box" style="background:#f5faf9"><h3 style="margin:0 0 6px">견적 문의</h3><p class="small" style="margin:0 0 14px">필요한 항목만 선택해 메일 전송</p><div class="quote-step-visual"><div class="quote-step select"><div class="num">1</div><div class="icon"></div><strong>선택</strong></div><div class="quote-step size"><div class="num">2</div><div class="icon"></div><strong>규격</strong></div><div class="quote-step print"><div class="num">3</div><div class="icon"></div><strong>인쇄</strong></div><div class="quote-step file"><div class="num">4</div><div class="icon"></div><strong>파일</strong></div><div class="quote-step send"><div class="num">5</div><div class="icon"></div><strong>전송</strong></div></div><p class="small" style="margin:16px 0 0">박스 구조 선택부터 규격 입력, 인쇄 옵션 확인, 참고 자료 첨부, 메일 전송까지 한 번에 진행할 수 있도록 설계된 문의 흐름입니다. 복잡한 전화 설명 대신 필요한 스펙이 정리되어 전달되어 상담 속도가 빨라집니다.</p></div>
+<div class="note-box"><div class="guide-chip">자동 메일 발송 안내</div><p style="margin-top:14px" class="small">문의는 sales@box.re.kr 로 전송됩니다. FormSubmit 기본 정책상 첨부파일은 용량 제한이 있으며, 대용량 자료는 별도 메일 또는 구글드라이브 링크로 전달하는 구성이 가장 안정적입니다.</p></div>
+</div></div></div></main>
 <script>
 mountLayout("quote.html");
 const quoteChoices=[...DATA.corrugatedProducts.slice(0,3),...DATA.colorProducts.slice(0,2),DATA.rigidProducts[0]];
 document.getElementById("quoteChoices").innerHTML=quoteChoices.map((p,idx)=>`<label class="choice-card"><img src="${p.img}" alt="${p.name}"><div><input ${idx===0?'checked':''} type="radio" name="choiceCard" value="${p.name}" style="margin-right:6px">${p.name}</div></label>`).join("");
-function calcEstimate(){
-  const w=+document.getElementById("sizeW").value||0,l=+document.getElementById("sizeL").value||0,h=+document.getElementById("sizeH").value||0,qty=+document.getElementById("qty").value||0;
-  const volume = w*l*h;
-  let unit = 0;
-  if(volume && qty){
-    unit = 180 + (volume/50000);
-    if(qty>=500) unit*=0.88;
-    if(qty>=1000) unit*=0.82;
-    const type=document.querySelector('input[name="productType"]:checked')?.value||'';
-    if(type==='칼라박스') unit*=1.15;
-    if(type==='싸바리박스') unit*=1.6;
-    if(document.getElementById('outerPrint').value==='4도') unit+=60;
-    if(document.getElementById('innerPrint').value!=='없음') unit+=35;
-  }
-  document.getElementById("calcVolume").textContent = volume? volume.toLocaleString() : "-";
-  document.getElementById("calcUnit").textContent = unit? Math.round(unit).toLocaleString()+"원" : "-";
-  document.getElementById("calcTotal").textContent = unit&&qty? Math.round(unit*qty).toLocaleString()+"원" : "-";
-  return {volume, unit, total: unit*qty};
-}
-function updateSummary(){
-  const productType=document.querySelector('input[name="productType"]:checked')?.value||'';
-  const choice=document.querySelector('input[name="choiceCard"]:checked')?.value||'';
-  const est=calcEstimate();
-  const text=[
-    `상품종류: ${productType}`,
-    `선택 구조: ${choice}`,
-    `박스 내부 크기: ${document.getElementById("sizeW").value||"-"} × ${document.getElementById("sizeL").value||"-"} × ${document.getElementById("sizeH").value||"-"} mm`,
-    `주문 수량: ${document.getElementById("qty").value||"-"}`,
-    `외부 인쇄: ${document.getElementById("outerPrint").value}`,
-    `내부 인쇄: ${document.getElementById("innerPrint").value}`,
-    `외부 재질: ${document.getElementById("outerMaterial").value}`,
-    `내부 재질: ${document.getElementById("innerMaterial").value}`,
-    `디자인 원본: ${document.querySelector('input[name="design_file_ready"]:checked')?.value||"-"}`,
-    `예상 단가: ${document.getElementById("calcUnit").textContent}`,
-    `예상 총액: ${document.getElementById("calcTotal").textContent}`
-  ].join("\n");
-  document.getElementById("summaryBox").textContent=text;
-  document.getElementById("selectedSummaryInput").value=text;
-}
-document.querySelectorAll("input,select,textarea").forEach(i=>i.addEventListener("input",updateSummary));
-updateSummary();
+function calcEstimate(){const w=+document.getElementById("sizeW").value||0,l=+document.getElementById("sizeL").value||0,h=+document.getElementById("sizeH").value||0,qty=+document.getElementById("qty").value||0;const volume=w*l*h;let unit=0;if(volume&&qty){unit=180+(volume/50000);if(qty>=500) unit*=0.88;if(qty>=1000) unit*=0.82;const type=document.querySelector('input[name="productType"]:checked')?.value||'';if(type==='칼라박스') unit*=1.15;if(type==='싸바리박스') unit*=1.6;if(document.getElementById('outerPrint').value==='4도') unit+=60;if(document.getElementById('innerPrint').value!=='없음') unit+=35;}document.getElementById("calcVolume").textContent=volume?volume.toLocaleString():"-";document.getElementById("calcUnit").textContent=unit?Math.round(unit).toLocaleString()+"원":"-";document.getElementById("calcTotal").textContent=unit&&qty?Math.round(unit*qty).toLocaleString()+"원":"-";}
+function updateSummary(){calcEstimate();const productType=document.querySelector('input[name="productType"]:checked')?.value||'';const choice=document.querySelector('input[name="choiceCard"]:checked')?.value||'';const text=[`상품종류: ${productType}`,`선택 구조: ${choice}`,`박스 내부 크기: ${document.getElementById("sizeW").value||"-"} × ${document.getElementById("sizeL").value||"-"} × ${document.getElementById("sizeH").value||"-"} mm`,`주문 수량: ${document.getElementById("qty").value||"-"}`,`외부 인쇄: ${document.getElementById("outerPrint").value}`,`내부 인쇄: ${document.getElementById("innerPrint").value}`,`외부 재질: ${document.getElementById("outerMaterial").value}`,`내부 재질: ${document.getElementById("innerMaterial").value}`,`디자인 원본: ${document.querySelector('input[name="design_file_ready"]:checked')?.value||"-"}`,`예상 단가: ${document.getElementById("calcUnit").textContent}`,`예상 총액: ${document.getElementById("calcTotal").textContent}`].join("\n");document.getElementById("summaryBox").textContent=text;document.getElementById("selectedSummaryInput").value=text;}
+document.querySelectorAll("input,select,textarea").forEach(i=>i.addEventListener("input",updateSummary));updateSummary();
 </script></body></html>
