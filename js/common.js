@@ -1,5 +1,6 @@
 
-function el(s,r=document){return r.querySelector(s)}; function els(s,r=document){return [...r.querySelectorAll(s)]};
+function el(s,r=document){return r.querySelector(s)}; 
+function els(s,r=document){return [...r.querySelectorAll(s)]};
 const CFG = window.SD_SITE_CONFIG || {}; const DATA = window.SD_SITE_DATA || {};
 function mountLayout(active=''){
   const items=[['corrugated.html','골판지박스'],['colorbox.html','칼라박스'],['rigid.html','싸바리박스'],['other.html','기타'],['portfolio.html','포트폴리오'],['support.html','고객지원'],['quote.html','견적문의'],['login.html','로그인']];
