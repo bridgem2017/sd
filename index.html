@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에스디컴퍼니 | 맞춤 패키지 제작</title><meta name="description" content="골판지박스, 칼라박스, 싸바리박스, 패키지 제작, 샘플, 견적, 납품까지 연결하는 에스디컴퍼니 공식 사이트"><meta property="og:title" content="에스디컴퍼니 | 맞춤 패키지 제작"><meta property="og:description" content="박스 맞춤 인쇄, 패키지 제작 · 샘플부터 견적, 납품까지 한번에"><meta property="og:type" content="website"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script></head><body><main>
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>에스디컴퍼니 | 맞춤 패키지 제작</title><meta name="description" content="골판지박스, 칼라박스, 싸바리박스, 패키지 제작, 샘플, 견적, 납품까지 연결하는 에스디컴퍼니 공식 사이트"><meta property="og:title" content="에스디컴퍼니 | 맞춤 패키지 제작"><meta property="og:description" content="박스 맞춤 인쇄, 패키지 제작 · 샘플부터 견적, 납품까지 한번에"><meta property="og:type" content="website"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="config/box-db.js"></script><script src="js/common.js"></script></head><body><main>
 <section class="hero"><div class="container asym-shell">
   <div class="hero-left">
     <div>
@@ -18,7 +18,61 @@
     <article class="mosaic-card"><img src="assets/products/prod_paper_single.png" alt="칼라박스"><div class="overlay-copy"><strong>칼라박스</strong><div class="small">브랜딩 중심의 인쇄형 박스</div></div></article>
     <article class="mosaic-card"><img src="assets/products/prod_rigid_cover.png" alt="싸바리박스"><div class="overlay-copy"><strong>싸바리박스</strong><div class="small">선물형 · 프리미엄 하드박스</div></div></article>
   </div>
-</div><div class="container"><div class="logo-row" id="clientLogos"></div></div></section>
+</div><div class="container"><div class="logo-row" id="clientLogos"></div></div>
+
+<div class="container">
+  <div class="slide-band">
+    <article class="slide-banner b1"><div><span class="mini-badge">실크인쇄 · 소량제작</span><h3>인쇄로<br>브랜드 이미지 UP!</h3></div><img src="assets/box-db/box_127.jpg" alt="칼라박스 배너"></article>
+    <article class="slide-banner b2"><div><span class="mini-badge">300개 박스 DB</span><h3>주문제작견적<br><small>(칼라박스)</small></h3><ul><li>10가지 박스형태</li><li>합지/인쇄/후가공 필터</li><li>추천 알고리즘으로 빠른 확인</li></ul></div><img src="assets/box-db/box_145.jpg" alt="칼라박스 배너2"></article>
+    <article class="slide-banner b3"><div><span class="mini-badge">자동 주문제작견적</span><h3>주문제작견적<br><small>(카톤박스)</small></h3><ul><li>8가지 박스형태 중 선택</li><li>기본 2색 인쇄 가능</li><li>규격별 DB + 즉시 상담 연결</li></ul></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="platform-search"><div class="container">
+  <div class="kicker">박스 추천 플랫폼</div><h2>300개 박스 DB + 추천 알고리즘</h2><p class="desc">사이즈, 형태, 골두께, 용도, 산업군으로 검색하고 추천 결과를 바로 견적문의로 연결할 수 있습니다.</p>
+  <div class="platform-shell">
+    <div class="platform-form">
+      <div class="field-grid">
+        <div class="field"><label>가로(mm)</label><input id="recW" type="number" placeholder="예: 220"></div>
+        <div class="field"><label>세로(mm)</label><input id="recL" type="number" placeholder="예: 160"></div>
+        <div class="field"><label>높이(mm)</label><input id="recH" type="number" placeholder="예: 90"></div>
+        <div class="field"><label>박스군</label><select id="recCategory"><option value="">전체</option><option>골판지박스</option><option>칼라박스</option><option>싸바리박스</option><option>기타</option></select></div>
+        <div class="field"><label>형태</label><select id="recShape"><option value="">전체</option></select></div>
+        <div class="field"><label>골두께 / 보드</label><select id="recFlute"><option value="">전체</option><option>A</option><option>B</option><option>C</option><option>E</option><option>BA</option><option>BB</option><option>보드1T</option><option>보드1.5T</option><option>보드2T</option></select></div>
+        <div class="field"><label>용도</label><select id="recUse"><option value="">전체</option><option>택배</option><option>쇼핑몰</option><option>식품</option><option>화장품</option><option>의료</option><option>교육</option><option>물류</option><option>브랜드굿즈</option></select></div>
+        <div class="field"><label>산업군</label><select id="recIndustry"><option value="">전체</option><option>식품</option><option>화장품</option><option>패션</option><option>의료</option><option>교육</option><option>물류</option><option>쇼핑몰</option><option>기타</option></select></div>
+      </div>
+      <div class="hero-actions" style="margin-top:16px"><a class="btn primary" href="#" onclick="runRecommend();return false">박스 추천 받기</a><a class="btn line" href="#" onclick="resetRecommend();return false">조건 초기화</a></div>
+      <div class="price-box" style="margin-top:16px">
+        <div class="calc-grid">
+          <div><div class="small">DB 수량</div><strong>300개</strong></div>
+          <div><div class="small">추천 기준</div><strong>사이즈 + 형태 + 골두께 + 용도</strong></div>
+          <div><div class="small">연결 방식</div><strong>추천 → 견적문의</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="platform-side">
+      <div class="algorithm-card">
+        <div class="kicker">추천 로직</div>
+        <h3>박스 추천 알고리즘</h3>
+        <ol>
+          <li>입력한 제품 사이즈에 기본 여유 5~10mm 적용</li>
+          <li>형태, 골두께, 용도, 산업군과 일치하는 DB 우선 필터</li>
+          <li>가장 가까운 내부 규격 순으로 정렬</li>
+          <li>상위 추천 박스를 바로 견적문의로 연결</li>
+        </ol>
+      </div>
+      <div class="algorithm-card alt">
+        <div class="kicker">바로 연결</div>
+        <h3>추천 결과 → 견적문의</h3>
+        <p class="desc" style="margin:0">추천된 박스를 누르면 박스명, 규격, 형태가 자동으로 정리된 상태로 견적문의 페이지에 연결할 수 있게 설계했습니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="result-head"><strong id="dbResultTitle">전체 박스 DB</strong><span class="small" id="dbResultCount">총 300개 중 상위 12개 표시</span></div>
+  <div class="grid-4" id="dbRecommendGrid"></div>
+</div></section>
 
 <section class="diag-section"><div class="container section-inner">
   <div class="split-feature">
@@ -60,12 +114,67 @@
   <div class="kicker">고객 후기</div><h2>업종별 반응과 실제 사용 사례</h2><div class="review-grid" id="reviewGrid"></div>
   <div class="skew-cta bottom-banner-fix" style="margin-top:34px"><div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div><h3 style="margin:0 0 10px;font-size:44px;line-height:1.15">맞춤 브랜드와 에스디컴퍼니 선택 이유<br>직접 경험해보세요</h3><p style="margin:0;color:#5d677d;font-size:18px">상담부터 샘플, 제작, 납품까지 빠르게 연결합니다.</p></div><div style="display:flex;gap:14px;flex-wrap:wrap"><a class="btn line" style="background:#fff;color:#17253c" href="quote.html">견적문의</a><a class="btn primary" href="portfolio.html">포트폴리오</a></div></div></div>
 </div></section>
-</main><script>
+</main>
+<script>
 mountLayout('');
-document.getElementById('clientLogos').innerHTML = (DATA.clients||[]).map(c=>`<div class="logo-chip"><img src="${c.img}" alt="${c.name}"></div>`).join('');
+document.getElementById('clientLogos')?.remove();
+
 document.getElementById('portfolioPreview').innerHTML = DATA.portfolio.slice(0,4).map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
-document.getElementById('shapeGrid').innerHTML = [...DATA.corrugatedProducts.slice(0,3),...DATA.colorProducts.slice(0,3)].map(productCard).join('');
+document.getElementById('shapeGrid').innerHTML = SD_BOX_DB.slice(0,6).map(b=>`<article class="card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.shape}</h4><p>${b.category} · ${b.width}×${b.length}×${b.height}mm</p></div></article>`).join('');
 document.getElementById('reviewGrid').innerHTML = DATA.portfolio.map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
+
+// Platform search
+const shapeOptions = [...new Set(SD_BOX_DB.map(b=>b.shape))].sort();
+document.getElementById('recShape').innerHTML = '<option value="">전체</option>' + shapeOptions.map(v=>`<option>${v}</option>`).join('');
+
+function scoreBox(b, input){
+  let score = 0;
+  if(input.w && b.width >= input.w) score += Math.max(0, 80 - (b.width-input.w));
+  if(input.l && b.length >= input.l) score += Math.max(0, 80 - (b.length-input.l));
+  if(input.h && b.height >= input.h) score += Math.max(0, 80 - (b.height-input.h));
+  if(input.category && b.category === input.category) score += 60;
+  if(input.shape && b.shape === input.shape) score += 50;
+  if(input.flute && b.flute === input.flute) score += 40;
+  if(input.use && b.use === input.use) score += 35;
+  if(input.industry && b.industry === input.industry) score += 35;
+  return score;
+}
+function renderRecommend(arr, title='전체 박스 DB'){
+  document.getElementById('dbResultTitle').textContent = title;
+  document.getElementById('dbResultCount').textContent = `총 ${arr.length}개 중 상위 ${Math.min(12, arr.length)}개 표시`;
+  document.getElementById('dbRecommendGrid').innerHTML = arr.slice(0,12).map(b=>`<article class="card db-card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute} · 최소 ${b.minQty}개</p><div class="tag-row"><span class="tag">${b.category}</span><span class="tag">${b.shape}</span><span class="tag">${b.use}</span></div><div style="margin-top:12px"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}">견적문의로 연결</a></div></div></article>`).join('');
+}
+function runRecommend(){
+  const input = {
+    w: +document.getElementById('recW').value || 0,
+    l: +document.getElementById('recL').value || 0,
+    h: +document.getElementById('recH').value || 0,
+    category: document.getElementById('recCategory').value,
+    shape: document.getElementById('recShape').value,
+    flute: document.getElementById('recFlute').value,
+    use: document.getElementById('recUse').value,
+    industry: document.getElementById('recIndustry').value
+  };
+  let arr = SD_BOX_DB.filter(b =>
+    (!input.category || b.category===input.category) &&
+    (!input.shape || b.shape===input.shape) &&
+    (!input.flute || b.flute===input.flute) &&
+    (!input.use || b.use===input.use) &&
+    (!input.industry || b.industry===input.industry) &&
+    (!input.w || b.width >= input.w) &&
+    (!input.l || b.length >= input.l) &&
+    (!input.h || b.height >= input.h)
+  );
+  if(!arr.length) arr = [...SD_BOX_DB];
+  arr = arr.map(b=>({...b, __score: scoreBox(b, input)})).sort((a,b)=>b.__score-a.__score);
+  renderRecommend(arr, '추천 박스 결과');
+}
+function resetRecommend(){
+  ['recW','recL','recH'].forEach(id=>document.getElementById(id).value='');
+  ['recCategory','recShape','recFlute','recUse','recIndustry'].forEach(id=>document.getElementById(id).value='');
+  renderRecommend(SD_BOX_DB, '전체 박스 DB');
+}
+renderRecommend(SD_BOX_DB, '전체 박스 DB');
 
 const industryOrder = ['전체','식품','화장품','패션','의료','교육','물류','쇼핑몰','기타'];
 let activeIndustry='전체';
@@ -73,8 +182,8 @@ function renderIndustryTabs(){
   document.getElementById('industryTabsMain').innerHTML = industryOrder.map(v=>`<a class="tab ${activeIndustry===v?'active':''}" href="#" onclick="activeIndustry='${v}';renderIndustryTabs();renderIndustryDb();return false">${v}</a>`).join('');
 }
 function renderIndustryDb(){
-  const arr = DATA.portfolio.filter(p=> activeIndustry==='전체' || p.industry===activeIndustry);
-  document.getElementById('industryDbGrid').innerHTML = arr.map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
+  const arr = SD_BOX_DB.filter(b=> activeIndustry==='전체' || b.industry===activeIndustry);
+  document.getElementById('industryDbGrid').innerHTML = arr.slice(0,12).map(b=>`<article class="card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute}</p><div class="tag-row"><span class="tag">${b.use}</span><span class="tag">최소 ${b.minQty}개</span></div></div></article>`).join('');
 }
 renderIndustryTabs(); renderIndustryDb();
 
@@ -84,12 +193,8 @@ function renderFamilyTabs(){
   document.getElementById('familyTabsMain').innerHTML = familyOrder.map(v=>`<a class="tab ${activeFamily===v?'active':''}" href="#" onclick="activeFamily='${v}';renderFamilyTabs();renderFamilyDb();return false">${v}</a>`).join('');
 }
 function renderFamilyDb(){
-  let arr=[];
-  if(activeFamily==='골판지박스') arr = DATA.corrugatedProducts;
-  else if(activeFamily==='칼라박스') arr = DATA.colorProducts;
-  else if(activeFamily==='싸바리박스') arr = DATA.rigidProducts;
-  else arr = DATA.otherProducts || [];
-  document.getElementById('familyDbGrid').innerHTML = arr.map(productCard).join('');
+  const arr = SD_BOX_DB.filter(b=> b.category===activeFamily);
+  document.getElementById('familyDbGrid').innerHTML = arr.slice(0,9).map(b=>`<article class="card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.shape}</h4><p>${b.width}×${b.length}×${b.height}mm</p><div class="tag-row"><span class="tag">${b.flute}</span><span class="tag">${b.use}</span></div></div></article>`).join('');
 }
 renderFamilyTabs(); renderFamilyDb();
 </script></body></html>
