@@ -136,7 +136,6 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
 });
 </script><script>
 document.addEventListener('DOMContentLoaded', ()=>{
-  mountLayout('quote.html');
   const qp = new URLSearchParams(location.search);
   const preBox = qp.get('box') || '';
   const preSize = qp.get('size') || '';

@@ -468,20 +468,135 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
 @media (max-width:700px){.hero-roll-card{width:300px !important;min-width:300px !important;height:220px !important}.roll-overlay h3{font-size:32px !important}.roll-overlay h3 small{font-size:18px !important}}
 
 
-/* v18 search sidebar 2-column compact layout */
-.search-shell{grid-template-columns:300px 1fr !important; gap:16px !important;}
-.search-grid{grid-template-columns:1fr 1fr !important; gap:8px 10px !important;}
-.search-grid .field{min-width:0;}
-.search-grid .field label{font-size:13px !important; margin-bottom:4px !important;}
-.search-grid .field input,.search-grid .field select{padding:9px 11px !important; font-size:14px !important;}
-.search-sidebar .search-panel{padding:12px !important;}
-.search-sidebar .search-panel h3{font-size:20px !important; margin-bottom:8px !important;}
-.search-sidebar .hero-actions{grid-template-columns:1fr 1fr !important; gap:8px !important;}
-.search-sidebar .hero-actions .btn:last-child{grid-column:1 / -1;}
-#calcBox .metrics-grid{grid-template-columns:1fr !important;}
+/* v19 footer / legal / quote / banner fixes */
+.footer-contact-only{
+  grid-template-columns: 1fr 1.2fr !important;
+  align-items:start;
+  gap:48px !important;
+}
+.footer-brand img{
+  width:180px !important;
+  height:auto !important;
+  object-fit:contain;
+  margin-bottom:14px;
+}
+.footer-brand h3{font-size:24px;margin:0}
+.footer-contact-only h4{font-size:20px;margin:0 0 18px}
+.footer-contact-only p{margin:0 0 12px;line-height:1.65}
+.footer-contact-only .copyright{margin-top:18px;font-weight:700}
+.footer-bottom-nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  padding:26px 0 10px;
+  border-top:1px solid #eaded2;
+  margin-top:24px;
+  font-size:18px;
+}
+.footer-bottom-nav a{color:var(--text);font-weight:500}
+.footer-bottom-nav span{color:#8a7a67}
+@media (max-width:900px){
+  .footer-contact-only{grid-template-columns:1fr !important}
+  .footer-bottom-nav{flex-wrap:wrap;gap:14px;font-size:16px}
+}
+
+/* search layout compact but visible */
+.search-shell{grid-template-columns:320px 1fr !important;gap:18px !important}
+.search-sidebar{position:sticky;top:92px;display:flex;flex-direction:column;gap:16px}
+.search-sidebar .search-panel{padding:14px !important;border-radius:18px !important}
+.search-sidebar .search-panel h3{font-size:22px !important;margin:0 0 10px}
+.search-grid{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:10px 12px !important;
+}
+.search-grid .field{min-width:0}
+.search-grid .field label{font-size:13px !important;margin-bottom:5px !important}
+.search-grid .field input,.search-grid .field select{padding:10px 12px !important;font-size:14px !important}
+.search-sidebar .hero-actions{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:8px !important;
+  margin-top:10px !important
+}
+.search-sidebar .hero-actions .btn:last-child{grid-column:1 / -1}
+#calcBox .metrics-grid{grid-template-columns:1fr !important;gap:10px !important}
+#engineCodeBox,#algoBox{display:none !important}
 @media (max-width:1100px){
-  .search-shell{grid-template-columns:1fr !important;}
+  .search-shell{grid-template-columns:1fr !important}
+  .search-sidebar{position:static}
 }
-@media (max-width:620px){
-  .search-grid{grid-template-columns:1fr !important;}
+@media (max-width:640px){
+  .search-grid{grid-template-columns:1fr !important}
 }
+
+/* rolling banner color tuning */
+.hero-roll-card{
+  width:400px !important;
+  min-width:400px !important;
+  height:280px !important;
+}
+.hero-roll-card.c1{background:linear-gradient(135deg,#7db3ff 0%, #d5e6ff 100%)}
+.hero-roll-card.c2{background:linear-gradient(135deg,#85b870 0%, #d8ebc8 100%)}
+.hero-roll-card.c3{background:linear-gradient(135deg,#ffd24c 0%, #fff0aa 100%)}
+.hero-roll-card img{width:100%;height:100%;object-fit:cover;filter:none !important;opacity:.88}
+.roll-overlay{
+  inset:0;
+  padding:26px !important;
+  display:flex !important;
+  flex-direction:column;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  text-align:left !important;
+  background:linear-gradient(90deg,rgba(255,255,255,.72) 0%,rgba(255,255,255,.52) 45%,rgba(255,255,255,.12) 100%) !important;
+}
+.roll-overlay h3{
+  font-size:44px !important;
+  line-height:1.08 !important;
+  letter-spacing:-.04em;
+  margin:12px 0 0 !important;
+  max-width:78%;
+  color:#17253c !important;
+}
+.roll-overlay h3 small{
+  display:block;
+  font-size:23px !important;
+  line-height:1.35 !important;
+  margin-top:8px !important;
+  color:#17253c !important;
+}
+.roll-overlay ul{
+  margin:14px 0 0 !important;
+  padding-left:20px !important;
+  color:#213149 !important;
+  font-size:16px !important;
+  line-height:1.6 !important;
+}
+.hero-roll-card .mini-badge{
+  background:rgba(255,255,255,.72) !important;
+  color:#8d551a !important;
+  border:1px solid rgba(197,136,61,.28);
+}
+@media (max-width:1200px){
+  .hero-roll-card{width:350px !important;min-width:350px !important;height:250px !important}
+  .roll-overlay h3{font-size:36px !important}
+  .roll-overlay h3 small{font-size:19px !important}
+}
+@media (max-width:720px){
+  .hero-roll-card{width:300px !important;min-width:300px !important;height:220px !important}
+  .roll-overlay h3{font-size:30px !important}
+  .roll-overlay h3 small{font-size:17px !important}
+}
+
+/* legal pages */
+.legal-page .legal-card{
+  background:#fff;
+  border:1px solid #eaded2;
+  border-radius:24px;
+  padding:28px;
+  line-height:1.9;
+}
+.legal-page h1{font-size:48px;letter-spacing:-.04em;margin:0 0 12px}
+.legal-page h2{margin-top:34px;font-size:26px}
+.legal-page .meta{color:var(--muted);margin-bottom:24px}
