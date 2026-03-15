@@ -30,7 +30,7 @@
 </section>
 
 <section class="section" id="platform-search"><div class="container">
-  <div class="kicker">박스 추천 플랫폼</div><h2>300개 박스 DB + 추천 알고리즘</h2><p class="desc">사이즈, 형태, 골두께, 용도, 산업군으로 검색하고 추천 결과를 바로 견적문의로 연결할 수 있습니다.</p>
+  <div class="kicker">SERVICE GRADE PLATFORM</div><h2>300개 박스 DB + 추천 알고리즘</h2><p class="platform-badge-line"><strong>실서비스형 추천 엔진</strong> · 사이즈 / 형태 / 골두께 / 용도 / 산업군 검색 → 추천 결과 → 견적문의 자동 연결</p><p class="desc">사이즈, 형태, 골두께, 용도, 산업군으로 검색하고 추천 결과를 바로 견적문의로 연결할 수 있습니다.</p>
   <div class="platform-shell">
     <div class="platform-form">
       <div class="field-grid">
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="platform-side">
-      <div class="algorithm-card">
+      <div class="algorithm-card algorithm-card-strong">
         <div class="kicker">추천 로직</div>
         <h3>박스 추천 알고리즘</h3>
         <ol>
@@ -70,7 +70,16 @@
       </div>
     </div>
   </div>
-  <div class="result-head"><strong id="dbResultTitle">전체 박스 DB</strong><span class="small" id="dbResultCount">총 300개 중 상위 12개 표시</span></div>
+  
+<div class="quick-chip-wrap" id="quickChipWrap">
+  <button class="quick-chip active" data-mode="all">전체</button>
+  <button class="quick-chip" data-mode="corrugated">골판지 추천</button>
+  <button class="quick-chip" data-mode="color">칼라박스 추천</button>
+  <button class="quick-chip" data-mode="rigid">싸바리 추천</button>
+  <button class="quick-chip" data-mode="gift">선물/브랜드굿즈</button>
+  <button class="quick-chip" data-mode="shipping">택배/물류</button>
+</div>
+<div class="result-head"><strong id="dbResultTitle">전체 박스 DB</strong><span class="small" id="dbResultCount">총 300개 중 상위 12개 표시</span></div>
   <div class="grid-4" id="dbRecommendGrid"></div>
 </div></section>
 
@@ -197,4 +206,19 @@ function renderFamilyDb(){
   document.getElementById('familyDbGrid').innerHTML = arr.slice(0,9).map(b=>`<article class="card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.shape}</h4><p>${b.width}×${b.length}×${b.height}mm</p><div class="tag-row"><span class="tag">${b.flute}</span><span class="tag">${b.use}</span></div></div></article>`).join('');
 }
 renderFamilyTabs(); renderFamilyDb();
+
+// quick preset chips
+document.querySelectorAll('.quick-chip').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.quick-chip').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    const mode = btn.dataset.mode;
+    if(mode==='all'){ resetRecommend(); return; }
+    if(mode==='corrugated'){ document.getElementById('recCategory').value='골판지박스'; document.getElementById('recUse').value=''; document.getElementById('recIndustry').value=''; runRecommend(); return; }
+    if(mode==='color'){ document.getElementById('recCategory').value='칼라박스'; document.getElementById('recUse').value=''; document.getElementById('recIndustry').value=''; runRecommend(); return; }
+    if(mode==='rigid'){ document.getElementById('recCategory').value='싸바리박스'; document.getElementById('recUse').value=''; document.getElementById('recIndustry').value=''; runRecommend(); return; }
+    if(mode==='gift'){ document.getElementById('recCategory').value=''; document.getElementById('recUse').value='브랜드굿즈'; document.getElementById('recIndustry').value=''; runRecommend(); return; }
+    if(mode==='shipping'){ document.getElementById('recCategory').value='골판지박스'; document.getElementById('recUse').value='택배'; document.getElementById('recIndustry').value='물류'; runRecommend(); return; }
+  });
+});
 </script></body></html>
