@@ -402,3 +402,42 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
   .quick-db-row{grid-template-columns:1fr}
   .row-thumb img{width:72px;height:72px}
 }
+
+
+/* v16 fixes */
+.search-shell{grid-template-columns:320px 1fr !important; gap:18px !important;}
+.search-sidebar{gap:14px !important; top:96px !important;}
+.search-sidebar .search-panel{padding:16px !important; border-radius:20px !important;}
+.search-sidebar .search-panel h3{font-size:22px !important; margin-bottom:10px !important;}
+.search-grid{gap:10px !important;}
+.search-grid .field label{font-size:14px !important;}
+.search-grid .field input,.search-grid .field select{padding:12px 14px !important;}
+.metrics-grid{grid-template-columns:repeat(3,1fr) !important; gap:10px !important;}
+.metric-box{padding:12px !important; border-radius:16px !important;}
+.metric-box b{font-size:24px !important;}
+.algobox{padding:14px !important; border-radius:18px !important;}
+#engineCodeBox,#algoBox{display:none !important;}
+@media (max-width:1100px){.search-shell{grid-template-columns:1fr !important;}.search-sidebar{position:static !important;}}
+
+.hero h1{display:flex;align-items:center;justify-content:center;text-align:center;min-height:380px;}
+.hero .hero-left > div:first-child p{max-width:900px;margin-left:auto;margin-right:auto;text-align:center;}
+.hero .hero-actions{justify-content:center;}
+
+.hero-roll-card{height:300px !important;min-width:420px !important;width:420px !important;}
+.hero-roll-card img{filter:none !important;}
+.roll-overlay{justify-content:center !important;align-items:flex-start !important;text-align:left !important;background:linear-gradient(90deg, rgba(255,248,240,.78) 0%, rgba(255,248,240,.62) 38%, rgba(255,248,240,.18) 100%) !important;}
+.roll-overlay h3,.roll-overlay h3 small{color:#1a2438 !important;text-shadow:none !important;}
+.roll-overlay ul{color:#263249 !important;}
+.hero-roll-card .mini-badge{background:rgba(255,255,255,.72) !important;color:#8a531a !important;border:1px solid rgba(197,136,61,.25);}
+@media (max-width:1200px){.hero-roll-card{width:360px !important;min-width:360px !important;height:270px !important;}}
+@media (max-width:700px){.hero-roll-card{width:300px !important;min-width:300px !important;height:220px !important;}}
+
+.footer-grid{grid-template-columns:1.2fr 1fr 1fr 1fr !important;gap:28px !important;}
+.footer a{display:inline-block;margin-right:10px;margin-bottom:8px;}
+@media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr !important;}}
+
+.company-page .intro-card{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:stretch;border:1px solid #eaded2;background:#fff;border-radius:28px;padding:28px;}
+.company-page .big-point{padding:22px;border-radius:22px;background:linear-gradient(135deg,#fff8f1,#fff);border:1px solid #f0dfca;}
+.company-page .reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.company-page .reason-grid .card{padding:22px;}
+@media (max-width:900px){.company-page .intro-card,.company-page .reason-grid{grid-template-columns:1fr;}}

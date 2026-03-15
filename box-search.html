@@ -24,7 +24,7 @@
         <a href="#" class="btn line" onclick="resetEngine();return false">초기화</a>
       </div>
     </div>
-    <div class="search-panel" style="margin-top:0">
+    <div class="search-panel" id="calcBox" style="margin-top:0">
       <h3>박스 규격 계산기</h3>
       <p class="small" style="margin-top:0">제품 규격에 기본 여유를 더해 권장 내부 치수와 권장 골두께를 계산합니다.</p>
       <div class="metrics-grid">
@@ -38,7 +38,7 @@
         <p class="small" id="mReason" style="margin:8px 0 0">무게와 용도에 따라 자동 계산됩니다.</p>
       </div>
     </div>
-    <div class="search-panel">
+    <div class="search-panel" id="algoBox">
       <h3>추천 알고리즘 v2</h3>
       <p class="small" style="margin:0">입력값과의 차이를 단순 비교하지 않고, 치수 적합성 + 골두께 적합성 + 용도 적합성 + 산업군 적합성 + 최소수량 적합성을 함께 점수화합니다.</p>
     </div>
@@ -62,7 +62,7 @@
     </div>
     <div class="result-grid" id="engineGrid"></div>
     <div class="pager" id="pager"></div>
-    <div class="search-panel" style="margin-top:24px">
+    <div class="search-panel" id="engineCodeBox" style="margin-top:24px">
       <h3>검색 코드 예시</h3>
       <p class="small">이 페이지는 실제로 <strong>box-db.js</strong> 의 300개 DB를 필터링해 결과를 표시합니다. 클릭만 되는 모형이 아니라, 입력값을 바탕으로 검색과 추천이 동작합니다.</p>
       <pre style="white-space:pre-wrap;background:#fff7ef;padding:16px;border-radius:16px;border:1px solid #f0dcc4;overflow:auto;font-size:13px;line-height:1.6">const results = SD_BOX_DB.filter(box =>
