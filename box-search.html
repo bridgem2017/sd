@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>박스검색엔진 | 에스디컴퍼니</title><meta name="description" content="300개 박스 DB를 사이즈, 형태, 골두께, 용도, 산업군으로 검색하고 추천 알고리즘 v2로 박스를 찾는 에스디컴퍼니 박스검색엔진"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/box-db.js"></script><script src="js/common.js"></script></head><body><main class="section subpage-hero"><div class="container">
+<div class="kicker">SERVICE GRADE ENGINE</div>
+<h1>완전한 박스 검색엔진</h1>
+<p>사이즈, 형태, 골두께, 용도, 산업군으로 300개 박스 DB를 실제로 검색할 수 있고, 추천 알고리즘 v2와 박스 규격 계산기까지 함께 사용할 수 있습니다.</p>
+<div class="search-shell">
+  <aside class="search-sidebar">
+    <div class="search-panel">
+      <h3>박스 검색</h3>
+      <div class="search-grid">
+        <div class="field"><label>가로(mm)</label><input id="sW" type="number" placeholder="예: 220"></div>
+        <div class="field"><label>세로(mm)</label><input id="sL" type="number" placeholder="예: 160"></div>
+        <div class="field"><label>높이(mm)</label><input id="sH" type="number" placeholder="예: 90"></div>
+        <div class="field"><label>무게(kg)</label><input id="sWeight" type="number" step="0.1" placeholder="예: 1.2"></div>
+        <div class="field"><label>박스군</label><select id="sCategory"><option value="">전체</option><option>골판지박스</option><option>칼라박스</option><option>싸바리박스</option><option>기타</option></select></div>
+        <div class="field"><label>형태</label><select id="sShape"><option value="">전체</option></select></div>
+        <div class="field"><label>골두께 / 보드</label><select id="sFlute"><option value="">전체</option><option>A</option><option>B</option><option>C</option><option>E</option><option>F</option><option>BA</option><option>BB</option><option>보드1T</option><option>보드1.5T</option><option>보드2T</option><option>없음</option></select></div>
+        <div class="field"><label>용도</label><select id="sUse"><option value="">전체</option><option>택배</option><option>쇼핑몰</option><option>식품</option><option>화장품</option><option>의료</option><option>교육</option><option>물류</option><option>브랜드굿즈</option><option>전시</option><option>프로모션</option></select></div>
+        <div class="field"><label>산업군</label><select id="sIndustry"><option value="">전체</option><option>식품</option><option>화장품</option><option>패션</option><option>의료</option><option>교육</option><option>물류</option><option>쇼핑몰</option><option>기타</option></select></div>
+        <div class="field"><label>최소 수량</label><input id="sQty" type="number" placeholder="예: 500"></div>
+      </div>
+      <div class="hero-actions" style="margin-top:14px">
+        <a href="#" class="btn primary" onclick="runSearch();return false">검색하기</a>
+        <a href="#" class="btn line" onclick="runRecommendV2();return false">추천받기</a>
+        <a href="#" class="btn line" onclick="resetEngine();return false">초기화</a>
+      </div>
+    </div>
+    <div class="search-panel">
+      <h3>박스 규격 계산기</h3>
+      <p class="small" style="margin-top:0">제품 규격에 기본 여유를 더해 권장 내부 치수와 권장 골두께를 계산합니다.</p>
+      <div class="metrics-grid">
+        <div class="metric-box"><span class="small">권장 내부 가로</span><b id="mW">-</b></div>
+        <div class="metric-box"><span class="small">권장 내부 세로</span><b id="mL">-</b></div>
+        <div class="metric-box"><span class="small">권장 내부 높이</span><b id="mH">-</b></div>
+      </div>
+      <div class="algobox" style="margin-top:12px">
+        <div class="small">권장 골두께 / 보드</div>
+        <strong id="mFlute" style="font-size:28px;display:block;margin-top:6px">-</strong>
+        <p class="small" id="mReason" style="margin:8px 0 0">무게와 용도에 따라 자동 계산됩니다.</p>
+      </div>
+    </div>
+    <div class="search-panel">
+      <h3>추천 알고리즘 v2</h3>
+      <p class="small" style="margin:0">입력값과의 차이를 단순 비교하지 않고, 치수 적합성 + 골두께 적합성 + 용도 적합성 + 산업군 적합성 + 최소수량 적합성을 함께 점수화합니다.</p>
+    </div>
+  </aside>
+  <section>
+    <div class="search-results-head">
+      <div>
+        <div class="kicker">검색 결과</div>
+        <h2 style="margin:10px 0 6px;font-size:38px" id="resultTitle">전체 박스 DB</h2>
+        <p class="small" id="resultMeta">300개 전체 데이터를 불러왔습니다.</p>
+      </div>
+      <div class="search-toolbar">
+        <select id="sortBy" onchange="applyRender()">
+          <option value="score">추천순</option>
+          <option value="sizeAsc">규격 작은순</option>
+          <option value="sizeDesc">규격 큰순</option>
+          <option value="qtyAsc">최소수량 낮은순</option>
+        </select>
+        <input id="keyword" type="text" placeholder="박스명 / 형태 키워드" oninput="applyRender()">
+      </div>
+    </div>
+    <div class="result-grid" id="engineGrid"></div>
+    <div class="pager" id="pager"></div>
+    <div class="search-panel" style="margin-top:24px">
+      <h3>검색 코드 예시</h3>
+      <p class="small">이 페이지는 실제로 <strong>box-db.js</strong> 의 300개 DB를 필터링해 결과를 표시합니다. 클릭만 되는 모형이 아니라, 입력값을 바탕으로 검색과 추천이 동작합니다.</p>
+      <pre style="white-space:pre-wrap;background:#fff7ef;padding:16px;border-radius:16px;border:1px solid #f0dcc4;overflow:auto;font-size:13px;line-height:1.6">const results = SD_BOX_DB.filter(box =>
+  (!category || box.category === category) &&
+  (!shape || box.shape === shape) &&
+  (!flute || box.flute === flute) &&
+  (!use || box.use === use) &&
+  (!industry || box.industry === industry) &&
+  (!qty || box.minQty <= qty)
+)</pre>
+    </div>
+  </section>
+</div>
+</div></main>
+<script>
+mountLayout('box-search.html');
+const SHAPES = [...new Set(SD_BOX_DB.map(b=>b.shape))].sort();
+document.getElementById('sShape').innerHTML = '<option value="">전체</option>' + SHAPES.map(v=>`<option>${v}</option>`).join('');
+
+let currentResults = [...SD_BOX_DB];
+let currentPage = 1;
+const pageSize = 18;
+
+function recommendedFlute(weight, use, category){
+  if(category === '싸바리박스') return '보드1.5T';
+  if(category === '칼라박스') return weight > 1.5 ? 'E' : 'F';
+  if(weight >= 10) return 'BA';
+  if(weight >= 5) return 'C';
+  if(weight >= 2) return 'B';
+  if(use === '화장품' || use === '브랜드굿즈') return 'E';
+  return 'B';
+}
+function calcSuggestedSize(){
+  const w = +document.getElementById('sW').value || 0;
+  const l = +document.getElementById('sL').value || 0;
+  const h = +document.getElementById('sH').value || 0;
+  const use = document.getElementById('sUse').value || '';
+  const category = document.getElementById('sCategory').value || '';
+  const weight = +document.getElementById('sWeight').value || 0;
+  const margin = use === '택배' || use === '물류' ? 12 : 8;
+  const recW = w ? w + margin : 0;
+  const recL = l ? l + margin : 0;
+  const recH = h ? h + margin : 0;
+  document.getElementById('mW').textContent = recW ? recW + 'mm' : '-';
+  document.getElementById('mL').textContent = recL ? recL + 'mm' : '-';
+  document.getElementById('mH').textContent = recH ? recH + 'mm' : '-';
+  const flute = recommendedFlute(weight, use, category);
+  document.getElementById('mFlute').textContent = flute;
+  document.getElementById('mReason').textContent = `무게 ${weight || 0}kg / 용도 ${use || '미선택'} 기준으로 권장 골두께를 계산했습니다.`;
+  return {recW, recL, recH, flute};
+}
+['sW','sL','sH','sWeight','sUse','sCategory'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', calcSuggestedSize);
+  document.getElementById(id).addEventListener('change', calcSuggestedSize);
+});
+
+function scoreBoxV2(box, input){
+  let score = 0;
+  const sumSize = (input.w||0)+(input.l||0)+(input.h||0);
+  if(sumSize){
+    if(box.width >= input.w) score += Math.max(0, 100 - (box.width-input.w)*0.7);
+    if(box.length >= input.l) score += Math.max(0, 100 - (box.length-input.l)*0.7);
+    if(box.height >= input.h) score += Math.max(0, 80 - (box.height-input.h)*0.9);
+  }
+  if(input.category && box.category === input.category) score += 90;
+  if(input.shape && box.shape === input.shape) score += 70;
+  if(input.flute && box.flute === input.flute) score += 60;
+  if(input.use && box.use === input.use) score += 55;
+  if(input.industry && box.industry === input.industry) score += 45;
+  if(input.qty && box.minQty <= input.qty) score += 40; else if(input.qty) score -= 20;
+  if(input.recommendedFlute && box.flute === input.recommendedFlute) score += 35;
+  return score;
+}
+function collectInput(){
+  const calc = calcSuggestedSize();
+  return {
+    w:+document.getElementById('sW').value || 0,
+    l:+document.getElementById('sL').value || 0,
+    h:+document.getElementById('sH').value || 0,
+    weight:+document.getElementById('sWeight').value || 0,
+    category:document.getElementById('sCategory').value,
+    shape:document.getElementById('sShape').value,
+    flute:document.getElementById('sFlute').value,
+    use:document.getElementById('sUse').value,
+    industry:document.getElementById('sIndustry').value,
+    qty:+document.getElementById('sQty').value || 0,
+    recommendedFlute: calc.flute
+  };
+}
+function filterBoxes(input){
+  return SD_BOX_DB.filter(box =>
+    (!input.category || box.category === input.category) &&
+    (!input.shape || box.shape === input.shape) &&
+    (!input.flute || box.flute === input.flute) &&
+    (!input.use || box.use === input.use) &&
+    (!input.industry || box.industry === input.industry) &&
+    (!input.qty || box.minQty <= input.qty) &&
+    (!input.w || box.width >= input.w) &&
+    (!input.l || box.length >= input.l) &&
+    (!input.h || box.height >= input.h)
+  );
+}
+function applyRender(){
+  const keyword = (document.getElementById('keyword').value || '').trim();
+  const sortBy = document.getElementById('sortBy').value;
+  let arr = [...currentResults];
+  if(keyword){
+    arr = arr.filter(b => (b.name + ' ' + b.shape + ' ' + b.category).includes(keyword));
+  }
+  if(sortBy === 'sizeAsc') arr.sort((a,b)=>(a.width*a.length*a.height)-(b.width*b.length*b.height));
+  else if(sortBy === 'sizeDesc') arr.sort((a,b)=>(b.width*b.length*b.height)-(a.width*a.length*a.height));
+  else if(sortBy === 'qtyAsc') arr.sort((a,b)=>a.minQty-b.minQty);
+  else arr.sort((a,b)=>(b.__score||0)-(a.__score||0));
+  renderPage(arr);
+}
+function renderPage(arr){
+  const start = (currentPage-1)*pageSize;
+  const pageArr = arr.slice(start, start+pageSize);
+  document.getElementById('engineGrid').innerHTML = pageArr.map(b=>`<article class="card result-card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute} · 최소 ${b.minQty}개</p><div class="tag-row"><span class="tag">${b.category}</span><span class="tag">${b.shape}</span><span class="tag">${b.use}</span><span class="tag">${b.industry}</span></div><div style="margin-top:12px"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}">견적문의로 연결</a></div></div></article>`).join('');
+  const totalPages = Math.max(1, Math.ceil(arr.length / pageSize));
+  document.getElementById('pager').innerHTML = Array.from({length: totalPages}, (_,i)=>`<button class="${i+1===currentPage?'active':''}" onclick="goPage(${i+1})">${i+1}</button>`).join('');
+  document.getElementById('resultMeta').textContent = `검색 결과 ${arr.length}개 · ${currentPage}/${totalPages} 페이지`;
+}
+function goPage(n){ currentPage = n; applyRender(); }
+function runSearch(){
+  currentPage = 1;
+  const input = collectInput();
+  currentResults = filterBoxes(input).map(b=>({...b,__score:scoreBoxV2(b,input)}));
+  document.getElementById('resultTitle').textContent = currentResults.length ? '박스 검색 결과' : '일치하는 결과 없음';
+  if(!currentResults.length){
+    currentResults = SD_BOX_DB.map(b=>({...b,__score:0}));
+    document.getElementById('resultTitle').textContent = '전체 박스 DB';
+  }
+  applyRender();
+}
+function runRecommendV2(){
+  currentPage = 1;
+  const input = collectInput();
+  currentResults = SD_BOX_DB.map(b=>({...b,__score:scoreBoxV2(b,input)})).sort((a,b)=>b.__score-a.__score);
+  document.getElementById('resultTitle').textContent = '추천 알고리즘 v2 결과';
+  applyRender();
+}
+function resetEngine(){
+  ['sW','sL','sH','sWeight','sQty','keyword'].forEach(id=>document.getElementById(id).value='');
+  ['sCategory','sShape','sFlute','sUse','sIndustry','sortBy'].forEach((id,idx)=>document.getElementById(id).value='');
+  document.getElementById('sortBy').value = 'score';
+  currentPage = 1;
+  currentResults = SD_BOX_DB.map(b=>({...b,__score:0}));
+  document.getElementById('resultTitle').textContent = '전체 박스 DB';
+  calcSuggestedSize();
+  applyRender();
+}
+currentResults = SD_BOX_DB.map(b=>({...b,__score:0}));
+calcSuggestedSize();
+applyRender();
+</script></body></html>
