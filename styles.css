@@ -65,3 +65,20 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
 .outline-pill{border-color:#ffbf86!important;color:#b45717!important;background:linear-gradient(135deg,#fff4e8,#fff)!important}
 .note-box{border-color:#ffd0ad}
 .bottom-banner-fix{background:linear-gradient(120deg,#fff8f2,#ffe8d1 55%,#fff4ea)!important;color:#17253c!important;border:1px solid #ffd4b2}
+
+.quote-step-visual{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:14px}
+.quote-step{background:#fff;border:1px solid #d8e2ea;border-radius:20px;padding:14px;text-align:center;position:relative;box-shadow:0 8px 18px rgba(23,37,60,.03)}
+.quote-step .num{position:absolute;top:-16px;left:10px;width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#0f8f8d,#35c6bd);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px}
+.quote-step.size .num,.quote-step.print .num,.quote-step.file .num{background:linear-gradient(135deg,#ff7a30,#ffb36b)}
+.quote-step.send .num{background:linear-gradient(135deg,#17253c,#33405b)}
+.quote-step .icon{width:72px;height:72px;border-radius:18px;margin:10px auto 8px;background:#f8fbfd;border:1px solid #dbe4eb;position:relative}
+.quote-step.select .icon:before{content:"";position:absolute;left:16px;right:16px;top:18px;height:28px;border:2px solid #5ccaba;border-radius:8px}.quote-step.select .icon:after{content:"";position:absolute;left:27px;top:29px;width:16px;height:10px;border-left:3px solid #0f8f8d;border-bottom:3px solid #0f8f8d;transform:rotate(-45deg)}
+.quote-step.size .icon:before{content:"";position:absolute;left:18px;top:18px;width:36px;height:36px;border:2px solid #8fa1c8}.quote-step.size .icon:after{content:"";position:absolute;right:14px;bottom:14px;width:14px;height:14px;border-right:3px solid #ff7a30;border-bottom:3px solid #ff7a30}
+.quote-step.print .icon:before{content:"";position:absolute;left:18px;top:18px;width:38px;height:24px;border:2px solid #5ccaba;border-radius:8px}.quote-step.print .icon:after{content:"";position:absolute;left:24px;bottom:16px;width:28px;height:16px;border:2px solid #5ccaba;background:#fff}
+.quote-step.file .icon:before{content:"";position:absolute;left:23px;top:14px;width:26px;height:38px;border:2px solid #9aabc8;border-radius:5px;background:#fff}.quote-step.file .icon:after{content:"";position:absolute;left:27px;top:37px;width:18px;height:3px;background:#ff7a30}
+.quote-step.send .icon:before{content:"";position:absolute;left:18px;top:24px;width:36px;height:24px;border:2px solid #8fa1c8;border-radius:6px;background:#fff}.quote-step.send .icon:after{content:"";position:absolute;left:33px;top:34px;width:20px;height:3px;background:#ff7a30;box-shadow:8px -4px 0 #ff7a30,8px 4px 0 #ff7a30}
+.tabs{display:flex;gap:14px;flex-wrap:wrap}
+.tab{padding:14px 18px;border:1px solid #e0d6c8;border-radius:16px;font-weight:900;color:#5b6370;background:linear-gradient(180deg,#fff,#f8f5ef);box-shadow:0 8px 16px rgba(19,32,47,.03)}
+.tab.active{border-color:#ffbf86;color:#b45717;background:linear-gradient(135deg,#fff3e7,#fff)!important}
+@media (max-width:1024px){.grid-4{grid-template-columns:repeat(2,1fr)}.quote-step-visual{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid-4,.grid-3,.review-grid,.quote-layout,.split-feature,.asym-shell{grid-template-columns:1fr!important}.quote-step-visual,.field-grid,.choice-grid{grid-template-columns:1fr!important}.tabs{gap:10px}.tab{width:calc(50% - 5px);text-align:center}}
