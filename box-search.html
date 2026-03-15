@@ -199,7 +199,7 @@ function renderPage(arr){
         </div>
       </div>
       <div class="action-col">
-        <a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}">견적문의로 연결</a>
+        <a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&category=${encodeURIComponent(b.category)}&shape=${encodeURIComponent(b.shape)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}&qty=${encodeURIComponent(b.minQty)}&use=${encodeURIComponent(b.use)}">견적문의로 연결</a>
       </div>
     </article>`).join('');
   document.getElementById('resultMeta').textContent = `총 ${arr.length}개 DB가 한 페이지에 표시됩니다.`;

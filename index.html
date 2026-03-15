@@ -151,7 +151,7 @@ function scoreBox(b, input){
 function renderRecommend(arr, title='전체 박스 DB'){
   document.getElementById('dbResultTitle').textContent = title;
   document.getElementById('dbResultCount').textContent = `총 ${arr.length}개 중 상위 ${Math.min(12, arr.length)}개 표시`;
-  document.getElementById('dbRecommendGrid').innerHTML = arr.slice(0,12).map(b=>`<article class="card db-card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute} · 최소 ${b.minQty}개</p><div class="tag-row"><span class="tag">${b.category}</span><span class="tag">${b.shape}</span><span class="tag">${b.use}</span></div><div style="margin-top:12px"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}">견적문의로 연결</a></div></div></article>`).join('');
+  document.getElementById('dbRecommendGrid').innerHTML = arr.slice(0,12).map(b=>`<article class="card db-card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.name}</h4><p>${b.width}×${b.length}×${b.height}mm · ${b.flute} · 최소 ${b.minQty}개</p><div class="tag-row"><span class="tag">${b.category}</span><span class="tag">${b.shape}</span><span class="tag">${b.use}</span></div><div style="margin-top:12px"><a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&category=${encodeURIComponent(b.category)}&shape=${encodeURIComponent(b.shape)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}&qty=${encodeURIComponent(b.minQty)}&use=${encodeURIComponent(b.use)}">견적문의로 연결</a></div></div></article>`).join('');
 }
 function runRecommend(){
   const input = {

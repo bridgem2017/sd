@@ -134,4 +134,86 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
     alert('전송 중 오류가 발생했습니다. sales@box.re.kr 로 직접 보내주세요.');
   }
 });
+</script><script>
+document.addEventListener('DOMContentLoaded', ()=>{
+  mountLayout('quote.html');
+  const qp = new URLSearchParams(location.search);
+  const preBox = qp.get('box') || '';
+  const preSize = qp.get('size') || '';
+  const preFlute = qp.get('flute') || '';
+  const preQty = qp.get('qty') || '';
+  const preCategory = qp.get('category') || '';
+  const preShape = qp.get('shape') || '';
+  const preUse = qp.get('use') || '';
+
+  // size fields
+  if(preSize){
+    const parts = preSize.toLowerCase().replace(/mm/g,'').split('x');
+    if(parts[0]) document.getElementById('sizeW').value = parts[0].trim();
+    if(parts[1]) document.getElementById('sizeL').value = parts[1].trim();
+    if(parts[2]) document.getElementById('sizeH').value = parts[2].trim();
+  }
+
+  // quantity
+  if(preQty && document.getElementById('qty')){
+    document.getElementById('qty').value = preQty;
+  }
+
+  // infer selected box from DB or params
+  const db = window.SD_BOX_DB || [];
+  let matched = null;
+  if(preBox){
+    matched = db.find(b => b.name === preBox) || db.find(b => preBox.includes(b.name) || b.name.includes(preBox));
+  }
+  if(!matched && preShape && preCategory && preSize){
+    matched = db.find(b => b.category===preCategory && b.shape===preShape && `${b.width}x${b.length}x${b.height}`===preSize);
+  }
+
+  const choiceRadios = [...document.querySelectorAll('input[name="choiceCard"]')];
+  if(matched){
+    const byShape = choiceRadios.find(r => matched.name.includes(r.value) || matched.shape.includes(r.value) || r.value.includes(matched.shape));
+    if(byShape) byShape.checked = true;
+  } else if(preBox){
+    const found = choiceRadios.find(r => preBox.includes(r.value) || r.value.includes(preBox));
+    if(found) found.checked = true;
+  }
+
+  // box category radio
+  const catRadios = [...document.querySelectorAll('input[name="productKind"]')];
+  const categoryValue = matched ? matched.category : preCategory;
+  if(categoryValue){
+    const catMap = {
+      '골판지박스':'골판지박스',
+      '칼라박스':'칼라박스',
+      '싸바리박스':'싸바리박스',
+      '기타':'기타'
+    };
+    const cat = catMap[categoryValue] || categoryValue;
+    const target = catRadios.find(r => r.value === cat);
+    if(target) target.checked = true;
+  }
+
+  // extra info block
+  const prefill = document.getElementById('enginePrefillBox');
+  if(prefill && (matched || preBox || preSize)){
+    prefill.style.display = 'block';
+    const catText = matched ? matched.category : (preCategory || '-');
+    const shapeText = matched ? matched.shape : (preShape || '-');
+    const qtyText = matched ? `${matched.minQty}개 기준` : (preQty ? `${preQty}개` : '-');
+    const useText = matched ? matched.use : (preUse || '-');
+    prefill.innerHTML = `
+      <div class="kicker">검색엔진 연동</div>
+      <h3 style="margin:10px 0 8px">선택한 박스 정보가 자동 반영되었습니다</h3>
+      <p class="small" style="margin:0">
+        박스종류: ${catText}<br>
+        형태: ${shapeText}<br>
+        규격: ${preSize || (matched ? `${matched.width}x${matched.length}x${matched.height}` : '-')}<br>
+        골두께: ${preFlute || (matched ? matched.flute : '-')}<br>
+        기준 매수: ${qtyText}<br>
+        용도: ${useText}
+      </p>`;
+  }
+
+  updateSummary();
+});
 </script></body></html>
