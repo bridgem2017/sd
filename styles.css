@@ -1241,3 +1241,52 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
     height: 240px !important;
   }
 }
+
+
+/* ===== v33 three-visible centered slider ===== */
+.rolling-banner{
+  max-width: 1600px !important;
+  overflow: hidden !important;
+}
+.rolling-track.desktop-three{
+  width: 100% !important;
+  max-width: 1600px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: stretch !important;
+  gap: 32px !important;
+  transform: none !important;
+}
+.rolling-track.mobile-single{
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  transform: none !important;
+}
+.rolling-track.desktop-three .hero-roll-slide,
+.rolling-track.desktop-three .hero-roll-card{
+  width: 512px !important;
+  min-width: 512px !important;
+  max-width: 512px !important;
+}
+.rolling-track.mobile-single .hero-roll-slide,
+.rolling-track.mobile-single .hero-roll-card{
+  width: 512px !important;
+  min-width: 512px !important;
+  max-width: 512px !important;
+}
+@media (max-width: 1200px){
+  .rolling-track.desktop-three,
+  .rolling-track.mobile-single{
+    justify-content: center !important;
+  }
+}
+@media (max-width: 640px){
+  .rolling-track.mobile-single .hero-roll-slide,
+  .rolling-track.mobile-single .hero-roll-card{
+    width: calc(100vw - 32px) !important;
+    min-width: calc(100vw - 32px) !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+}
