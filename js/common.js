@@ -18,7 +18,7 @@ function mountLayout(active=''){
   </div>
   <div class="container footer-grid footer-contact-only">
     <div class="footer-brand footer-brand-compact">
-      <img src="assets/sd-company-footer-icon.png" alt="에스디컴퍼니 로고">
+      <img src="assets/sd-company-logo-footer.png" alt="에스디컴퍼니 로고">
     </div>
     <div class="footer-contact-rows">
       <div class="footer-row">
