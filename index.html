@@ -60,87 +60,108 @@
   const dotsWrap = document.getElementById('mainRollingDots');
   if(!banner || !track || !dotsWrap) return;
 
-  const cards = Array.from(track.querySelectorAll('.hero-roll-slide'));
-  const dots = Array.from(dotsWrap.querySelectorAll('button'));
-  const total = Math.min(cards.length, dots.length);
+  const baseSlides = Array.from(track.querySelectorAll('.hero-roll-slide')).slice(0, 3);
+  const dots = Array.from(dotsWrap.querySelectorAll('button')).slice(0, 3);
+  const total = baseSlides.length;
+  const visibleCount = window.innerWidth <= 1200 ? 1 : 3;
   if(!total) return;
 
-  let order = Array.from({length: total}, (_, i) => i);
+  let current = 0;
   let timer = null;
   let paused = false;
-  let animating = false;
+  let busy = false;
 
-  function setActiveDot(){
-    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === order[0]));
-  }
-
-  function renderSlides(includeClone = true){
+  function buildTrack(){
     track.innerHTML = '';
-    order.forEach(idx => track.appendChild(cards[idx]));
-    if(includeClone && total > 1){
-      track.appendChild(cards[order[0]].cloneNode(true));
+    const prependCount = visibleCount === 3 ? total : 1;
+    const appendCount = visibleCount === 3 ? total : 1;
+
+    for(let i = prependCount; i > 0; i--){
+      const idx = (current - i + total) % total;
+      track.appendChild(baseSlides[idx].cloneNode(true));
     }
-    track.style.transition = 'none';
-    track.style.transform = 'translateX(0px)';
-    setActiveDot();
+    for(let i = 0; i < total; i++){
+      const idx = (current + i) % total;
+      track.appendChild(baseSlides[idx].cloneNode(true));
+    }
+    for(let i = 0; i < appendCount; i++){
+      const idx = (current + total + i) % total;
+      track.appendChild(baseSlides[idx].cloneNode(true));
+    }
   }
 
   function cardStep(){
     const first = track.querySelector('.hero-roll-slide');
-    if(!first) return 536;
-    const style = window.getComputedStyle(track);
-    const gap = parseFloat(style.columnGap || style.gap || 24) || 24;
+    if(!first) return 544;
+    const gap = parseFloat(getComputedStyle(track).gap || '32') || 32;
     return first.getBoundingClientRect().width + gap;
   }
 
-  function nextSlide(){
-    if(animating || total < 2) return;
-    animating = true;
+  function offsetToActive(){
+    const clonesBefore = visibleCount === 3 ? total : 1;
+    return clonesBefore * cardStep();
+  }
+
+  function placeTrack(){
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${offsetToActive()}px)`;
+    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
+  }
+
+  function rebuild(){
+    buildTrack();
+    requestAnimationFrame(placeTrack);
+  }
+
+  function go(delta){
+    if(busy) return;
+    busy = true;
     const step = cardStep();
-    track.style.transition = 'transform .6s ease';
-    track.style.transform = `translateX(-${step}px)`;
+    const target = offsetToActive() + (delta * step);
+    track.style.transition = 'transform .65s ease';
+    track.style.transform = `translateX(-${target}px)`;
     const done = () => {
       track.removeEventListener('transitionend', done);
-      order.push(order.shift());
-      renderSlides(true);
-      animating = false;
+      current = (current + delta + total) % total;
+      buildTrack();
+      placeTrack();
+      busy = false;
     };
-    track.addEventListener('transitionend', done, {once:true});
+    track.addEventListener('transitionend', done, { once:true });
   }
 
   function goTo(idx){
-    if(idx < 0 || idx >= total) return;
-    order = Array.from({length: total}, (_, i) => (idx + i) % total);
-    renderSlides(true);
+    if(idx === current) return;
+    current = idx;
+    rebuild();
   }
 
-  function stopAuto(){
-    if(timer){ clearInterval(timer); timer = null; }
-  }
-  function startAuto(){
-    stopAuto();
-    if(paused || total < 2) return;
-    timer = setInterval(nextSlide, 3400);
-  }
+  function stopAuto(){ if(timer){ clearInterval(timer); timer = null; } }
+  function startAuto(){ stopAuto(); if(paused || total < 2) return; timer = setInterval(() => go(1), 3600); }
   function pause(){ paused = true; stopAuto(); }
   function resume(){ paused = false; startAuto(); }
 
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', function(e){
-      e.preventDefault();
-      pause();
-      goTo(idx);
-    });
+  dots.forEach((dot, idx) => dot.addEventListener('click', (e) => {
+    e.preventDefault();
+    pause();
+    goTo(idx);
+  }));
+
+  [banner, track, dotsWrap].forEach(node => {
+    node.addEventListener('mouseenter', pause);
+    node.addEventListener('mouseleave', resume);
+    node.addEventListener('focusin', pause);
+    node.addEventListener('focusout', resume);
   });
 
-  banner.addEventListener('mouseenter', pause);
-  banner.addEventListener('mouseleave', resume);
-  dotsWrap.addEventListener('mouseenter', pause);
-  dotsWrap.addEventListener('mouseleave', resume);
-  track.addEventListener('mouseenter', pause);
-  track.addEventListener('mouseleave', resume);
+  window.addEventListener('resize', () => {
+    stopAuto();
+    buildTrack();
+    placeTrack();
+    startAuto();
+  });
 
-  renderSlides(true);
+  rebuild();
   startAuto();
 })();
 </script>
