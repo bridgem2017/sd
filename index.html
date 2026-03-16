@@ -23,28 +23,27 @@
 
 <div class="container">
   <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
-    <div class="rolling-track" id="mainRollingTrack">
-      <a class="hero-roll-card c1" href="quote.html" aria-label="견적문의 페이지로 이동">
+    <div class="rolling-track" id="mainRollingTrack"><div class="hero-roll-slide"><a class="hero-roll-card c1" href="quote.html" aria-label="견적문의 페이지로 이동">
         <img src="assets/banners/banner_quote_real.jpg" alt="박스 맞춤 견적 배너">
         <div class="roll-overlay">
           <span class="mini-badge">맞춤 견적</span>
           <h3>박스 맞춤 견적<small>골판지 박스 / 칼라박스<br>추천 알고리즘으로 빠른 확인</small></h3>
         </div>
-      </a>
-      <a class="hero-roll-card c2" href="box-search.html" aria-label="박스검색 페이지로 이동">
+      </a></div>
+<div class="hero-roll-slide"><a class="hero-roll-card c2" href="box-search.html" aria-label="박스검색 페이지로 이동">
         <img src="assets/banners/banner_production_real.jpg" alt="박스 주문 제작 배너">
         <div class="roll-overlay">
           <span class="mini-badge">원스톱 진행</span>
           <h3>박스 주문 제작<small>디자인, 인쇄, 제작, 납품을 한번에</small></h3>
         </div>
-      </a>
-      <a class="hero-roll-card c3" href="colorbox.html" aria-label="칼라박스 페이지로 이동">
+      </a></div>
+<div class="hero-roll-slide"><a class="hero-roll-card c3" href="colorbox.html" aria-label="칼라박스 페이지로 이동">
         <img src="assets/banners/banner_print_real.jpg" alt="인쇄로 브랜드 이미지를 높여보세요 배너">
         <div class="roll-overlay">
           <span class="mini-badge">소량제작</span>
           <h3>인쇄로 브랜드 이미지를<small>높여보세요.</small></h3>
         </div>
-      </a>
+      </a></div>
     </div>
   </div>
   <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
@@ -61,11 +60,12 @@
   const dotsWrap = document.getElementById('mainRollingDots');
   if(!banner || !track || !dotsWrap) return;
 
-  const slides = Array.from(track.querySelectorAll('.hero-roll-card'));
+  const slides = Array.from(track.querySelectorAll('.hero-roll-slide'));
   const dots = Array.from(dotsWrap.querySelectorAll('button'));
   const total = Math.min(slides.length, dots.length);
   let current = 0;
   let timer = null;
+  let paused = false;
 
   function update(){
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
@@ -76,31 +76,28 @@
     update();
   }
   function stopAuto(){
-    if(timer){
-      clearInterval(timer);
-      timer = null;
-    }
+    if(timer){ clearInterval(timer); timer = null; }
   }
   function startAuto(){
     stopAuto();
-    timer = setInterval(function(){
-      go(current + 1);
-    }, 3600);
+    if(paused) return;
+    timer = setInterval(function(){ go(current + 1); }, 3600);
   }
+  function pause(){ paused = true; stopAuto(); }
+  function resume(){ paused = false; startAuto(); }
 
   dots.forEach((dot, idx) => {
     dot.addEventListener('click', function(e){
       e.preventDefault();
-      stopAuto();
+      pause();
       go(idx);
-      startAuto();
     });
   });
 
-  banner.addEventListener('mouseenter', stopAuto);
-  banner.addEventListener('mouseleave', startAuto);
-  dotsWrap.addEventListener('mouseenter', stopAuto);
-  dotsWrap.addEventListener('mouseleave', startAuto);
+  banner.addEventListener('mouseenter', pause);
+  banner.addEventListener('mouseleave', resume);
+  dotsWrap.addEventListener('mouseenter', pause);
+  dotsWrap.addEventListener('mouseleave', resume);
 
   go(0);
   startAuto();
