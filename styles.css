@@ -996,3 +996,168 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* ===== v28: footer align fix ===== */
+.footer-grid.footer-contact-only{
+  grid-template-columns: 230px minmax(680px, 820px) !important;
+  justify-content: center !important;
+  gap: 40px !important;
+  align-items: center !important;
+}
+.footer-brand-compact{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height: 190px !important;
+}
+.footer-brand-compact img{
+  width: 170px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display:block !important;
+}
+.footer-contact-rows{
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:center !important;
+  text-align:center !important;
+  gap: 8px !important;
+}
+.footer-row{
+  width: 100% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align:center !important;
+  line-height: 1.02 !important;
+  gap: 8px 26px !important;
+  font-size: 15px !important;
+}
+.footer-copy{
+  width: 100% !important;
+  justify-content: center !important;
+  text-align:center !important;
+  line-height: 1 !important;
+}
+@media (max-width: 980px){
+  .footer-grid.footer-contact-only{
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== v28: compact card slider with working dots ===== */
+.card-slider-v28{
+  max-width: 1024px !important;
+  width: 100% !important;
+  margin: 28px auto 0 !important;
+  overflow: hidden !important;
+  border-radius: 34px !important;
+  background: transparent !important;
+}
+.card-slider-v28 .rolling-track{
+  display:flex !important;
+  gap:0 !important;
+  width:100% !important;
+  transition: transform .55s ease !important;
+  will-change: transform !important;
+  animation:none !important;
+}
+.card-slider-v28 .hero-slide{
+  flex: 0 0 100% !important;
+  min-width: 100% !important;
+}
+.card-slider-v28 .hero-roll-card{
+  position: relative !important;
+  display:block !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 640px !important;
+  border-radius: 34px !important;
+  overflow: hidden !important;
+  box-shadow: 0 14px 34px rgba(16,20,32,.08) !important;
+}
+.card-slider-v28 .hero-roll-card img{
+  width:100% !important;
+  height:100% !important;
+  object-fit: cover !important;
+  display:block !important;
+  filter:none !important;
+}
+.card-slider-v28 .roll-overlay{
+  position:absolute !important;
+  inset:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+  padding: 64px 54px !important;
+  background: linear-gradient(90deg, rgba(0,0,0,.16) 0%, rgba(0,0,0,.08) 42%, rgba(0,0,0,0) 78%) !important;
+  text-align:left !important;
+}
+.card-slider-v28 .mini-badge{
+  background: rgba(255,255,255,.22) !important;
+  border: 1px solid rgba(255,255,255,.4) !important;
+  backdrop-filter: blur(4px) !important;
+  color:#fff !important;
+  font-size: 19px !important;
+  font-weight: 900 !important;
+  padding: 12px 22px !important;
+  border-radius: 999px !important;
+  margin-bottom: 22px !important;
+}
+.card-slider-v28 .roll-overlay h3{
+  margin:0 !important;
+  font-size: 76px !important;
+  line-height: .98 !important;
+  letter-spacing: -0.06em !important;
+  color:#fff !important;
+  text-shadow: 0 6px 14px rgba(0,0,0,.18) !important;
+  max-width: 56% !important;
+}
+.card-slider-v28 .roll-overlay p{
+  margin: 18px 0 0 0 !important;
+  font-size: 28px !important;
+  line-height: 1.28 !important;
+  font-weight: 900 !important;
+  color:#fff !important;
+  text-shadow: 0 4px 10px rgba(0,0,0,.16) !important;
+  max-width: 56% !important;
+}
+.rolling-dots{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin-top:18px !important;
+}
+.rolling-dots button{
+  width:18px !important;
+  height:18px !important;
+  border-radius:999px !important;
+  border:0 !important;
+  background:#cdcdcd !important;
+  cursor:pointer !important;
+  transition: transform .18s ease, background .18s ease !important;
+}
+.rolling-dots button.active{
+  background:#111 !important;
+  transform: scale(1.1) !important;
+}
+@media (max-width: 1100px){
+  .card-slider-v28{max-width: 94vw !important;}
+  .card-slider-v28 .hero-roll-card{height: 520px !important;}
+  .card-slider-v28 .roll-overlay h3{font-size: 58px !important; max-width: 64% !important;}
+  .card-slider-v28 .roll-overlay p{font-size: 22px !important; max-width: 64% !important;}
+}
+@media (max-width: 760px){
+  .card-slider-v28 .hero-roll-card{height: 360px !important;}
+  .card-slider-v28 .roll-overlay{padding: 28px !important;}
+  .card-slider-v28 .roll-overlay h3{font-size: 34px !important; max-width: 80% !important;}
+  .card-slider-v28 .roll-overlay p{font-size: 16px !important; max-width: 80% !important;}
+  .card-slider-v28 .mini-badge{font-size: 14px !important; padding: 8px 14px !important;}
+  .rolling-dots button{width:14px !important; height:14px !important;}
+}
