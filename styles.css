@@ -851,33 +851,90 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
 }
 
 
-/* v25 definitive overrides */
-.footer-grid.footer-contact-only{grid-template-columns:260px 1fr !important;gap:54px !important;align-items:center !important}
-.footer-brand-compact{display:flex !important;align-items:center !important;justify-content:center !important}
-.footer-brand-compact img{width:220px !important;max-width:100% !important;height:auto !important;display:block !important;object-fit:contain !important}
-.footer-contact-rows{gap:4px !important}
-.footer-contact-rows .footer-row{line-height:.9 !important;gap:4px 26px !important;font-size:14px !important}
-.footer-contact-rows .footer-copy{margin-top:4px !important;line-height:.92 !important}
-@media (max-width:900px){.footer-grid.footer-contact-only{grid-template-columns:1fr !important}.footer-brand-compact{justify-content:flex-start !important}}
+/* v26 footer alignment */
+.footer-grid.footer-contact-only{
+  grid-template-columns: 180px 1fr !important;
+  gap: 34px !important;
+  align-items: center !important;
+}
+.footer-brand-compact{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding: 8px 0 !important;
+}
+.footer-brand-compact img{
+  width: 108px !important;
+  height: 108px !important;
+  object-fit: contain !important;
+  display:block !important;
+}
+.footer-contact-rows{gap:10px !important;}
+.footer-row{
+  gap: 14px 24px !important;
+  line-height: 1.15 !important;
+  font-size: 15px !important;
+}
+.footer-copy{margin-top: 4px !important;}
 
-.banner-shell{max-width:980px !important;margin:22px auto 0 !important}
-.rolling-banner{max-width:980px !important;margin:0 auto !important;overflow:hidden !important;border-radius:34px !important}
-.rolling-track{display:flex !important;transition:transform .55s ease !important;will-change:transform !important}
-.hero-roll-card{flex:0 0 100% !important;width:100% !important;min-width:100% !important;height:300px !important;border-radius:34px !important;box-shadow:0 18px 40px rgba(18,24,34,.08) !important;position:relative !important;overflow:hidden !important;text-decoration:none !important}
-.hero-roll-card img{width:100% !important;height:100% !important;object-fit:cover !important;opacity:.98 !important}
-.hero-roll-card.theme-blue{background:linear-gradient(135deg,#cfe7ff 0%,#9ec1f0 100%) !important}
-.hero-roll-card.theme-green{background:linear-gradient(135deg,#bfd49c 0%,#86aa63 100%) !important}
-.hero-roll-card.theme-yellow{background:linear-gradient(135deg,#ffe67c 0%,#f1c84b 100%) !important}
-.roll-overlay{position:absolute !important;inset:0 !important;padding:28px 38px !important;display:flex !important;flex-direction:column !important;justify-content:center !important;align-items:flex-start !important;background:linear-gradient(90deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.04) 35%, rgba(255,255,255,.0) 100%) !important}
-.roll-overlay h3{font-size:44px !important;line-height:1.06 !important;max-width:54% !important;margin:12px 0 0 !important;color:#f7fbff !important;text-shadow:0 3px 18px rgba(0,0,0,.12) !important;letter-spacing:-.04em !important;font-weight:900 !important}
-.roll-overlay h3 small{display:block !important;font-size:20px !important;line-height:1.4 !important;margin-top:14px !important;color:#f8fbff !important;font-weight:800 !important}
-.mini-badge{display:inline-flex !important;padding:10px 18px !important;border-radius:999px !important;background:rgba(255,255,255,.22) !important;color:#ffffff !important;border:1px solid rgba(255,255,255,.32) !important;font-weight:900 !important;backdrop-filter:blur(4px) !important}
-.rolling-dots{display:flex !important;justify-content:center !important;align-items:center !important;gap:12px !important;margin-top:16px !important}
-.rolling-dots button{width:16px !important;height:16px !important;border-radius:50% !important;border:0 !important;background:#cfcfcf !important;cursor:pointer !important;padding:0 !important}
-.rolling-dots button.active{background:#111 !important;transform:scale(1.1) !important}
-@media (max-width:1100px){.banner-shell,.rolling-banner{max-width:92vw !important}.hero-roll-card{height:260px !important}.roll-overlay h3{font-size:34px !important;max-width:66% !important}.roll-overlay h3 small{font-size:17px !important}}
-
-/* robust hide AB weights */
-.tag-row .tag{display:inline-flex !important}
-.tag-row .tag.ab-hidden,.tag-row .tag[data-hide='true']{display:none !important}
-.tag-row .tag:nth-last-child(1):is(.ab-hidden), .tag-row .tag:nth-last-child(2):is(.ab-hidden){display:none !important}
+/* v26 banner slider override */
+.rolling-banner{
+  max-width: 1120px !important;
+  margin: 26px auto 0 !important;
+  overflow: hidden !important;
+  border-radius: 34px !important;
+  position: relative !important;
+}
+.rolling-track{
+  display: flex !important;
+  gap: 0 !important;
+  width: 100% !important;
+  animation: none !important;
+  transform: translateX(0);
+  transition: transform .55s ease !important;
+  will-change: transform;
+}
+.hero-roll-card{
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 390px !important;
+  border-radius: 34px !important;
+  overflow: hidden !important;
+  box-shadow: 0 14px 28px rgba(17,21,34,.08) !important;
+  text-decoration: none !important;
+  display:block !important;
+}
+.hero-roll-card img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+.roll-overlay{display:none !important;}
+.rolling-dots{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin-top:18px !important;
+}
+.rolling-dots button{
+  width:16px !important;
+  height:16px !important;
+  border-radius:999px !important;
+  border:0 !important;
+  background:#cfcfcf !important;
+  cursor:pointer !important;
+  padding:0 !important;
+}
+.rolling-dots button.active{background:#111111 !important;}
+@media (max-width: 1200px){
+  .rolling-banner{max-width: 92vw !important;}
+}
+@media (max-width: 760px){
+  .hero-roll-card{height: 230px !important;}
+  .footer-grid.footer-contact-only{grid-template-columns: 1fr !important;}
+  .footer-brand-compact{justify-content:flex-start !important;}
+}
