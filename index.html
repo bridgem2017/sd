@@ -60,28 +60,67 @@
   const dotsWrap = document.getElementById('mainRollingDots');
   if(!banner || !track || !dotsWrap) return;
 
-  const slides = Array.from(track.querySelectorAll('.hero-roll-slide'));
+  const cards = Array.from(track.querySelectorAll('.hero-roll-slide'));
   const dots = Array.from(dotsWrap.querySelectorAll('button'));
-  const total = Math.min(slides.length, dots.length);
-  let current = 0;
+  const total = Math.min(cards.length, dots.length);
+  if(!total) return;
+
+  let order = Array.from({length: total}, (_, i) => i);
   let timer = null;
   let paused = false;
+  let animating = false;
 
-  function update(){
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
+  function setActiveDot(){
+    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === order[0]));
   }
-  function go(idx){
-    current = (idx + total) % total;
-    update();
+
+  function renderSlides(includeClone = true){
+    track.innerHTML = '';
+    order.forEach(idx => track.appendChild(cards[idx]));
+    if(includeClone && total > 1){
+      track.appendChild(cards[order[0]].cloneNode(true));
+    }
+    track.style.transition = 'none';
+    track.style.transform = 'translateX(0px)';
+    setActiveDot();
   }
+
+  function cardStep(){
+    const first = track.querySelector('.hero-roll-slide');
+    if(!first) return 536;
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || 24) || 24;
+    return first.getBoundingClientRect().width + gap;
+  }
+
+  function nextSlide(){
+    if(animating || total < 2) return;
+    animating = true;
+    const step = cardStep();
+    track.style.transition = 'transform .6s ease';
+    track.style.transform = `translateX(-${step}px)`;
+    const done = () => {
+      track.removeEventListener('transitionend', done);
+      order.push(order.shift());
+      renderSlides(true);
+      animating = false;
+    };
+    track.addEventListener('transitionend', done, {once:true});
+  }
+
+  function goTo(idx){
+    if(idx < 0 || idx >= total) return;
+    order = Array.from({length: total}, (_, i) => (idx + i) % total);
+    renderSlides(true);
+  }
+
   function stopAuto(){
     if(timer){ clearInterval(timer); timer = null; }
   }
   function startAuto(){
     stopAuto();
-    if(paused) return;
-    timer = setInterval(function(){ go(current + 1); }, 3600);
+    if(paused || total < 2) return;
+    timer = setInterval(nextSlide, 3400);
   }
   function pause(){ paused = true; stopAuto(); }
   function resume(){ paused = false; startAuto(); }
@@ -90,7 +129,7 @@
     dot.addEventListener('click', function(e){
       e.preventDefault();
       pause();
-      go(idx);
+      goTo(idx);
     });
   });
 
@@ -98,8 +137,10 @@
   banner.addEventListener('mouseleave', resume);
   dotsWrap.addEventListener('mouseenter', pause);
   dotsWrap.addEventListener('mouseleave', resume);
+  track.addEventListener('mouseenter', pause);
+  track.addEventListener('mouseleave', resume);
 
-  go(0);
+  renderSlides(true);
   startAuto();
 })();
 </script>
