@@ -20,55 +20,79 @@
   </div>
 </div><div class="container"><div class="logo-row" id="clientLogos"></div></div>
 
+
 <div class="container">
-  <div class="rolling-banner" aria-label="주요 서비스 배너">
-    <div class="rolling-track">
-      <article class="hero-roll-card c1" onclick="location.href='quote.html'">
-        <img src="assets/banners/banner_print.jpg" alt="소량제작 브랜드 인쇄 비즈니스 현장">
-        <div class="roll-overlay">
-          <span class="mini-badge">소량제작</span>
-          <h3>인쇄로 브랜드 이미지를<br><small>높여보세요.</small></h3>
-        </div>
-      </article>
-      <article class="hero-roll-card c2" onclick="location.href='box-search.html'">
-        <img src="assets/banners/banner_quote.jpg" alt="박스 맞춤 견적 상담 비즈니스 현장">
+  <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
+    <div class="rolling-track" id="mainRollingTrack">
+      <a class="hero-roll-card c1" href="quote.html" aria-label="견적문의 페이지로 이동">
+        <img src="assets/banners/banner_quote_real.jpg" alt="박스 맞춤 견적 배너">
         <div class="roll-overlay">
           <span class="mini-badge">맞춤 견적</span>
-          <h3>박스 맞춤 견적<br><small>골판지 박스 / 칼라박스<br>추천 알고리즘으로 빠른 확인</small></h3>
+          <h3>박스 맞춤 견적<small>골판지 박스 / 칼라박스<br>추천 알고리즘으로 빠른 확인</small></h3>
         </div>
-      </article>
-      <article class="hero-roll-card c3" onclick="location.href='colorbox.html'">
-        <img src="assets/banners/banner_production.jpg" alt="디자인 제작 납품 비즈니스 물류 현장">
+      </a>
+      <a class="hero-roll-card c2" href="box-search.html" aria-label="박스검색 페이지로 이동">
+        <img src="assets/banners/banner_production_real.jpg" alt="박스 주문 제작 배너">
         <div class="roll-overlay">
           <span class="mini-badge">원스톱 진행</span>
-          <h3>박스 주문제작<br><small>디자인, 인쇄, 제작, 납품을 한번에~</small></h3>
+          <h3>박스 주문 제작<small>디자인, 인쇄, 제작, 납품을 한번에</small></h3>
         </div>
-      </article>
-      <article class="hero-roll-card c1" onclick="location.href='quote.html'">
-        <img src="assets/banners/banner_print.jpg" alt="소량제작 브랜드 인쇄 비즈니스 현장">
+      </a>
+      <a class="hero-roll-card c3" href="colorbox.html" aria-label="칼라박스 페이지로 이동">
+        <img src="assets/banners/banner_print_real.jpg" alt="인쇄로 브랜드 이미지를 높여보세요 배너">
         <div class="roll-overlay">
           <span class="mini-badge">소량제작</span>
-          <h3>인쇄로 브랜드 이미지를<br><small>높여보세요.</small></h3>
+          <h3>인쇄로 브랜드 이미지를<small>높여보세요.</small></h3>
         </div>
-      </article>
-      <article class="hero-roll-card c2" onclick="location.href='box-search.html'">
-        <img src="assets/banners/banner_quote.jpg" alt="박스 맞춤 견적 상담 비즈니스 현장">
-        <div class="roll-overlay">
-          <span class="mini-badge">맞춤 견적</span>
-          <h3>박스 맞춤 견적<br><small>골판지 박스 / 칼라박스<br>추천 알고리즘으로 빠른 확인</small></h3>
-        </div>
-      </article>
-      <article class="hero-roll-card c3" onclick="location.href='colorbox.html'">
-        <img src="assets/banners/banner_production.jpg" alt="디자인 제작 납품 비즈니스 물류 현장">
-        <div class="roll-overlay">
-          <span class="mini-badge">원스톱 진행</span>
-          <h3>박스 주문제작<br><small>디자인, 인쇄, 제작, 납품을 한번에~</small></h3>
-        </div>
-      </article>
+      </a>
     </div>
+  </div>
+  <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
+    <button type="button" class="active" aria-label="첫번째 배너 보기"></button>
+    <button type="button" aria-label="두번째 배너 보기"></button>
+    <button type="button" aria-label="세번째 배너 보기"></button>
   </div>
 </div>
 </section>
+<script>
+(function(){
+  const banner = document.getElementById('mainRollingBanner');
+  const track = document.getElementById('mainRollingTrack');
+  const dots = [...document.querySelectorAll('#mainRollingDots button')];
+  if(!banner || !track || !dots.length) return;
+  let index = 0;
+  let timer = null;
+  const total = dots.length;
+  function update(){
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+  }
+  function start(){
+    stop();
+    timer = setInterval(() => {
+      index = (index + 1) % total;
+      update();
+    }, 3600);
+  }
+  function stop(){
+    if(timer){ clearInterval(timer); timer = null; }
+  }
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      index = i;
+      update();
+      start();
+    });
+  });
+  banner.addEventListener('mouseenter', stop);
+  banner.addEventListener('mouseleave', start);
+  document.getElementById('mainRollingDots').addEventListener('mouseenter', stop);
+  document.getElementById('mainRollingDots').addEventListener('mouseleave', start);
+  update();
+  start();
+})();
+</script>
+
 
 <section class="section" id="platform-search"><div class="container">
   <div class="kicker">SERVICE GRADE PLATFORM</div><h2>300개 박스 DB + 추천 알고리즘</h2><p class="platform-badge-line"><strong>실서비스형 추천 엔진</strong> · 사이즈 / 형태 / 골두께 / 용도 / 산업군 검색 → 추천 결과 → 견적문의 자동 연결</p><p class="desc">사이즈, 형태, 골두께, 용도, 산업군으로 검색하고 추천 결과를 바로 견적문의로 연결할 수 있습니다.</p>
