@@ -695,3 +695,37 @@ a{text-decoration:none;color:inherit}img{max-width:100%;display:block}button,inp
 .board-status.done{background:#dfeaff;color:#2d67d8}
 .team-badge{display:inline-flex;padding:6px 10px;border-radius:10px;background:#4da6ff;color:#fff;font-size:13px;font-weight:800;margin-right:8px}
 .team-sales{background:#2ca4ff}.team-design{background:#4fb0e8}.team-admin{background:#3d7cff}
+
+/* footer text tighter */
+.footer-row{line-height:1.4 !important; gap:10px 20px !important;}
+
+/* center bottom menu and remove lines */
+.footer-bottom-nav{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:30px;
+ text-align:center;
+ border:0 !important;
+}
+.footer-bottom-nav span{display:none}
+
+/* hero banner bigger */
+.hero-roll-card{
+ width:560px !important;
+ min-width:560px !important;
+ height:360px !important;
+}
+
+/* pause animation on hover */
+.hero-roll:hover .hero-track{
+ animation-play-state:paused !important;
+}
+
+/* hide AB weight tags */
+.tag:contains("AB"){display:none}
+
+/* center bottom nav text */
+.footer-bottom-nav a{
+ text-align:center;
+}
