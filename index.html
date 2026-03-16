@@ -60,41 +60,37 @@
   const dotsWrap = document.getElementById('mainRollingDots');
   if(!banner || !track || !dotsWrap) return;
 
-  const sourceSlides = Array.from(track.querySelectorAll('.hero-roll-slide')).slice(0, 3).map(el => el.outerHTML);
-  const dots = Array.from(dotsWrap.querySelectorAll('button')).slice(0, 3);
-  const total = sourceSlides.length;
+  const slides = Array.from(track.querySelectorAll('.hero-roll-slide')).slice(0,3).map(el=>el.outerHTML);
+  const dots = Array.from(dotsWrap.querySelectorAll('button')).slice(0,3);
+  const total = slides.length;
   if(!total) return;
 
   let current = 0;
   let timer = null;
   let paused = false;
 
-  function isDesktop(){
+  function desktop(){
     return window.innerWidth > 1200;
   }
 
   function render(){
-    if(isDesktop()){
+    if(desktop()){
       const prev = (current - 1 + total) % total;
       const next = (current + 1) % total;
-      track.innerHTML = sourceSlides[prev] + sourceSlides[current] + sourceSlides[next];
-      track.classList.add('desktop-three');
-      track.classList.remove('mobile-single');
-    } else {
-      track.innerHTML = sourceSlides[current];
-      track.classList.add('mobile-single');
-      track.classList.remove('desktop-three');
+      track.innerHTML = slides[prev] + slides[current] + slides[next];
+    }else{
+      track.innerHTML = slides[current];
     }
-    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
+    dots.forEach((dot, idx)=>dot.classList.toggle('active', idx === current));
+  }
+
+  function goTo(index){
+    current = (index + total) % total;
+    render();
   }
 
   function next(){
     current = (current + 1) % total;
-    render();
-  }
-
-  function goTo(idx){
-    current = idx;
     render();
   }
 
@@ -108,7 +104,7 @@
   function startAuto(){
     stopAuto();
     if(paused || total < 2) return;
-    timer = setInterval(next, 3600);
+    timer = setInterval(next, 3200);
   }
 
   function pause(){
@@ -121,21 +117,19 @@
     startAuto();
   }
 
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', (e) => {
+  dots.forEach((dot, idx)=>{
+    dot.addEventListener('click', (e)=>{
       e.preventDefault();
       pause();
       goTo(idx);
     });
   });
 
-  [banner, track, dotsWrap].forEach(node => {
-    node.addEventListener('mouseenter', pause);
-    node.addEventListener('mouseleave', resume);
-    node.addEventListener('focusin', pause);
-    node.addEventListener('focusout', resume);
-    node.addEventListener('touchstart', pause, {passive:true});
-  });
+  banner.addEventListener('mouseenter', pause);
+  banner.addEventListener('mouseleave', resume);
+  banner.addEventListener('focusin', pause);
+  banner.addEventListener('focusout', resume);
+  banner.addEventListener('touchstart', pause, {passive:true});
 
   window.addEventListener('resize', render);
 
