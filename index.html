@@ -60,28 +60,32 @@
   const dotsWrap = document.getElementById('mainRollingDots');
   if(!banner || !track || !dotsWrap) return;
 
-  const slides = Array.from(track.querySelectorAll('.hero-roll-slide')).slice(0,3).map(el=>el.outerHTML);
+  const originalSlides = Array.from(track.querySelectorAll('.hero-roll-slide')).slice(0,3).map(el=>el.outerHTML);
   const dots = Array.from(dotsWrap.querySelectorAll('button')).slice(0,3);
-  const total = slides.length;
+  const total = originalSlides.length;
   if(!total) return;
 
   let current = 0;
   let timer = null;
   let paused = false;
 
-  function desktop(){
-    return window.innerWidth > 1200;
+  function isDesktop(){
+    return window.innerWidth > 1024;
   }
 
   function render(){
-    if(desktop()){
+    if(isDesktop()){
       const prev = (current - 1 + total) % total;
       const next = (current + 1) % total;
-      track.innerHTML = slides[prev] + slides[current] + slides[next];
-    }else{
-      track.innerHTML = slides[current];
+      track.classList.add('desktop-three');
+      track.classList.remove('mobile-single');
+      track.innerHTML = originalSlides[prev] + originalSlides[current] + originalSlides[next];
+    } else {
+      track.classList.add('mobile-single');
+      track.classList.remove('desktop-three');
+      track.innerHTML = originalSlides[current];
     }
-    dots.forEach((dot, idx)=>dot.classList.toggle('active', idx === current));
+    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
   }
 
   function goTo(index){
@@ -104,7 +108,7 @@
   function startAuto(){
     stopAuto();
     if(paused || total < 2) return;
-    timer = setInterval(next, 3200);
+    timer = setInterval(next, 3600);
   }
 
   function pause(){
@@ -238,9 +242,10 @@
 mountLayout('');
 document.getElementById('clientLogos')?.remove();
 
-document.getElementById('portfolioPreview').innerHTML = DATA.portfolio.slice(0,4).map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
+const visibleTags = spec => (spec||'').split(' / ').map(t=>t.trim()).filter(t=>t && !/^AB\d+g$/i.test(t));
+document.getElementById('portfolioPreview').innerHTML = DATA.portfolio.slice(0,4).map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${visibleTags(item.spec).map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
 document.getElementById('shapeGrid').innerHTML = SD_BOX_DB.slice(0,6).map(b=>`<article class="card"><img src="${b.img}" alt="${b.name}"><div class="body"><h4>${b.shape}</h4><p>${b.category} · ${b.width}×${b.length}×${b.height}mm</p></div></article>`).join('');
-document.getElementById('reviewGrid').innerHTML = DATA.portfolio.map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
+document.getElementById('reviewGrid').innerHTML = DATA.portfolio.map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${visibleTags(item.spec).map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></article>`).join('');
 
 // Platform search
 const shapeOptions = [...new Set(SD_BOX_DB.map(b=>b.shape))].sort();
