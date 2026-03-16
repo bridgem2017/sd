@@ -21,42 +21,39 @@
 </div><div class="container"><div class="logo-row" id="clientLogos"></div></div>
 
 
-
 <div class="container">
-  <div class="rolling-banner card-slider-v28" aria-label="주요 서비스 배너" id="mainRollingBanner">
+  <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
     <div class="rolling-track" id="mainRollingTrack">
-      <a class="hero-roll-card hero-slide" href="quote.html" aria-label="견적문의 페이지로 이동">
-        <img src="assets/banners/banner_quote_bg_v28.jpg" alt="박스 맞춤 견적 배너 배경">
+      <a class="hero-roll-card c1" href="quote.html" aria-label="견적문의 페이지로 이동">
+        <img src="assets/banners/banner_quote_real.jpg" alt="박스 맞춤 견적 배너">
         <div class="roll-overlay">
           <span class="mini-badge">맞춤 견적</span>
-          <h3>박스 맞춤 견적</h3>
-          <p>골판지박스 / 칼라박스<br>추천 알고리즘으로 빠른 확인</p>
+          <h3>박스 맞춤 견적<small>골판지 박스 / 칼라박스<br>추천 알고리즘으로 빠른 확인</small></h3>
         </div>
       </a>
-      <a class="hero-roll-card hero-slide" href="box-search.html" aria-label="박스검색 페이지로 이동">
-        <img src="assets/banners/banner_production_bg_v28.jpg" alt="박스 주문 제작 배너 배경">
+      <a class="hero-roll-card c2" href="box-search.html" aria-label="박스검색 페이지로 이동">
+        <img src="assets/banners/banner_production_real.jpg" alt="박스 주문 제작 배너">
         <div class="roll-overlay">
           <span class="mini-badge">원스톱 진행</span>
-          <h3>박스 주문 제작</h3>
-          <p>디자인, 인쇄, 제작, 납품을 한번에</p>
+          <h3>박스 주문 제작<small>디자인, 인쇄, 제작, 납품을 한번에</small></h3>
         </div>
       </a>
-      <a class="hero-roll-card hero-slide" href="colorbox.html" aria-label="칼라박스 페이지로 이동">
-        <img src="assets/banners/banner_print_bg_v28.jpg" alt="인쇄로 브랜드 이미지를 높여보세요 배너 배경">
+      <a class="hero-roll-card c3" href="colorbox.html" aria-label="칼라박스 페이지로 이동">
+        <img src="assets/banners/banner_print_real.jpg" alt="인쇄로 브랜드 이미지를 높여보세요 배너">
         <div class="roll-overlay">
-          <span class="mini-badge">소량 제작</span>
-          <h3>인쇄로 브랜드 이미지를</h3>
-          <p>높여보세요.</p>
+          <span class="mini-badge">소량제작</span>
+          <h3>인쇄로 브랜드 이미지를<small>높여보세요.</small></h3>
         </div>
       </a>
     </div>
   </div>
   <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
-    <button type="button" class="active" data-slide="0" aria-label="첫번째 배너 보기"></button>
-    <button type="button" data-slide="1" aria-label="두번째 배너 보기"></button>
-    <button type="button" data-slide="2" aria-label="세번째 배너 보기"></button>
+    <button type="button" class="active" aria-label="첫번째 배너 보기"></button>
+    <button type="button" aria-label="두번째 배너 보기"></button>
+    <button type="button" aria-label="세번째 배너 보기"></button>
   </div>
 </div>
+</section>
 <script>
 (function(){
   const banner = document.getElementById('mainRollingBanner');
@@ -64,9 +61,9 @@
   const dotsWrap = document.getElementById('mainRollingDots');
   if(!banner || !track || !dotsWrap) return;
 
-  const slides = Array.from(track.querySelectorAll('.hero-slide'));
+  const slides = Array.from(track.querySelectorAll('.hero-roll-card'));
   const dots = Array.from(dotsWrap.querySelectorAll('button'));
-  const total = slides.length;
+  const total = Math.min(slides.length, dots.length);
   let current = 0;
   let timer = null;
 
@@ -78,37 +75,37 @@
     current = (idx + total) % total;
     update();
   }
-  function stop(){
+  function stopAuto(){
     if(timer){
       clearInterval(timer);
       timer = null;
     }
   }
-  function start(){
-    stop();
+  function startAuto(){
+    stopAuto();
     timer = setInterval(function(){
       go(current + 1);
-    }, 3400);
+    }, 3600);
   }
 
   dots.forEach((dot, idx) => {
     dot.addEventListener('click', function(e){
       e.preventDefault();
-      stop();
+      stopAuto();
       go(idx);
+      startAuto();
     });
   });
 
-  banner.addEventListener('mouseenter', stop);
-  banner.addEventListener('mouseleave', start);
-  dotsWrap.addEventListener('mouseenter', stop);
-  dotsWrap.addEventListener('mouseleave', start);
+  banner.addEventListener('mouseenter', stopAuto);
+  banner.addEventListener('mouseleave', startAuto);
+  dotsWrap.addEventListener('mouseenter', stopAuto);
+  dotsWrap.addEventListener('mouseleave', startAuto);
 
   go(0);
-  start();
+  startAuto();
 })();
 </script>
-
 
 
 <section class="section" id="platform-search"><div class="container">
