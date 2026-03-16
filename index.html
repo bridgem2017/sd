@@ -69,33 +69,31 @@
   let timer = null;
   let paused = false;
 
-  function isDesktop(){
-    return window.innerWidth > 1024;
-  }
+  const desktopMode = () => window.innerWidth > 1024;
 
   function render(){
-    if(isDesktop()){
+    if(desktopMode()){
       const prev = (current - 1 + total) % total;
       const next = (current + 1) % total;
-      track.classList.add('desktop-three');
-      track.classList.remove('mobile-single');
-      track.innerHTML = originalSlides[prev] + originalSlides[current] + originalSlides[next];
+      track.className = 'rolling-track desktop-three';
+      track.innerHTML = [originalSlides[prev], originalSlides[current], originalSlides[next]].join('');
     } else {
-      track.classList.add('mobile-single');
-      track.classList.remove('desktop-three');
+      track.className = 'rolling-track mobile-single';
       track.innerHTML = originalSlides[current];
     }
-    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === current));
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === current);
+      dot.setAttribute('aria-pressed', idx === current ? 'true' : 'false');
+    });
   }
 
   function goTo(index){
-    current = (index + total) % total;
+    current = ((index % total) + total) % total;
     render();
   }
 
   function next(){
-    current = (current + 1) % total;
-    render();
+    goTo(current + 1);
   }
 
   function stopAuto(){
@@ -129,13 +127,17 @@
     });
   });
 
-  banner.addEventListener('mouseenter', pause);
-  banner.addEventListener('mouseleave', resume);
+  banner.addEventListener('pointerenter', pause);
+  banner.addEventListener('pointerleave', resume);
   banner.addEventListener('focusin', pause);
   banner.addEventListener('focusout', resume);
   banner.addEventListener('touchstart', pause, {passive:true});
 
-  window.addEventListener('resize', render);
+  let resizeTimer = null;
+  window.addEventListener('resize', ()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(render, 80);
+  });
 
   render();
   startAuto();
