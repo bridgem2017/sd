@@ -1744,3 +1744,162 @@ body.drawer-open{overflow:hidden}
   .hamburger span{width:22px}
   .mobile-drawer{width:min(86vw,300px)}
 }
+
+/* === v38 final footer + 3-visible slider fix === */
+.footer{
+  margin-top:72px !important;
+  padding:22px 0 24px !important;
+}
+.footer-shell{
+  grid-template-columns:220px 1fr !important;
+  align-items:center !important;
+  gap:26px !important;
+}
+.footer-brand,
+.footer-brand-compact{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:170px !important;
+}
+.footer-brand img,
+.footer-brand-compact img{
+  width:160px !important;
+  height:auto !important;
+  max-height:170px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+.footer-info-column{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:10px !important;
+  min-height:170px !important;
+}
+.footer-bottom-nav{
+  margin:0 0 8px 0 !important;
+  padding:0 !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+  justify-content:center !important;
+  gap:34px !important;
+}
+.footer-bottom-nav a{
+  font-size:18px !important;
+  font-weight:800 !important;
+  color:#17253c !important;
+}
+.footer-contact-rows{
+  width:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:6px !important;
+}
+.footer-row{
+  width:100% !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:24px !important;
+  flex-wrap:wrap !important;
+  margin:0 !important;
+  text-align:center !important;
+}
+.footer-row span{
+  font-size:16px !important;
+  line-height:1.35 !important;
+}
+.footer-copy{margin-top:6px !important;}
+.footer-copy span{
+  font-size:18px !important;
+  font-weight:900 !important;
+}
+
+.rolling-banner{
+  width:min(1600px, calc(100% - 24px)) !important;
+  max-width:1600px !important;
+  margin:22px auto 0 !important;
+  overflow:hidden !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+.rolling-track.desktop-three{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:stretch !important;
+  gap:18px !important;
+  width:100% !important;
+}
+.rolling-track.desktop-three .hero-roll-slide,
+.rolling-track.desktop-three .hero-roll-card{
+  flex:0 0 512px !important;
+  width:512px !important;
+  min-width:512px !important;
+  max-width:512px !important;
+}
+.hero-roll-card{
+  height:320px !important;
+  border-radius:26px !important;
+  overflow:hidden !important;
+}
+.hero-roll-card img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+.rolling-track.mobile-single{
+  display:flex !important;
+  justify-content:center !important;
+}
+.rolling-track.mobile-single .hero-roll-slide,
+.rolling-track.mobile-single .hero-roll-card{
+  width:min(512px, calc(100vw - 32px)) !important;
+  min-width:min(512px, calc(100vw - 32px)) !important;
+  max-width:min(512px, calc(100vw - 32px)) !important;
+}
+.rolling-dots{
+  display:flex !important;
+  justify-content:center !important;
+  gap:10px !important;
+  margin-top:16px !important;
+}
+.rolling-dots button{
+  width:18px !important;
+  height:18px !important;
+  border-radius:999px !important;
+  border:none !important;
+  background:#d1d1d1 !important;
+  cursor:pointer !important;
+}
+.rolling-dots button.active{background:#111 !important;}
+
+@media (max-width:1680px){
+  .rolling-banner{width:min(1572px, calc(100% - 24px)) !important;}
+}
+@media (max-width:1200px){
+  .rolling-banner{width:min(512px, calc(100% - 24px)) !important;max-width:512px !important;}
+  .rolling-track.desktop-three{
+    display:flex !important;
+    justify-content:center !important;
+    gap:0 !important;
+  }
+  .rolling-track.desktop-three .hero-roll-slide,
+  .rolling-track.desktop-three .hero-roll-card,
+  .rolling-track.mobile-single .hero-roll-slide,
+  .rolling-track.mobile-single .hero-roll-card{
+    width:min(512px, calc(100vw - 24px)) !important;
+    min-width:min(512px, calc(100vw - 24px)) !important;
+    max-width:min(512px, calc(100vw - 24px)) !important;
+  }
+}
+@media (max-width:900px){
+  .footer-shell{grid-template-columns:1fr !important;gap:18px !important;}
+  .footer-brand,.footer-brand-compact,.footer-info-column{min-height:auto !important;}
+  .footer-brand img,.footer-brand-compact img{width:140px !important;max-height:none !important;}
+  .footer-bottom-nav{gap:18px !important;}
+  .footer-row{gap:12px !important;}
+}
