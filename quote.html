@@ -137,13 +137,14 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
 </script><script>
 document.addEventListener('DOMContentLoaded', ()=>{
   const qp = new URLSearchParams(location.search);
-  const preBox = qp.get('box') || '';
-  const preSize = qp.get('size') || '';
-  const preFlute = qp.get('flute') || '';
-  const preQty = qp.get('qty') || '';
-  const preCategory = qp.get('category') || '';
-  const preShape = qp.get('shape') || '';
-  const preUse = qp.get('use') || '';
+const storedBox = (() => { try { return JSON.parse(localStorage.getItem('sd_selected_box') || 'null'); } catch(e){ return null; } })();
+  const preBox = qp.get('box') || (storedBox ? storedBox.name : '');
+  const preSize = qp.get('size') || (storedBox ? `${storedBox.width}x${storedBox.length}x${storedBox.height}` : '');
+  const preFlute = qp.get('flute') || (storedBox ? storedBox.flute : '');
+  const preQty = qp.get('qty') || (storedBox ? storedBox.minQty : '');
+  const preCategory = qp.get('category') || (storedBox ? storedBox.category : '');
+  const preShape = qp.get('shape') || (storedBox ? storedBox.shape : '');
+  const preUse = qp.get('use') || (storedBox ? storedBox.use : '');
 
   // size fields
   if(preSize){
