@@ -1,240 +1,325 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>박스검색엔진 | 에스디컴퍼니</title><meta name="description" content="300개 박스 DB를 사이즈, 형태, 골두께, 용도, 산업군으로 검색하고 추천 알고리즘 v2로 박스를 찾는 에스디컴퍼니 박스검색엔진"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="config/box-db.js"></script><script src="js/common.js"></script></head><body><main class="section subpage-hero"><div class="container">
-<div class="kicker">SERVICE GRADE ENGINE</div>
-<h1>완전한 박스 검색엔진</h1>
-<p>사이즈, 형태, 골두께, 용도, 산업군으로 300개 박스 DB를 실제로 검색할 수 있고, 추천 알고리즘 v2와 박스 규격 계산기까지 함께 사용할 수 있습니다.</p>
-<div class="search-shell">
-  <aside class="search-sidebar" aria-label="검색 필터 사이드바">
-    <div class="search-panel">
-      <h3>박스 검색</h3>
-      <div class="search-grid">
-        <div class="field"><label>가로(mm)</label><input id="sW" type="number" placeholder="예: 220"></div>
-        <div class="field"><label>세로(mm)</label><input id="sL" type="number" placeholder="예: 160"></div>
-        <div class="field"><label>높이(mm)</label><input id="sH" type="number" placeholder="예: 90"></div>
-        <div class="field"><label>무게(kg)</label><input id="sWeight" type="number" step="0.1" placeholder="예: 1.2"></div>
-        <div class="field"><label>박스군</label><select id="sCategory"><option value="">전체</option><option>골판지박스</option><option>칼라박스</option><option>싸바리박스</option><option>기타</option></select></div>
-        <div class="field"><label>형태</label><select id="sShape"><option value="">전체</option></select></div>
-        <div class="field"><label>골두께 / 보드</label><select id="sFlute"><option value="">전체</option><option>A</option><option>B</option><option>C</option><option>E</option><option>F</option><option>BA</option><option>BB</option><option>보드1T</option><option>보드1.5T</option><option>보드2T</option><option>없음</option></select></div>
-        <div class="field"><label>용도</label><select id="sUse"><option value="">전체</option><option>택배</option><option>쇼핑몰</option><option>식품</option><option>화장품</option><option>의료</option><option>교육</option><option>물류</option><option>브랜드굿즈</option><option>전시</option><option>프로모션</option></select></div>
-        <div class="field"><label>산업군</label><select id="sIndustry"><option value="">전체</option><option>식품</option><option>화장품</option><option>패션</option><option>의료</option><option>교육</option><option>물류</option><option>쇼핑몰</option><option>기타</option></select></div>
-        <div class="field"><label>최소 수량</label><input id="sQty" type="number" placeholder="예: 500"></div>
-      </div>
-      <div class="hero-actions" style="margin-top:14px">
-        <a href="#" class="btn primary" onclick="runSearch();return false">검색하기</a>
-        <a href="#" class="btn line" onclick="runRecommendV2();return false">추천받기</a>
-        <a href="#" class="btn line" onclick="resetEngine();return false">초기화</a>
-      </div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>전개도 생성기 | 에스디컴퍼니</title>
+  <meta name="description" content="맞춤 박스 제작을 위한 전개도 자동 생성기. 골판지 A형, 골판지 피자박스, 골판지 우편형, 칼라 단상자, 칼라 슬리브박스, 칼라 상하짝의 기본 전개도를 SVG로 내려받을 수 있습니다.">
+  <meta name="robots" content="index,follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"전개도 생성기",
+    "description":"맞춤 박스 제작을 위한 전개도 자동 생성기",
+    "url":"https://box.re.kr/box-search.html"
+  }
+  </script>
+  <script src="config/site-config.js"></script>
+  <script src="js/common.js"></script>
+</head>
+<body>
+<main class="section subpage-hero">
+  <div class="container">
+    <div class="kicker">CUSTOM DIELINE TOOL</div>
+    <h1>전개도 자동 생성기</h1>
+    <p class="desc">
+      맞춤 박스 제조 상담 전 구조 방향을 빠르게 검토할 수 있도록 기본 전개도를 웹에서 바로 생성할 수 있게 구성했습니다.
+      구조를 선택하고 치수를 입력하면 미리보기를 갱신하고, SVG 파일로 저장할 수 있습니다.
+    </p>
+
+    <div class="dieline-shell">
+      <aside class="dieline-sidebar">
+        <div class="search-panel">
+          <h3>전개도 설정</h3>
+          <div class="search-grid">
+            <div class="field" style="grid-column:1 / -1">
+              <label>박스 구조</label>
+              <select id="templateType">
+                <option value="corr_a">골판지 A형</option>
+                <option value="corr_pizza">골판지 피자박스</option>
+                <option value="corr_mailer">골판지 우편형</option>
+                <option value="color_mono">칼라 단상자</option>
+                <option value="color_sleeve">칼라 슬리브박스</option>
+                <option value="color_lidbase">칼라 상하짝</option>
+              </select>
+            </div>
+            <div class="field"><label>가로(mm)</label><input id="dimW" type="number" value="220"></div>
+            <div class="field"><label>세로(mm)</label><input id="dimD" type="number" value="160"></div>
+            <div class="field"><label>높이(mm)</label><input id="dimH" type="number" value="80"></div>
+            <div class="field"><label>접착 플랩(mm)</label><input id="glue" type="number" value="18"></div>
+            <div class="field"><label>뚜껑 / 턱(mm)</label><input id="tuck" type="number" value="35"></div>
+            <div class="field"><label>먼지날개(mm)</label><input id="dust" type="number" value="18"></div>
+            <div class="field"><label>재질 두께(mm)</label><input id="thickness" type="number" step="0.1" value="1.5"></div>
+            <div class="field"><label>여백(mm)</label><input id="margin" type="number" value="16"></div>
+          </div>
+          <div class="hero-actions" style="margin-top:14px">
+            <a href="#" class="btn primary" onclick="updateDieline();return false;">미리보기 갱신</a>
+            <a href="#" class="btn line" onclick="downloadSVG();return false;">SVG 다운로드</a>
+            <a href="#" class="btn line" onclick="printDieline();return false;">인쇄하기</a>
+          </div>
+        </div>
+
+        <div class="search-panel">
+          <h3>지원 구조</h3>
+          <ul class="search-notes">
+            <li>골판지 A형</li>
+            <li>골판지 피자박스</li>
+            <li>골판지 우편형</li>
+            <li>칼라 단상자</li>
+            <li>칼라 슬리브박스</li>
+            <li>칼라 상하짝</li>
+          </ul>
+          <p class="small" style="margin-top:10px">
+            현재 버전은 상담 전 구조 검토, 내부 공유, 고객 커뮤니케이션을 위한 기본 생성기입니다.
+            실제 생산용 최종 칼선은 재질 두께, 접착 여유, 톰슨선 기준을 반영해 별도 조정하는 것이 안전합니다.
+          </p>
+        </div>
+      </aside>
+
+      <section>
+        <div class="search-panel">
+          <div class="dieline-preview-head">
+            <div>
+              <div class="kicker">SVG PREVIEW</div>
+              <h2 style="margin:10px 0 6px;font-size:38px">전개도 미리보기</h2>
+              <p class="small" id="svgMeta">입력값을 바꾸면 전개도 미리보기가 즉시 갱신됩니다.</p>
+            </div>
+          </div>
+          <div class="dieline-preview-wrap">
+            <div id="svgMount"></div>
+          </div>
+        </div>
+
+        <div class="search-panel" style="margin-top:24px">
+          <h3>사용 안내</h3>
+          <div class="guide-steps">
+            <div class="step-card"><b>1</b><span>구조를 선택합니다</span></div>
+            <div class="step-card"><b>2</b><span>가로·세로·높이를 입력합니다</span></div>
+            <div class="step-card"><b>3</b><span>미리보기 확인 후 SVG로 저장합니다</span></div>
+          </div>
+          <p class="small" style="margin-top:14px">
+            다운로드한 전개도는 구조 설명용, 1차 검토용, 견적 상담용으로 활용하기 좋습니다.
+            실제 생산 환경에서는 종이 두께, 여유값, 접착 방향, 후가공 기준에 따라 최종 칼선을 다시 정리할 수 있습니다.
+          </p>
+        </div>
+      </section>
     </div>
-    <div class="search-panel" id="calcBox" style="margin-top:0">
-      <h3>박스 규격 계산기</h3>
-      <p class="small" style="margin-top:0">제품 규격에 기본 여유를 더해 권장 내부 치수와 권장 골두께를 계산합니다.</p>
-      <div class="metrics-grid">
-        <div class="metric-box"><span class="small">권장 내부 가로</span><b id="mW">-</b></div>
-        <div class="metric-box"><span class="small">권장 내부 세로</span><b id="mL">-</b></div>
-        <div class="metric-box"><span class="small">권장 내부 높이</span><b id="mH">-</b></div>
-      </div>
-      <div class="algobox" style="margin-top:12px">
-        <div class="small">권장 골두께 / 보드</div>
-        <strong id="mFlute" style="font-size:28px;display:block;margin-top:6px">-</strong>
-        <p class="small" id="mReason" style="margin:8px 0 0">무게와 용도에 따라 자동 계산됩니다.</p>
-      </div>
-    </div>
-    <div class="search-panel" id="algoBox">
-      <h3>추천 알고리즘 v2</h3>
-      <p class="small" style="margin:0">입력값과의 차이를 단순 비교하지 않고, 치수 적합성 + 골두께 적합성 + 용도 적합성 + 산업군 적합성 + 최소수량 적합성을 함께 점수화합니다.</p>
-    </div>
-  </aside>
-  <section>
-    <div class="search-results-head">
-      <div>
-        <div class="kicker">검색 결과</div>
-        <h2 style="margin:10px 0 6px;font-size:38px" id="resultTitle">전체 박스 DB</h2>
-        <p class="small" id="resultMeta">300개 전체 데이터를 한 페이지에서 가로 텍스트 행 구조로 확인할 수 있습니다.</p>
-      </div>
-      <div class="search-toolbar" style="justify-content:flex-end">
-        <select id="sortBy" onchange="applyRender()">
-          <option value="score">추천순</option>
-          <option value="sizeAsc">규격 작은순</option>
-          <option value="sizeDesc">규격 큰순</option>
-          <option value="qtyAsc">최소수량 낮은순</option>
-        </select>
-        <input id="keyword" type="text" placeholder="박스명 / 형태 키워드" oninput="applyRender()">
-      </div>
-    </div>
-    <div class="result-grid" id="engineGrid"></div>
-    <div class="pager" id="pager"></div>
-    <div class="search-panel" id="engineCodeBox" style="margin-top:24px">
-      <h3>검색 코드 예시</h3>
-      <p class="small">이 페이지는 실제로 <strong>box-db.js</strong> 의 300개 DB를 필터링해 결과를 표시합니다. 클릭만 되는 모형이 아니라, 입력값을 바탕으로 검색과 추천이 동작합니다.</p>
-      <pre style="white-space:pre-wrap;background:#fff7ef;padding:16px;border-radius:16px;border:1px solid #f0dcc4;overflow:auto;font-size:13px;line-height:1.6">const results = SD_BOX_DB.filter(box =>
-  (!category || box.category === category) &&
-  (!shape || box.shape === shape) &&
-  (!flute || box.flute === flute) &&
-  (!use || box.use === use) &&
-  (!industry || box.industry === industry) &&
-  (!qty || box.minQty <= qty)
-)</pre>
-    </div>
-  </section>
-</div>
-</div></main>
+  </div>
+</main>
+
 <script>
 mountLayout('box-search.html');
-const SHAPES = [...new Set(SD_BOX_DB.map(b=>b.shape))].sort();
-document.getElementById('sShape').innerHTML = '<option value="">전체</option>' + SHAPES.map(v=>`<option>${v}</option>`).join('');
 
-let currentResults = [...SD_BOX_DB];
-let currentPage = 1;
-const pageSize = 18;
+let currentSVG = '';
 
-function recommendedFlute(weight, use, category){
-  if(category === '싸바리박스') return '보드1.5T';
-  if(category === '칼라박스') return weight > 1.5 ? 'E' : 'F';
-  if(weight >= 10) return 'BA';
-  if(weight >= 5) return 'C';
-  if(weight >= 2) return 'B';
-  if(use === '화장품' || use === '브랜드굿즈') return 'E';
-  return 'B';
-}
-function calcSuggestedSize(){
-  const w = +document.getElementById('sW').value || 0;
-  const l = +document.getElementById('sL').value || 0;
-  const h = +document.getElementById('sH').value || 0;
-  const use = document.getElementById('sUse').value || '';
-  const category = document.getElementById('sCategory').value || '';
-  const weight = +document.getElementById('sWeight').value || 0;
-  const margin = use === '택배' || use === '물류' ? 12 : 8;
-  const recW = w ? w + margin : 0;
-  const recL = l ? l + margin : 0;
-  const recH = h ? h + margin : 0;
-  document.getElementById('mW').textContent = recW ? recW + 'mm' : '-';
-  document.getElementById('mL').textContent = recL ? recL + 'mm' : '-';
-  document.getElementById('mH').textContent = recH ? recH + 'mm' : '-';
-  const flute = recommendedFlute(weight, use, category);
-  document.getElementById('mFlute').textContent = flute;
-  document.getElementById('mReason').textContent = `무게 ${weight || 0}kg / 용도 ${use || '미선택'} 기준으로 권장 골두께를 계산했습니다.`;
-  return {recW, recL, recH, flute};
-}
-['sW','sL','sH','sWeight','sUse','sCategory'].forEach(id=>{
-  document.getElementById(id).addEventListener('input', calcSuggestedSize);
-  document.getElementById(id).addEventListener('change', calcSuggestedSize);
-});
+function line(x1,y1,x2,y2, cls='cut'){ return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${cls}" />`; }
+function rect(x,y,w,h, cls='cut'){ return `<rect x="${x}" y="${y}" width="${w}" height="${h}" class="${cls}" fill="none" />`; }
+function label(x,y,t){ return `<text x="${x}" y="${y}" class="label">${t}</text>`; }
 
-function scoreBoxV2(box, input){
-  let score = 0;
-  const sumSize = (input.w||0)+(input.l||0)+(input.h||0);
-  if(sumSize){
-    if(box.width >= input.w) score += Math.max(0, 100 - (box.width-input.w)*0.7);
-    if(box.length >= input.l) score += Math.max(0, 100 - (box.length-input.l)*0.7);
-    if(box.height >= input.h) score += Math.max(0, 80 - (box.height-input.h)*0.9);
-  }
-  if(input.category && box.category === input.category) score += 90;
-  if(input.shape && box.shape === input.shape) score += 70;
-  if(input.flute && box.flute === input.flute) score += 60;
-  if(input.use && box.use === input.use) score += 55;
-  if(input.industry && box.industry === input.industry) score += 45;
-  if(input.qty && box.minQty <= input.qty) score += 40; else if(input.qty) score -= 20;
-  if(input.recommendedFlute && box.flute === input.recommendedFlute) score += 35;
-  return score;
+function svgWrap(w,h, body){
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" height="100%">
+    <defs>
+      <style>
+        .cut{stroke:#17253c;stroke-width:1.5}
+        .fold{stroke:#ff7a30;stroke-width:1.2;stroke-dasharray:6 4}
+        .label{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:#5f6b7d}
+      </style>
+    </defs>
+    ${body}
+  </svg>`;
 }
-function collectInput(){
-  const calc = calcSuggestedSize();
+
+function getDims(){
   return {
-    w:+document.getElementById('sW').value || 0,
-    l:+document.getElementById('sL').value || 0,
-    h:+document.getElementById('sH').value || 0,
-    weight:+document.getElementById('sWeight').value || 0,
-    category:document.getElementById('sCategory').value,
-    shape:document.getElementById('sShape').value,
-    flute:document.getElementById('sFlute').value,
-    use:document.getElementById('sUse').value,
-    industry:document.getElementById('sIndustry').value,
-    qty:+document.getElementById('sQty').value || 0,
-    recommendedFlute: calc.flute
+    w: Number(document.getElementById('dimW').value) || 220,
+    d: Number(document.getElementById('dimD').value) || 160,
+    h: Number(document.getElementById('dimH').value) || 80,
+    glue: Number(document.getElementById('glue').value) || 18,
+    tuck: Number(document.getElementById('tuck').value) || 35,
+    dust: Number(document.getElementById('dust').value) || 18,
+    t: Number(document.getElementById('thickness').value) || 1.5,
+    m: Number(document.getElementById('margin').value) || 16
   };
 }
-function filterBoxes(input){
-  return SD_BOX_DB.filter(box =>
-    (!input.category || box.category === input.category) &&
-    (!input.shape || box.shape === input.shape) &&
-    (!input.flute || box.flute === input.flute) &&
-    (!input.use || box.use === input.use) &&
-    (!input.industry || box.industry === input.industry) &&
-    (!input.qty || box.minQty <= input.qty) &&
-    (!input.w || box.width >= input.w) &&
-    (!input.l || box.length >= input.l) &&
-    (!input.h || box.height >= input.h)
-  );
+
+function corrA(v){
+  const x=v.m, y=v.m, g=v.glue, W=v.w, D=v.d, H=v.h, flap=Math.max(v.tuck, Math.round(H*0.55));
+  const totalW = v.m*2 + g + W + D + W + D;
+  const totalH = v.m*2 + flap + H + flap;
+  let s = '';
+  s += rect(x+g, y+flap, W+D+W+D, H);
+  s += rect(x, y+flap, g, H);
+  [g, g+W, g+W+D, g+W+D+W, g+W+D+W+D].forEach(off => { if(off>g) s += line(x+off, y+flap, x+off, y+flap+H, 'fold'); });
+  let ox = x + g;
+  [W,D,W,D].forEach(pw => {
+    s += rect(ox, y, pw, flap);
+    s += rect(ox, y+flap+H, pw, flap);
+    s += line(ox, y+flap, ox+pw, y+flap, 'fold');
+    s += line(ox, y+flap+H, ox+pw, y+flap+H, 'fold');
+    ox += pw;
+  });
+  s += label(x+g+W/2, y+flap+H/2, `A형 ${W}`);
+  s += label(x+g+W+D/2, y+flap+H/2, `측면 ${D}`);
+  return svgWrap(totalW, totalH, s);
 }
-function applyRender(){
-  const keyword = (document.getElementById('keyword').value || '').trim();
-  const sortBy = document.getElementById('sortBy').value;
-  let arr = [...currentResults];
-  if(keyword){
-    arr = arr.filter(b => (b.name + ' ' + b.shape + ' ' + b.category).includes(keyword));
-  }
-  if(sortBy === 'sizeAsc') arr.sort((a,b)=>(a.width*a.length*a.height)-(b.width*b.length*b.height));
-  else if(sortBy === 'sizeDesc') arr.sort((a,b)=>(b.width*b.length*b.height)-(a.width*a.length*a.height));
-  else if(sortBy === 'qtyAsc') arr.sort((a,b)=>a.minQty-b.minQty);
-  else arr.sort((a,b)=>(b.__score||0)-(a.__score||0));
-  renderPage(arr);
+
+function pizza(v){
+  const x=v.m, y=v.m, W=v.w, D=v.d, H=Math.max(25, Math.min(v.h,70)), lid=Math.max(v.tuck,30);
+  const bx = x + H;
+  const by = y + lid;
+  const totalW = x*2 + W + H*2 + Math.round(lid*0.5);
+  const totalH = y*2 + D + H*2 + lid;
+  let s = '';
+  s += rect(bx, by, W, D);
+  s += rect(bx-H, by, H, D);
+  s += rect(bx+W, by, H, D);
+  s += rect(bx, by-H, W, H);
+  s += rect(bx, by+D, W, H);
+  s += rect(bx, y, W, lid);
+  s += line(bx, by, bx+W, by, 'fold');
+  s += line(bx, by+D, bx+W, by+D, 'fold');
+  s += line(bx, by, bx, by+D, 'fold');
+  s += line(bx+W, by, bx+W, by+D, 'fold');
+  s += label(bx+W/2, by+D/2, `피자박스 ${W}×${D}`);
+  return svgWrap(totalW, totalH, s);
 }
-function renderPage(arr){
-  const pageArr = arr;
-  document.getElementById('engineGrid').innerHTML = pageArr.map(b=>`
-    <article class="card result-card">
-      <img src="${b.img}" alt="${b.name}">
-      <div class="body">
-        <h4>${b.name}</h4>
-        <div class="db-inline-meta">
-          <span class="meta-chip"><span class="meta-label">사이즈</span><span class="meta-value">${b.width} × ${b.length} × ${b.height} mm</span></span>
-          <span class="meta-chip"><span class="meta-label">형태</span><span class="meta-value">${b.shape}</span></span>
-          <span class="meta-chip"><span class="meta-label">골두께</span><span class="meta-value">${b.flute}</span></span>
-          <span class="meta-chip"><span class="meta-label">용도</span><span class="meta-value">${b.use}</span></span>
-          <span class="meta-chip"><span class="meta-label">산업군</span><span class="meta-value">${b.industry}</span></span>
-          <span class="meta-chip"><span class="meta-label">최소수량</span><span class="meta-value">${b.minQty}개</span></span>
-        </div>
-        <div class="tag-row">
-          <span class="tag">${b.category}</span>
-          ${b.tag ? `<span class="tag">${b.tag}</span>` : ''}
-        </div>
-      </div>
-      <div class="action-col">
-        <a class="btn primary" href="quote.html?box=${encodeURIComponent(b.name)}&category=${encodeURIComponent(b.category)}&shape=${encodeURIComponent(b.shape)}&size=${b.width}x${b.length}x${b.height}&flute=${encodeURIComponent(b.flute)}&qty=${encodeURIComponent(b.minQty)}&use=${encodeURIComponent(b.use)}">견적문의로 연결</a>
-      </div>
-    </article>`).join('');
-  document.getElementById('resultMeta').textContent = `총 ${arr.length}개 DB가 한 페이지에 표시됩니다.`;
-  document.getElementById('pager').innerHTML = '';
+
+function mailer(v){
+  const x=v.m, y=v.m, W=v.w, D=v.d, H=v.h, top=Math.max(v.tuck,28), dust=Math.max(v.dust,16);
+  const bx = x + H;
+  const by = y + top + Math.round(D*0.45);
+  const totalW = x*2 + W + H*2;
+  const totalH = y*2 + D + H + top + Math.round(D*0.45) + dust;
+  let s = '';
+  s += rect(bx, by, W, D);
+  s += rect(bx-H, by, H, D);
+  s += rect(bx+W, by, H, D);
+  s += rect(bx, by-H, W, H);
+  s += rect(bx, by+D, W, H);
+  s += rect(bx, y+top, W, Math.round(D*0.45));
+  s += rect(bx+dust, y, W-dust*2, top);
+  s += line(bx, by, bx+W, by, 'fold');
+  s += line(bx, by+D, bx+W, by+D, 'fold');
+  s += line(bx, by, bx, by+D, 'fold');
+  s += line(bx+W, by, bx+W, by+D, 'fold');
+  s += label(bx+W/2, by+D/2, `우편형 ${W}×${D}`);
+  return svgWrap(totalW, totalH, s);
 }
-function goPage(n){ currentPage = 1; applyRender(); }
-function runSearch(){
-  currentPage = 1;
-  const input = collectInput();
-  currentResults = filterBoxes(input).map(b=>({...b,__score:scoreBoxV2(b,input)}));
-  document.getElementById('resultTitle').textContent = currentResults.length ? '박스 검색 결과' : '일치하는 결과 없음';
-  if(!currentResults.length){
-    currentResults = SD_BOX_DB.map(b=>({...b,__score:0}));
-    document.getElementById('resultTitle').textContent = '전체 박스 DB';
-  }
-  applyRender();
+
+function mono(v){
+  const x=v.m, y=v.m, g=v.glue, W=v.w, D=v.d, H=v.h, top=Math.max(v.tuck,26), dust=Math.max(v.dust,16);
+  const totalW = x*2 + g + W + D + W + D;
+  const totalH = y*2 + top + H + top;
+  let s = '';
+  s += rect(x+g, y+top, W+D+W+D, H);
+  s += rect(x, y+top, g, H);
+  [g, g+W, g+W+D, g+W+D+W, g+W+D+W+D].forEach(off => { if(off>g) s += line(x+off, y+top, x+off, y+top+H, 'fold'); });
+  let ox = x + g;
+  [W,D,W,D].forEach(pw => {
+    s += rect(ox, y, pw, top);
+    s += rect(ox, y+top+H, pw, top);
+    s += line(ox, y+top, ox+pw, y+top, 'fold');
+    s += line(ox, y+top+H, ox+pw, y+top+H, 'fold');
+    ox += pw;
+  });
+  s += rect(x+g+dust, y, W-dust*2, top);
+  s += rect(x+g+dust, y+top+H, W-dust*2, top);
+  s += label(x+g+W/2, y+top+H/2, `단상자 ${W}`);
+  return svgWrap(totalW, totalH, s);
 }
-function runRecommendV2(){
-  currentPage = 1;
-  const input = collectInput();
-  currentResults = SD_BOX_DB.map(b=>({...b,__score:scoreBoxV2(b,input)})).sort((a,b)=>b.__score-a.__score);
-  document.getElementById('resultTitle').textContent = '추천 알고리즘 v2 결과';
-  applyRender();
+
+function sleeve(v){
+  const x=v.m, y=v.m, W=v.w, D=v.d, H=v.h, g=v.glue;
+  const totalW = x*2 + W + H*2 + g;
+  const totalH = y*2 + D;
+  let s = '';
+  s += rect(x+g, y, H+W+H, D);
+  s += rect(x, y, g, D);
+  s += line(x+g, y, x+g, y+D, 'fold');
+  s += line(x+g+H, y, x+g+H, y+D, 'fold');
+  s += line(x+g+H+W, y, x+g+H+W, y+D, 'fold');
+  s += label(x+g+H+W/2, y+D/2, `슬리브 ${W}×${D}`);
+  return svgWrap(totalW, totalH, s);
 }
-function resetEngine(){
-  ['sW','sL','sH','sWeight','sQty','keyword'].forEach(id=>document.getElementById(id).value='');
-  ['sCategory','sShape','sFlute','sUse','sIndustry','sortBy'].forEach((id,idx)=>document.getElementById(id).value='');
-  document.getElementById('sortBy').value = 'score';
-  currentPage = 1;
-  currentResults = SD_BOX_DB.map(b=>({...b,__score:0}));
-  document.getElementById('resultTitle').textContent = '전체 박스 DB';
-  calcSuggestedSize();
-  applyRender();
+
+function lidbase(v){
+  const x=v.m, y=v.m, W=v.w, D=v.d, H=v.h;
+  const lidH = H + v.t*2 + 2;
+  const lidX = x;
+  const baseX = x + W + D + lidH*2 + 60;
+  const totalW = baseX + W + D + H*2 + x;
+  const totalH = y*2 + D + lidH*2 + 30;
+  let s = '';
+  s += rect(lidX+lidH, y+lidH, W, D);
+  s += rect(lidX, y+lidH, lidH, D);
+  s += rect(lidX+lidH+W, y+lidH, lidH, D);
+  s += rect(lidX+lidH, y, W, lidH);
+  s += rect(lidX+lidH, y+lidH+D, W, lidH);
+  s += line(lidX+lidH, y+lidH, lidX+lidH+W, y+lidH, 'fold');
+  s += line(lidX+lidH, y+lidH+D, lidX+lidH+W, y+lidH+D, 'fold');
+
+  s += rect(baseX+H, y+H, W, D);
+  s += rect(baseX, y+H, H, D);
+  s += rect(baseX+H+W, y+H, H, D);
+  s += rect(baseX+H, y, W, H);
+  s += rect(baseX+H, y+H+D, W, H);
+  s += line(baseX+H, y+H, baseX+H+W, y+H, 'fold');
+  s += line(baseX+H, y+H+D, baseX+H+W, y+H+D, 'fold');
+
+  s += label(lidX+lidH+W/2, y+lidH+D/2, '뚜껑');
+  s += label(baseX+H+W/2, y+H+D/2, '몸통');
+  return svgWrap(totalW, totalH, s);
 }
-currentResults = SD_BOX_DB.map(b=>({...b,__score:0}));
-calcSuggestedSize();
-applyRender();
-</script></body></html>
+
+function buildSVG(){
+  const t = document.getElementById('templateType').value;
+  const v = getDims();
+  if(t === 'corr_a') return corrA(v);
+  if(t === 'corr_pizza') return pizza(v);
+  if(t === 'corr_mailer') return mailer(v);
+  if(t === 'color_mono') return mono(v);
+  if(t === 'color_sleeve') return sleeve(v);
+  return lidbase(v);
+}
+
+function updateDieline(){
+  currentSVG = buildSVG();
+  document.getElementById('svgMount').innerHTML = currentSVG;
+  const v = getDims();
+  document.getElementById('svgMeta').textContent = `가로 ${v.w}mm · 세로 ${v.d}mm · 높이 ${v.h}mm 기준 전개도입니다.`;
+}
+
+function downloadSVG(){
+  if(!currentSVG) updateDieline();
+  const blob = new Blob([currentSVG], {type:'image/svg+xml;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = document.getElementById('templateType').value + '_dieline.svg';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+function printDieline(){
+  if(!currentSVG) updateDieline();
+  const win = window.open('', '_blank');
+  win.document.write(`<html><head><title>전개도 인쇄</title><style>body{margin:0;padding:20px}svg{width:100%;height:auto}</style></head><body>${currentSVG}</body></html>`);
+  win.document.close();
+  win.focus();
+  win.print();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  ['templateType','dimW','dimD','dimH','glue','tuck','dust','thickness','margin'].forEach(id => {
+    document.getElementById(id).addEventListener(id === 'templateType' ? 'change' : 'input', updateDieline);
+  });
+  updateDieline();
+});
+</script>
+</body></html>
