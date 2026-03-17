@@ -1956,3 +1956,31 @@ body.drawer-open{overflow:hidden}
   .search-sidebar .hero-actions{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
   .search-sidebar .hero-actions .btn:last-child{grid-column:1 / -1 !important}
 }
+
+
+/* v41 support content refresh */
+.support-card .preview{height:auto !important;aspect-ratio:16/10;align-items:center !important;padding:16px !important;overflow:visible !important}
+.support-card .preview img{width:100%;height:auto !important;max-height:none !important;object-fit:contain !important;object-position:center center !important;border-radius:18px}
+.support-card .body{min-height:0 !important}
+.support-lead-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin:26px 0 30px}
+.support-note{padding:22px;border:1px solid #eee3d0;border-radius:24px;background:linear-gradient(180deg,#fff,#fffaf4);color:#5d6779;line-height:1.8}
+.support-note strong{color:#22324f}
+.guide-feature-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.guide-feature-item{padding:18px;border:1px solid #eee3d0;border-radius:20px;background:#fff}
+.guide-feature-item h4{margin:0 0 8px;font-size:20px}
+.guide-feature-item p{margin:0;color:var(--muted);line-height:1.7}
+.long-copy{display:grid;gap:18px}
+.faq-accordion{display:grid;gap:12px;margin-top:14px}
+.faq-item{border:1px solid #eadfcf;border-radius:18px;background:#fff;overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:900;color:#1f2e48;position:relative}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:20px;top:16px;font-size:24px;color:#c1702c}
+.faq-item[open] summary::after{content:'−'}
+.faq-item .faq-body{padding:0 20px 18px;color:var(--muted);line-height:1.8}
+.seo-block{padding:22px;border-radius:22px;background:linear-gradient(180deg,#fffefc,#fff7ea);border:1px solid #f0dfbf}
+.seo-block h4{margin:0 0 10px;font-size:22px}
+.seo-block p{margin:0;color:var(--muted);line-height:1.85}
+.inline-kws{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.inline-kws span{padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #eadfcf;font-size:13px;font-weight:700;color:#5f6d84}
+@media (max-width:1100px){.support-lead-grid,.guide-feature-list{grid-template-columns:1fr}}
+@media (max-width:720px){.support-card .preview{aspect-ratio:4/3}.support-note,.seo-block{padding:18px}.faq-item summary{padding:16px 18px}}
