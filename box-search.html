@@ -1,45 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>전개도 생성기 | 에스디컴퍼니</title>
-  <meta name="description" content="맞춤 박스 제작을 위한 전개도 자동 생성기. 골판지 A형, 골판지 피자박스, 골판지 우편형, 칼라 단상자, 칼라 슬리브박스, 칼라 상하짝의 기본 전개도를 SVG로 내려받을 수 있습니다.">
-  <meta name="robots" content="index,follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"전개도 생성기",
-    "description":"맞춤 박스 제작을 위한 전개도 자동 생성기",
-    "url":"https://box.re.kr/box-search.html"
-  }
-  </script>
-  <script src="config/site-config.js"></script>
-  <script src="js/common.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>전개도 에디터 | 에스디컴퍼니</title>
+<meta name="description" content="전개도를 편집하면 3D 미리보기에서 즉시 확인할 수 있는 에스디컴퍼니 전개도 에디터">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="config/site-config.js"></script>
+<script src="config/site-data.js"></script>
+<script src="js/common.js"></script>
 </head>
 <body>
-<main class="section subpage-hero">
+<script>mountLayout('box-search.html');</script>
+<main class="editor-page">
   <div class="container">
-    <div class="kicker">CUSTOM DIELINE TOOL</div>
-    <h1>전개도 자동 생성기</h1>
-    <p class="desc">
-      맞춤 박스 제조 상담 전 구조 방향을 빠르게 검토할 수 있도록 기본 전개도를 웹에서 바로 생성할 수 있게 구성했습니다.
-      구조를 선택하고 치수를 입력하면 미리보기를 갱신하고, SVG 파일로 저장할 수 있습니다.
-    </p>
+    <div class="editor-topbar">
+      <div>
+        <div class="kicker">SERVICE GRADE EDITOR</div>
+        <h1>전개도 에디터</h1>
+        <p>왼쪽에서 전개도를 바로 편집하고, 오른쪽 3D 미리보기에서 박스 형태를 즉시 확인할 수 있게 구성했습니다. 무료 패턴, 이미지 업로드, 텍스트 편집, 로그인 저장, SVG · PDF 출력, 견적 연결까지 한 화면에서 이어집니다.</p>
+      </div>
+      <div class="editor-login">
+        <span class="login-chip" id="editorLoginChip">비로그인 상태</span>
+        <button type="button" class="btn line" id="editorLoginBtn">로그인 / 계정 선택</button>
+      </div>
+    </div>
 
-    <div class="dieline-shell">
-      <aside class="dieline-sidebar">
-        <div class="search-panel">
-          <h3>전개도 설정</h3>
-          <div class="search-grid">
-            <div class="field" style="grid-column:1 / -1">
-              <label>박스 구조</label>
-              <select id="templateType">
+    <div class="editor-hero-card">
+      <div class="editor-hero-points">
+        <div class="point"><b>6종</b><span>구조 선택<br>골판지 3종 + 칼라 3종</span></div>
+        <div class="point"><b>2D</b><span>면별 오브젝트 편집<br>정렬, 잠금, 삭제, 복제</span></div>
+        <div class="point"><b>3D</b><span>실시간 미리보기<br>전개도 수정 즉시 반영</span></div>
+        <div class="point"><b>출력</b><span>PNG / SVG / PDF<br>견적 요청으로 연결</span></div>
+      </div>
+    </div>
+
+    <div class="editor-shell" style="margin-top:18px">
+      <aside class="editor-sidebar">
+        <section class="editor-panel">
+          <div class="editor-panel-head">
+            <h3>작업 설정</h3>
+            <p>구조를 고르고, 편집할 면을 선택한 뒤 디자인 요소를 배치하세요.</p>
+          </div>
+          <div class="editor-panel-body">
+            <div class="editor-field">
+              <label for="editorStructure">구조 선택</label>
+              <select id="editorStructure">
                 <option value="corr_a">골판지 A형</option>
                 <option value="corr_pizza">골판지 피자박스</option>
                 <option value="corr_mailer">골판지 우편형</option>
@@ -48,278 +57,123 @@
                 <option value="color_lidbase">칼라 상하짝</option>
               </select>
             </div>
-            <div class="field"><label>가로(mm)</label><input id="dimW" type="number" value="220"></div>
-            <div class="field"><label>세로(mm)</label><input id="dimD" type="number" value="160"></div>
-            <div class="field"><label>높이(mm)</label><input id="dimH" type="number" value="80"></div>
-            <div class="field"><label>접착 플랩(mm)</label><input id="glue" type="number" value="18"></div>
-            <div class="field"><label>뚜껑 / 턱(mm)</label><input id="tuck" type="number" value="35"></div>
-            <div class="field"><label>먼지날개(mm)</label><input id="dust" type="number" value="18"></div>
-            <div class="field"><label>재질 두께(mm)</label><input id="thickness" type="number" step="0.1" value="1.5"></div>
-            <div class="field"><label>여백(mm)</label><input id="margin" type="number" value="16"></div>
-          </div>
-          <div class="hero-actions" style="margin-top:14px">
-            <a href="#" class="btn primary" onclick="updateDieline();return false;">미리보기 갱신</a>
-            <a href="#" class="btn line" onclick="downloadSVG();return false;">SVG 다운로드</a>
-            <a href="#" class="btn line" onclick="printDieline();return false;">인쇄하기</a>
-          </div>
-        </div>
-
-        <div class="search-panel">
-          <h3>지원 구조</h3>
-          <ul class="search-notes">
-            <li>골판지 A형</li>
-            <li>골판지 피자박스</li>
-            <li>골판지 우편형</li>
-            <li>칼라 단상자</li>
-            <li>칼라 슬리브박스</li>
-            <li>칼라 상하짝</li>
-          </ul>
-          <p class="small" style="margin-top:10px">
-            현재 버전은 상담 전 구조 검토, 내부 공유, 고객 커뮤니케이션을 위한 기본 생성기입니다.
-            실제 생산용 최종 칼선은 재질 두께, 접착 여유, 톰슨선 기준을 반영해 별도 조정하는 것이 안전합니다.
-          </p>
-        </div>
-      </aside>
-
-      <section>
-        <div class="search-panel">
-          <div class="dieline-preview-head">
-            <div>
-              <div class="kicker">SVG PREVIEW</div>
-              <h2 style="margin:10px 0 6px;font-size:38px">전개도 미리보기</h2>
-              <p class="small" id="svgMeta">입력값을 바꾸면 전개도 미리보기가 즉시 갱신됩니다.</p>
+            <div class="editor-field">
+              <label>편집할 면</label>
+              <div class="face-selector" id="faceButtons"></div>
+            </div>
+            <div class="editor-action-row">
+              <label class="editor-chip"><input type="checkbox" id="toggleCut" checked> 칼선 표시</label>
+              <label class="editor-chip"><input type="checkbox" id="toggleFold" checked> 접는선 표시</label>
+            </div>
+            <div class="editor-grid-2" style="margin-top:12px">
+              <button type="button" class="btn line" id="btnLoad">저장 불러오기</button>
+              <button type="button" class="btn primary" id="btnSave">로그인 저장</button>
             </div>
           </div>
-          <div class="dieline-preview-wrap">
-            <div id="svgMount"></div>
-          </div>
-        </div>
+        </section>
 
-        <div class="search-panel" style="margin-top:24px">
-          <h3>사용 안내</h3>
-          <div class="guide-steps">
-            <div class="step-card"><b>1</b><span>구조를 선택합니다</span></div>
-            <div class="step-card"><b>2</b><span>가로·세로·높이를 입력합니다</span></div>
-            <div class="step-card"><b>3</b><span>미리보기 확인 후 SVG로 저장합니다</span></div>
+        <section class="editor-panel">
+          <div class="editor-tabs">
+            <button type="button" class="editor-tab active" data-tab="patterns">패턴</button>
+            <button type="button" class="editor-tab" data-tab="images">이미지</button>
+            <button type="button" class="editor-tab" data-tab="text">텍스트</button>
+            <button type="button" class="editor-tab" data-tab="layers">레이어</button>
           </div>
-          <p class="small" style="margin-top:14px">
-            다운로드한 전개도는 구조 설명용, 1차 검토용, 견적 상담용으로 활용하기 좋습니다.
-            실제 생산 환경에서는 종이 두께, 여유값, 접착 방향, 후가공 기준에 따라 최종 칼선을 다시 정리할 수 있습니다.
-          </p>
+          <div class="editor-panel-body">
+            <div class="editor-tab-panel active" id="tab-patterns">
+              <div class="pattern-grid" id="patternGrid"></div>
+            </div>
+
+            <div class="editor-tab-panel" id="tab-images">
+              <div class="editor-field">
+                <label>무료 / 외부 이미지 URL</label>
+                <input type="text" id="imageUrl" placeholder="https://example.com/logo.png">
+              </div>
+              <div class="editor-field">
+                <label>파일 업로드</label>
+                <input type="file" id="imageLoader" accept="image/*">
+              </div>
+              <button type="button" class="btn primary" id="btnAddUrlImage">이미지 추가</button>
+            </div>
+
+            <div class="editor-tab-panel" id="tab-text">
+              <div class="editor-field">
+                <label>문구 입력</label>
+                <textarea id="textValue" placeholder="예: Premium Package / Fresh Box / Thank you"></textarea>
+              </div>
+              <div class="editor-grid-2">
+                <div class="editor-field">
+                  <label>글자 크기</label>
+                  <input type="number" id="fontSize" value="36">
+                </div>
+                <div class="editor-field">
+                  <label>글자 색상</label>
+                  <input type="color" id="fontColor" value="#15233d">
+                </div>
+              </div>
+              <button type="button" class="btn primary" id="btnAddText">텍스트 추가</button>
+              <div class="editor-chip-row" style="margin-top:12px">
+                <button type="button" class="editor-chip quick-text" data-text="Fresh Box">Fresh Box</button>
+                <button type="button" class="editor-chip quick-text" data-text="Premium Package">Premium Package</button>
+                <button type="button" class="editor-chip quick-text" data-text="Thank you">Thank you</button>
+              </div>
+            </div>
+
+            <div class="editor-tab-panel" id="tab-layers">
+              <div class="layer-list" id="layerList"></div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="editor-panel editor-main">
+        <div class="editor-panel-head">
+          <h3>전개도 편집 화면</h3>
+          <p>오브젝트를 클릭해 이동, 크기 조절, 복제, 잠금, 삭제할 수 있습니다.</p>
+        </div>
+        <div class="editor-toolbar">
+          <button type="button" class="tiny-btn" id="btnNew" title="새 작업">＋</button>
+          <button type="button" class="tiny-btn" id="btnBringFront" title="맨 앞으로">↑</button>
+          <button type="button" class="tiny-btn" id="btnSendBack" title="뒤로">↓</button>
+          <button type="button" class="tiny-btn" id="btnDuplicate" title="복제">⎘</button>
+          <button type="button" class="tiny-btn" id="btnDelete" title="삭제">✕</button>
+          <button type="button" class="tiny-btn" id="btnAlignLeft" title="왼쪽 정렬">L</button>
+          <button type="button" class="tiny-btn" id="btnAlignCenter" title="가운데 정렬">C</button>
+          <button type="button" class="tiny-btn" id="btnAlignRight" title="오른쪽 정렬">R</button>
+          <span style="flex:1"></span>
+          <button type="button" class="btn line" id="btnExportPNG">PNG</button>
+          <button type="button" class="btn line" id="btnExportSVG">SVG</button>
+          <button type="button" class="btn line" id="btnExportPDF">PDF</button>
+          <button type="button" class="btn primary" id="btnQuote">견적 연결</button>
+        </div>
+        <div class="editor-stage-wrap">
+          <div class="editor-stage-card">
+            <canvas id="dielineCanvas" width="960" height="960"></canvas>
+          </div>
         </div>
       </section>
+
+      <aside class="preview-column">
+        <section class="editor-panel">
+          <div class="editor-panel-head">
+            <h3 id="previewTitle">3D 미리보기</h3>
+            <p>전개도 편집 내용이 박스 표면으로 반영됩니다.</p>
+          </div>
+          <div class="preview-wrap">
+            <div id="threePreview"></div>
+            <div class="preview-info" style="margin-top:14px">
+              <strong>현재 포함 기능</strong>
+              무료 패턴 추가 · 이미지 URL 추가 · 파일 업로드 · 텍스트 편집 · 레이어 잠금 / 정렬 · 로그인 저장 · PNG / SVG / PDF 출력 · 견적문의 연결
+            </div>
+          </div>
+        </section>
+      </aside>
     </div>
   </div>
 </main>
 
-<script>
-mountLayout('box-search.html');
-
-let currentSVG = '';
-
-function line(x1,y1,x2,y2, cls='cut'){ return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${cls}" />`; }
-function rect(x,y,w,h, cls='cut'){ return `<rect x="${x}" y="${y}" width="${w}" height="${h}" class="${cls}" fill="none" />`; }
-function label(x,y,t){ return `<text x="${x}" y="${y}" class="label">${t}</text>`; }
-
-function svgWrap(w,h, body){
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" height="100%">
-    <defs>
-      <style>
-        .cut{stroke:#17253c;stroke-width:1.5}
-        .fold{stroke:#ff7a30;stroke-width:1.2;stroke-dasharray:6 4}
-        .label{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:#5f6b7d}
-      </style>
-    </defs>
-    ${body}
-  </svg>`;
-}
-
-function getDims(){
-  return {
-    w: Number(document.getElementById('dimW').value) || 220,
-    d: Number(document.getElementById('dimD').value) || 160,
-    h: Number(document.getElementById('dimH').value) || 80,
-    glue: Number(document.getElementById('glue').value) || 18,
-    tuck: Number(document.getElementById('tuck').value) || 35,
-    dust: Number(document.getElementById('dust').value) || 18,
-    t: Number(document.getElementById('thickness').value) || 1.5,
-    m: Number(document.getElementById('margin').value) || 16
-  };
-}
-
-function corrA(v){
-  const x=v.m, y=v.m, g=v.glue, W=v.w, D=v.d, H=v.h, flap=Math.max(v.tuck, Math.round(H*0.55));
-  const totalW = v.m*2 + g + W + D + W + D;
-  const totalH = v.m*2 + flap + H + flap;
-  let s = '';
-  s += rect(x+g, y+flap, W+D+W+D, H);
-  s += rect(x, y+flap, g, H);
-  [g, g+W, g+W+D, g+W+D+W, g+W+D+W+D].forEach(off => { if(off>g) s += line(x+off, y+flap, x+off, y+flap+H, 'fold'); });
-  let ox = x + g;
-  [W,D,W,D].forEach(pw => {
-    s += rect(ox, y, pw, flap);
-    s += rect(ox, y+flap+H, pw, flap);
-    s += line(ox, y+flap, ox+pw, y+flap, 'fold');
-    s += line(ox, y+flap+H, ox+pw, y+flap+H, 'fold');
-    ox += pw;
-  });
-  s += label(x+g+W/2, y+flap+H/2, `A형 ${W}`);
-  s += label(x+g+W+D/2, y+flap+H/2, `측면 ${D}`);
-  return svgWrap(totalW, totalH, s);
-}
-
-function pizza(v){
-  const x=v.m, y=v.m, W=v.w, D=v.d, H=Math.max(25, Math.min(v.h,70)), lid=Math.max(v.tuck,30);
-  const bx = x + H;
-  const by = y + lid;
-  const totalW = x*2 + W + H*2 + Math.round(lid*0.5);
-  const totalH = y*2 + D + H*2 + lid;
-  let s = '';
-  s += rect(bx, by, W, D);
-  s += rect(bx-H, by, H, D);
-  s += rect(bx+W, by, H, D);
-  s += rect(bx, by-H, W, H);
-  s += rect(bx, by+D, W, H);
-  s += rect(bx, y, W, lid);
-  s += line(bx, by, bx+W, by, 'fold');
-  s += line(bx, by+D, bx+W, by+D, 'fold');
-  s += line(bx, by, bx, by+D, 'fold');
-  s += line(bx+W, by, bx+W, by+D, 'fold');
-  s += label(bx+W/2, by+D/2, `피자박스 ${W}×${D}`);
-  return svgWrap(totalW, totalH, s);
-}
-
-function mailer(v){
-  const x=v.m, y=v.m, W=v.w, D=v.d, H=v.h, top=Math.max(v.tuck,28), dust=Math.max(v.dust,16);
-  const bx = x + H;
-  const by = y + top + Math.round(D*0.45);
-  const totalW = x*2 + W + H*2;
-  const totalH = y*2 + D + H + top + Math.round(D*0.45) + dust;
-  let s = '';
-  s += rect(bx, by, W, D);
-  s += rect(bx-H, by, H, D);
-  s += rect(bx+W, by, H, D);
-  s += rect(bx, by-H, W, H);
-  s += rect(bx, by+D, W, H);
-  s += rect(bx, y+top, W, Math.round(D*0.45));
-  s += rect(bx+dust, y, W-dust*2, top);
-  s += line(bx, by, bx+W, by, 'fold');
-  s += line(bx, by+D, bx+W, by+D, 'fold');
-  s += line(bx, by, bx, by+D, 'fold');
-  s += line(bx+W, by, bx+W, by+D, 'fold');
-  s += label(bx+W/2, by+D/2, `우편형 ${W}×${D}`);
-  return svgWrap(totalW, totalH, s);
-}
-
-function mono(v){
-  const x=v.m, y=v.m, g=v.glue, W=v.w, D=v.d, H=v.h, top=Math.max(v.tuck,26), dust=Math.max(v.dust,16);
-  const totalW = x*2 + g + W + D + W + D;
-  const totalH = y*2 + top + H + top;
-  let s = '';
-  s += rect(x+g, y+top, W+D+W+D, H);
-  s += rect(x, y+top, g, H);
-  [g, g+W, g+W+D, g+W+D+W, g+W+D+W+D].forEach(off => { if(off>g) s += line(x+off, y+top, x+off, y+top+H, 'fold'); });
-  let ox = x + g;
-  [W,D,W,D].forEach(pw => {
-    s += rect(ox, y, pw, top);
-    s += rect(ox, y+top+H, pw, top);
-    s += line(ox, y+top, ox+pw, y+top, 'fold');
-    s += line(ox, y+top+H, ox+pw, y+top+H, 'fold');
-    ox += pw;
-  });
-  s += rect(x+g+dust, y, W-dust*2, top);
-  s += rect(x+g+dust, y+top+H, W-dust*2, top);
-  s += label(x+g+W/2, y+top+H/2, `단상자 ${W}`);
-  return svgWrap(totalW, totalH, s);
-}
-
-function sleeve(v){
-  const x=v.m, y=v.m, W=v.w, D=v.d, H=v.h, g=v.glue;
-  const totalW = x*2 + W + H*2 + g;
-  const totalH = y*2 + D;
-  let s = '';
-  s += rect(x+g, y, H+W+H, D);
-  s += rect(x, y, g, D);
-  s += line(x+g, y, x+g, y+D, 'fold');
-  s += line(x+g+H, y, x+g+H, y+D, 'fold');
-  s += line(x+g+H+W, y, x+g+H+W, y+D, 'fold');
-  s += label(x+g+H+W/2, y+D/2, `슬리브 ${W}×${D}`);
-  return svgWrap(totalW, totalH, s);
-}
-
-function lidbase(v){
-  const x=v.m, y=v.m, W=v.w, D=v.d, H=v.h;
-  const lidH = H + v.t*2 + 2;
-  const lidX = x;
-  const baseX = x + W + D + lidH*2 + 60;
-  const totalW = baseX + W + D + H*2 + x;
-  const totalH = y*2 + D + lidH*2 + 30;
-  let s = '';
-  s += rect(lidX+lidH, y+lidH, W, D);
-  s += rect(lidX, y+lidH, lidH, D);
-  s += rect(lidX+lidH+W, y+lidH, lidH, D);
-  s += rect(lidX+lidH, y, W, lidH);
-  s += rect(lidX+lidH, y+lidH+D, W, lidH);
-  s += line(lidX+lidH, y+lidH, lidX+lidH+W, y+lidH, 'fold');
-  s += line(lidX+lidH, y+lidH+D, lidX+lidH+W, y+lidH+D, 'fold');
-
-  s += rect(baseX+H, y+H, W, D);
-  s += rect(baseX, y+H, H, D);
-  s += rect(baseX+H+W, y+H, H, D);
-  s += rect(baseX+H, y, W, H);
-  s += rect(baseX+H, y+H+D, W, H);
-  s += line(baseX+H, y+H, baseX+H+W, y+H, 'fold');
-  s += line(baseX+H, y+H+D, baseX+H+W, y+H+D, 'fold');
-
-  s += label(lidX+lidH+W/2, y+lidH+D/2, '뚜껑');
-  s += label(baseX+H+W/2, y+H+D/2, '몸통');
-  return svgWrap(totalW, totalH, s);
-}
-
-function buildSVG(){
-  const t = document.getElementById('templateType').value;
-  const v = getDims();
-  if(t === 'corr_a') return corrA(v);
-  if(t === 'corr_pizza') return pizza(v);
-  if(t === 'corr_mailer') return mailer(v);
-  if(t === 'color_mono') return mono(v);
-  if(t === 'color_sleeve') return sleeve(v);
-  return lidbase(v);
-}
-
-function updateDieline(){
-  currentSVG = buildSVG();
-  document.getElementById('svgMount').innerHTML = currentSVG;
-  const v = getDims();
-  document.getElementById('svgMeta').textContent = `가로 ${v.w}mm · 세로 ${v.d}mm · 높이 ${v.h}mm 기준 전개도입니다.`;
-}
-
-function downloadSVG(){
-  if(!currentSVG) updateDieline();
-  const blob = new Blob([currentSVG], {type:'image/svg+xml;charset=utf-8'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = document.getElementById('templateType').value + '_dieline.svg';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-}
-
-function printDieline(){
-  if(!currentSVG) updateDieline();
-  const win = window.open('', '_blank');
-  win.document.write(`<html><head><title>전개도 인쇄</title><style>body{margin:0;padding:20px}svg{width:100%;height:auto}</style></head><body>${currentSVG}</body></html>`);
-  win.document.close();
-  win.focus();
-  win.print();
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  ['templateType','dimW','dimD','dimH','glue','tuck','dust','thickness','margin'].forEach(id => {
-    document.getElementById(id).addEventListener(id === 'templateType' ? 'change' : 'input', updateDieline);
-  });
-  updateDieline();
-});
-</script>
-</body></html>
+<script src="https://cdn.jsdelivr.net/npm/fabric@5.3.0/dist/fabric.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="js/dieline-editor.js"></script>
+</body>
+</html>
