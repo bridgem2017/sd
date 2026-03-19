@@ -3,12 +3,24 @@
   const FACE_KEYS=['front','right','back','left','top'];
   const FACE_NAMES={front:'앞면',right:'우측면',back:'뒷면',left:'좌측면',top:'윗면'};
   const STRUCTS={
-    corr_a:{title:'골판지 A형',layout:{top:{x:320,y:70,w:320,h:120},left:{x:120,y:200,w:200,h:160},front:{x:320,y:200,w:320,h:160},right:{x:640,y:200,w:200,h:160},back:{x:320,y:360,w:320,h:200}}},
-    corr_pizza:{title:'골판지 피자박스',layout:{top:{x:250,y:80,w:460,h:120},left:{x:120,y:200,w:130,h:170},front:{x:250,y:200,w:460,h:170},right:{x:710,y:200,w:130,h:170},back:{x:250,y:370,w:460,h:200}}},
-    corr_mailer:{title:'골판지 우편형',layout:{top:{x:280,y:70,w:400,h:110},left:{x:160,y:180,w:120,h:170},front:{x:280,y:180,w:400,h:170},right:{x:680,y:180,w:120,h:170},back:{x:280,y:350,w:400,h:230}}},
-    color_mono:{title:'칼라 단상자',layout:{top:{x:280,y:60,w:400,h:110},left:{x:160,y:170,w:120,h:180},front:{x:280,y:170,w:400,h:180},right:{x:680,y:170,w:120,h:180},back:{x:280,y:350,w:400,h:220}}},
-    color_sleeve:{title:'칼라 슬리브박스',layout:{top:{x:330,y:110,w:300,h:90},left:{x:160,y:210,w:170,h:170},front:{x:330,y:210,w:300,h:170},right:{x:630,y:210,w:170,h:170},back:{x:330,y:390,w:300,h:150}}},
-    color_lidbase:{title:'칼라 상하짝',layout:{top:{x:300,y:70,w:360,h:120},left:{x:170,y:210,w:130,h:150},front:{x:300,y:210,w:360,h:150},right:{x:660,y:210,w:130,h:150},back:{x:300,y:370,w:360,h:210}}}
+    corr_a:{title:'A형 박스',quote:'quote_corrugated.html',layout:{top:{x:320,y:70,w:320,h:120},left:{x:120,y:200,w:200,h:160},front:{x:320,y:200,w:320,h:160},right:{x:640,y:200,w:200,h:160},back:{x:320,y:360,w:320,h:200}}},
+    corr_b:{title:'B형 박스',quote:'quote_corrugated.html',layout:{top:{x:300,y:70,w:360,h:120},left:{x:140,y:200,w:160,h:170},front:{x:300,y:200,w:360,h:170},right:{x:660,y:200,w:160,h:170},back:{x:300,y:370,w:360,h:190}}},
+    corr_d:{title:'D형 박스',quote:'quote_corrugated.html',layout:{top:{x:250,y:100,w:420,h:110},left:{x:120,y:210,w:130,h:160},front:{x:250,y:210,w:420,h:160},right:{x:670,y:210,w:130,h:160},back:{x:250,y:370,w:420,h:170}}},
+    corr_g:{title:'G형 박스',quote:'quote_corrugated.html',layout:{top:{x:280,y:70,w:400,h:110},left:{x:160,y:180,w:120,h:170},front:{x:280,y:180,w:400,h:170},right:{x:680,y:180,w:120,h:170},back:{x:280,y:350,w:400,h:230}}},
+    corr_p:{title:'P형 박스',quote:'quote_corrugated.html',layout:{top:{x:250,y:80,w:460,h:120},left:{x:120,y:200,w:130,h:170},front:{x:250,y:200,w:460,h:170},right:{x:710,y:200,w:130,h:170},back:{x:250,y:370,w:460,h:200}}},
+    corr_t:{title:'T형 박스',quote:'quote_corrugated.html',layout:{top:{x:300,y:60,w:360,h:110},left:{x:160,y:190,w:140,h:170},front:{x:300,y:190,w:360,h:170},right:{x:660,y:190,w:140,h:170},back:{x:300,y:360,w:360,h:210}}},
+    corr_y:{title:'Y형 박스',quote:'quote_corrugated.html',layout:{top:{x:290,y:70,w:380,h:110},left:{x:150,y:190,w:140,h:180},front:{x:290,y:190,w:380,h:180},right:{x:670,y:190,w:140,h:180},back:{x:290,y:370,w:380,h:210}}},
+    corr_poster:{title:'포스터형 박스',quote:'quote_corrugated.html',layout:{top:{x:370,y:40,w:180,h:80},left:{x:300,y:120,w:70,h:620},front:{x:370,y:120,w:180,h:620},right:{x:550,y:120,w:70,h:620},back:{x:370,y:740,w:180,h:140}}},
+    color_a:{title:'칼라 A형 박스',quote:'quote_colorbox.html',layout:{top:{x:320,y:70,w:320,h:120},left:{x:120,y:200,w:200,h:160},front:{x:320,y:200,w:320,h:160},right:{x:640,y:200,w:200,h:160},back:{x:320,y:360,w:320,h:200}}},
+    color_b:{title:'칼라 B형 박스',quote:'quote_colorbox.html',layout:{top:{x:300,y:70,w:360,h:120},left:{x:140,y:200,w:160,h:170},front:{x:300,y:200,w:360,h:170},right:{x:660,y:200,w:160,h:170},back:{x:300,y:370,w:360,h:190}}},
+    color_c:{title:'칼라 C형 박스',quote:'quote_colorbox.html',layout:{top:{x:300,y:70,w:360,h:120},left:{x:170,y:210,w:130,h:150},front:{x:300,y:210,w:360,h:150},right:{x:660,y:210,w:130,h:150},back:{x:300,y:370,w:360,h:210}}},
+    color_g:{title:'칼라 G형 박스',quote:'quote_colorbox.html',layout:{top:{x:280,y:70,w:400,h:110},left:{x:160,y:180,w:120,h:170},front:{x:280,y:180,w:400,h:170},right:{x:680,y:180,w:120,h:170},back:{x:280,y:350,w:400,h:230}}},
+    color_y:{title:'칼라 Y형 박스',quote:'quote_colorbox.html',layout:{top:{x:290,y:70,w:380,h:110},left:{x:150,y:190,w:140,h:180},front:{x:290,y:190,w:380,h:180},right:{x:670,y:190,w:140,h:180},back:{x:290,y:370,w:380,h:210}}},
+    color_mono:{title:'단상자 박스',quote:'quote_colorbox.html',layout:{top:{x:280,y:60,w:400,h:110},left:{x:160,y:170,w:120,h:180},front:{x:280,y:170,w:400,h:180},right:{x:680,y:170,w:120,h:180},back:{x:280,y:350,w:400,h:220}}},
+    color_pillow:{title:'필로우 박스',quote:'quote_colorbox.html',layout:{top:{x:300,y:110,w:360,h:90},left:{x:180,y:210,w:120,h:150},front:{x:300,y:210,w:360,h:150},right:{x:660,y:210,w:120,h:150},back:{x:300,y:360,w:360,h:160}}},
+    color_sleeve:{title:'슬리브 박스',quote:'quote_colorbox.html',layout:{top:{x:330,y:110,w:300,h:90},left:{x:160,y:210,w:170,h:170},front:{x:330,y:210,w:300,h:170},right:{x:630,y:210,w:170,h:170},back:{x:330,y:390,w:300,h:150}}},
+    color_slide:{title:'슬라이드 박스',quote:'quote_colorbox.html',layout:{top:{x:310,y:110,w:340,h:100},left:{x:180,y:220,w:130,h:160},front:{x:310,y:220,w:340,h:160},right:{x:650,y:220,w:130,h:160},back:{x:310,y:380,w:340,h:140}}},
+    color_knockdown:{title:'넉다운 박스',quote:'quote_colorbox.html',layout:{top:{x:300,y:80,w:360,h:110},left:{x:170,y:190,w:130,h:170},front:{x:300,y:190,w:360,h:170},right:{x:660,y:190,w:130,h:170},back:{x:300,y:360,w:360,h:210}}}
   };
   const patterns=[
     {name:'라인 플라워', svg:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="none" stroke="#222" stroke-width="5" stroke-linecap="round" d="M49 88V35M49 35c-8-15-22-18-22-18 0 14 3 24 18 24M49 35c8-15 22-18 22-18 0 14-3 24-18 24M49 58c-10-11-23-11-23-11 4 12 10 22 23 22M49 58c10-11 23-11 23-11-4 12-10 22-23 22"/></svg>'},
@@ -91,13 +103,13 @@
   }
 
   function getGuides(key){
-    if(key==='corr_pizza'){
+    if(key==='corr_p' || key==='color_slide'){
       return {
         folds:[[250,200,710,200],[250,370,710,370],[250,200,250,370],[710,200,710,370]],
         cuts:[[120,200,120,370],[840,200,840,370],[250,80,250,200],[710,80,710,200],[250,570,710,570]]
       };
     }
-    if(key==='corr_mailer'){
+    if(key==='corr_g' || key==='color_g'){
       return {
         folds:[[280,180,680,180],[280,350,680,350],[280,180,280,350],[680,180,680,350]],
         cuts:[[160,180,160,350],[800,180,800,350],[280,70,280,180],[680,70,680,180],[280,580,680,580]]
@@ -375,16 +387,8 @@
   }
 
   function connectQuote(){
-    const lead = {
-      structure: currentStruct().title,
-      face: FACE_NAMES[activeFace],
-      user: currentUser(),
-      savedAt: new Date().toISOString(),
-      status: '접수대기'
-    };
-    pushLead(lead);
-    const qs = new URLSearchParams({box: currentStruct().title, face: FACE_NAMES[activeFace], user: currentUser() || ''});
-    location.href = `quote.html?${qs.toString()}`;
+    const qs = new URLSearchParams({type: currentStruct().title});
+    location.href = `${currentStruct().quote || 'quote_corrugated.html'}?${qs.toString()}`;
   }
 
   function buildFaceTexture(faceKey){
@@ -461,10 +465,27 @@
     lidMesh.rotation.x = -0.98;
     scene.add(lidMesh);
 
+    let dragging=false, prevX=0, prevY=0, rotY=0.55, rotX=-0.15;
+    wrap.addEventListener('pointerdown', e=>{dragging=true; prevX=e.clientX; prevY=e.clientY; wrap.setPointerCapture(e.pointerId);});
+    wrap.addEventListener('pointermove', e=>{
+      if(!dragging) return;
+      const dx=e.clientX-prevX, dy=e.clientY-prevY;
+      prevX=e.clientX; prevY=e.clientY;
+      rotY += dx*0.01;
+      rotX += dy*0.008;
+      rotX = Math.max(-0.8, Math.min(0.3, rotX));
+    });
+    const stopDrag = ()=> dragging=false;
+    wrap.addEventListener('pointerup', stopDrag);
+    wrap.addEventListener('pointerleave', stopDrag);
+
     (function animate(){
       requestAnimationFrame(animate);
-      boxMesh.rotation.y += 0.005;
-      lidMesh.rotation.z = Math.sin(Date.now()*0.001)*0.03;
+      boxMesh.rotation.y += (rotY - boxMesh.rotation.y) * 0.12;
+      boxMesh.rotation.x += (rotX - boxMesh.rotation.x) * 0.12;
+      lidMesh.rotation.y = boxMesh.rotation.y;
+      lidMesh.rotation.x = -0.98 + boxMesh.rotation.x*0.25;
+      lidMesh.rotation.z = 0;
       renderer.render(scene,camera);
     })();
 

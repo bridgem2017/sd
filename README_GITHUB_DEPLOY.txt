@@ -1,1 +1,0 @@
-압축을 푼 뒤 안의 파일 전체를 저장소 루트에 업로드하세요. Settings > Pages > Deploy from branch > main / root로 설정하세요. 메일 폼은 formsubmit.co 기반이므로 최초 1회 수신 메일 활성화가 필요할 수 있습니다.
