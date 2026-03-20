@@ -33,6 +33,17 @@ function mountOrderPage(kind, mode){
   if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${kind==='corrugated' ? '골판지박스' : '칼라박스'} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${item.name}`;
   const submitBtn = document.getElementById('submitBtn');
   if(submitBtn) submitBtn.textContent = mode==='sample' ? '샘플 요청' : '견적 요청';
+  const familySel = document.getElementById('boxFamilySelect');
+  if(familySel){
+    familySel.value = kind;
+    familySel.addEventListener('change', ()=>{
+      const target = familySel.value === 'colorbox' ? (mode==='sample' ? 'sample_colorbox.html' : 'quote_colorbox.html') : (mode==='sample' ? 'sample_corrugated.html' : 'quote_corrugated.html');
+      const params = new URLSearchParams();
+      params.set('type', document.getElementById('boxShape').value || item.name);
+      params.set('img', document.getElementById('mainBoxImage').getAttribute('src') || item.img);
+      location.href = `${target}?${params.toString()}`;
+    });
+  }
 }
 function attachMailForm(formId, successText){
   const form = document.getElementById(formId);

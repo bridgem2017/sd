@@ -4,7 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"><script src="js/common.js"></script><script src="js/order-pages.js"></script>
-    </head><body><script>mountLayout('quote_colorbox.html');</script>
+    </head><body><script>mountLayout('quote.html');</script>
     <main class="section"><div class="container">
     <div class="kicker">Estimate Request</div>
     <h1 id="orderTitle">칼라박스 견적문의</h1>
@@ -16,6 +16,7 @@
       </section>
       <section class="order-form-card">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">칼라박스</strong></div></div>
+                <div class="form-row"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
         <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST" data-family="colorbox" data-request-type="quote">
           <input type="hidden" name="_subject" id="mailSubject" value="">
           <input type="hidden" name="_captcha" value="false">

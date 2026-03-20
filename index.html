@@ -12,7 +12,7 @@
 <script>mountLayout('index.html');</script>
 <main>
 <section class="hero home-hero">
-  <div class="container home-grid">
+  <div class="container home-grid single-flow">
     <div class="hero-copy-card">
       <div class="kicker">We Package Your Growth</div>
       <h1>브랜드에 맞는 박스 형태부터 샘플, 견적, 제작까지 한 화면에서 이어집니다.</h1>
@@ -20,43 +20,30 @@
       <div class="hero-action-row">
         <a class="btn primary" href="corrugated.html">골판지박스 보기</a>
         <a class="btn line" href="colorbox.html">칼라박스 보기</a>
-        <a class="btn line" href="box-search.html">전개도 에디터</a>
+        <a class="btn line" href="portfolio.html">포트폴리오</a>
       </div>
       <div class="hero-summary-grid">
         <div class="point"><b>18종</b><span>골판지 / 칼라박스 형태를 한 번에 비교</span></div>
         <div class="point"><b>메일형</b><span>샘플 요청과 견적 문의를 sales@box.re.kr로 접수</span></div>
-        <div class="point"><b>모바일</b><span>모바일에서도 메뉴와 문의 폼을 편하게 사용</span></div>
+        <div class="point"><b>가이드형</b><span>종이 선택과 제작 과정까지 함께 확인</span></div>
       </div>
     </div>
-    <div class="hero-side-stack">
-      <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
-        <div class="rolling-track mobile-single" id="mainRollingTrack">
-          <div class="hero-roll-slide"><a class="hero-roll-card c1" href="corrugated.html">
-            <img src="assets/box-types/corr_a.webp" alt="골판지 박스 형태">
-            <div class="roll-overlay"><span class="mini-badge">골판지</span><h3>골판지 박스 형태<small>배송형, 완충형, 대량 출고형 구조 확인</small></h3></div></a></div>
-          <div class="hero-roll-slide"><a class="hero-roll-card c2" href="colorbox.html">
-            <img src="assets/box-types/color_mono.webp" alt="칼라박스 형태">
-            <div class="roll-overlay"><span class="mini-badge">칼라박스</span><h3>칼라박스 형태<small>브랜드 인쇄, 코팅, 박인쇄 정보까지 확인</small></h3></div></a></div>
-          <div class="hero-roll-slide"><a class="hero-roll-card c3" href="box-search.html">
-            <img src="assets/box-types/corr_p.webp" alt="전개도 에디터">
-            <div class="roll-overlay"><span class="mini-badge">에디터</span><h3>전개도 에디터<small>형태별 전개도와 3D 미리보기를 동시에 편집</small></h3></div></a></div>
-        </div>
-      </div>
-      <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
-        <button type="button" class="active"></button><button type="button"></button><button type="button"></button>
-      </div>
-      <div class="hero-mini-card">
-        <h3>포트폴리오 · 고객지원</h3>
-        <p class="quote-split-note">v42에 있던 포트폴리오 메뉴와 고객지원 메뉴를 그대로 살리고, 샘플/견적 문의 동선을 더 빠르게 붙였습니다.</p>
-        <div class="hero-action-row" style="margin-top:16px">
-          <a class="btn line" href="portfolio.html">포트폴리오</a>
-          <a class="btn line" href="support.html">고객지원</a>
-        </div>
+    <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
+      <div class="rolling-track mobile-single" id="mainRollingTrack">
+        <div class="hero-roll-slide"><a class="hero-roll-card c1" href="corrugated.html">
+          <img src="assets/box-types/corr_a.webp" alt="골판지 박스 형태">
+          <div class="roll-overlay"><span class="mini-badge">골판지</span><h3>골판지 박스 형태<small>배송형, 완충형, 대량 출고형 구조 확인</small></h3></div></a></div>
+        <div class="hero-roll-slide"><a class="hero-roll-card c2" href="colorbox.html">
+          <img src="assets/box-types/color_mono.webp" alt="칼라박스 형태">
+          <div class="roll-overlay"><span class="mini-badge">칼라박스</span><h3>칼라박스 형태<small>브랜드 인쇄, 코팅, 박인쇄 정보까지 확인</small></h3></div></a></div>
+        <div class="hero-roll-slide"><a class="hero-roll-card c3" href="support.html">
+          <img src="assets/guides/guide-process-meaningful.png" alt="고객지원">
+          <div class="roll-overlay"><span class="mini-badge">고객지원</span><h3>고객지원 가이드<small>종이 선택, 제작 과정, 문의 동선까지 정리</small></h3></div></a></div>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="rolling-dots" id="mainRollingDotsClone" style="display:none"></div>
+    <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
+      <button type="button" class="active"></button><button type="button"></button><button type="button"></button>
+    </div>
   </div>
 </section>
 
@@ -82,10 +69,9 @@
   <div class="container">
     <div class="catalog-head">
       <div><div class="kicker">Customer Support</div><h2>고객지원 미리보기</h2></div>
-      <p class="desc">구조 선택, 종이 선택, 제작 과정을 먼저 확인하고 문의로 이어질 수 있게 연결했습니다.</p>
+      <p class="desc">종이 선택과 제작 과정을 먼저 확인하고 문의로 이어질 수 있게 연결했습니다.</p>
     </div>
     <div class="support-grid">
-      <a class="support-card" href="guide-structure.html"><div class="preview"><img src="assets/guides/guide-structure-meaningful.png" alt="박스 구조 종류 안내"></div><div class="body"><h3>박스 구조 종류</h3><p>택배용, 진열용, 선물형, 다이컷 구조까지 용도와 출고 환경에 따라 확인할 수 있습니다.</p></div></a>
       <a class="support-card" href="guide-paper.html"><div class="preview"><img src="assets/guides/guide-paper-meaningful.png" alt="종이 선택 가이드"></div><div class="body"><h3>종이 선택 가이드</h3><p>표면지, 골심지, 골 높이에 따라 달라지는 강도와 인쇄 결과를 쉽게 비교할 수 있습니다.</p></div></a>
       <a class="support-card" href="guide-process.html"><div class="preview"><img src="assets/guides/guide-process-meaningful.png" alt="패키지 제작 과정"></div><div class="body"><h3>패키지 제작 과정</h3><p>상담부터 원단 준비, 인쇄, 목형, 가공, 출고까지 전체 흐름을 빠르게 볼 수 있습니다.</p></div></a>
     </div>

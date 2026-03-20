@@ -1,12 +1,22 @@
-
 function el(s,r=document){return r.querySelector(s)}; function els(s,r=document){return [...r.querySelectorAll(s)]};
 const CFG = window.SD_SITE_CONFIG || {}; const DATA = window.SD_SITE_DATA || {};
 function mountLayout(active=''){
-  const items=[['corrugated.html','골판지박스'],['colorbox.html','칼라박스'],['portfolio.html','포토폴리오'],['support.html','고객지원'],['quote.html','견적문의']];
-  const navLinks = items.map(([h,l])=>`<a href="${h}" class="${active===h?'active':''} ${l==='견적문의'?'cta':''}">${l}</a>`).join('');
-  const drawerLinks = items.map(([h,l])=>`<a href="${h}" class="mobile-drawer-link ${active===h?'active':''}">${l}</a>`).join('');
+  const items=[['corrugated.html','골판지박스'],['colorbox.html','칼라박스'],['portfolio.html','포토폴리오'],['support.html','고객지원'],['quote_corrugated.html','견적문의']];
+  const isQuoteActive = ['quote.html','quote_corrugated.html','quote_colorbox.html'].includes(active);
+  const navLinks = items.map(([h,l])=>{
+    const on = l==='견적문의' ? isQuoteActive : active===h;
+    return `<a href="${h}" class="${on?'active':''} ${l==='견적문의'?'cta':''}">${l}</a>`;
+  }).join('');
+  const drawerLinks = items.map(([h,l])=>{
+    const on = l==='견적문의' ? isQuoteActive : active===h;
+    return `<a href="${h}" class="mobile-drawer-link ${on?'active':''}">${l}</a>`;
+  }).join('');
+
   document.body.insertAdjacentHTML('afterbegin', `<div class="top-banner"><span>박스 맞춤 인쇄, 패키지 제작 · 샘플부터 견적, 납품까지 한번에</span></div><header class="header"><div class="container header-inner"><button class="hamburger" type="button" aria-label="메뉴 열기" aria-controls="mobileDrawer" aria-expanded="false"><span></span><span></span><span></span></button><a class="brand" href="index.html"><img src="assets/sd-company-logo.png" alt="로고"><span>에스디컴퍼니</span></a><nav class="nav">${navLinks}</nav><div class="mobile-menu"><a class="btn line" href="quote_corrugated.html">견적문의</a></div></div></header><div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div><aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true"><div class="mobile-drawer-head"><strong>메뉴</strong><button class="mobile-drawer-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="mobile-drawer-nav">${drawerLinks}</nav></aside>`);
-  document.body.insertAdjacentHTML('beforeend', `<footer class="footer">
+
+  const insertFooter = ()=>{
+    if(document.querySelector('.footer')) return;
+    document.body.insertAdjacentHTML('beforeend', `<footer class="footer">
   <div class="container footer-shell">
     <div class="footer-brand footer-brand-compact">
       <img src="assets/sd-company-logo-full.png" alt="에스디컴퍼니 로고">
@@ -41,6 +51,9 @@ function mountLayout(active=''){
     </div>
   </div>
 </footer>`);
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', insertFooter, {once:true});
+  else insertFooter();
 }
 function productCard(p){ return `<article class="product-card"><div class="badge-top">${p.tag||''}</div><img src="${p.img}" alt="${p.name}"><div class="body"><div class="product-meta"><strong>${p.name}</strong><span>${p.minQty||''}</span></div></div></article>`; }
 

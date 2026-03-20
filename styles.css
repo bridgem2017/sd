@@ -2218,3 +2218,35 @@ linear-gradient(rgba(110,126,150,.08) 1px, transparent 1px),
   .home-grid{grid-template-columns:1fr !important;}
   .support-grid,.home-support-preview .support-grid{grid-template-columns:1fr !important;}
 }
+
+
+/* ===== v5 final layout fixes ===== */
+main{display:block;position:relative;z-index:1}
+.home-grid.single-flow{display:grid !important;grid-template-columns:1fr !important;gap:22px !important;align-items:start !important}
+.home-grid.single-flow .hero-copy-card{max-width:440px !important;min-height:auto !important}
+.home-grid.single-flow .rolling-banner{margin-top:0 !important;width:100% !important;max-width:100% !important;border-radius:28px !important;overflow:hidden !important;box-shadow:0 16px 28px rgba(23,37,60,.06) !important}
+.home-grid.single-flow .rolling-track{display:block !important}
+.home-grid.single-flow .hero-roll-slide{display:none}
+.home-grid.single-flow .hero-roll-slide:first-child{display:block}
+.home-grid.single-flow .hero-roll-card{width:100% !important;min-width:100% !important;max-width:100% !important;height:360px !important;border-radius:28px !important;overflow:hidden !important}
+.home-grid.single-flow .rolling-dots{justify-content:center !important;margin-top:4px !important}
+.footer{position:relative !important;display:block !important;clear:both !important;margin-top:72px !important}
+.footer-shell{display:grid !important;grid-template-columns:220px minmax(0,1fr) !important;gap:32px !important;align-items:center !important}
+.footer-brand-compact{min-height:auto !important;justify-content:center !important;align-items:center !important;padding:0 !important}
+.footer-info-column,.footer-contact-rows{min-width:0 !important}
+.footer-row span{white-space:normal !important}
+.guide-image-block{overflow:hidden;border-radius:24px}
+.guide-image-block img{display:block;width:100%;height:auto;max-width:100%}
+.support-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+.home-support-preview .support-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.order-layout{align-items:start !important}
+.order-guide-section .guide-image-block img{background:#f7f2ea;object-fit:contain}
+@media (max-width:1100px){
+  .footer-shell{grid-template-columns:1fr !important;gap:20px !important}
+  .home-grid.single-flow .hero-roll-card{height:300px !important}
+}
+@media (max-width:720px){
+  .home-grid.single-flow .hero-copy-card{max-width:100% !important}
+  .home-grid.single-flow .hero-roll-card{height:240px !important}
+  .support-grid,.home-support-preview .support-grid{grid-template-columns:1fr !important}
+}
