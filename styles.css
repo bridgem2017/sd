@@ -2168,3 +2168,22 @@ linear-gradient(rgba(110,126,150,.08) 1px, transparent 1px),
   #threePreview{height:420px;min-height:420px}
   .preview-wrap{padding:12px}
 }
+
+
+/* === sd company user-request fixes === */
+body{display:flex;flex-direction:column;min-height:100vh}
+main{flex:1 0 auto;display:block}
+.footer{flex-shrink:0}
+.home-grid{align-items:start !important}
+.hero-copy-card,.hero-side-stack,.box-card,.support-card,.info-block,.order-viewer,.order-form-card{min-width:0}
+.card-actions .btn{flex:1 1 calc(50% - 5px);justify-content:center}
+.order-page-info-stack{margin-top:26px}
+.order-guide-image{overflow:hidden;border-radius:24px;background:#fff;border:1px solid #eaded2}
+.order-guide-image img{display:block;width:100%;height:auto}
+.sample-note-box{margin-top:6px;padding:14px 16px;border-radius:16px;background:#fff6ea;border:1px solid #ffd6b3;color:#a55318;font-weight:800;line-height:1.7}
+.support-card .preview{background:#faf7f1}
+.support-card .preview img{width:100%;height:100%;object-fit:cover}
+.private-board-card{padding:24px;border-radius:24px;border:1px solid #eaded2;background:#fff}
+@media (max-width:980px){
+  .card-actions .btn{flex:1 1 100%}
+}

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop offset="0%" stop-color="#fff9f2"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="960" rx="28" fill="url(#bg)" stroke="#eedccc"/>
+  <text x="70" y="84" font-family="'Noto Sans KR', sans-serif" font-size="42" font-weight="900" fill="#17253c">골판지 두께 / 골 종류 안내</text>
+  <text x="70" y="130" font-family="'Noto Sans KR', sans-serif" font-size="22" fill="#5c6676">골판지는 보통 표면지 + 골심지 + 이면지 구조로 이루어지며, 골 높이에 따라 완충성과 강도가 달라집니다.</text>
+
+  <g transform="translate(70,180)">
+    <rect width="1240" height="210" rx="24" fill="#fff" stroke="#eaded2"/>
+    <text x="36" y="52" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">골판지의 기본 구조</text>
+    <rect x="110" y="98" width="980" height="18" rx="9" fill="#c89c67"/>
+    <path d="M110 160 C150 100, 190 100, 230 160 S310 220, 350 160 S430 100, 470 160 S550 220, 590 160 S670 100, 710 160 S790 220, 830 160 S910 100, 950 160 S1030 220, 1090 160" fill="none" stroke="#b07c46" stroke-width="14" stroke-linecap="round"/>
+    <rect x="110" y="192" width="980" height="18" rx="9" fill="#d7b58a"/>
+    <text x="1130" y="110" font-family="'Noto Sans KR', sans-serif" font-size="22" font-weight="800" fill="#8a541f">표면지</text>
+    <text x="1130" y="168" font-family="'Noto Sans KR', sans-serif" font-size="22" font-weight="800" fill="#8a541f">골심지</text>
+    <text x="1130" y="206" font-family="'Noto Sans KR', sans-serif" font-size="22" font-weight="800" fill="#8a541f">이면지</text>
+  </g>
+
+  <g transform="translate(70,430)">
+    <rect width="1240" height="220" rx="24" fill="#fff" stroke="#eaded2"/>
+    <text x="36" y="52" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">대표 골 두께 비교</text>
+    <g transform="translate(34,86)">
+      <g><rect x="0" y="58" width="180" height="14" rx="7" fill="#d9b07a"/><path d="M0 58 C15 20, 45 20, 60 58 S105 96, 120 58 S165 20, 180 58" fill="none" stroke="#b37a41" stroke-width="10"/><rect x="0" y="86" width="180" height="14" rx="7" fill="#ead2ae"/><text x="0" y="-4" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">E골</text><text x="0" y="126" font-family="'Noto Sans KR', sans-serif" font-size="20" fill="#586376">약 1.5 mm · 얇고 인쇄가 깔끔</text></g>
+      <g transform="translate(240,0)"><rect x="0" y="48" width="180" height="14" rx="7" fill="#d1a36f"/><path d="M0 48 C20 0, 50 0, 70 48 S120 96, 140 48 S160 0, 180 48" fill="none" stroke="#a96d35" stroke-width="12"/><rect x="0" y="86" width="180" height="14" rx="7" fill="#ecd7b8"/><text x="0" y="-4" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">B골</text><text x="0" y="126" font-family="'Noto Sans KR', sans-serif" font-size="20" fill="#586376">약 3 mm · 가장 보편적인 배송용</text></g>
+      <g transform="translate(480,0)"><rect x="0" y="36" width="180" height="14" rx="7" fill="#c8915a"/><path d="M0 36 C25 -18, 65 -18, 90 36 S155 90, 180 36" fill="none" stroke="#9e6430" stroke-width="14"/><rect x="0" y="86" width="180" height="14" rx="7" fill="#ead0aa"/><text x="0" y="-4" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">A골</text><text x="0" y="126" font-family="'Noto Sans KR', sans-serif" font-size="20" fill="#586376">약 5 mm · 완충성이 우수</text></g>
+      <g transform="translate(720,0)"><rect x="0" y="26" width="180" height="12" rx="6" fill="#bf8751"/><path d="M0 26 C15 -8, 45 -8, 60 26 S105 60, 120 26 S165 -8, 180 26" fill="none" stroke="#95602c" stroke-width="10"/><rect x="0" y="48" width="180" height="12" rx="6" fill="#d4b28d"/><path d="M0 48 C20 0, 50 0, 70 48 S120 96, 140 48 S160 0, 180 48" fill="none" stroke="#a66a33" stroke-width="10"/><rect x="0" y="86" width="180" height="12" rx="6" fill="#ead0aa"/><text x="0" y="-4" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">BB골</text><text x="0" y="126" font-family="'Noto Sans KR', sans-serif" font-size="20" fill="#586376">약 6 mm · 이중골, 강도 우수</text></g>
+      <g transform="translate(960,0)"><rect x="0" y="16" width="180" height="12" rx="6" fill="#b57b45"/><path d="M0 16 C22 -28, 55 -28, 77 16 S158 60, 180 16" fill="none" stroke="#8f5926" stroke-width="12"/><rect x="0" y="44" width="180" height="12" rx="6" fill="#cfaa82"/><path d="M0 44 C18 6, 48 6, 66 44 S114 82, 132 44 S162 6, 180 44" fill="none" stroke="#a86a33" stroke-width="10"/><rect x="0" y="86" width="180" height="12" rx="6" fill="#ead0aa"/><text x="0" y="-4" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">BA골</text><text x="0" y="126" font-family="'Noto Sans KR', sans-serif" font-size="20" fill="#586376">약 8 mm · 큰 제품 / 중량물용</text></g>
+    </g>
+  </g>
+
+  <g transform="translate(70,690)">
+    <rect width="1240" height="210" rx="24" fill="#fff" stroke="#eaded2"/>
+    <text x="36" y="52" font-family="'Noto Sans KR', sans-serif" font-size="26" font-weight="900" fill="#17253c">외측 사이즈 측정 참고</text>
+    <text x="36" y="84" font-family="'Noto Sans KR', sans-serif" font-size="18" fill="#5c6676">규격은 외측 기준이며 골 두께에 따라 내측 치수는 달라질 수 있습니다.</text>
+    <g transform="translate(36,112)" font-family="'Noto Sans KR', sans-serif">
+      <rect width="1168" height="52" rx="16" fill="#ff6128"/>
+      <text x="88" y="34" font-size="22" font-weight="900" fill="#fff">골형태</text>
+      <text x="380" y="34" font-size="22" font-weight="900" fill="#fff">장(가로)</text>
+      <text x="672" y="34" font-size="22" font-weight="900" fill="#fff">폭(세로)</text>
+      <text x="964" y="34" font-size="22" font-weight="900" fill="#fff">고(높이)</text>
+      <g font-size="22" fill="#2b3242">
+        <text x="94" y="98">B골</text><text x="332" y="98">내측 +6mm</text><text x="626" y="98">내측 +6mm</text><text x="920" y="98">내측 +9mm</text>
+        <text x="94" y="146">A골</text><text x="324" y="146">내측 +10mm</text><text x="618" y="146">내측 +10mm</text><text x="912" y="146">내측 +15mm</text>
+      </g>
+    </g>
+  </g>
+</svg>
