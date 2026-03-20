@@ -12,37 +12,34 @@
 <script>mountLayout('index.html');</script>
 <main>
 <section class="hero home-hero">
-  <div class="container home-grid single-flow">
-    <div class="hero-copy-card">
+  <div class="container home-hero-shell">
+    <div class="hero-copy-card hero-copy-panel">
       <div class="kicker">We Package Your Growth</div>
-      <h1>브랜드에 맞는 박스 형태부터 샘플, 견적, 제작까지 한 화면에서 이어집니다.</h1>
+      <h1>브랜드에 맞는<br>박스 형태부터<br>샘플, 견적,<br>제작까지 한<br>화면에서<br>이어집니다.</h1>
       <p>에스디컴퍼니는 박스 종류를 나열하는 데서 멈추지 않고, 실제 선택에 필요한 구조 설명, 재질 정보, 샘플 요청, 견적 연결을 하나의 흐름으로 정리했습니다. 처음 주문하는 분도 바로 이해할 수 있도록 직관적으로 설계했습니다.</p>
-      <div class="hero-action-row">
-        <a class="btn primary" href="corrugated.html">골판지박스 보기</a>
-        <a class="btn line" href="colorbox.html">칼라박스 보기</a>
-        <a class="btn line" href="portfolio.html">포트폴리오</a>
-      </div>
       <div class="hero-summary-grid">
         <div class="point"><b>18종</b><span>골판지 / 칼라박스 형태를 한 번에 비교</span></div>
         <div class="point"><b>메일형</b><span>샘플 요청과 견적 문의를 sales@box.re.kr로 접수</span></div>
         <div class="point"><b>가이드형</b><span>종이 선택과 제작 과정까지 함께 확인</span></div>
       </div>
     </div>
-    <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
-      <div class="rolling-track mobile-single" id="mainRollingTrack">
-        <div class="hero-roll-slide"><a class="hero-roll-card c1" href="corrugated.html">
-          <img src="assets/box-types/corr_a.webp" alt="골판지 박스 형태">
-          <div class="roll-overlay"><span class="mini-badge">골판지</span><h3>골판지 박스 형태<small>배송형, 완충형, 대량 출고형 구조 확인</small></h3></div></a></div>
-        <div class="hero-roll-slide"><a class="hero-roll-card c2" href="colorbox.html">
-          <img src="assets/box-types/color_mono.webp" alt="칼라박스 형태">
-          <div class="roll-overlay"><span class="mini-badge">칼라박스</span><h3>칼라박스 형태<small>브랜드 인쇄, 코팅, 박인쇄 정보까지 확인</small></h3></div></a></div>
-        <div class="hero-roll-slide"><a class="hero-roll-card c3" href="support.html">
-          <img src="assets/guides/guide-process-meaningful.png" alt="고객지원">
-          <div class="roll-overlay"><span class="mini-badge">고객지원</span><h3>고객지원 가이드<small>종이 선택, 제작 과정, 문의 동선까지 정리</small></h3></div></a></div>
+    <div class="hero-right-stack">
+      <div class="rolling-banner" aria-label="주요 서비스 배너" id="mainRollingBanner">
+        <div class="rolling-track mobile-single" id="mainRollingTrack">
+          <div class="hero-roll-slide"><a class="hero-roll-card c1" href="corrugated.html">
+            <img src="assets/box-types/corr_a.webp" alt="골판지 박스 형태">
+            <div class="roll-overlay"><span class="mini-badge">골판지</span><h3>골판지 박스 형태<small>배송형, 완충형, 대량 출고형 구조 확인</small></h3></div></a></div>
+          <div class="hero-roll-slide"><a class="hero-roll-card c2" href="colorbox.html">
+            <img src="assets/box-types/color_mono.webp" alt="칼라박스 형태">
+            <div class="roll-overlay"><span class="mini-badge">칼라박스</span><h3>칼라박스 형태<small>브랜드 인쇄, 코팅, 박인쇄 정보까지 확인</small></h3></div></a></div>
+          <div class="hero-roll-slide"><a class="hero-roll-card c3" href="support.html">
+            <img src="assets/guides/guide-process-meaningful.png" alt="고객지원">
+            <div class="roll-overlay"><span class="mini-badge">고객지원</span><h3>고객지원 가이드<small>종이 선택, 제작 과정, 문의 동선까지 정리</small></h3></div></a></div>
+        </div>
       </div>
-    </div>
-    <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
-      <button type="button" class="active"></button><button type="button"></button><button type="button"></button>
+      <div class="rolling-dots" id="mainRollingDots" aria-label="배너 선택">
+        <button type="button" class="active"></button><button type="button"></button><button type="button"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -79,6 +76,16 @@
   </div>
 </section>
 
+
+<section class="section home-company-banner-wrap" style="padding-top:0">
+  <div class="container">
+    <a class="home-company-banner" href="company.html">
+      <span class="banner-chip">SD COMPANY</span>
+      <strong>박스 맞춤 인쇄 · 패키지 제작 · 샘플부터 견적, 납품까지 한 번에</strong>
+      <span class="banner-arrow">회사소개 보기 →</span>
+    </a>
+  </div>
+</section>
 </main>
 <script>
 (function(){

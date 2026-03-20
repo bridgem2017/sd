@@ -16,11 +16,11 @@
       </section>
       <section class="order-form-card">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">골판지박스</strong></div></div>
-                <div class="form-row"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
+                <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
         <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST" data-family="corrugated" data-request-type="quote">
           <input type="hidden" name="_subject" id="mailSubject" value="">
           <input type="hidden" name="_captcha" value="false">
-          <div class="form-row"><label>박스형태</label><input id="boxShape" name="박스형태" readonly></div>
+          <div class="form-row form-row-spaced"><label>박스형태</label><select id="boxShape" name="박스형태"></select></div>
           <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required></div>
           
     <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"></div>

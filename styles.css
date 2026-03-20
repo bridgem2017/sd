@@ -2250,3 +2250,54 @@ main{display:block;position:relative;z-index:1}
   .home-grid.single-flow .hero-roll-card{height:240px !important}
   .support-grid,.home-support-preview .support-grid{grid-template-columns:1fr !important}
 }
+
+
+/* === v6 focused overrides === */
+html,body{min-height:100%;}
+body{display:flex;flex-direction:column;}
+main{flex:1 0 auto;display:block;}
+.footer{margin-top:56px;flex-shrink:0;clear:both;}
+.home-hero{padding-bottom:22px !important;}
+.home-hero-shell{display:grid !important;grid-template-columns:520px minmax(0,1fr) !important;gap:28px !important;align-items:start !important;}
+.hero-copy-panel{min-height:640px;display:flex;flex-direction:column;justify-content:space-between;}
+.hero-copy-panel h1{font-size:72px !important;line-height:0.96 !important;letter-spacing:-0.06em !important;margin:14px 0 18px !important;}
+.hero-copy-panel p{font-size:18px !important;line-height:1.9 !important;}
+.hero-right-stack{display:flex;flex-direction:column;gap:14px;min-width:0;}
+.home-hero .rolling-banner{margin-top:0 !important;max-width:none !important;width:100% !important;border-radius:30px !important;overflow:hidden !important;background:#fff !important;border:1px solid #eaded2 !important;box-shadow:0 16px 36px rgba(23,37,60,.06) !important;}
+.home-hero .rolling-track{position:relative;min-height:610px;}
+.home-hero .hero-roll-slide{display:none;width:100%;}
+.home-hero .hero-roll-slide:first-child{display:block;}
+.home-hero .hero-roll-card{display:block;width:100%;height:610px !important;min-width:100% !important;position:relative;overflow:hidden;border-radius:30px;}
+.home-hero .hero-roll-card img{width:100%;height:100%;object-fit:cover;display:block;background:#f6f3ef;}
+.home-hero .roll-overlay{position:absolute;inset:auto 0 0 0;padding:34px 34px 30px;background:linear-gradient(180deg,rgba(6,13,28,0.04) 0%, rgba(6,13,28,0.55) 100%);color:#fff;}
+.home-hero .roll-overlay h3{font-size:64px !important;line-height:0.95 !important;max-width:72% !important;margin:14px 0 0 !important;color:#fff;}
+.home-hero .roll-overlay h3 small{display:block;font-size:26px !important;line-height:1.35 !important;margin-top:18px;color:#fff !important;opacity:0.96;}
+.home-hero .mini-badge{display:inline-flex;padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.24);border:1px solid rgba(255,255,255,.28);font-weight:800;font-size:24px;backdrop-filter:blur(10px);}
+.home-hero .rolling-dots{justify-content:center;margin-top:2px !important;}
+.home-hero .rolling-dots button{width:16px !important;height:16px !important;background:#d8d8d8 !important;}
+.home-hero .rolling-dots button.active{background:#111 !important;}
+.home-support-preview{padding-bottom:24px !important;}
+.home-company-banner-wrap{padding-bottom:8px !important;}
+.home-company-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:26px 32px;border-radius:28px;background:linear-gradient(90deg,#ff8c43 0%, #ffb562 58%, #ffd089 100%);color:#fff;text-decoration:none;box-shadow:0 18px 34px rgba(255,146,61,.24);}
+.home-company-banner strong{font-size:34px;line-height:1.25;letter-spacing:-0.03em;flex:1;}
+.home-company-banner .banner-chip{display:inline-flex;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);font-weight:900;}
+.home-company-banner .banner-arrow{font-weight:900;white-space:nowrap;}
+.form-row-spaced{margin-bottom:12px;}
+.order-form .form-row + .form-row{margin-top:14px;}
+.order-form .form-row.form-row-spaced + .form-row{margin-top:14px;}
+.order-form-card .guide-card{margin-bottom:22px;}
+#boxShape{appearance:auto;}
+@media (max-width:1200px){
+  .home-hero-shell{grid-template-columns:430px minmax(0,1fr) !important;}
+  .hero-copy-panel h1{font-size:58px !important;}
+  .home-hero .hero-roll-card,.home-hero .rolling-track{min-height:520px;height:520px !important;}
+  .home-hero .roll-overlay h3{font-size:48px !important;}
+}
+@media (max-width:900px){
+  .home-hero-shell{grid-template-columns:1fr !important;}
+  .hero-copy-panel{min-height:auto;}
+  .hero-copy-panel h1{font-size:48px !important;}
+  .home-hero .hero-roll-card,.home-hero .rolling-track{min-height:420px;height:420px !important;}
+  .home-company-banner{flex-direction:column;align-items:flex-start;}
+  .home-company-banner strong{font-size:26px;}
+}
