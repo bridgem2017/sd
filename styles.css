@@ -2363,3 +2363,37 @@ main{flex:1 0 auto;display:block;}
   .v7-feature-card.side{min-height:150px}
   .v7-banner-slide{height:220px}
 }
+
+
+/* v9 button alignment fix */
+.box-card{height:100%;}
+.box-card .body{
+  display:grid !important;
+  grid-template-rows:auto minmax(120px,1fr) auto !important;
+  align-content:start;
+}
+.box-card .body p{
+  min-height:0 !important;
+  margin:0 !important;
+}
+.card-actions{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:14px !important;
+  margin-top:18px !important;
+  align-self:stretch;
+}
+.card-actions .btn{
+  width:100% !important;
+  min-height:64px !important;
+  height:64px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 18px !important;
+  border-radius:20px !important;
+}
+@media (max-width: 900px){
+  .box-card .body{grid-template-rows:auto auto auto !important;}
+  .card-actions .btn{min-height:58px !important;height:58px !important;}
+}
