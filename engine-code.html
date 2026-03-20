@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>박스 검색엔진 코드 | 에스디컴퍼니</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><script src="config/site-config.js"></script><script src="js/common.js"></script></head><body><main class="section subpage-hero"><div class="container"><div class="kicker">ENGINE CODE</div><h1>완전한 박스 검색엔진 코드</h1><p>현재 사이트에 적용된 검색엔진과 추천 알고리즘 v2의 핵심 로직을 정리한 페이지입니다.</p><div class="search-panel"><h3>완전한 박스 검색엔진 코드</h3><pre style="white-space:pre-wrap;background:#fff7ef;padding:16px;border-radius:16px;border:1px solid #f0dcc4;overflow:auto;font-size:13px;line-height:1.7">function filterBoxes(input){
+  return SD_BOX_DB.filter(box =>
+    (!input.category || box.category === input.category) &&
+    (!input.shape || box.shape === input.shape) &&
+    (!input.flute || box.flute === input.flute) &&
+    (!input.use || box.use === input.use) &&
+    (!input.industry || box.industry === input.industry) &&
+    (!input.qty || box.minQty <= input.qty) &&
+    (!input.w || box.width >= input.w) &&
+    (!input.l || box.length >= input.l) &&
+    (!input.h || box.height >= input.h)
+  );
+}</pre></div><div class="search-panel" style="margin-top:20px"><h3>추천 알고리즘 v2</h3><pre style="white-space:pre-wrap;background:#f4fbf9;padding:16px;border-radius:16px;border:1px solid #d7ece7;overflow:auto;font-size:13px;line-height:1.7">function scoreBoxV2(box, input){
+  let score = 0;
+  if(input.w && box.width >= input.w) score += Math.max(0, 100 - (box.width-input.w)*0.7);
+  if(input.l && box.length >= input.l) score += Math.max(0, 100 - (box.length-input.l)*0.7);
+  if(input.h && box.height >= input.h) score += Math.max(0, 80 - (box.height-input.h)*0.9);
+  if(input.category && box.category === input.category) score += 90;
+  if(input.shape && box.shape === input.shape) score += 70;
+  if(input.flute && box.flute === input.flute) score += 60;
+  if(input.use && box.use === input.use) score += 55;
+  if(input.industry && box.industry === input.industry) score += 45;
+  if(input.qty && box.minQty <= input.qty) score += 40; else if(input.qty) score -= 20;
+  if(input.recommendedFlute && box.flute === input.recommendedFlute) score += 35;
+  return score;
+}</pre></div></div></main><script>mountLayout('box-search.html')</script></body></html>
