@@ -16,7 +16,7 @@
       </section>
       <section class="order-form-card">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">칼라박스</strong></div></div>
-        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST">
+        <form id="mailForm" class="order-form" data-kind="colorbox" action="https://formsubmit.co/sales@box.re.kr" method="POST">
           <input type="hidden" name="_subject" id="mailSubject" value="">
           <input type="hidden" name="_captcha" value="false">
           <div class="form-row"><label>박스형태</label><input id="boxShape" name="박스형태" readonly></div>
@@ -38,7 +38,7 @@
           <div class="form-row"><label>이메일</label><input name="이메일" type="email" required></div>
           <div class="form-row"><label>연락처</label><input name="연락처" placeholder="휴대폰 번호" required></div>
           <div class="form-row"><label>회사명</label><input name="회사명"></div>
-          <div class="form-hint"><strong>샘플의 경우 인쇄가 지원되지 않습니다.</strong><br>입력한 내용은 메일로 정리되어 sales@box.re.kr 로 전달됩니다.</div>
+          <div class="form-hint"><strong>샘플의 경우 인쇄가 지원되지 않습니다.</strong><br>입력한 내용은 메일로 정리되어 sales@box.re.kr 로 전달됩니다. 접수된 견적은 관리자 확인용 페이지에도 자동 기록됩니다.</div>
           <div class="sample-footer-cta"><button id="submitBtn" class="btn primary" type="submit">샘플 요청</button></div>
         </form>
       </section>
@@ -60,6 +60,6 @@
     </div></main>
     <script>
       mountOrderPage('colorbox','sample');
-      attachMailForm('mailForm', '샘플 요청이 전송되었습니다. 확인 후 회신드리겠습니다.');
+      attachMailForm('mailForm', '샘플 요청이 전송되었습니다. 확인 후 회신드리겠습니다.', 'sample');
     </script>
     </body></html>

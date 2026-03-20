@@ -2186,3 +2186,22 @@ linear-gradient(rgba(110,126,150,.08) 1px, transparent 1px),
 .secret-view{margin-top:12px;padding:16px;border-radius:18px;background:#fff;border:1px solid #eadbc8;color:#445166;line-height:1.75}
 .empty-state{padding:22px;border:1px dashed #d8c8b7;border-radius:18px;background:#fff;color:#6b7280;text-align:center}
 @media (max-width: 900px){.inquiry-board-layout{grid-template-columns:1fr}}
+
+/* === v3 layout / quote / admin fixes === */
+main,.container,.home-grid,.order-layout,.box-card-grid,.footer-shell,.footer-info-column{min-width:0}
+.home-grid > *, .footer-shell > *, .order-layout > *{min-width:0}
+.hero-copy-card h1{font-size:clamp(34px,4vw,52px) !important;word-break:keep-all}
+.hero-copy-card{overflow:hidden}
+.thumb-link{cursor:pointer}
+.footer{display:block !important}
+.footer-shell{display:grid !important;grid-template-columns:220px minmax(0,1fr) !important;align-items:center !important;gap:28px !important}
+.footer-brand-compact{justify-content:center !important;align-items:center !important;min-height:auto !important;padding:0 !important}
+.footer-brand-compact img{width:150px !important;height:auto !important;max-height:none !important}
+.footer-info-column{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;gap:12px !important}
+.footer-bottom-nav{display:flex !important;justify-content:center !important;flex-wrap:wrap !important;gap:18px 28px !important;margin:0 !important;padding:0 !important}
+.footer-contact-rows{display:grid !important;gap:10px !important;width:100%}
+.footer-contact-rows .footer-row{display:flex !important;justify-content:center !important;flex-wrap:wrap !important;gap:8px 18px !important;text-align:center !important;line-height:1.45 !important;margin:0}
+.footer-copy{font-weight:900}
+.guide-image-block img{object-fit:contain;background:#f7f3ee}
+@media (max-width:1100px){.footer-shell{grid-template-columns:1fr !important}}
+@media (max-width:900px){.home-grid,.order-layout,.text-guide-grid{grid-template-columns:1fr !important}}
