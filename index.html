@@ -108,6 +108,45 @@
   </div>
 </section>
 
+
+<section class="section home-storage-preview">
+  <div class="container">
+    <div class="catalog-head">
+      <div>
+        <div class="kicker">SERVICE</div>
+        <h2>박스 보관서비스 미리보기</h2>
+      </div>
+      <p class="desc">제작 후 보관까지 한 번에 해결합니다. 필요한 수량만 나눠서 출고할 수 있는 자체 창고 보관 서비스입니다.</p>
+    </div>
+    <div class="home-storage-preview-grid">
+      <a class="home-storage-preview-media" href="storage-service.html" aria-label="박스 보관서비스 자세히 보기">
+        <div class="home-storage-preview-main">
+          <img id="homeStorageMainImage" src="assets/guides/storage_1.jpg" alt="파레트렉이 적재된 물류창고 이미지">
+        </div>
+        <div class="home-storage-preview-thumbs">
+          <img src="assets/guides/storage_1.jpg" alt="보관서비스 이미지 1">
+          <img src="assets/guides/storage_2.jpg" alt="보관서비스 이미지 2">
+          <img src="assets/guides/storage_3.jpg" alt="보관서비스 이미지 3">
+          <img src="assets/guides/storage_4.jpg" alt="보관서비스 이미지 4">
+          <img src="assets/guides/storage_5.jpg" alt="보관서비스 이미지 5">
+        </div>
+      </a>
+      <div class="home-storage-preview-copy">
+        <span class="storage-kicker">SERVICE</span>
+        <h3>박스 보관 서비스</h3>
+        <p class="storage-quote">보관공간이 부족한 고객사를 위한 서비스</p>
+        <p>박스 보관장소가 부족한 경우, 에스디컴퍼니의 자체 창고에 안전하게 보관해드리며, 희망하는 수량과 날짜에 맞춰 납품을 해드리는 서비스입니다.</p>
+        <div class="storage-points">
+          <div class="storage-point"><strong>자체 창고 보관</strong><span>제작된 박스를 안전하게 적재 보관합니다.</span></div>
+          <div class="storage-point"><strong>원하는 수량 출고</strong><span>필요한 수량만 분할 출고할 수 있습니다.</span></div>
+          <div class="storage-point"><strong>일정 맞춤 납품</strong><span>희망 날짜에 맞춰 현장 일정과 보관 계획을 함께 조정합니다.</span></div>
+        </div>
+        <a class="btn primary" href="storage-service.html">보관서비스 자세히 보기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section home-support-preview" style="padding-top:0">
   <div class="container">
     <div class="catalog-head">
@@ -153,4 +192,21 @@
   render(); autoplay();
 })();
 </script>
+
+<script>
+(function(){
+  const main = document.getElementById('homeStorageMainImage');
+  const thumbs = document.querySelectorAll('.home-storage-preview-thumbs img');
+  if(!main || !thumbs.length) return;
+  const sources = Array.from(thumbs).map(img => img.getAttribute('src'));
+  let idx = 0;
+  function render(){
+    main.src = sources[idx];
+    thumbs.forEach((img,i)=>img.classList.toggle('active', i===idx));
+  }
+  render();
+  setInterval(()=>{ idx = (idx + 1) % sources.length; render(); }, 2600);
+})();
+</script>
+
 </body></html>
