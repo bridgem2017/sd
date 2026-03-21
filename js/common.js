@@ -1,7 +1,7 @@
 function el(s,r=document){return r.querySelector(s)}; function els(s,r=document){return [...r.querySelectorAll(s)]};
 const CFG = window.SD_SITE_CONFIG || {}; const DATA = window.SD_SITE_DATA || {};
 function mountLayout(active=''){
-  const items=[['corrugated.html','골판지박스'],['colorbox.html','칼라박스'],['portfolio.html','포토폴리오'],['support.html','고객지원'],['quote_corrugated.html','견적문의']];
+  const items=[['corrugated.html','골판지박스'],['colorbox.html','칼라박스'],['portfolio.html','포토폴리오'],['storage-service.html','박스 보관서비스'],['support.html','고객지원'],['quote_corrugated.html','견적문의']];
   const isQuoteActive = ['quote.html','quote_corrugated.html','quote_colorbox.html'].includes(active);
   const navLinks = items.map(([h,l])=>{
     const on = l==='견적문의' ? isQuoteActive : active===h;

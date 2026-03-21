@@ -138,17 +138,17 @@ function initSampleDeliveryFields(form){
   if(!methodSel || !extraWrap) return;
   const blocks = {
     '방문요청': `
-      <div class="sub-field"><label>방문 희망 주소</label><input name="방문희망주소" placeholder="에스디컴퍼니 직원 방문을 희망하는 주소를 입력해 주세요."></div>
+      <div class="sub-field"><label>방문 희망 주소</label><input name="방문희망주소" placeholder="방문 희망 주소를 입력해 주세요."></div>
     `,
     '택배발송': `
       <div class="sub-field"><label>수령인</label><input name="택배수령인" placeholder="수령인 성함"></div>
       <div class="sub-field"><label>수령인 연락처</label><input name="택배수령인연락처" placeholder="수령인 연락처"></div>
-      <div class="sub-field"><label>배송지</label><input name="택배배송지" placeholder="박스 샘플을 받을 배송지를 입력해 주세요."></div>
+      <div class="sub-field"><label>배송지</label><input name="택배배송지" placeholder="배송지를 입력해 주세요."></div>
     `,
     '화물배송': `
       <div class="sub-field"><label>수령인</label><input name="화물수령인" placeholder="수령인 성함"></div>
       <div class="sub-field"><label>수령인 연락처</label><input name="화물수령인연락처" placeholder="수령인 연락처"></div>
-      <div class="sub-field"><label>화물 배송지점</label><input name="화물배송지점" placeholder="이용할 화물 배송지점을 입력해 주세요."></div>
+      <div class="sub-field"><label>화물 배송지점</label><input name="화물배송지점" placeholder="화물배송지점을 입력해 주세요."></div>
     `,
     '직접수령': `
       <div class="sub-field"><label>방문희망일</label><input name="방문희망일" type="date"></div>
