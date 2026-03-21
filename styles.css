@@ -2527,3 +2527,18 @@ main{flex:1 0 auto;display:block;}
 .storage-point span{font-size:16px;line-height:1.7;color:#58657f;}
 @media (max-width:980px){.storage-service-layout{grid-template-columns:1fr;}.storage-copy h1{font-size:44px;}.storage-thumbs{grid-template-columns:repeat(3,1fr);} }
 @media (max-width:720px){.delivery-extra-fields .sub-field{grid-template-columns:1fr;gap:8px;}.storage-thumbs{grid-template-columns:repeat(2,1fr);} .storage-copy h1{font-size:34px;} }
+
+
+/* v14 storage carousel cleanup */
+.storage-gallery-clean{align-self:stretch;}
+.storage-carousel{position:relative;display:block;isolation:isolate;}
+.storage-carousel img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;}
+.storage-nav{position:absolute;top:50%;transform:translateY(-50%);width:58px;height:58px;border-radius:999px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.16);backdrop-filter:blur(3px);color:#fff;font-size:40px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:.2s ease;}
+.storage-nav:hover{background:rgba(255,255,255,.3);}
+.storage-nav.prev{left:18px;}
+.storage-nav.next{right:18px;}
+.storage-dots{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:10px;z-index:2;}
+.storage-dot{width:12px;height:12px;border-radius:999px;border:none;background:rgba(255,255,255,.45);cursor:pointer;padding:0;}
+.storage-dot.active{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18);}
+.storage-quote{font-size:18px;font-weight:900;margin:4px 0 0;color:#2c2c2c;}
+@media (max-width:980px){.storage-nav{width:48px;height:48px;font-size:34px;}.storage-dots{bottom:12px;}}
