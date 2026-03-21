@@ -23,6 +23,10 @@ function mountOrderPage(kind, mode){
   const submitBtn = document.getElementById('submitBtn');
   const form = document.getElementById('mailForm');
   const thumbsWrap = document.querySelector('.order-thumbs');
+  const presetBanner = document.getElementById('presetQuoteBanner');
+  const presetTitle = document.getElementById('presetQuoteTitle');
+  const presetText = document.getElementById('presetQuoteText');
+  const focusTarget = document.getElementById('quoteFormPanel');
 
   let currentKind = kind;
   let currentItem = matchItem(kind);
@@ -39,6 +43,15 @@ function mountOrderPage(kind, mode){
     shapeSel.value = activeName;
   }
 
+  function renderPresetBanner(){
+    if(!presetBanner) return;
+    const hasPreset = !!qs('type') || !!qs('img') || !!qs('focus');
+    presetBanner.hidden = !hasPreset;
+    if(!hasPreset) return;
+    if(presetTitle) presetTitle.textContent = `${familyNames[currentKind]} · ${currentItem.name} 프리셋이 적용되었습니다.`;
+    if(presetText) presetText.textContent = `선택한 ${familyNames[currentKind]}의 ${currentItem.name} 형태가 자동 반영되어 있습니다. 수량, 사이즈, 인쇄 조건만 입력하면 바로 견적 요청이 가능합니다.`;
+  }
+
   function applyFamily(nextKind, preferredName){
     currentKind = nextKind;
     const list = getCatalog(nextKind);
@@ -50,6 +63,7 @@ function mountOrderPage(kind, mode){
     if(mainImg){ mainImg.src = currentItem.img; mainImg.alt = currentItem.name; }
     fillShapeOptions(list, currentItem.name);
     buildThumbs(list, currentItem.name);
+    renderPresetBanner();
     if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[nextKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${currentItem.name}`;
     if(submitBtn) submitBtn.textContent = mode==='sample' ? '샘플 요청' : '견적 요청';
   }
@@ -63,6 +77,7 @@ function mountOrderPage(kind, mode){
         if(mainImg){ mainImg.src = found.img; mainImg.alt = found.name; }
         if(shapeSel) shapeSel.value = found.name;
         if(orderBadge) orderBadge.textContent = `${found.name} ${titleSuffix}`;
+        renderPresetBanner();
         if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
         document.querySelectorAll('.order-thumb').forEach(t=>t.classList.remove('active'));
         btn.classList.add('active');
@@ -80,12 +95,22 @@ function mountOrderPage(kind, mode){
       currentItem = found;
       if(mainImg){ mainImg.src = found.img; mainImg.alt = found.name; }
       if(orderBadge) orderBadge.textContent = `${found.name} ${titleSuffix}`;
+      renderPresetBanner();
       if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
       document.querySelectorAll('.order-thumb').forEach(t=>t.classList.toggle('active', t.dataset.boxName===found.name));
     });
   }
 
+  const requestedFamily = qs('family');
+  if(requestedFamily && BOX_CATALOG[requestedFamily]) kind = requestedFamily;
   applyFamily(kind, currentItem.name);
+  if(qs('focus')==='form' && focusTarget){
+    setTimeout(()=>{ focusTarget.scrollIntoView({behavior:'smooth', block:'start'}); }, 120);
+  }
+  const firstInput = form ? form.querySelector('input[name="사용제품"]') : null;
+  if(firstInput && (qs('focus')==='form' || qs('type'))){
+    setTimeout(()=> firstInput.focus(), 200);
+  }
 } 
 function attachMailForm(formId, successText){
   const form = document.getElementById(formId);

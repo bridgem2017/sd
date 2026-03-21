@@ -14,8 +14,13 @@
         <div class="order-main-image"><img id="mainBoxImage" src="assets/box-types/color_a.webp" alt="A형 박스"></div>
         <div class="order-thumbs"><button type="button" class="order-thumb active" data-box-image="assets/box-types/color_a.webp" data-box-name="A형 박스"><img src="assets/box-types/color_a.webp" alt="A형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_b.webp" data-box-name="B형 박스"><img src="assets/box-types/color_b.webp" alt="B형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_c.webp" data-box-name="C형 박스"><img src="assets/box-types/color_c.webp" alt="C형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_g.webp" data-box-name="G형 박스"><img src="assets/box-types/color_g.webp" alt="G형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_y.webp" data-box-name="Y형 박스"><img src="assets/box-types/color_y.webp" alt="Y형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_mono.webp" data-box-name="단상자 박스"><img src="assets/box-types/color_mono.webp" alt="단상자 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_pillow.webp" data-box-name="필로우 박스"><img src="assets/box-types/color_pillow.webp" alt="필로우 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_sleeve.webp" data-box-name="슬리브 박스"><img src="assets/box-types/color_sleeve.webp" alt="슬리브 박스"></button></div>
       </section>
-      <section class="order-form-card">
+      <section class="order-form-card" id="quoteFormPanel">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">칼라박스</strong></div></div>
+                <div class="preset-quote-banner" id="presetQuoteBanner" hidden>
+          <div class="preset-label">빠른 견적 프리셋</div>
+          <strong id="presetQuoteTitle">선택한 박스형태가 자동으로 반영되었습니다.</strong>
+          <p id="presetQuoteText">방금 본 박스의 종류와 형태가 미리 선택되어 있어 바로 수량과 사이즈만 입력하면 됩니다.</p>
+        </div>
                 <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
         <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST" data-family="colorbox" data-request-type="quote">
           <input type="hidden" name="_subject" id="mailSubject" value="">
