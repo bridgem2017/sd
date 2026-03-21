@@ -47,7 +47,7 @@
 .cb-photo-card{background:#fff;border:1px solid #eadcc9;border-radius:28px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
 .cb-photo-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(17,40,75,.08)}
 .cb-photo{aspect-ratio:1.12/0.82;background:#f5f2ec;overflow:hidden}
-.cb-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+.cb-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}.cb-photo img.holo-fit{object-fit:contain;padding:12px;background:#f5f2ec}
 .cb-photo-card:hover .cb-photo img{transform:scale(1.03)}
 .cb-copy{padding:20px 22px 24px}
 .cb-copy h3{margin:0 0 8px;font-size:28px;line-height:1.2;color:#11284b}
@@ -143,7 +143,7 @@
         <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/silver.jpg" alt="은박"></div><div class="cb-copy"><h3>은박</h3><p>차갑고 정돈된 인상을 주기 좋습니다. 테크, 헬스케어, 미니멀 브랜드에 활용하기 좋습니다.</p></div></article>
         <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/copper.jpg" alt="동박"></div><div class="cb-copy"><h3>동박</h3><p>따뜻하면서도 진중한 느낌을 줍니다. 카페, 베이커리, 리빙 브랜드의 브랜딩에 잘 맞습니다.</p></div></article>
         <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/blue.jpg" alt="청박"></div><div class="cb-copy"><h3>청박</h3><p>차별화 포인트를 만들기 좋은 색박입니다. 일반 금·은박보다 강한 개성을 줄 수 있습니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/hologram.jpg" alt="홀로그램"></div><div class="cb-copy"><h3>홀로그램</h3><p>빛에 따라 다채롭게 보이는 효과로 시선을 강하게 끕니다. 한정판, 이벤트, 트렌디한 제품에 적합합니다.</p></div></article>
+        <article class="cb-photo-card"><div class="cb-photo"><img class="holo-fit" src="assets/colorbox/foil/hologram.jpg" alt="홀로그램"></div><div class="cb-copy"><h3>홀로그램</h3><p>빛에 따라 다채롭게 보이는 효과로 시선을 강하게 끕니다. 한정판, 이벤트, 트렌디한 제품에 적합합니다.</p></div></article>
       </div>
     </section>
 
