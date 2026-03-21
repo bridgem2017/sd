@@ -86,7 +86,25 @@ function mountOrderPage(kind, mode){
   }
 
   if(familySel){
-    familySel.addEventListener('change', ()=> applyFamily(familySel.value, null));
+    familySel.addEventListener('change', ()=>{
+      const nextKind = familySel.value;
+      if(nextKind !== currentKind){
+        const params = new URLSearchParams(location.search);
+        const targetPage = mode==='sample'
+          ? (nextKind==='corrugated' ? 'sample_corrugated.html' : 'sample_colorbox.html')
+          : (nextKind==='corrugated' ? 'quote_corrugated.html' : 'quote_colorbox.html');
+        const nextList = getCatalog(nextKind);
+        const preferred = nextList.find(v => v.name===shapeSel?.value) || nextList[0];
+        params.set('family', nextKind);
+        if(preferred){
+          params.set('type', preferred.name);
+          params.set('img', preferred.img);
+        }
+        location.href = `${targetPage}?${params.toString()}`;
+        return;
+      }
+      applyFamily(nextKind, null);
+    });
   }
   if(shapeSel){
     shapeSel.addEventListener('change', ()=>{
