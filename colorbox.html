@@ -21,26 +21,26 @@
 .cb-box-card .thumb{aspect-ratio:1.08/1;background:#f6f2eb;padding:18px 16px 10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .cb-box-card .thumb img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .3s ease;filter:drop-shadow(0 10px 16px rgba(17,40,75,.08))}
 .cb-box-card:hover .thumb img{transform:scale(1.03)}
-.cb-box-card .body{padding:26px 24px 22px;display:flex;flex-direction:column;min-height:352px}
+.cb-box-card .body{padding:26px 24px 22px;display:flex;flex-direction:column;min-height:352px;flex:1}
 .cb-box-card h3{margin:0 0 12px;color:#11284b;font-size:28px;line-height:1.15}
 .cb-box-card p{margin:0;color:#5e7089;font-size:16px;line-height:1.8;flex:1}
-.cb-actions{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.cb-actions{display:flex;flex-direction:column;gap:12px;margin-top:auto;padding-top:22px}
 .cb-actions .btn{transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease}
 .cb-actions .btn:hover{transform:translateY(-2px)}
 .cb-actions .btn.primary:hover{box-shadow:0 14px 28px rgba(255,145,59,.22)}
 .cb-actions .btn.line:hover{background:#fff7ee}
 .cb-section{margin-top:58px}
-.cb-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,520px);gap:28px;align-items:end;margin-bottom:20px}
+.cb-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,500px);gap:28px;align-items:end;margin-bottom:20px}
 .cb-head h2{margin:0;color:#11284b;font-size:54px;line-height:1.02;letter-spacing:-.03em}
 .cb-head p{margin:0;color:#667b96;font-size:18px;line-height:1.8;text-align:left}
 .cb-guide-grid{display:grid;gap:20px}
 .cb-guide-grid.cb-six{grid-template-columns:repeat(3,minmax(0,1fr))}
 .cb-guide-grid.cb-four{grid-template-columns:repeat(4,minmax(0,1fr))}
-.cb-guide-grid.cb-five{grid-template-columns:repeat(5,minmax(0,1fr))}
+.cb-guide-grid.cb-five{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
 .cb-photo{aspect-ratio:1.14/0.84;background:#f6f2eb;overflow:hidden}
 .cb-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .32s ease}
 .cb-photo-card:hover .cb-photo img{transform:scale(1.03)}
-.cb-photo img.foil-blue{object-position:left center}
+.cb-photo img.foil-blue{object-position:left center}.cb-photo img.foil-holo{object-fit:contain;object-position:center center;background:#f6f2eb;padding:10px;box-sizing:border-box}
 .cb-copy{padding:20px 22px 24px}
 .cb-copy h3{margin:0 0 8px;color:#11284b;font-size:26px;line-height:1.18}
 .cb-copy p{margin:0;color:#62758e;font-size:16px;line-height:1.78}
@@ -50,6 +50,9 @@
 .cb-cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 @media (max-width:1280px){
   .cb-box-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cb-guide-grid.cb-five{grid-template-columns:repeat(5,minmax(0,1fr))}
+}
+@media (max-width:1100px){
   .cb-guide-grid.cb-five{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media (max-width:960px){
@@ -134,7 +137,7 @@
         <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/gold.jpg" alt="금박"></div><div class="cb-copy"><h3>금박</h3><p>가장 클래식한 프리미엄 표현입니다. 화장품, 선물세트, 기프트 패키지에 안정적으로 잘 어울립니다.</p></div></article>
         <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/silver.jpg" alt="은박"></div><div class="cb-copy"><h3>은박</h3><p>차갑고 정돈된 인상을 주기 좋습니다. 테크, 헬스케어, 미니멀 브랜드에 활용하기 좋습니다.</p></div></article>
         <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/copper.jpg" alt="동박"></div><div class="cb-copy"><h3>동박</h3><p>따뜻하면서도 진중한 느낌을 줍니다. 카페, 베이커리, 리빙 브랜드의 브랜딩에 잘 맞습니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/blue.jpg" alt="청박"></div><div class="cb-copy"><h3>청박</h3><p>차별화 포인트를 만들기 좋은 색박입니다. 일반 금·은박보다 강한 개성을 줄 수 있습니다.</p></div></article>
+        <article class="cb-photo-card"><div class="cb-photo"><img class="foil-blue" src="assets/colorbox/foil/blue.jpg" alt="청박"></div><div class="cb-copy"><h3>청박</h3><p>차별화 포인트를 만들기 좋은 색박입니다. 일반 금·은박보다 강한 개성을 줄 수 있습니다.</p></div></article>
       </div>
     </section>
 
@@ -151,4 +154,5 @@
   </div>
 </main>
 </body>
-</html>
+</html><article class="cb-photo-card"><div class="cb-photo"><img class="foil-holo" src="assets/colorbox/foil/hologram.jpg" alt="홀로그램"></div><div class="cb-copy"><h3>홀로그램</h3><p>빛에 따라 다채롭게 보이는 효과로 시선을 강하게 끕니다. 한정판, 이벤트, 트렌디한 제품에 적합합니다.</p></div></article>
+      
