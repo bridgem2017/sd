@@ -125,11 +125,43 @@ function mountOrderPage(kind, mode){
   if(qs('focus')==='form' && focusTarget){
     setTimeout(()=>{ focusTarget.scrollIntoView({behavior:'smooth', block:'start'}); }, 120);
   }
+  if(mode==='sample' && form){ initSampleDeliveryFields(form); }
   const firstInput = form ? form.querySelector('input[name="사용제품"]') : null;
   if(firstInput && (qs('focus')==='form' || qs('type'))){
     setTimeout(()=> firstInput.focus(), 200);
   }
 } 
+
+function initSampleDeliveryFields(form){
+  const methodSel = form.querySelector('#sampleReceiveMethod, select[name="수령방법"]');
+  const extraWrap = form.querySelector('#receiveExtraFields');
+  if(!methodSel || !extraWrap) return;
+  const blocks = {
+    '방문요청': `
+      <div class="sub-field"><label>방문 희망 주소</label><input name="방문희망주소" placeholder="에스디컴퍼니 직원 방문을 희망하는 주소를 입력해 주세요."></div>
+    `,
+    '택배발송': `
+      <div class="sub-field"><label>수령인</label><input name="택배수령인" placeholder="수령인 성함"></div>
+      <div class="sub-field"><label>수령인 연락처</label><input name="택배수령인연락처" placeholder="수령인 연락처"></div>
+      <div class="sub-field"><label>배송지</label><input name="택배배송지" placeholder="박스 샘플을 받을 배송지를 입력해 주세요."></div>
+    `,
+    '화물배송': `
+      <div class="sub-field"><label>수령인</label><input name="화물수령인" placeholder="수령인 성함"></div>
+      <div class="sub-field"><label>수령인 연락처</label><input name="화물수령인연락처" placeholder="수령인 연락처"></div>
+      <div class="sub-field"><label>화물 배송지점</label><input name="화물배송지점" placeholder="이용할 화물 배송지점을 입력해 주세요."></div>
+    `,
+    '직접수령': `
+      <div class="sub-field"><label>방문희망일</label><input name="방문희망일" type="date"></div>
+    `
+  };
+  function render(){
+    const value = methodSel.value || '방문요청';
+    extraWrap.innerHTML = blocks[value] || '';
+    extraWrap.hidden = !extraWrap.innerHTML.trim();
+  }
+  methodSel.addEventListener('change', render);
+  render();
+}
 function attachMailForm(formId, successText){
   const form = document.getElementById(formId);
   if(!form) return;
@@ -159,6 +191,14 @@ function attachMailForm(formId, successText){
       option: fd.get('옵션가공') || '',
       receive: fd.get('수령방법') || '',
       forklift: fd.get('지게차유무') || '',
+      receiveVisitAddress: fd.get('방문희망주소') || '',
+      parcelReceiver: fd.get('택배수령인') || '',
+      parcelReceiverPhone: fd.get('택배수령인연락처') || '',
+      parcelAddress: fd.get('택배배송지') || '',
+      freightReceiver: fd.get('화물수령인') || '',
+      freightReceiverPhone: fd.get('화물수령인연락처') || '',
+      freightBranch: fd.get('화물배송지점') || '',
+      pickupDate: fd.get('방문희망일') || '',
       memo: fd.get('추가메모') || fd.get('content') || '',
       title: fd.get('title') || ''
     };
