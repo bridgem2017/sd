@@ -12,7 +12,8 @@
 <style>
 .colorbox-page{padding:40px 0 88px;background:#fbfaf7}
 .cb-wrap{max-width:1320px;margin:0 auto;padding:0 24px}
-.cb-box-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin:0 0 56px}
+.cb-box-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin:0 0 18px}
+.cb-box-grid + .cb-box-grid{margin-top:18px;margin-bottom:56px}
 .cb-box-card,.cb-photo-card{background:#fff;border:1px solid #eadcc9;border-radius:30px;overflow:hidden;box-shadow:0 8px 24px rgba(17,40,75,.04);transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;position:relative}
 .cb-box-card{display:flex;flex-direction:column;height:100%}
 .cb-box-card:hover,.cb-photo-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(17,40,75,.09);border-color:#efc18e}
@@ -21,7 +22,7 @@
 .cb-box-card .thumb{aspect-ratio:1.08/0.88;background:#f6f2eb;padding:18px 16px 10px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .cb-box-card .thumb img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .3s ease;filter:drop-shadow(0 10px 16px rgba(17,40,75,.08))}
 .cb-box-card:hover .thumb img{transform:scale(1.03)}
-.cb-box-card .body{padding:22px 22px 22px;display:flex;flex-direction:column;flex:1}
+.cb-box-card .body{padding:22px 22px 22px;display:flex;flex-direction:column;flex:1;min-height:390px}
 .cb-box-card h3{margin:0 0 12px;color:#11284b;font-size:28px;line-height:1.15}
 .cb-box-card p{margin:0;color:#5e7089;font-size:15px;line-height:1.8;flex:1}
 .cb-actions{display:flex;flex-direction:column;gap:12px;margin-top:auto;padding-top:22px}
@@ -37,11 +38,11 @@
 .cb-guide-grid.cb-six{grid-template-columns:repeat(3,minmax(0,1fr))}
 .cb-guide-grid.cb-four{grid-template-columns:repeat(4,minmax(0,1fr))}
 .cb-guide-grid.cb-five{grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
-.cb-photo{aspect-ratio:1.14/0.84;background:#f6f2eb;overflow:hidden}
+.cb-photo{aspect-ratio:1.14/0.84;background:#f6f2eb;overflow:hidden;border-top-left-radius:30px;border-top-right-radius:30px}
 .cb-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .32s ease}
 .cb-photo-card:hover .cb-photo img{transform:scale(1.03)}
 .cb-photo img.foil-blue{object-position:left center}
-.cb-photo img.foil-holo{object-fit:contain;object-position:center center;background:#f6f2eb;padding:10px;box-sizing:border-box}
+.cb-photo img.foil-holo{object-fit:cover;object-position:center center;padding:0;background:none}
 .cb-copy{padding:20px 22px 24px}
 .cb-copy h3{margin:0 0 8px;color:#11284b;font-size:26px;line-height:1.18}
 .cb-copy p{margin:0;color:#62758e;font-size:16px;line-height:1.78}
@@ -59,6 +60,7 @@
   .cb-head h2{font-size:40px}
   .cb-box-grid,.cb-guide-grid.cb-six,.cb-guide-grid.cb-four,.cb-guide-grid.cb-five{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cb-cta{grid-template-columns:1fr}
+  .cb-box-card .body{min-height:unset}
 }
 @media (max-width:640px){
   .colorbox-page{padding:28px 0 64px}
@@ -95,6 +97,29 @@
       <article class="cb-box-card">
         <div class="thumb"><a href="quote_colorbox.html?source=colorbox&focus=form&type=Y형 박스&img=assets/box-types/color_y.webp"><img src="assets/box-types/color_y.webp" alt="Y형 박스"></a></div>
         <div class="body"><h3>Y형 박스</h3><p>손잡이나 상단 구조를 활용해 이동성과 존재감을 함께 가져가는 형태입니다. 행사, 기프트, 프로모션 패키지에 적합합니다.</p><div class="cb-actions"><a class="btn primary" href="quote_colorbox.html?source=colorbox&focus=form&type=Y형 박스&img=assets/box-types/color_y.webp">견적문의</a><a class="btn line" href="sample_colorbox.html?type=Y형 박스&img=assets/box-types/color_y.webp">샘플 요청</a></div></div>
+      </article>
+    </section>
+
+    <section class="cb-box-grid">
+      <article class="cb-box-card">
+        <div class="thumb"><a href="quote_colorbox.html?source=colorbox&focus=form&type=A형 박스&img=assets/box-types/color_mono.webp"><img src="assets/box-types/color_mono.webp" alt="단상자 박스"></a></div>
+        <div class="body"><h3>단상자 박스</h3><p>브랜드 패키지의 출발점이 되는 기본 구조입니다. 라벨 감각, 인쇄톤, 코팅 질감까지 가장 표준적으로 적용할 수 있습니다.</p><div class="cb-actions"><a class="btn primary" href="quote_colorbox.html?source=colorbox&focus=form&type=A형 박스&img=assets/box-types/color_mono.webp">견적문의</a><a class="btn line" href="sample_colorbox.html?type=A형 박스&img=assets/box-types/color_mono.webp">샘플 요청</a></div></div>
+      </article>
+      <article class="cb-box-card">
+        <div class="thumb"><a href="quote_colorbox.html?source=colorbox&focus=form&type=B형 박스&img=assets/box-types/color_b.webp"><img src="assets/box-types/color_b.webp" alt="필로우 박스"></a></div>
+        <div class="body"><h3>필로우 박스</h3><p>곡선이 살아 있는 감성형 구조라 액세서리, 소형 굿즈, 프로모션 포장에 잘 어울립니다.</p><div class="cb-actions"><a class="btn primary" href="quote_colorbox.html?source=colorbox&focus=form&type=B형 박스&img=assets/box-types/color_b.webp">견적문의</a><a class="btn line" href="sample_colorbox.html?type=B형 박스&img=assets/box-types/color_b.webp">샘플 요청</a></div></div>
+      </article>
+      <article class="cb-box-card">
+        <div class="thumb"><a href="quote_colorbox.html?source=colorbox&focus=form&type=C형 박스&img=assets/box-types/color_c.webp"><img src="assets/box-types/color_c.webp" alt="슬리브 박스"></a></div>
+        <div class="body"><h3>슬리브 박스</h3><p>겉 슬리브와 내부 박스가 분리된 형식으로 언박싱 포인트를 만들기 좋습니다. 간결하지만 고급스러운 인상을 줍니다.</p><div class="cb-actions"><a class="btn primary" href="quote_colorbox.html?source=colorbox&focus=form&type=C형 박스&img=assets/box-types/color_c.webp">견적문의</a><a class="btn line" href="sample_colorbox.html?type=C형 박스&img=assets/box-types/color_c.webp">샘플 요청</a></div></div>
+      </article>
+      <article class="cb-box-card">
+        <div class="thumb"><a href="quote_colorbox.html?source=colorbox&focus=form&type=G형 박스&img=assets/box-types/color_g.webp"><img src="assets/box-types/color_g.webp" alt="슬라이드 박스"></a></div>
+        <div class="body"><h3>슬라이드 박스</h3><p>서랍처럼 밀어 여는 구조라 전달감이 좋고 내부 연출이 살아납니다. 프리미엄 소포장에 잘 맞습니다.</p><div class="cb-actions"><a class="btn primary" href="quote_colorbox.html?source=colorbox&focus=form&type=G형 박스&img=assets/box-types/color_g.webp">견적문의</a><a class="btn line" href="sample_colorbox.html?type=G형 박스&img=assets/box-types/color_g.webp">샘플 요청</a></div></div>
+      </article>
+      <article class="cb-box-card">
+        <div class="thumb"><a href="quote_colorbox.html?source=colorbox&focus=form&type=Y형 박스&img=assets/box-types/color_y.webp"><img src="assets/box-types/color_y.webp" alt="넉다운 박스"></a></div>
+        <div class="body"><h3>넉다운 박스</h3><p>보관할 때는 평판에 가깝게, 사용할 때는 빠르게 조립할 수 있는 구조입니다. 물류 효율을 중요하게 볼 때 유리합니다.</p><div class="cb-actions"><a class="btn primary" href="quote_colorbox.html?source=colorbox&focus=form&type=Y형 박스&img=assets/box-types/color_y.webp">견적문의</a><a class="btn line" href="sample_colorbox.html?type=Y형 박스&img=assets/box-types/color_y.webp">샘플 요청</a></div></div>
       </article>
     </section>
 
