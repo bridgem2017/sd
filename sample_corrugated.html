@@ -16,71 +16,32 @@
       </section>
       <section class="order-form-card">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">골판지박스</strong></div></div>
-        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST" data-family="corrugated" data-request-type="sample">
+        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST">
           <input type="hidden" name="_subject" id="mailSubject" value="">
           <input type="hidden" name="_captcha" value="false">
           <div class="form-row"><label>박스형태</label><input id="boxShape" name="박스형태" readonly></div>
           <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required></div>
-          <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"></div>
-          <div class="form-row"><label>사이즈(외경)mm</label><div class="field-inline"><input name="가로" placeholder="장(가로)" required><input name="세로" placeholder="폭(세로)" required><input name="높이" placeholder="고(높이)" required></div></div>
-          <div class="form-row"><label>골두께</label><select name="골두께"><option>모름</option><option>A골</option><option>B골</option><option>E골</option><option>BA골</option><option>BB골</option></select></div>
-          <div class="form-row"><label>표면지</label><select name="표면지"><option>모름</option><option>연한 크라프트</option><option>진한 크라프트</option><option>화이트</option><option>이면지</option></select></div>
-          <div class="form-row"><label>강도</label><select name="강도"><option>일반</option><option>중강</option><option>고강</option></select></div>
-          <div class="form-row"><label>인쇄</label><div class="field-stack"><select name="인쇄"><option>없음</option></select><div class="field-note">샘플은 인쇄가 지원되지 않습니다.</div></div></div>
-          <div class="form-row"><label>수량</label><input name="수량" value="1" required></div>
-          <div class="form-row form-row-receive"><label>수령방법</label><div class="receive-method-wrap"><select name="수령방법" id="sampleReceiveMethod"><option>방문요청</option><option>택배발송</option><option>화물배송</option><option>직접수령</option></select><div id="receiveExtraFields" class="delivery-extra-fields"></div></div></div>
-          <div class="form-row"><label>샘플 용도</label><textarea name="샘플용도" placeholder="샘플을 어떤 목적으로 확인하고 싶은지 적어 주세요."></textarea></div>
+          
+    <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"></div>
+    <div class="form-row"><label>사이즈(외경)mm</label><div class="field-inline"><input name="가로" placeholder="장(가로)" required><input name="세로" placeholder="폭(세로)" required><input name="높이" placeholder="고(높이)" required></div></div>
+    
+        <div class="form-row"><label>골두께</label><select name="골두께"><option>A골</option><option>B골</option><option>E골</option><option>BA골</option><option>BB골</option></select></div>
+        <div class="form-row"><label>표면지</label><select name="표면지"><option>연한 크라프트</option><option>진한 크라프트</option><option>화이트</option><option>이면지</option></select></div>
+        <div class="form-row"><label>강도</label><select name="강도"><option>일반</option><option>중강</option><option>고강</option></select></div>
+        <div class="form-row"><label>인쇄</label><select name="인쇄"><option>없음</option><option>1도</option><option>2도</option><option>4도</option></select></div>
+        
+    <div class="form-row"><label>수량</label><input name="수량" placeholder="예: 1000" required></div>
+    <div class="form-row"><label>수령방법</label><div class="field-inline two"><select name="수령방법"><option>직접 수령</option><option>택배 발송</option><option>화물 배송</option></select><select name="지게차유무"><option>지게차 없음</option><option>지게차 있음</option></select></div></div>
+    <div class="form-row"><label>샘플 용도</label><textarea name="샘플용도" placeholder="샘플을 어떤 목적으로 확인하고 싶은지 적어 주세요."></textarea></div>
           <div class="form-row"><label>성함</label><input name="성함" required></div>
           <div class="form-row"><label>이메일</label><input name="이메일" type="email" required></div>
           <div class="form-row"><label>연락처</label><input name="연락처" placeholder="휴대폰 번호" required></div>
           <div class="form-row"><label>회사명</label><input name="회사명"></div>
-          <div class="form-hint"><strong>샘플의 경우 인쇄가 지원되지 않습니다.</strong><br>현재 사용하고 있는 제품이나 유사한 제품이 있는 경우 박스 샘플을 하단의 에스디컴퍼니 주소지로 보내주시고, 제품이 없는 경우 참고할 수 있는 사진은 sales@box.re.kr 로 보내주세요.</div>
+          <div class="form-hint">입력한 내용은 메일로 정리되어 sales@box.re.kr 로 전달됩니다.</div>
           <div class="sample-footer-cta"><button id="submitBtn" class="btn primary" type="submit">샘플 요청</button></div>
         </form>
       </section>
     </div>
-    <section class="info-block order-guide-section">
-      <span class="section-chip">사이즈 표기 안내</span>
-      <h3>장 × 폭 × 고 순서로 외측 사이즈를 입력해 주세요.</h3>
-      <p class="lead">박스 규격은 일반적으로 장(가로) × 폭(세로) × 고(높이) 순서로 입력합니다. 골판지 두께에 따라 내측 치수는 달라질 수 있으니, 제품 실측과 완충 여유를 함께 고려해 주세요.</p>
-      <div class="sample-guide-combo">
-        <div class="sample-guide-top">
-          <div class="guide-image-block guide-size-small"><img src="assets/guides/size-guide-realbox.png" alt="실제 박스 이미지에 장 가로 폭 세로 고 높이 방향을 표시한 외측 사이즈 안내"></div>
-          <div class="sample-note-panel">
-            <h4>치수 입력 전 체크 포인트</h4>
-            <ul>
-              <li><strong style="color:#f65f22">규격은 외측 사이즈 기준</strong>으로 작성합니다.</li>
-              <li>골 두께에 따라 실제 내측 치수는 달라질 수 있습니다.</li>
-              <li>제품 크기와 완충 여유, 예상 수량까지 함께 고려해 주세요.</li>
-            </ul>
-            <span class="example-chip">예시 : 320 × 220 × 120 mm</span>
-          </div>
-        </div>
-        <div class="measure-table-wrap">
-          <h4>외측 사이즈 측정표</h4>
-          <table class="measure-table">
-            <thead><tr><th>골형태</th><th>가로</th><th>세로</th><th>높이</th></tr></thead>
-            <tbody>
-              <tr><td>B골</td><td>내측 <b>+6mm</b></td><td>내측 <b>+6mm</b></td><td>내측 <b>+9mm</b></td></tr>
-              <tr><td>A골</td><td>내측 <b>+10mm</b></td><td>내측 <b>+10mm</b></td><td>내측 <b>+15mm</b></td></tr>
-              <tr><td>BB골</td><td>내측 <b>+12mm</b></td><td>내측 <b>+12mm</b></td><td>내측 <b>+18mm</b></td></tr>
-              <tr><td>BA골</td><td>내측 <b>+16mm</b></td><td>내측 <b>+16mm</b></td><td>내측 <b>+24mm</b></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="info-block order-guide-section">
-      <span class="section-chip">골판지박스 가이드</span>
-      <h3>형태 설명 · 골판지 재질 · 두께 정보를 함께 확인하세요.</h3>
-      <p class="lead">골판지박스는 구조와 표면지, 골 두께에 따라 결과가 달라집니다. 샘플의 경우 인쇄가 지원되지 않으므로 구조와 재질, 두께 확인 중심으로 요청해 주세요.</p>
-      <div class="text-guide-grid">
-        <article class="text-guide-card"><h4>형태 설명</h4><p>A형은 가장 기본적인 배송형, B형은 조립성과 개봉감이 좋은 타입, P형과 포스터형은 납작하거나 길이가 긴 제품에 유리합니다.</p></article>
-        <article class="text-guide-card"><h4>골판지 재질</h4><p>연한 크라프트는 내추럴한 인상, 진한 크라프트는 묵직한 인상, 화이트는 인쇄 선명도에 유리합니다. 이면지는 내부 마감과 기본 강도에 영향을 줍니다.</p></article>
-      </div>
-      <div class="guide-image-block guide-flute-small"><img src="assets/guides/corrugated-flute-guide-rich.png" alt="골판지 골두께와 용도 안내 이미지"></div>
-    </section>
     </div></main>
     <script>
       mountOrderPage('corrugated','sample');

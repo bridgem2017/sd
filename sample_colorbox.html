@@ -12,73 +12,37 @@
     <div class="order-layout">
       <section class="order-viewer">
         <div class="order-main-image"><img id="mainBoxImage" src="assets/box-types/color_a.webp" alt="A형 박스"></div>
-        <div class="order-thumbs"><button type="button" class="order-thumb active" data-box-image="assets/box-types/color_a.webp" data-box-name="A형 박스"><img src="assets/box-types/color_a.webp" alt="A형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_b.webp" data-box-name="B형 박스"><img src="assets/box-types/color_b.webp" alt="B형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_c.webp" data-box-name="C형 박스"><img src="assets/box-types/color_c.webp" alt="C형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_g.webp" data-box-name="G형 박스"><img src="assets/box-types/color_g.webp" alt="G형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_y.webp" data-box-name="Y형 박스"><img src="assets/box-types/color_y.webp" alt="Y형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_mono.png" data-box-name="단상자 박스"><img src="assets/box-types/color_second_mono.png" alt="단상자 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_pillow.png" data-box-name="필로우 박스"><img src="assets/box-types/color_second_pillow.png" alt="필로우 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_sleeve.png" data-box-name="슬리브 박스"><img src="assets/box-types/color_second_sleeve.png" alt="슬리브 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_slide.png" data-box-name="슬라이드 박스"><img src="assets/box-types/color_second_slide.png" alt="슬라이드 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_knockdown.png" data-box-name="넉다운 박스"><img src="assets/box-types/color_second_knockdown.png" alt="넉다운 박스"></button></div>
+        <div class="order-thumbs"><button type="button" class="order-thumb active" data-box-image="assets/box-types/color_a.webp" data-box-name="A형 박스"><img src="assets/box-types/color_a.webp" alt="A형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_b.webp" data-box-name="B형 박스"><img src="assets/box-types/color_b.webp" alt="B형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_c.webp" data-box-name="C형 박스"><img src="assets/box-types/color_c.webp" alt="C형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_g.webp" data-box-name="G형 박스"><img src="assets/box-types/color_g.webp" alt="G형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_y.webp" data-box-name="Y형 박스"><img src="assets/box-types/color_y.webp" alt="Y형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_mono.webp" data-box-name="단상자 박스"><img src="assets/box-types/color_mono.webp" alt="단상자 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_pillow.webp" data-box-name="필로우 박스"><img src="assets/box-types/color_pillow.webp" alt="필로우 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_sleeve.webp" data-box-name="슬리브 박스"><img src="assets/box-types/color_sleeve.webp" alt="슬리브 박스"></button></div>
       </section>
       <section class="order-form-card">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">칼라박스</strong></div></div>
-        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST" data-family="colorbox" data-request-type="sample">
+        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST">
           <input type="hidden" name="_subject" id="mailSubject" value="">
           <input type="hidden" name="_captcha" value="false">
           <div class="form-row"><label>박스형태</label><input id="boxShape" name="박스형태" readonly></div>
           <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required></div>
-          <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"></div>
-          <div class="form-row"><label>사이즈(외경)mm</label><div class="field-inline"><input name="가로" placeholder="장(가로)" required><input name="세로" placeholder="폭(세로)" required><input name="높이" placeholder="고(높이)" required></div></div>
-          <div class="form-row"><label>종이재질</label><select name="종이재질"><option>모름</option><option>SC마닐라지</option><option>아이보리지</option><option>MGB지</option><option>로얄아이보리지</option></select></div>
-          <div class="form-row"><label>골판지 합지</label><select name="골판지합지유무"><option>없음</option><option>E골 합지</option><option>B골 합지</option></select></div>
-          <div class="form-row"><label>인쇄</label><div class="field-stack"><select name="인쇄선택"><option>없음</option></select><div class="field-note">샘플은 인쇄가 지원되지 않습니다.</div></div></div>
-          <div class="form-row"><label>코팅선택</label><select name="코팅선택"><option>코팅안함</option><option>오버코팅</option><option>유광라미</option><option>무광라미</option></select></div>
-          <div class="form-row"><label>옵션가공</label><select name="옵션가공"><option>없음</option><option>금박</option><option>은박</option><option>형압</option><option>부분UV</option></select></div>
-          <div class="form-row"><label>수량</label><input name="수량" value="1" required></div>
-          <div class="form-row form-row-receive"><label>수령방법</label><div class="receive-method-wrap"><select name="수령방법" id="sampleReceiveMethod"><option>방문요청</option><option>택배발송</option><option>화물배송</option><option>직접수령</option></select><div id="receiveExtraFields" class="delivery-extra-fields"></div></div></div>
-          <div class="form-row"><label>샘플 용도</label><textarea name="샘플용도" placeholder="샘플을 어떤 목적으로 확인하고 싶은지 적어 주세요."></textarea></div>
+          
+    <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"></div>
+    <div class="form-row"><label>사이즈(외경)mm</label><div class="field-inline"><input name="가로" placeholder="장(가로)" required><input name="세로" placeholder="폭(세로)" required><input name="높이" placeholder="고(높이)" required></div></div>
+    
+        <div class="form-row"><label>종이재질</label><select name="종이재질"><option>SC마닐라지</option><option>아이보리지</option><option>MGB지</option><option>로얄아이보리지</option></select></div>
+        <div class="form-row"><label>골판지 합지</label><select name="골판지합지유무"><option>없음</option><option>E골 합지</option><option>B골 합지</option></select></div>
+        <div class="form-row"><label>인쇄 선택</label><select name="인쇄선택"><option>단면 4도</option><option>양면 4도</option><option>별색 인쇄</option></select></div>
+        <div class="form-row"><label>코팅선택</label><select name="코팅선택"><option>코팅안함</option><option>오버코팅</option><option>유광라미</option><option>무광라미</option></select></div>
+        <div class="form-row"><label>옵션가공</label><select name="옵션가공"><option>없음</option><option>금박</option><option>은박</option><option>형압</option><option>부분UV</option></select></div>
+        
+    <div class="form-row"><label>수량</label><input name="수량" placeholder="예: 1000" required></div>
+    <div class="form-row"><label>수령방법</label><div class="field-inline two"><select name="수령방법"><option>직접 수령</option><option>택배 발송</option><option>화물 배송</option></select><select name="지게차유무"><option>지게차 없음</option><option>지게차 있음</option></select></div></div>
+    <div class="form-row"><label>샘플 용도</label><textarea name="샘플용도" placeholder="샘플을 어떤 목적으로 확인하고 싶은지 적어 주세요."></textarea></div>
           <div class="form-row"><label>성함</label><input name="성함" required></div>
           <div class="form-row"><label>이메일</label><input name="이메일" type="email" required></div>
           <div class="form-row"><label>연락처</label><input name="연락처" placeholder="휴대폰 번호" required></div>
           <div class="form-row"><label>회사명</label><input name="회사명"></div>
-          <div class="form-hint"><strong>샘플의 경우 인쇄가 지원되지 않습니다.</strong><br>현재 사용하고 있는 제품이나 유사한 제품이 있는 경우 박스 샘플을 하단의 에스디컴퍼니 주소지로 보내주시고, 제품이 없는 경우 참고할 수 있는 사진은 sales@box.re.kr 로 보내주세요.</div>
+          <div class="form-hint">입력한 내용은 메일로 정리되어 sales@box.re.kr 로 전달됩니다.</div>
           <div class="sample-footer-cta"><button id="submitBtn" class="btn primary" type="submit">샘플 요청</button></div>
         </form>
       </section>
     </div>
-    <section class="info-block order-guide-section">
-      <span class="section-chip">사이즈 표기 안내</span>
-      <h3>장 × 폭 × 고 순서로 외측 사이즈를 입력해 주세요.</h3>
-      <p class="lead">박스 규격은 일반적으로 장(가로) × 폭(세로) × 고(높이) 순서로 입력합니다. 골판지 두께에 따라 내측 치수는 달라질 수 있으니, 제품 실측과 완충 여유를 함께 고려해 주세요.</p>
-      <div class="sample-guide-combo">
-        <div class="sample-guide-top">
-          <div class="guide-image-block guide-size-small"><img src="assets/guides/size-guide-realbox.png" alt="실제 박스 이미지에 장 가로 폭 세로 고 높이 방향을 표시한 외측 사이즈 안내"></div>
-          <div class="sample-note-panel">
-            <h4>치수 입력 전 체크 포인트</h4>
-            <ul>
-              <li><strong style="color:#f65f22">규격은 외측 사이즈 기준</strong>으로 작성합니다.</li>
-              <li>재질과 합지 여부에 따라 실제 체감 두께와 강도가 달라질 수 있습니다.</li>
-              <li>제품 크기와 완충 여유, 예상 수량까지 함께 고려해 주세요.</li>
-            </ul>
-            <span class="example-chip">예시 : 320 × 220 × 120 mm</span>
-          </div>
-        </div>
-        <div class="measure-table-wrap">
-          <h4>외측 사이즈 측정표</h4>
-          <table class="measure-table">
-            <thead><tr><th>골형태</th><th>가로</th><th>세로</th><th>높이</th></tr></thead>
-            <tbody>
-              <tr><td>B골</td><td>내측 <b>+6mm</b></td><td>내측 <b>+6mm</b></td><td>내측 <b>+9mm</b></td></tr>
-              <tr><td>A골</td><td>내측 <b>+10mm</b></td><td>내측 <b>+10mm</b></td><td>내측 <b>+15mm</b></td></tr>
-              <tr><td>BB골</td><td>내측 <b>+12mm</b></td><td>내측 <b>+12mm</b></td><td>내측 <b>+18mm</b></td></tr>
-              <tr><td>BA골</td><td>내측 <b>+16mm</b></td><td>내측 <b>+16mm</b></td><td>내측 <b>+24mm</b></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="info-block order-guide-section">
-      <span class="section-chip">칼라박스 가이드</span>
-      <h3>종이 정보 · 코팅 · 박인쇄 내용을 같이 보고 선택해 주세요.</h3>
-      <p class="lead">칼라박스는 종이 선택과 후가공에 따라 분위기 차이가 크게 납니다. 샘플은 인쇄가 지원되지 않으므로, 구조와 종이감, 코팅 방향을 확인하는 기준으로 보는 것이 좋습니다.</p>
-      <div class="guide-image-block"><img src="assets/guides/color-paper-guide-rich.png" alt="칼라박스 종이 재질 안내 이미지"></div>
-      <div class="guide-image-block"><img src="assets/guides/color-finish-foil-guide.png" alt="칼라박스 코팅과 박인쇄 안내 이미지"></div>
-    </section>
     </div></main>
     <script>
       mountOrderPage('colorbox','sample');

@@ -4,7 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"><script src="js/common.js"></script><script src="js/order-pages.js"></script>
-    </head><body><script>mountLayout('quote.html');</script>
+    </head><body><script>mountLayout('quote_colorbox.html');</script>
     <main class="section"><div class="container">
     <div class="kicker">Estimate Request</div>
     <h1 id="orderTitle">칼라박스 견적문의</h1>
@@ -12,20 +12,14 @@
     <div class="order-layout">
       <section class="order-viewer">
         <div class="order-main-image"><img id="mainBoxImage" src="assets/box-types/color_a.webp" alt="A형 박스"></div>
-        <div class="order-thumbs"><button type="button" class="order-thumb active" data-box-image="assets/box-types/color_a.webp" data-box-name="A형 박스"><img src="assets/box-types/color_a.webp" alt="A형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_b.webp" data-box-name="B형 박스"><img src="assets/box-types/color_b.webp" alt="B형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_c.webp" data-box-name="C형 박스"><img src="assets/box-types/color_c.webp" alt="C형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_g.webp" data-box-name="G형 박스"><img src="assets/box-types/color_g.webp" alt="G형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_y.webp" data-box-name="Y형 박스"><img src="assets/box-types/color_y.webp" alt="Y형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_mono.png" data-box-name="단상자 박스"><img src="assets/box-types/color_second_mono.png" alt="단상자 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_pillow.png" data-box-name="필로우 박스"><img src="assets/box-types/color_second_pillow.png" alt="필로우 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_sleeve.png" data-box-name="슬리브 박스"><img src="assets/box-types/color_second_sleeve.png" alt="슬리브 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_slide.png" data-box-name="슬라이드 박스"><img src="assets/box-types/color_second_slide.png" alt="슬라이드 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_second_knockdown.png" data-box-name="넉다운 박스"><img src="assets/box-types/color_second_knockdown.png" alt="넉다운 박스"></button></div>
+        <div class="order-thumbs"><button type="button" class="order-thumb active" data-box-image="assets/box-types/color_a.webp" data-box-name="A형 박스"><img src="assets/box-types/color_a.webp" alt="A형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_b.webp" data-box-name="B형 박스"><img src="assets/box-types/color_b.webp" alt="B형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_c.webp" data-box-name="C형 박스"><img src="assets/box-types/color_c.webp" alt="C형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_g.webp" data-box-name="G형 박스"><img src="assets/box-types/color_g.webp" alt="G형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_y.webp" data-box-name="Y형 박스"><img src="assets/box-types/color_y.webp" alt="Y형 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_mono.webp" data-box-name="단상자 박스"><img src="assets/box-types/color_mono.webp" alt="단상자 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_pillow.webp" data-box-name="필로우 박스"><img src="assets/box-types/color_pillow.webp" alt="필로우 박스"></button><button type="button" class="order-thumb " data-box-image="assets/box-types/color_sleeve.webp" data-box-name="슬리브 박스"><img src="assets/box-types/color_sleeve.webp" alt="슬리브 박스"></button></div>
       </section>
-      <section class="order-form-card" id="quoteFormPanel">
+      <section class="order-form-card">
         <div class="guide-card"><div class="guide-icon">📦</div><div><div class="small">박스 주문이 처음이라면?</div><strong id="orderBadge">칼라박스</strong></div></div>
-                <div class="preset-quote-banner" id="presetQuoteBanner" hidden>
-          <div class="preset-label">빠른 견적 프리셋</div>
-          <strong id="presetQuoteTitle">선택한 박스형태가 자동으로 반영되었습니다.</strong>
-          <p id="presetQuoteText">방금 본 박스의 종류와 형태가 미리 선택되어 있어 바로 수량과 사이즈만 입력하면 됩니다.</p>
-        </div>
-                <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
-        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST" data-family="colorbox" data-request-type="quote">
+        <form id="mailForm" class="order-form" action="https://formsubmit.co/sales@box.re.kr" method="POST">
           <input type="hidden" name="_subject" id="mailSubject" value="">
           <input type="hidden" name="_captcha" value="false">
-          <div class="form-row form-row-spaced"><label>박스형태</label><select id="boxShape" name="박스형태"></select></div>
+          <div class="form-row"><label>박스형태</label><input id="boxShape" name="박스형태" readonly></div>
           <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required></div>
           
     <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"></div>
@@ -49,85 +43,6 @@
         </form>
       </section>
     </div>
-    <section class="info-block order-guide-section size-guide-section">
-      <span class="section-chip">사이즈 표기 안내</span>
-      <h3>장 × 폭 × 고 순서로 외측 사이즈를 입력해 주세요.</h3>
-      <p class="lead tone-soft">박스 규격은 일반적으로 장(가로) × 폭(세로) × 고(높이) 순서로 입력합니다. 아래 가이드는 외측 치수 기준으로 정리한 안내이며, 실제 내측은 골 두께와 제품 여유분에 따라 달라질 수 있습니다.</p>
-      <div class="size-guide-shell">
-        <div class="size-guide-visual guide-image-block compact">
-          <img src="assets/guides/size-guide-realbox.png" alt="실제 박스 이미지에 장 가로 폭 세로 고 높이 방향을 표시한 외측 사이즈 안내">
-        </div>
-        <div class="size-guide-copy">
-          <div class="size-guide-note-card">
-            <h4>치수 입력 전 체크 포인트</h4>
-            <ul class="size-guide-list">
-              <li><strong>규격은 외측 사이즈 기준</strong>입니다.</li>
-              <li>골 두께에 따라 내측 치수는 달라질 수 있습니다.</li>
-              <li>제품 크기와 완충 여유까지 함께 고려해 주세요.</li>
-              <li>정확한 견적을 위해 예상 수량도 같이 입력해 주세요.</li>
-            </ul>
-            <div class="size-guide-example">예시 : 320 × 220 × 120 mm</div>
-          </div>
-        </div>
-      </div>
-      <div class="size-table-wrap">
-        <h4>외측 사이즈 측정표</h4>
-        <table class="size-guide-table">
-          <thead><tr><th>골형태</th><th>가로</th><th>세로</th><th>높이</th></tr></thead>
-          <tbody>
-            <tr><td>B골</td><td>내측 +6mm</td><td>내측 +6mm</td><td>내측 +9mm</td></tr>
-            <tr><td>A골</td><td>내측 +10mm</td><td>내측 +10mm</td><td>내측 +15mm</td></tr>
-            <tr><td>BB골</td><td>내측 +12mm</td><td>내측 +12mm</td><td>내측 +18mm</td></tr>
-            <tr><td>BA골</td><td>내측 +16mm</td><td>내측 +16mm</td><td>내측 +24mm</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    
-<section class="quote-colorbox-guides">
-<section class="cb-section">
-      <div class="cb-head">
-        <h2>종이정보 · 칼라박스 종이 재질 가이드</h2>
-        <p>패키지의 기본 인상을 결정하는 재질 영역입니다. 같은 구조라도 재질에 따라 인쇄 밀도, 채도, 촉감, 브랜드 분위기가 달라집니다.</p>
-      </div>
-      <div class="cb-guide-grid cb-six">
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/paper/sc_manila.jpg" alt="SC마닐라지"></div><div class="cb-copy"><h3>SC마닐라지</h3><p>기본 단상자에 가장 폭넓게 쓰이는 재질입니다. 적당한 백색감과 안정적인 인쇄 표현이 장점입니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/paper/ivory.jpg" alt="아이보리지"></div><div class="cb-copy"><h3>아이보리지</h3><p>부드러운 톤과 깔끔한 표면감으로 화장품, 건강식품, 선물 박스에 많이 쓰입니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/paper/royal_ivory.jpg" alt="로얄아이보리지"></div><div class="cb-copy"><h3>로얄아이보리지</h3><p>더 높은 밀도감과 정돈된 표면으로 고급 패키지 인상에 유리한 재질입니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/paper/mgb.jpg" alt="MGB지"></div><div class="cb-copy"><h3>MGB지</h3><p>매끈하고 또렷한 인쇄 결과를 노릴 때 좋은 선택지입니다. 선명한 브랜딩형 패키지에 적합합니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/paper/kraft.jpg" alt="튜크라프트 크라프트"></div><div class="cb-copy"><h3>튜크라프트 / 크라프트</h3><p>내추럴하고 친환경적인 분위기를 줄 때 활용합니다. 식품, 리빙, 핸드메이드 패키지에 잘 어울립니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/paper/black_special.jpg" alt="흑지 특수지"></div><div class="cb-copy"><h3>흑지 / 특수지</h3><p>검은 바탕이나 특수 질감을 통해 존재감을 높이는 재질입니다. 박인쇄와 조합할 때 효과적입니다.</p></div></article>
-      </div>
-    </section>
-
-<section class="cb-section">
-      <div class="cb-head">
-        <h2>코팅 · 박인쇄 후가공 가이드</h2>
-        <p>표면 보호와 시각적 인상을 동시에 만드는 영역입니다. 광택, 반사, 질감 차이를 비교하며 제품 성격에 맞는 방향을 고를 수 있습니다.</p>
-      </div>
-      <div class="cb-guide-grid cb-four">
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/coating/overcoat.jpg" alt="오버코팅"></div><div class="cb-copy"><h3>오버코팅</h3><p>표면 보호와 기본 광택을 더하는 가장 범용적인 후가공입니다. 실무에서 가장 많이 검토하는 선택지입니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/coating/gloss_lami.jpg" alt="유광 라미"></div><div class="cb-copy"><h3>유광 라미</h3><p>반짝임이 살아 있어 시선 집중도가 높습니다. 화려하고 선명한 패키지에 잘 맞습니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/coating/matte_lami.jpg" alt="무광 라미"></div><div class="cb-copy"><h3>무광 라미</h3><p>반사를 줄이고 차분한 고급감을 줍니다. 브랜드 패키지나 프리미엄 인상 연출에 유리합니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/coating/spot_uv.jpg" alt="부분UV"></div><div class="cb-copy"><h3>부분UV</h3><p>로고나 포인트 영역만 반짝이게 살리는 후가공입니다. 박인쇄와 함께 쓰면 고급감이 크게 올라갑니다.</p></div></article>
-      </div>
-    </section>
-
-<section class="cb-section">
-      <div class="cb-head">
-        <h2>박인쇄 추천 포인트</h2>
-        <p>박은 빛 반사와 색상 대비로 브랜드의 존재감을 높이는 후가공입니다. 제품 성격에 따라 금속감의 온도와 분위기를 다르게 가져갈 수 있습니다.</p>
-      </div>
-      <div class="cb-guide-grid cb-five">
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/gold.jpg" alt="금박"></div><div class="cb-copy"><h3>금박</h3><p>가장 클래식한 프리미엄 표현입니다. 화장품, 선물세트, 기프트 패키지에 안정적으로 잘 어울립니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/silver.jpg" alt="은박"></div><div class="cb-copy"><h3>은박</h3><p>차갑고 정돈된 인상을 주기 좋습니다. 테크, 헬스케어, 미니멀 브랜드에 활용하기 좋습니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img src="assets/colorbox/foil/copper.jpg" alt="동박"></div><div class="cb-copy"><h3>동박</h3><p>따뜻하면서도 진중한 느낌을 줍니다. 카페, 베이커리, 리빙 브랜드의 브랜딩에 잘 맞습니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img class="foil-blue" src="assets/colorbox/foil/blue.jpg" alt="청박"></div><div class="cb-copy"><h3>청박</h3><p>차별화 포인트를 만들기 좋은 색박입니다. 일반 금·은박보다 강한 개성을 줄 수 있습니다.</p></div></article>
-        <article class="cb-photo-card"><div class="cb-photo"><img class="foil-holo" src="assets/colorbox/foil/hologram.jpg" alt="홀로그램"></div><div class="cb-copy"><h3>홀로그램</h3><p>빛에 따라 다채롭게 보이는 효과로 시선을 강하게 끕니다. 한정판, 이벤트, 트렌디한 제품에 적합합니다.</p></div></article>
-      </div>
-    </section>
-</section>
     </div></main>
     <script>
       mountOrderPage('colorbox','quote');
