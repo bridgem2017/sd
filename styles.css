@@ -3141,3 +3141,19 @@ main{flex:1 0 auto;display:block;}
 
 /* 2026-03 support/corrugated guide patch */
 .corrugated-guide-page{padding-top:28px;padding-bottom:48px}.guide-page-intro{margin-bottom:18px}.guide-page-intro .section-chip{display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;border:1px solid #eadcca;background:#f8efe3;color:#c77a1e;font-weight:800;font-size:15px;letter-spacing:-.02em}.guide-page-intro h2{margin:18px 0 10px;font-size:clamp(30px,4vw,54px);line-height:1.1;letter-spacing:-.04em;color:#17294a}.guide-page-intro .desc{margin:0 0 6px;color:#61708a;font-size:18px;line-height:1.75}.cb-actions .btn.line{background:#fff;color:#111827;border-color:#d9d3c7}.cb-actions .btn.line:hover{background:#111827;color:#fff;border-color:#111827;box-shadow:0 12px 24px rgba(17,24,39,.14)}.cb-actions .btn.primary{background:linear-gradient(135deg,#ff7a30,#ffb36b)!important;color:#fff!important}.inquiry-submit-btn{background:linear-gradient(135deg,#ff7a30,#ffb36b)!important;color:#fff!important;border-color:#ff8d45!important;box-shadow:0 12px 24px rgba(255,122,48,.22)}.inquiry-submit-btn:hover{filter:saturate(1.05);box-shadow:0 16px 28px rgba(255,122,48,.26)}@media (max-width:768px){.guide-page-intro .desc{font-size:16px}.corrugated-guide-page{padding-top:18px;padding-bottom:32px}}
+
+
+/* 2026-03-22 final polish */
+.v7-hero-stats{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.v7-hero-stats .point{min-width:0;min-height:176px;padding:20px 18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
+.v7-hero-stats .point b{font-size:clamp(22px,1.7vw,28px)!important;line-height:1.18!important;letter-spacing:-.04em;white-space:normal!important;word-break:keep-all;margin-bottom:10px}
+.v7-hero-stats .point span{font-size:clamp(14px,1vw,17px)!important;line-height:1.6!important;word-break:keep-all;overflow-wrap:anywhere}
+.v7-hero-stats .point span br{display:none}
+.guide-page-intro .guide-page-pretext{margin:14px 0 10px;color:#54657f;font-size:18px;line-height:1.8;letter-spacing:-.02em}
+.guide-page-intro .guide-page-pretext strong{color:#17294a}
+.card-actions .btn.line,.cb-actions .btn.line{background:#fff;color:#111827;border-color:#d9d3c7}
+.card-actions .btn.line:hover,.cb-actions .btn.line:hover{background:#111827;color:#fff;border-color:#111827;box-shadow:0 12px 24px rgba(17,24,39,.14)}
+.card-actions .btn.primary,.cb-actions .btn.primary{background:linear-gradient(135deg,#ff7a30,#ffb36b)!important;color:#fff!important;box-shadow:0 12px 24px rgba(255,122,48,.18)}
+.card-actions .btn.primary:hover,.cb-actions .btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(255,122,48,.24);filter:saturate(1.04)}
+@media (max-width:1180px){.v7-hero-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.v7-hero-stats .point{min-height:160px}.v7-hero-stats .point b{font-size:clamp(20px,2vw,24px)!important}}
+@media (max-width:860px){.v7-hero-stats{grid-template-columns:1fr}.v7-hero-stats .point{min-height:auto}.guide-page-intro .guide-page-pretext{font-size:16px;line-height:1.75}}
