@@ -3066,3 +3066,17 @@ main{flex:1 0 auto;display:block;}
 
 .swatch-thumb-image{background:none!important;overflow:hidden;padding:0}
 .swatch-thumb-image img{width:100%;height:100%;display:block;object-fit:cover;border-radius:20px}
+
+
+/* corrugated flute photo detail cards */
+.flute-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.flute-detail-card{display:flex;flex-direction:column;background:#fff;border:1px solid #eadbc8;border-radius:28px;overflow:hidden;box-shadow:0 14px 30px rgba(23,37,60,.05)}
+.flute-detail-thumb{padding:18px 18px 0}
+.flute-detail-thumb img{display:block;width:100%;height:auto;border-radius:20px;background:#f7f2ea}
+.flute-detail-body{padding:18px 22px 24px}
+.flute-detail-body h4{margin:0 0 6px;color:#17294a;font-size:34px;line-height:1.1;letter-spacing:-.03em}
+.flute-detail-body .flute-size{margin:0 0 10px;color:#c47b22;font-size:18px;font-weight:800;line-height:1.2}
+.flute-detail-body p{margin:0;color:#48556a;font-size:18px;line-height:1.72;word-break:keep-all}
+.flute-detail-card-wide{grid-column:span 2}
+@media (max-width:1024px){.flute-detail-grid{grid-template-columns:1fr}.flute-detail-card-wide{grid-column:auto}}
+@media (max-width:768px){.flute-detail-body h4{font-size:28px}.flute-detail-body p{font-size:16px;line-height:1.65}.flute-detail-thumb{padding:14px 14px 0}.flute-detail-body{padding:16px 18px 20px}}
