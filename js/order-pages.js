@@ -12,33 +12,200 @@ function matchItem(kind){
   return item;
 }
 function mountOrderPage(kind, mode){
-  const item = matchItem(kind);
-  const list = getCatalog(kind);
-  const title = (mode==='sample' ? '샘플 요청' : '견적문의');
-  document.getElementById('orderTitle').textContent = `${kind==='corrugated' ? '골판지박스' : '칼라박스'} ${title}`;
-  document.getElementById('orderBadge').textContent = `${item.name} ${title}`;
-  document.getElementById('boxShape').value = item.name;
-  document.getElementById('mainBoxImage').src = item.img;
-  document.getElementById('mainBoxImage').alt = item.name;
-  document.querySelectorAll('[data-box-image]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      document.getElementById('mainBoxImage').src = btn.dataset.boxImage;
-      document.getElementById('mainBoxImage').alt = btn.dataset.boxName;
-      document.getElementById('boxShape').value = btn.dataset.boxName;
-      document.querySelectorAll('.order-thumb').forEach(t=>t.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
+  const familyNames = {corrugated:'골판지박스', colorbox:'칼라박스'};
+  const titleSuffix = mode==='sample' ? '샘플 요청' : '견적문의';
+  const familySel = document.getElementById('boxFamilySelect');
+  const shapeSel = document.getElementById('boxShape');
+  const mainImg = document.getElementById('mainBoxImage');
+  const orderTitle = document.getElementById('orderTitle');
+  const orderBadge = document.getElementById('orderBadge');
   const subjectEl = document.getElementById('mailSubject');
-  if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${kind==='corrugated' ? '골판지박스' : '칼라박스'} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${item.name}`;
   const submitBtn = document.getElementById('submitBtn');
-  if(submitBtn) submitBtn.textContent = mode==='sample' ? '샘플 요청' : '견적 요청';
+  const form = document.getElementById('mailForm');
+  const thumbsWrap = document.querySelector('.order-thumbs');
+  const presetBanner = document.getElementById('presetQuoteBanner');
+  const presetTitle = document.getElementById('presetQuoteTitle');
+  const presetText = document.getElementById('presetQuoteText');
+  const focusTarget = document.getElementById('quoteFormPanel');
+
+  let currentKind = kind;
+  let currentItem = matchItem(kind);
+
+  function buildThumbs(list, activeName){
+    if(!thumbsWrap) return;
+    thumbsWrap.innerHTML = list.map(item => `<button type="button" class="order-thumb ${item.name===activeName?'active':''}" data-box-image="${item.img}" data-box-name="${item.name}"><img src="${item.img}" alt="${item.name}"></button>`).join('');
+    bindThumbs();
+  }
+
+  function fillShapeOptions(list, activeName){
+    if(!shapeSel) return;
+    shapeSel.innerHTML = list.map(item => `<option value="${item.name}">${item.name}</option>`).join('');
+    shapeSel.value = activeName;
+  }
+
+  function renderPresetBanner(){
+    if(!presetBanner) return;
+    const hasPreset = !!qs('type') || !!qs('img') || !!qs('focus');
+    presetBanner.hidden = !hasPreset;
+    if(!hasPreset) return;
+    if(presetTitle) presetTitle.textContent = `${familyNames[currentKind]} · ${currentItem.name} 프리셋이 적용되었습니다.`;
+    if(presetText) presetText.textContent = `선택한 ${familyNames[currentKind]}의 ${currentItem.name} 형태가 자동 반영되어 있습니다. 수량, 사이즈, 인쇄 조건만 입력하면 바로 견적 요청이 가능합니다.`;
+  }
+
+  function applyFamily(nextKind, preferredName){
+    currentKind = nextKind;
+    const list = getCatalog(nextKind);
+    currentItem = list.find(v => v.name===preferredName) || list[0];
+    if(form) form.dataset.family = nextKind;
+    if(familySel) familySel.value = nextKind;
+    if(orderTitle) orderTitle.textContent = `${familyNames[nextKind]} ${titleSuffix}`;
+    if(orderBadge) orderBadge.textContent = `${currentItem.name} ${titleSuffix}`;
+    if(mainImg){ mainImg.src = currentItem.img; mainImg.alt = currentItem.name; }
+    fillShapeOptions(list, currentItem.name);
+    buildThumbs(list, currentItem.name);
+    renderPresetBanner();
+    if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[nextKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${currentItem.name}`;
+    if(submitBtn) submitBtn.textContent = mode==='sample' ? '샘플 요청' : '견적 요청';
+  }
+
+  function bindThumbs(){
+    document.querySelectorAll('[data-box-image]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const list = getCatalog(currentKind);
+        const found = list.find(v => v.name===btn.dataset.boxName) || list[0];
+        currentItem = found;
+        if(mainImg){ mainImg.src = found.img; mainImg.alt = found.name; }
+        if(shapeSel) shapeSel.value = found.name;
+        if(orderBadge) orderBadge.textContent = `${found.name} ${titleSuffix}`;
+        renderPresetBanner();
+        if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
+        document.querySelectorAll('.order-thumb').forEach(t=>t.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  }
+
+  if(familySel){
+    familySel.addEventListener('change', ()=>{
+      const nextKind = familySel.value;
+      if(nextKind !== currentKind){
+        const params = new URLSearchParams(location.search);
+        const targetPage = mode==='sample'
+          ? (nextKind==='corrugated' ? 'sample_corrugated.html' : 'sample_colorbox.html')
+          : (nextKind==='corrugated' ? 'quote_corrugated.html' : 'quote_colorbox.html');
+        const nextList = getCatalog(nextKind);
+        const preferred = nextList.find(v => v.name===shapeSel?.value) || nextList[0];
+        params.set('family', nextKind);
+        if(preferred){
+          params.set('type', preferred.name);
+          params.set('img', preferred.img);
+        }
+        location.href = `${targetPage}?${params.toString()}`;
+        return;
+      }
+      applyFamily(nextKind, null);
+    });
+  }
+  if(shapeSel){
+    shapeSel.addEventListener('change', ()=>{
+      const list = getCatalog(currentKind);
+      const found = list.find(v => v.name===shapeSel.value) || list[0];
+      currentItem = found;
+      if(mainImg){ mainImg.src = found.img; mainImg.alt = found.name; }
+      if(orderBadge) orderBadge.textContent = `${found.name} ${titleSuffix}`;
+      renderPresetBanner();
+      if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
+      document.querySelectorAll('.order-thumb').forEach(t=>t.classList.toggle('active', t.dataset.boxName===found.name));
+    });
+  }
+
+  const requestedFamily = qs('family');
+  if(requestedFamily && BOX_CATALOG[requestedFamily]) kind = requestedFamily;
+  applyFamily(kind, currentItem.name);
+  if(qs('focus')==='form' && focusTarget){
+    setTimeout(()=>{ focusTarget.scrollIntoView({behavior:'smooth', block:'start'}); }, 120);
+  }
+  if(mode==='sample' && form){ initSampleDeliveryFields(form); }
+  const firstInput = form ? form.querySelector('input[name="사용제품"]') : null;
+  if(firstInput && (qs('focus')==='form' || qs('type'))){
+    setTimeout(()=> firstInput.focus(), 200);
+  }
+} 
+
+function initSampleDeliveryFields(form){
+  const methodSel = form.querySelector('#sampleReceiveMethod, select[name="수령방법"]');
+  const extraWrap = form.querySelector('#receiveExtraFields');
+  if(!methodSel || !extraWrap) return;
+  const blocks = {
+    '방문요청': `
+      <div class="sub-field"><label>방문 희망 주소</label><input name="방문희망주소" placeholder="방문 희망 주소를 입력해 주세요."></div>
+    `,
+    '택배발송': `
+      <div class="sub-field"><label>수령인</label><input name="택배수령인" placeholder="수령인 성함"></div>
+      <div class="sub-field"><label>수령인 연락처</label><input name="택배수령인연락처" placeholder="수령인 연락처"></div>
+      <div class="sub-field"><label>배송지</label><input name="택배배송지" placeholder="배송지를 입력해 주세요."></div>
+    `,
+    '화물배송': `
+      <div class="sub-field"><label>수령인</label><input name="화물수령인" placeholder="수령인 성함"></div>
+      <div class="sub-field"><label>수령인 연락처</label><input name="화물수령인연락처" placeholder="수령인 연락처"></div>
+      <div class="sub-field"><label>화물 배송지점</label><input name="화물배송지점" placeholder="화물배송지점을 입력해 주세요."></div>
+    `,
+    '직접수령': `
+      <div class="sub-field"><label>방문희망일</label><input name="방문희망일" type="date"></div>
+    `
+  };
+  function render(){
+    const value = methodSel.value || '방문요청';
+    extraWrap.innerHTML = blocks[value] || '';
+    extraWrap.hidden = !extraWrap.innerHTML.trim();
+  }
+  methodSel.addEventListener('change', render);
+  render();
 }
 function attachMailForm(formId, successText){
   const form = document.getElementById(formId);
+  if(!form) return;
   form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const fd = new FormData(form);
+    const payload = {
+      createdAt: new Date().toISOString(),
+      family: form.dataset.family || '',
+      requestType: form.dataset.requestType || '',
+      shape: fd.get('박스형태') || '',
+      product: fd.get('사용제품') || '',
+      company: fd.get('회사명') || '',
+      name: fd.get('성함') || fd.get('name') || '',
+      email: fd.get('이메일') || fd.get('email') || '',
+      phone: fd.get('연락처') || fd.get('phone') || '',
+      width: fd.get('가로') || '',
+      depth: fd.get('세로') || '',
+      height: fd.get('높이') || '',
+      qty: fd.get('수량') || '',
+      flute: fd.get('골두께') || '',
+      surface: fd.get('표면지') || '',
+      strength: fd.get('강도') || '',
+      print: fd.get('인쇄') || fd.get('인쇄선택') || '',
+      paper: fd.get('종이재질') || '',
+      coating: fd.get('코팅선택') || '',
+      option: fd.get('옵션가공') || '',
+      receive: fd.get('수령방법') || '',
+      forklift: fd.get('지게차유무') || '',
+      receiveVisitAddress: fd.get('방문희망주소') || '',
+      parcelReceiver: fd.get('택배수령인') || '',
+      parcelReceiverPhone: fd.get('택배수령인연락처') || '',
+      parcelAddress: fd.get('택배배송지') || '',
+      freightReceiver: fd.get('화물수령인') || '',
+      freightReceiverPhone: fd.get('화물수령인연락처') || '',
+      freightBranch: fd.get('화물배송지점') || '',
+      pickupDate: fd.get('방문희망일') || '',
+      memo: fd.get('추가메모') || fd.get('content') || '',
+      title: fd.get('title') || ''
+    };
+    if(form.dataset.requestType === 'quote'){
+      const estimate = calcEstimate(payload);
+      saveEstimateSubmission({...payload, ...estimate});
+    }
     try{
       await fetch(form.action, {method:'POST', body:fd, mode:'no-cors'});
       alert(successText);
