@@ -2880,3 +2880,61 @@ main{flex:1 0 auto;display:block;}
     grid-template-rows:repeat(3,minmax(0,1fr));
   }
 }
+
+
+
+/* actual guide-paper content preview */
+.preview-guide-real{
+  background:linear-gradient(180deg,#fcfbf8 0%,#f8f4ee 100%);
+  padding:14px;
+}
+.mini-guide-real-grid{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.mini-guide-real-card{
+  border:1px solid #eadfd0;
+  border-radius:18px;
+  background:#fff;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 8px 18px rgba(17,21,34,.04);
+}
+.mini-guide-real-photo{
+  height:96px;
+  overflow:hidden;
+}
+.mini-guide-real-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.mini-guide-real-copy{
+  padding:10px;
+}
+.mini-guide-real-copy h4{
+  margin:0 0 6px;
+  color:#13284b;
+  font-size:16px;
+  line-height:1.1;
+  font-weight:900;
+  letter-spacing:-.03em;
+}
+.mini-guide-real-copy p{
+  margin:0;
+  color:#65758f;
+  font-size:11px;
+  line-height:1.42;
+}
+@media (max-width:720px){
+  .mini-guide-real-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:repeat(3,minmax(0,1fr));
+  }
+}
