@@ -1,2 +1,42 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니</title><meta content="에스디컴퍼니 주요 포트폴리오 이미지 모음" name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script></head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">현재 제작 이미지를 그대로 볼 수 있게 정리했습니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>mountLayout("portfolio.html");document.getElementById("portfolioGrid").innerHTML=DATA.portfolio.map(item=>`<article class="card"><img src="${item.img}" alt="${item.display||item.title}"><div class="body"><h4>${item.display||item.title}</h4><p>${item.desc}</p><div class="tag-row">${(item.spec||'').split(' / ').filter(t=>t.trim()).map(t=>`<span class="tag">${t.trim()}</span>`).join('')}</div></div></article>`).join("");</script></body></html>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니</title><meta content="에스디컴퍼니 박스 제작 포트폴리오 페이지입니다. 실제 박스 제작 이미지 사례를 큰 화면과 모바일에서 깔끔하게 확인할 수 있도록 구성했습니다." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script>
+<style id="portfolio-uploaded-v13">
+#portfolioGrid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:24px;
+}
+#portfolioGrid .card{
+  overflow:hidden;
+  border-radius:28px;
+}
+#portfolioGrid .card img{
+  width:100%;
+  aspect-ratio:4 / 3;
+  object-fit:contain;
+  background:#f6f3ef;
+  display:block;
+}
+#portfolioGrid .body{
+  display:none !important;
+}
+@media (max-width:1100px){
+  #portfolioGrid{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+@media (max-width:760px){
+  #portfolioGrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;}
+  #portfolioGrid .card{border-radius:20px;}
+}
+@media (max-width:480px){
+  #portfolioGrid{grid-template-columns:1fr;}
+}
+</style>
+</head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">현재 제작 이미지를 그대로 볼 수 있게 정리했습니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
+mountLayout("portfolio.html");
+const uploadedPortfolio = ['assets/portfolio-uploaded/칼라박스_03.png.png', 'assets/portfolio-uploaded/칼라박스_04.png.png', 'assets/portfolio-uploaded/칼라박스_05.png', 'assets/portfolio-uploaded/칼라박스_06.png', 'assets/portfolio-uploaded/칼라박스_07.png', 'assets/portfolio-uploaded/칼라박스_08.png', 'assets/portfolio-uploaded/칼라박스_09.png', 'assets/portfolio-uploaded/칼라박스_10.png', 'assets/portfolio-uploaded/칼라박스_11.png', 'assets/portfolio-uploaded/칼라박스_13.png', 'assets/portfolio-uploaded/칼라박스_14.png', 'assets/portfolio-uploaded/칼라박스_01.png', 'assets/portfolio-uploaded/칼라박스_02.png.png'];
+document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src, idx) => `
+  <article class="card">
+    <img src="${src}" alt="박스 제작 포트폴리오 이미지 ${idx+1}" loading="lazy" decoding="async">
+  </article>
+`).join("");
+</script></body></html>
