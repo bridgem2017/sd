@@ -3,14 +3,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니</title><meta content="에스디컴퍼니 박스 제작 포트폴리오 페이지입니다. 실제 박스 제작 이미지 사례를 큰 화면과 모바일에서 깔끔하게 확인할 수 있도록 구성했습니다." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script>
 
 
-<style id="portfolio-premium-v14">
+
+
+<style id="portfolio-premium-v15">
 :root{
-  --port-line:#e7ddcf;
+  --port-line:#e8dbc8;
   --port-text:#16284a;
   --port-muted:#7f8da6;
 }
 .portfolio-hero-premium{
-  padding:26px 0 18px;
+  padding:28px 0 18px;
 }
 .portfolio-hero-premium .kicker{
   display:inline-flex;
@@ -32,7 +34,7 @@
 }
 .portfolio-hero-premium p{
   margin:0;
-  max-width:900px;
+  max-width:920px;
   color:var(--port-muted);
   font-size:20px;
   line-height:1.8;
@@ -49,41 +51,64 @@
   border-radius:32px;
   border:1px solid var(--port-line);
   background:linear-gradient(180deg,#ffffff 0%, #fbfaf8 100%);
-  box-shadow:0 20px 50px rgba(22,40,74,.07);
+  box-shadow:0 22px 56px rgba(22,40,74,.07);
   transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
-}
-#portfolioGrid .card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg,rgba(255,255,255,0) 45%, rgba(19,26,45,.08) 100%);
-  opacity:0;
-  transition:opacity .28s ease;
-  pointer-events:none;
 }
 #portfolioGrid .card:hover{
   transform:translateY(-8px);
-  box-shadow:0 28px 60px rgba(22,40,74,.14);
-  border-color:#d9c8b2;
-}
-#portfolioGrid .card:hover::before{opacity:1;}
-#portfolioGrid .card img{
-  width:100%;
-  aspect-ratio:4 / 3;
-  object-fit:cover;
-  display:block;
-  background:#f6f3ef;
-  transition:transform .5s ease, filter .28s ease;
-}
-#portfolioGrid .card:hover img{
-  transform:scale(1.035);
-  filter:saturate(1.03) contrast(1.02);
+  box-shadow:0 30px 70px rgba(22,40,74,.13);
+  border-color:#d9c7ae;
 }
 #portfolioGrid .body{display:none !important;}
+#portfolioGrid .media{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:4 / 3;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:18px;
+  background:
+    linear-gradient(180deg,
+      var(--tone-top,#f7ecdf) 0%,
+      var(--tone-top,#f7ecdf) 69%,
+      var(--tone-bottom,#f0deca) 69%,
+      var(--tone-bottom,#f0deca) 100%);
+  transition:background .35s ease;
+}
+#portfolioGrid .card:hover .media{
+  background:
+    linear-gradient(180deg,
+      var(--tone-top-hover,#f6e2d5) 0%,
+      var(--tone-top-hover,#f6e2d5) 69%,
+      var(--tone-bottom-hover,#ead2b7) 69%,
+      var(--tone-bottom-hover,#ead2b7) 100%);
+}
+#portfolioGrid .media::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:31%;
+  height:1px;
+  background:rgba(255,255,255,.18);
+}
+#portfolioGrid img{
+  position:relative;
+  z-index:2;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter:drop-shadow(0 24px 28px rgba(35,25,16,.12));
+  transition:transform .45s ease, filter .28s ease;
+}
+#portfolioGrid .card:hover img{
+  transform:translateY(-4px) scale(1.03);
+  filter:drop-shadow(0 30px 34px rgba(35,25,16,.18));
+}
 @media (max-width:1100px){
   .portfolio-hero-premium h1{font-size:46px;}
   .portfolio-hero-premium p{font-size:18px;}
-  #portfolioGrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px;}
+  #portfolioGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;}
 }
 @media (max-width:768px){
   .portfolio-hero-premium{padding:18px 0 10px;}
@@ -91,14 +116,26 @@
   .portfolio-hero-premium p{font-size:16px; line-height:1.7;}
   #portfolioGrid{grid-template-columns:1fr; gap:18px; margin-top:22px;}
   #portfolioGrid .card{border-radius:22px;}
+  #portfolioGrid .media{padding:14px;}
 }
 </style>
 </head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">현재 제작 이미지를 그대로 볼 수 있게 정리했습니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
 mountLayout("portfolio.html");
-const uploadedPortfolio = ['assets/portfolio-uploaded/칼라박스_03.png.png', 'assets/portfolio-uploaded/칼라박스_04.png.png', 'assets/portfolio-uploaded/칼라박스_05.png', 'assets/portfolio-uploaded/칼라박스_06.png', 'assets/portfolio-uploaded/칼라박스_07.png', 'assets/portfolio-uploaded/칼라박스_08.png', 'assets/portfolio-uploaded/칼라박스_09.png', 'assets/portfolio-uploaded/칼라박스_10.png', 'assets/portfolio-uploaded/칼라박스_11.png', 'assets/portfolio-uploaded/칼라박스_13.png', 'assets/portfolio-uploaded/칼라박스_14.png', 'assets/portfolio-uploaded/칼라박스_01.png', 'assets/portfolio-uploaded/칼라박스_02.png.png'];
-document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src, idx) => `
-  <article class="card">
-    <img src="${src}" alt="박스 제작 포트폴리오 이미지 ${idx+1}" loading="lazy" decoding="async">
-  </article>
-`).join("");
+const uploadedPortfolio = ["assets/portfolio-clean/칼라박스_03.png.png", "assets/portfolio-clean/칼라박스_02.png.png", "assets/portfolio-clean/칼라박스_05.png", "assets/portfolio-clean/칼라박스_06.png", "assets/portfolio-clean/칼라박스_07.png", "assets/portfolio-clean/칼라박스_08.png", "assets/portfolio-clean/칼라박스_09.png", "assets/portfolio-clean/칼라박스_10.png", "assets/portfolio-clean/칼라박스_11.png", "assets/portfolio-clean/칼라박스_13.png", "assets/portfolio-clean/칼라박스_14.png", "assets/portfolio-clean/칼라박스_01.png", "assets/portfolio-clean/칼라박스_04.png.png"];
+const tones = [
+  {t:"#f6eadf", b:"#efe1cf", th:"#f3e0d2", bh:"#e6d0b9"},
+  {t:"#f5ede6", b:"#ece0d4", th:"#efe2d8", bh:"#e2d0c0"},
+  {t:"#f7ece4", b:"#eedcca", th:"#f3e4d7", bh:"#e8d2bb"},
+  {t:"#f6f0e8", b:"#ece2d6", th:"#eee3da", bh:"#e3d4c2"}
+];
+document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src, idx) => {
+  const tone = tones[idx % tones.length];
+  return `
+    <article class="card" style="--tone-top:${tone.t};--tone-bottom:${tone.b};--tone-top-hover:${tone.th};--tone-bottom-hover:${tone.bh}">
+      <div class="media">
+        <img src="${src}" alt="박스 제작 포트폴리오 이미지 ${idx+1}" loading="lazy" decoding="async">
+      </div>
+    </article>
+  `;
+}).join("");
 </script></body></html>
