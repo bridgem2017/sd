@@ -5,7 +5,9 @@
 
 
 
-<style id="portfolio-premium-v15">
+
+
+<style id="portfolio-premium-v16">
 :root{
   --port-line:#e8dbc8;
   --port-text:#16284a;
@@ -34,7 +36,7 @@
 }
 .portfolio-hero-premium p{
   margin:0;
-  max-width:920px;
+  max-width:940px;
   color:var(--port-muted);
   font-size:20px;
   line-height:1.8;
@@ -48,15 +50,15 @@
 #portfolioGrid .card{
   position:relative;
   overflow:hidden;
-  border-radius:32px;
+  border-radius:34px;
   border:1px solid var(--port-line);
-  background:linear-gradient(180deg,#ffffff 0%, #fbfaf8 100%);
-  box-shadow:0 22px 56px rgba(22,40,74,.07);
+  background:linear-gradient(180deg,#f6efe6 0%, #f3eadf 100%);
+  box-shadow:0 24px 60px rgba(22,40,74,.07);
   transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
 #portfolioGrid .card:hover{
   transform:translateY(-8px);
-  box-shadow:0 30px 70px rgba(22,40,74,.13);
+  box-shadow:0 34px 74px rgba(22,40,74,.13);
   border-color:#d9c7ae;
 }
 #portfolioGrid .body{display:none !important;}
@@ -64,32 +66,43 @@
   position:relative;
   overflow:hidden;
   aspect-ratio:4 / 3;
+  margin:14px;
+  border-radius:28px;
+  border:1px solid rgba(223,205,182,.72);
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content:center;
-  padding:18px;
+  padding:22px;
   background:
     linear-gradient(180deg,
-      var(--tone-top,#f7ecdf) 0%,
-      var(--tone-top,#f7ecdf) 69%,
-      var(--tone-bottom,#f0deca) 69%,
-      var(--tone-bottom,#f0deca) 100%);
-  transition:background .35s ease;
+      var(--tone-top,#f8f4ef) 0%,
+      var(--tone-top,#f8f4ef) 66.5%,
+      var(--tone-bottom,#efe3d2) 66.5%,
+      var(--tone-bottom,#efe3d2) 100%);
+  transition:background .35s ease, transform .35s ease;
 }
 #portfolioGrid .card:hover .media{
   background:
     linear-gradient(180deg,
-      var(--tone-top-hover,#f6e2d5) 0%,
-      var(--tone-top-hover,#f6e2d5) 69%,
-      var(--tone-bottom-hover,#ead2b7) 69%,
-      var(--tone-bottom-hover,#ead2b7) 100%);
+      var(--tone-top-hover,#f3ece5) 0%,
+      var(--tone-top-hover,#f3ece5) 66.5%,
+      var(--tone-bottom-hover,#e3d4c1) 66.5%,
+      var(--tone-bottom-hover,#e3d4c1) 100%);
+}
+#portfolioGrid .media::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 36%);
+  pointer-events:none;
 }
 #portfolioGrid .media::after{
   content:"";
   position:absolute;
-  left:0; right:0; bottom:31%;
+  left:0; right:0; top:66.5%;
   height:1px;
-  background:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.65);
+  pointer-events:none;
 }
 #portfolioGrid img{
   position:relative;
@@ -98,12 +111,12 @@
   height:100%;
   object-fit:contain;
   display:block;
-  filter:drop-shadow(0 24px 28px rgba(35,25,16,.12));
+  filter:drop-shadow(0 22px 28px rgba(51,36,18,.12));
   transition:transform .45s ease, filter .28s ease;
 }
 #portfolioGrid .card:hover img{
   transform:translateY(-4px) scale(1.03);
-  filter:drop-shadow(0 30px 34px rgba(35,25,16,.18));
+  filter:drop-shadow(0 28px 34px rgba(51,36,18,.18));
 }
 @media (max-width:1100px){
   .portfolio-hero-premium h1{font-size:46px;}
@@ -115,18 +128,22 @@
   .portfolio-hero-premium h1{font-size:34px;}
   .portfolio-hero-premium p{font-size:16px; line-height:1.7;}
   #portfolioGrid{grid-template-columns:1fr; gap:18px; margin-top:22px;}
-  #portfolioGrid .card{border-radius:22px;}
-  #portfolioGrid .media{padding:14px;}
+  #portfolioGrid .card{border-radius:24px;}
+  #portfolioGrid .media{
+    margin:10px;
+    border-radius:20px;
+    padding:16px;
+  }
 }
 </style>
 </head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">현재 제작 이미지를 그대로 볼 수 있게 정리했습니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
 mountLayout("portfolio.html");
-const uploadedPortfolio = ["assets/portfolio-clean/칼라박스_03.png.png", "assets/portfolio-clean/칼라박스_02.png.png", "assets/portfolio-clean/칼라박스_05.png", "assets/portfolio-clean/칼라박스_06.png", "assets/portfolio-clean/칼라박스_07.png", "assets/portfolio-clean/칼라박스_08.png", "assets/portfolio-clean/칼라박스_09.png", "assets/portfolio-clean/칼라박스_10.png", "assets/portfolio-clean/칼라박스_11.png", "assets/portfolio-clean/칼라박스_13.png", "assets/portfolio-clean/칼라박스_14.png", "assets/portfolio-clean/칼라박스_01.png", "assets/portfolio-clean/칼라박스_04.png.png"];
+const uploadedPortfolio = ["assets/portfolio-v16/칼라박스_01.png", "assets/portfolio-v16/칼라박스_02.png", "assets/portfolio-v16/칼라박스_03.png", "assets/portfolio-v16/칼라박스_05.png", "assets/portfolio-v16/칼라박스_06.png", "assets/portfolio-v16/칼라박스_07.png", "assets/portfolio-v16/칼라박스_08.png", "assets/portfolio-v16/칼라박스_09.png", "assets/portfolio-v16/칼라박스_10.png", "assets/portfolio-v16/칼라박스_11.png", "assets/portfolio-v16/칼라박스_13.png", "assets/portfolio-v16/칼라박스_14.png", "assets/portfolio-v16/칼라박스_04.png"];
 const tones = [
-  {t:"#f6eadf", b:"#efe1cf", th:"#f3e0d2", bh:"#e6d0b9"},
-  {t:"#f5ede6", b:"#ece0d4", th:"#efe2d8", bh:"#e2d0c0"},
-  {t:"#f7ece4", b:"#eedcca", th:"#f3e4d7", bh:"#e8d2bb"},
-  {t:"#f6f0e8", b:"#ece2d6", th:"#eee3da", bh:"#e3d4c2"}
+  {t:"#f8f4ef", b:"#efe3d2", th:"#ece8e1", bh:"#ddd1c1"},
+  {t:"#f8f4ef", b:"#efe3d2", th:"#f0e4db", bh:"#dbc6b1"},
+  {t:"#f8f4ef", b:"#efe3d2", th:"#e8eee9", bh:"#ced8cf"},
+  {t:"#f8f4ef", b:"#efe3d2", th:"#ece7f0", bh:"#d8cfe3"}
 ];
 document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src, idx) => {
   const tone = tones[idx % tones.length];
