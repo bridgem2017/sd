@@ -7,7 +7,9 @@
 
 
 
-<style id="portfolio-premium-v16">
+
+
+<style id="portfolio-premium-v17">
 :root{
   --port-line:#e8dbc8;
   --port-text:#16284a;
@@ -69,10 +71,7 @@
   margin:14px;
   border-radius:28px;
   border:1px solid rgba(223,205,182,.72);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:22px;
+  padding:0;
   background:
     linear-gradient(180deg,
       var(--tone-top,#f8f4ef) 0%,
@@ -105,17 +104,22 @@
   pointer-events:none;
 }
 #portfolioGrid img{
-  position:relative;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
   z-index:2;
-  width:100%;
-  height:100%;
+  max-width:80%;
+  max-height:80%;
+  width:auto;
+  height:auto;
   object-fit:contain;
   display:block;
   filter:drop-shadow(0 22px 28px rgba(51,36,18,.12));
   transition:transform .45s ease, filter .28s ease;
 }
 #portfolioGrid .card:hover img{
-  transform:translateY(-4px) scale(1.03);
+  transform:translate(-50%, calc(-50% - 4px)) scale(1.03);
   filter:drop-shadow(0 28px 34px rgba(51,36,18,.18));
 }
 @media (max-width:1100px){
@@ -132,11 +136,14 @@
   #portfolioGrid .media{
     margin:10px;
     border-radius:20px;
-    padding:16px;
+  }
+  #portfolioGrid img{
+    max-width:84%;
+    max-height:84%;
   }
 }
 </style>
-</head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">현재 제작 이미지를 그대로 볼 수 있게 정리했습니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
+</head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">에스디컴퍼니의 박스 제작 포토폴리오 입니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
 mountLayout("portfolio.html");
 const uploadedPortfolio = ["assets/portfolio-v16/칼라박스_01.png", "assets/portfolio-v16/칼라박스_02.png", "assets/portfolio-v16/칼라박스_03.png", "assets/portfolio-v16/칼라박스_05.png", "assets/portfolio-v16/칼라박스_06.png", "assets/portfolio-v16/칼라박스_07.png", "assets/portfolio-v16/칼라박스_08.png", "assets/portfolio-v16/칼라박스_09.png", "assets/portfolio-v16/칼라박스_10.png", "assets/portfolio-v16/칼라박스_11.png", "assets/portfolio-v16/칼라박스_13.png", "assets/portfolio-v16/칼라박스_14.png", "assets/portfolio-v16/칼라박스_04.png"];
 const tones = [
