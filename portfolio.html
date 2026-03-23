@@ -1,34 +1,96 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니</title><meta content="에스디컴퍼니 박스 제작 포트폴리오 페이지입니다. 실제 박스 제작 이미지 사례를 큰 화면과 모바일에서 깔끔하게 확인할 수 있도록 구성했습니다." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script>
-<style id="portfolio-uploaded-v13">
+<html lang="ko"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니</title><meta content="에스디컴퍼니 박스 제작 포트폴리오 페이지입니다. 실제 박스 제작 이미지 사례를 큰 화면과 모바일에서 깔끔하게 확인할 수 있도록 구성했습니다." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script>
+
+
+<style id="portfolio-premium-v14">
+:root{
+  --port-line:#e7ddcf;
+  --port-text:#16284a;
+  --port-muted:#7f8da6;
+}
+.portfolio-hero-premium{
+  padding:26px 0 18px;
+}
+.portfolio-hero-premium .kicker{
+  display:inline-flex;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid #ead9c7;
+  background:#fffaf3;
+  color:#c67e2d;
+  font-weight:800;
+  letter-spacing:-0.02em;
+  margin-bottom:16px;
+}
+.portfolio-hero-premium h1{
+  margin:0 0 12px;
+  font-size:56px;
+  line-height:1.06;
+  letter-spacing:-0.05em;
+  color:var(--port-text);
+}
+.portfolio-hero-premium p{
+  margin:0;
+  max-width:900px;
+  color:var(--port-muted);
+  font-size:20px;
+  line-height:1.8;
+}
 #portfolioGrid{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:24px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;
+  margin-top:34px;
 }
 #portfolioGrid .card{
+  position:relative;
   overflow:hidden;
-  border-radius:28px;
+  border-radius:32px;
+  border:1px solid var(--port-line);
+  background:linear-gradient(180deg,#ffffff 0%, #fbfaf8 100%);
+  box-shadow:0 20px 50px rgba(22,40,74,.07);
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
+#portfolioGrid .card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 45%, rgba(19,26,45,.08) 100%);
+  opacity:0;
+  transition:opacity .28s ease;
+  pointer-events:none;
+}
+#portfolioGrid .card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 28px 60px rgba(22,40,74,.14);
+  border-color:#d9c8b2;
+}
+#portfolioGrid .card:hover::before{opacity:1;}
 #portfolioGrid .card img{
   width:100%;
   aspect-ratio:4 / 3;
-  object-fit:contain;
-  background:#f6f3ef;
+  object-fit:cover;
   display:block;
+  background:#f6f3ef;
+  transition:transform .5s ease, filter .28s ease;
 }
-#portfolioGrid .body{
-  display:none !important;
+#portfolioGrid .card:hover img{
+  transform:scale(1.035);
+  filter:saturate(1.03) contrast(1.02);
 }
+#portfolioGrid .body{display:none !important;}
 @media (max-width:1100px){
-  #portfolioGrid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .portfolio-hero-premium h1{font-size:46px;}
+  .portfolio-hero-premium p{font-size:18px;}
+  #portfolioGrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px;}
 }
-@media (max-width:760px){
-  #portfolioGrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px;}
-  #portfolioGrid .card{border-radius:20px;}
-}
-@media (max-width:480px){
-  #portfolioGrid{grid-template-columns:1fr;}
+@media (max-width:768px){
+  .portfolio-hero-premium{padding:18px 0 10px;}
+  .portfolio-hero-premium h1{font-size:34px;}
+  .portfolio-hero-premium p{font-size:16px; line-height:1.7;}
+  #portfolioGrid{grid-template-columns:1fr; gap:18px; margin-top:22px;}
+  #portfolioGrid .card{border-radius:22px;}
 }
 </style>
 </head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">현재 제작 이미지를 그대로 볼 수 있게 정리했습니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
