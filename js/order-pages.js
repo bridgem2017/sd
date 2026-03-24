@@ -165,8 +165,27 @@ function initSampleDeliveryFields(form){
 function attachMailForm(formId, successText){
   const form = document.getElementById(formId);
   if(!form) return;
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
+
+  const url = new URL(window.location.href);
+  const sent = url.searchParams.get('sent');
+  if(sent === '1'){
+    alert(successText);
+    url.searchParams.delete('sent');
+    history.replaceState({}, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : ''));
+  }
+
+  function upsertHidden(name, value){
+    let input = form.querySelector(`input[name="${name}"]`);
+    if(!input){
+      input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      form.appendChild(input);
+    }
+    input.value = value;
+  }
+
+  form.addEventListener('submit', (e)=>{
     const fd = new FormData(form);
     const payload = {
       createdAt: new Date().toISOString(),
@@ -206,12 +225,17 @@ function attachMailForm(formId, successText){
       const estimate = calcEstimate(payload);
       saveEstimateSubmission({...payload, ...estimate});
     }
-    try{
-      await fetch(form.action, {method:'POST', body:fd, mode:'no-cors'});
-      alert(successText);
-      form.reset();
-    }catch(err){
-      alert('전송 중 오류가 발생했습니다. sales@box.re.kr 로 직접 메일을 보내 주세요.');
-    }
+
+    const familyLabel = form.dataset.family === 'colorbox' ? '칼라박스' : '골판지박스';
+    const requestLabel = form.dataset.requestType === 'sample' ? '샘플 요청' : '견적 요청';
+    const subject = `[${requestLabel}] ${familyLabel} / ${payload.shape || '형태 미지정'} / ${payload.name || payload.company || '고객명 미입력'}`;
+    const nextUrl = window.location.origin + window.location.pathname + window.location.search + (window.location.search ? '&' : '?') + 'sent=1';
+
+    upsertHidden('_captcha', 'false');
+    upsertHidden('_template', 'table');
+    upsertHidden('_subject', subject);
+    upsertHidden('_next', nextUrl);
+    form.action = 'https://formsubmit.co/sales@box.re.kr';
+    form.method = 'POST';
   });
 }
