@@ -86,18 +86,52 @@
 (function(){
   const form = document.getElementById('supportInquiryForm');
   if(!form) return;
-  const url = new URL(window.location.href);
-  if(url.searchParams.get('support_sent') === '1'){
-    alert('문의 메일이 전송되었습니다. 확인 후 회신드리겠습니다.');
-    url.searchParams.delete('support_sent');
-    history.replaceState({}, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : ''));
+
+  function appendOrSet(fd, key, value){
+    if(fd.has(key)) fd.set(key, value);
+    else fd.append(key, value);
   }
-  form.addEventListener('submit', function(){
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
     const fd = new FormData(form);
     const subject = `[홈페이지 문의] ${fd.get('product') || '일반 문의'} / ${fd.get('name') || ''}`;
-    const nextUrl = window.location.origin + window.location.pathname + '?support_sent=1';
-    document.getElementById('supportSubject').value = subject;
-    document.getElementById('supportNext').value = nextUrl;
+    const message = [
+      `이름 / 업체명: ${fd.get('name') || ''}`,
+      `연락처: ${fd.get('phone') || ''}`,
+      `이메일: ${fd.get('email') || ''}`,
+      `제품 종류: ${fd.get('product') || ''}`,
+      `예상 수량: ${fd.get('qty') || ''}`,
+      `제품 규격 / 사용 목적: ${fd.get('spec') || ''}`,
+      ``,
+      `[상세 문의 내용]`,
+      `${fd.get('message') || ''}`
+    ].join('
+');
+
+    appendOrSet(fd, '_subject', subject);
+    appendOrSet(fd, '_captcha', 'false');
+    appendOrSet(fd, '_template', 'table');
+    appendOrSet(fd, '_replyto', fd.get('email') || '');
+    appendOrSet(fd, 'message', message);
+
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/sales@box.re.kr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      });
+      const data = await res.json().catch(() => ({}));
+      if(res.ok && (data.success !== false)){
+        alert('문의 메일이 전송되었습니다. 확인 후 회신드리겠습니다.');
+        form.reset();
+      }else{
+        alert('문의 메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+      }
+    }catch(err){
+      alert('문의 메일 전송 중 오류가 발생했습니다. sales@box.re.kr 로 직접 메일을 보내 주세요.');
+    }
   });
 })();
 </script>

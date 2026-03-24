@@ -166,26 +166,14 @@ function attachMailForm(formId, successText){
   const form = document.getElementById(formId);
   if(!form) return;
 
-  const url = new URL(window.location.href);
-  const sent = url.searchParams.get('sent');
-  if(sent === '1'){
-    alert(successText);
-    url.searchParams.delete('sent');
-    history.replaceState({}, '', url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : ''));
+  function appendOrSet(fd, key, value){
+    if(fd.has(key)) fd.set(key, value);
+    else fd.append(key, value);
   }
 
-  function upsertHidden(name, value){
-    let input = form.querySelector(`input[name="${name}"]`);
-    if(!input){
-      input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = name;
-      form.appendChild(input);
-    }
-    input.value = value;
-  }
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
 
-  form.addEventListener('submit', (e)=>{
     const fd = new FormData(form);
     const payload = {
       createdAt: new Date().toISOString(),
@@ -218,9 +206,10 @@ function attachMailForm(formId, successText){
       freightReceiverPhone: fd.get('화물수령인연락처') || '',
       freightBranch: fd.get('화물배송지점') || '',
       pickupDate: fd.get('방문희망일') || '',
-      memo: fd.get('추가메모') || fd.get('content') || '',
+      memo: fd.get('추가메모') || fd.get('content') || fd.get('샘플용도') || '',
       title: fd.get('title') || ''
     };
+
     if(form.dataset.requestType === 'quote'){
       const estimate = calcEstimate(payload);
       saveEstimateSubmission({...payload, ...estimate});
@@ -229,13 +218,65 @@ function attachMailForm(formId, successText){
     const familyLabel = form.dataset.family === 'colorbox' ? '칼라박스' : '골판지박스';
     const requestLabel = form.dataset.requestType === 'sample' ? '샘플 요청' : '견적 요청';
     const subject = `[${requestLabel}] ${familyLabel} / ${payload.shape || '형태 미지정'} / ${payload.name || payload.company || '고객명 미입력'}`;
-    const nextUrl = window.location.origin + window.location.pathname + window.location.search + (window.location.search ? '&' : '?') + 'sent=1';
 
-    upsertHidden('_captcha', 'false');
-    upsertHidden('_template', 'table');
-    upsertHidden('_subject', subject);
-    upsertHidden('_next', nextUrl);
-    form.action = 'https://formsubmit.co/sales@box.re.kr';
-    form.method = 'POST';
+    const message = [
+      `요청 구분: ${requestLabel}`,
+      `제품군: ${familyLabel}`,
+      `박스형태: ${payload.shape}`,
+      `사용제품: ${payload.product}`,
+      `회사명: ${payload.company}`,
+      `성함: ${payload.name}`,
+      `이메일: ${payload.email}`,
+      `연락처: ${payload.phone}`,
+      `사이즈(mm): ${payload.width} x ${payload.depth} x ${payload.height}`,
+      `수량: ${payload.qty}`,
+      payload.flute ? `골두께: ${payload.flute}` : '',
+      payload.surface ? `표면지: ${payload.surface}` : '',
+      payload.strength ? `강도: ${payload.strength}` : '',
+      payload.print ? `인쇄: ${payload.print}` : '',
+      payload.paper ? `종이재질: ${payload.paper}` : '',
+      payload.coating ? `코팅선택: ${payload.coating}` : '',
+      payload.option ? `옵션가공: ${payload.option}` : '',
+      payload.receive ? `수령방법: ${payload.receive}` : '',
+      payload.forklift ? `지게차유무: ${payload.forklift}` : '',
+      payload.receiveVisitAddress ? `방문희망주소: ${payload.receiveVisitAddress}` : '',
+      payload.parcelReceiver ? `택배수령인: ${payload.parcelReceiver}` : '',
+      payload.parcelReceiverPhone ? `택배수령인연락처: ${payload.parcelReceiverPhone}` : '',
+      payload.parcelAddress ? `택배배송지: ${payload.parcelAddress}` : '',
+      payload.freightReceiver ? `화물수령인: ${payload.freightReceiver}` : '',
+      payload.freightReceiverPhone ? `화물수령인연락처: ${payload.freightReceiverPhone}` : '',
+      payload.freightBranch ? `화물배송지점: ${payload.freightBranch}` : '',
+      payload.pickupDate ? `방문희망일: ${payload.pickupDate}` : '',
+      payload.title ? `제목: ${payload.title}` : '',
+      '',
+      `[추가 메모 / 샘플 용도]`,
+      payload.memo || '-'
+    ].filter(Boolean).join('
+');
+
+    appendOrSet(fd, '_subject', subject);
+    appendOrSet(fd, '_captcha', 'false');
+    appendOrSet(fd, '_template', 'table');
+    appendOrSet(fd, '_replyto', payload.email || '');
+    appendOrSet(fd, 'email', payload.email || '');
+    appendOrSet(fd, 'name', payload.name || '');
+    appendOrSet(fd, 'message', message);
+
+    try{
+      const res = await fetch('https://formsubmit.co/ajax/sales@box.re.kr', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: fd
+      });
+      const data = await res.json().catch(() => ({}));
+      if(res.ok && (data.success !== false)){
+        alert(successText);
+        form.reset();
+      }else{
+        alert('메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+      }
+    }catch(err){
+      alert('메일 전송 중 오류가 발생했습니다. sales@box.re.kr 로 직접 연락해 주세요.');
+    }
   });
 }
