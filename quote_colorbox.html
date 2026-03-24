@@ -24,8 +24,10 @@
 </div>
 <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
 <form action="https://formsubmit.co/sales@box.re.kr" class="order-form" data-family="colorbox" data-request-type="quote" id="mailForm" method="POST">
-<input id="mailSubject" name="_subject" type="hidden" value=""/>
-<input name="_captcha" type="hidden" value="false"/>
+<input type="hidden" name="_subject" value="[견적 요청] 칼라박스 문의"/>
+<input type="hidden" name="_captcha" value="false"/>
+<input type="hidden" name="_template" value="table"/>
+<input type="hidden" name="_next" value="https://box.re.kr/thanks.html"/>
 <div class="form-row form-row-spaced"><label>박스형태</label><select id="boxShape" name="박스형태"></select></div>
 <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required=""/></div>
 <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"/></div>
@@ -125,6 +127,5 @@
 </div></main>
 <script>
       mountOrderPage('colorbox','quote');
-      attachMailForm('mailForm', '견적 요청이 전송되었습니다. 확인 후 회신드리겠습니다.');
     </script>
 </body></html>
