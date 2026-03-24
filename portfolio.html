@@ -144,9 +144,9 @@
   bottom:18px;
   z-index:3;
   display:flex;
-  justify-content:space-between;
+  justify-content:flex-end;
   align-items:center;
-  gap:12px;
+  gap:8px;
   opacity:0;
   transform:translateY(8px);
   transition:all .24s ease;
@@ -406,8 +406,7 @@ document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src,
       <div class="media">
         <img src="${src}" alt="박스 제작 포트폴리오 이미지 ${idx+1}" loading="lazy" decoding="async">
               <div class="portfolio-card-cta">
-          <div class="mini-copy">비슷한 느낌으로 제작 문의</div>
-          <a class="mini-btn" href="quote_colorbox.html">바로 문의</a>
+                    <a class="mini-btn" href="quote_colorbox.html">바로 문의</a>
         </div>
       </div>
     </article>
