@@ -9,117 +9,54 @@
 
 
 
-<style id="portfolio-premium-v17">
+
+
+<style id="portfolio-premium-v23">
 :root{
-  --port-line:#e8dbc8;
+  --port-line:#e7d7c3;
   --port-text:#16284a;
   --port-muted:#7f8da6;
 }
-.portfolio-hero-premium{
-  padding:28px 0 18px;
-}
+.portfolio-hero-premium{padding:28px 0 18px;}
 .portfolio-hero-premium .kicker{
-  display:inline-flex;
-  padding:10px 16px;
-  border-radius:999px;
-  border:1px solid #ead9c7;
-  background:#fffaf3;
-  color:#c67e2d;
-  font-weight:800;
-  letter-spacing:-0.02em;
-  margin-bottom:16px;
+  display:inline-flex;padding:10px 16px;border-radius:999px;border:1px solid #ead9c7;
+  background:#fffaf3;color:#c67e2d;font-weight:800;letter-spacing:-0.02em;margin-bottom:16px;
 }
 .portfolio-hero-premium h1{
-  margin:0 0 12px;
-  font-size:56px;
-  line-height:1.06;
-  letter-spacing:-0.05em;
-  color:var(--port-text);
+  margin:0 0 12px;font-size:56px;line-height:1.06;letter-spacing:-0.05em;color:var(--port-text);
 }
 .portfolio-hero-premium p{
-  margin:0;
-  max-width:940px;
-  color:var(--port-muted);
-  font-size:20px;
-  line-height:1.8;
+  margin:0;max-width:940px;color:var(--port-muted);font-size:20px;line-height:1.8;
 }
-#portfolioGrid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:28px;
-  margin-top:34px;
-}
+#portfolioGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:34px;}
 #portfolioGrid .card{
-  position:relative;
-  overflow:hidden;
-  border-radius:34px;
-  border:1px solid var(--port-line);
+  position:relative;overflow:hidden;border-radius:34px;border:1px solid var(--port-line);
   background:linear-gradient(180deg,#f6efe6 0%, #f3eadf 100%);
-  box-shadow:0 24px 60px rgba(22,40,74,.07);
-  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+  box-shadow:0 24px 60px rgba(22,40,74,.07);transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
-#portfolioGrid .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 34px 74px rgba(22,40,74,.13);
-  border-color:#d9c7ae;
-}
+#portfolioGrid .card:hover{transform:translateY(-8px);box-shadow:0 34px 74px rgba(22,40,74,.13);border-color:#d9c7ae;}
 #portfolioGrid .body{display:none !important;}
 #portfolioGrid .media{
-  position:relative;
-  overflow:hidden;
-  aspect-ratio:4 / 3;
-  margin:14px;
-  border-radius:28px;
+  position:relative;overflow:hidden;aspect-ratio:4 / 3;margin:14px;border-radius:28px;
   border:1px solid rgba(223,205,182,.72);
-  padding:0;
-  background:
-    linear-gradient(180deg,
-      var(--tone-top,#f8f4ef) 0%,
-      var(--tone-top,#f8f4ef) 66.5%,
-      var(--tone-bottom,#efe3d2) 66.5%,
-      var(--tone-bottom,#efe3d2) 100%);
-  transition:background .35s ease, transform .35s ease;
+  background:linear-gradient(180deg,var(--tone-top,#f4ede4) 0%,var(--tone-top,#f4ede4) 65%,var(--tone-bottom,#e6d7c4) 65%,var(--tone-bottom,#e6d7c4) 100%);
 }
 #portfolioGrid .card:hover .media{
-  background:
-    linear-gradient(180deg,
-      var(--tone-top-hover,#f3ece5) 0%,
-      var(--tone-top-hover,#f3ece5) 66.5%,
-      var(--tone-bottom-hover,#e3d4c1) 66.5%,
-      var(--tone-bottom-hover,#e3d4c1) 100%);
+  background:linear-gradient(180deg,var(--tone-top-hover,#e9eef2) 0%,var(--tone-top-hover,#e9eef2) 65%,var(--tone-bottom-hover,#d8dee5) 65%,var(--tone-bottom-hover,#d8dee5) 100%);
 }
 #portfolioGrid .media::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 36%);
-  pointer-events:none;
+  content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,0) 38%);z-index:1;
 }
 #portfolioGrid .media::after{
-  content:"";
-  position:absolute;
-  left:0; right:0; top:66.5%;
-  height:1px;
-  background:rgba(255,255,255,.65);
-  pointer-events:none;
+  content:"";position:absolute;left:0;right:0;top:65%;height:1px;background:rgba(255,255,255,.75);z-index:1;
 }
 #portfolioGrid img{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  z-index:2;
-  max-width:80%;
-  max-height:80%;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  display:block;
-  filter:drop-shadow(0 22px 28px rgba(51,36,18,.12));
-  transition:transform .45s ease, filter .28s ease;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
+  max-width:68%;max-height:68%;width:auto;height:auto;object-fit:contain;display:block;background:transparent !important;
+  filter:drop-shadow(0 22px 28px rgba(51,36,18,.12));transition:transform .45s ease, filter .28s ease;
 }
 #portfolioGrid .card:hover img{
-  transform:translate(-50%, calc(-50% - 4px)) scale(1.03);
+  transform:translate(-50%,calc(-50% - 4px)) scale(1.03);
   filter:drop-shadow(0 28px 34px rgba(51,36,18,.18));
 }
 @media (max-width:1100px){
@@ -130,27 +67,21 @@
 @media (max-width:768px){
   .portfolio-hero-premium{padding:18px 0 10px;}
   .portfolio-hero-premium h1{font-size:34px;}
-  .portfolio-hero-premium p{font-size:16px; line-height:1.7;}
-  #portfolioGrid{grid-template-columns:1fr; gap:18px; margin-top:22px;}
+  .portfolio-hero-premium p{font-size:16px;line-height:1.7;}
+  #portfolioGrid{grid-template-columns:1fr;gap:18px;margin-top:22px;}
   #portfolioGrid .card{border-radius:24px;}
-  #portfolioGrid .media{
-    margin:10px;
-    border-radius:20px;
-  }
-  #portfolioGrid img{
-    max-width:84%;
-    max-height:84%;
-  }
+  #portfolioGrid .media{margin:10px;border-radius:20px;}
+  #portfolioGrid img{max-width:76%;max-height:76%;}
 }
 </style>
 </head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">에스디컴퍼니의 박스 제작 포토폴리오 입니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
 mountLayout("portfolio.html");
 const uploadedPortfolio = ["assets/portfolio-v16/칼라박스_01.png", "assets/portfolio-v16/칼라박스_02.png", "assets/portfolio-v16/칼라박스_03.png", "assets/portfolio-v16/칼라박스_05.png", "assets/portfolio-v16/칼라박스_06.png", "assets/portfolio-v16/칼라박스_07.png", "assets/portfolio-v16/칼라박스_08.png", "assets/portfolio-v16/칼라박스_09.png", "assets/portfolio-v16/칼라박스_10.png", "assets/portfolio-v16/칼라박스_11.png", "assets/portfolio-v16/칼라박스_13.png", "assets/portfolio-v16/칼라박스_14.png", "assets/portfolio-v16/칼라박스_04.png"];
 const tones = [
-  {t:"#f8f4ef", b:"#efe3d2", th:"#ece8e1", bh:"#ddd1c1"},
-  {t:"#f8f4ef", b:"#efe3d2", th:"#f0e4db", bh:"#dbc6b1"},
-  {t:"#f8f4ef", b:"#efe3d2", th:"#e8eee9", bh:"#ced8cf"},
-  {t:"#f8f4ef", b:"#efe3d2", th:"#ece7f0", bh:"#d8cfe3"}
+  {t:"#f4ede4", b:"#e6d7c4", th:"#e9eef2", bh:"#d8dee5"},
+  {t:"#f4ede4", b:"#e6d7c4", th:"#efe8f4", bh:"#ded3e7"},
+  {t:"#f4ede4", b:"#e6d7c4", th:"#e8f0e9", bh:"#d1decf"},
+  {t:"#f4ede4", b:"#e6d7c4", th:"#f3e7e1", bh:"#e6d1c5"}
 ];
 document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src, idx) => {
   const tone = tones[idx % tones.length];
