@@ -32,7 +32,7 @@ function mountLayout(active=''){
       <div class="footer-contact-rows">
         <div class="footer-row">
           <span>대표 : 김운기</span>
-          <span>사업자등록번호 : 402-33-94847</span>
+          <span>사업자등록번호 : 127-28-86665</span>
           <span>개인정보책임자 : 박성인</span>
         </div>
         <div class="footer-row">
