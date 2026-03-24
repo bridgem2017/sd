@@ -26,9 +26,10 @@
 <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
 <form action="https://formsubmit.co/sales@box.re.kr" class="order-form" data-family="corrugated" data-request-type="quote" id="mailForm" method="POST">
 <input type="hidden" name="_subject" value="[견적 요청] 골판지박스 문의"/>
-<input type="hidden" name="_captcha" value="false"/>
 <input type="hidden" name="_template" value="table"/>
 <input type="hidden" name="_next" value="https://box.re.kr/thanks.html"/>
+<input type="hidden" name="_url" value="https://box.re.kr/"/>
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
 <div class="form-row form-row-spaced"><label>박스형태</label><select id="boxShape" name="박스형태"></select></div>
 <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required=""/></div>
 <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"/></div>
@@ -40,10 +41,10 @@
 <div class="form-row"><label>수량</label><input name="수량" placeholder="예: 1000" required=""/></div>
 <div class="form-row"><label>수령방법</label><div class="field-inline two"><select name="수령방법"><option>직접 수령</option><option>택배 발송</option><option>화물 배송</option></select><select name="지게차유무"><option>지게차 없음</option><option>지게차 있음</option></select></div></div>
 <div class="form-row"><label>인쇄 / 가공 메모</label><textarea name="추가메모" placeholder="참고할 인쇄 조건이나 납기 요청사항을 적어 주세요."></textarea></div>
-<div class="form-row"><label>성함</label><input name="성함" required=""/></div>
-<div class="form-row"><label>이메일</label><input name="이메일" required="" type="email"/></div>
-<div class="form-row"><label>연락처</label><input name="연락처" placeholder="휴대폰 번호" required=""/></div>
-<div class="form-row"><label>회사명</label><input name="회사명"/></div>
+<div class="form-row"><label>성함</label><input name="name" required=""/></div>
+<div class="form-row"><label>이메일</label><input name="email" required="" type="email"/></div>
+<div class="form-row"><label>연락처</label><input name="phone" placeholder="휴대폰 번호" required=""/></div>
+<div class="form-row"><label>회사명</label><input name="company"/></div>
 <div class="form-hint">입력한 내용은 메일로 정리되어 sales@box.re.kr 로 전달됩니다.</div>
 <div class="sample-footer-cta"><button class="btn primary" id="submitBtn" type="submit">견적 요청</button></div>
 </form>
