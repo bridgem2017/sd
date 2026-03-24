@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니</title><meta content="에스디컴퍼니 박스 제작 포트폴리오 페이지입니다. 실제 박스 제작 이미지 사례를 큰 화면과 모바일에서 깔끔하게 확인할 수 있도록 구성했습니다." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>포트폴리오 | 에스디컴퍼니 박스 제작 사례와 견적문의</title><meta content="에스디컴퍼니 박스 제작 포트폴리오 페이지입니다. 실제 박스 제작 이미지 사례를 큰 화면과 모바일에서 깔끔하게 확인할 수 있도록 구성했습니다." name="description"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/><script src="config/site-config.js"></script><script src="config/site-data.js"></script><script src="js/common.js"></script>
 
 
 
@@ -74,6 +74,322 @@
   #portfolioGrid img{max-width:76%;max-height:76%;}
 }
 </style>
+
+<style id="portfolio-cta-v25">
+/* CTA optimization + inquiry flow + mobile tuning */
+.portfolio-hero-premium{
+  position:relative;
+}
+.portfolio-hero-premium .hero-cta-row{
+  display:flex;
+  gap:14px;
+  margin-top:24px;
+  flex-wrap:wrap;
+}
+.portfolio-hero-premium .hero-cta-row .btn{
+  min-width:180px;
+  justify-content:center;
+  font-weight:800;
+}
+.portfolio-hero-premium .hero-cta-row .btn.primary{
+  box-shadow:0 18px 34px rgba(247,150,60,.22);
+}
+.portfolio-hero-premium .hero-cta-row .btn.secondary{
+  background:#fff;
+  color:#16284a;
+  border:1px solid #d9c7ae;
+}
+.portfolio-hero-premium .hero-cta-row .btn.secondary:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+.portfolio-proof-bar{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.portfolio-proof-bar .proof{
+  border:1px solid #ead9c7;
+  background:#fffdf9;
+  border-radius:18px;
+  padding:16px 18px;
+  color:#6d7b92;
+  font-size:15px;
+  line-height:1.6;
+}
+.portfolio-proof-bar .proof strong{
+  display:block;
+  margin-bottom:4px;
+  color:#16284a;
+  font-size:18px;
+}
+.portfolio-section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  margin-top:22px;
+}
+.portfolio-section-head .copy{
+  color:#7f8da6;
+  font-size:16px;
+  line-height:1.7;
+}
+.portfolio-card-cta{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  z-index:3;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  opacity:0;
+  transform:translateY(8px);
+  transition:all .24s ease;
+  pointer-events:none;
+}
+#portfolioGrid .card:hover .portfolio-card-cta{
+  opacity:1;
+  transform:translateY(0);
+}
+.portfolio-card-cta .mini-copy{
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  text-shadow:0 2px 10px rgba(0,0,0,.22);
+}
+.portfolio-card-cta .mini-btn{
+  pointer-events:auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.95);
+  color:#16284a;
+  font-weight:800;
+  font-size:14px;
+  text-decoration:none;
+  box-shadow:0 12px 24px rgba(0,0,0,.12);
+}
+.portfolio-card-cta .mini-btn:hover{
+  background:#111;
+  color:#fff;
+}
+.portfolio-conversion{
+  margin-top:42px;
+  padding:34px;
+  border-radius:32px;
+  border:1px solid #ead9c7;
+  background:linear-gradient(180deg,#fffaf4 0%,#f8f0e6 100%);
+  box-shadow:0 18px 38px rgba(22,40,74,.05);
+}
+.portfolio-conversion .kicker{
+  display:inline-flex;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid #ead9c7;
+  background:#fff;
+  color:#c67e2d;
+  font-weight:800;
+  margin-bottom:14px;
+}
+.portfolio-conversion h2{
+  margin:0 0 10px;
+  color:#16284a;
+  font-size:40px;
+  line-height:1.15;
+  letter-spacing:-0.04em;
+}
+.portfolio-conversion p{
+  margin:0;
+  max-width:880px;
+  color:#70809a;
+  font-size:18px;
+  line-height:1.8;
+}
+.portfolio-flow{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-top:24px;
+}
+.portfolio-flow .step{
+  background:#fff;
+  border:1px solid #ead9c7;
+  border-radius:22px;
+  padding:20px 18px;
+  box-shadow:0 14px 26px rgba(22,40,74,.04);
+}
+.portfolio-flow .num{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:12px;
+  background:#f7963c;
+  color:#fff;
+  font-weight:900;
+}
+.portfolio-flow h3{
+  margin:0 0 8px;
+  color:#16284a;
+  font-size:20px;
+}
+.portfolio-flow p{
+  font-size:15px;
+  line-height:1.7;
+}
+.portfolio-final-cta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:24px;
+  padding:20px 22px;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid #ead9c7;
+}
+.portfolio-final-cta .text{
+  color:#6f7d93;
+  line-height:1.7;
+}
+.portfolio-final-cta .text strong{
+  display:block;
+  color:#16284a;
+  font-size:20px;
+  margin-bottom:4px;
+}
+.portfolio-final-cta .cta-group{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.portfolio-sticky-cta{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:60;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:12px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(223,205,182,.85);
+  box-shadow:0 20px 40px rgba(22,40,74,.12);
+}
+.portfolio-sticky-cta .label{
+  color:#6d7b92;
+  font-size:13px;
+  font-weight:700;
+}
+.portfolio-sticky-cta a{
+  text-decoration:none;
+}
+.portfolio-sticky-cta .sticky-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 16px;
+  border-radius:999px;
+  background:#f7963c;
+  color:#fff;
+  font-weight:900;
+}
+.portfolio-sticky-cta .sticky-secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 16px;
+  border-radius:999px;
+  background:#fff;
+  color:#16284a;
+  border:1px solid #e4d4c0;
+  font-weight:900;
+}
+.portfolio-sticky-cta .sticky-secondary:hover{
+  background:#111;
+  color:#fff;
+  border-color:#111;
+}
+@media (max-width:1100px){
+  .portfolio-proof-bar{
+    grid-template-columns:1fr;
+  }
+  .portfolio-flow{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media (max-width:768px){
+  .portfolio-hero-premium .hero-cta-row{
+    flex-direction:column;
+  }
+  .portfolio-hero-premium .hero-cta-row .btn{
+    width:100%;
+    min-width:0;
+  }
+  .portfolio-section-head{
+    display:block;
+  }
+  .portfolio-conversion{
+    margin-top:28px;
+    padding:22px 18px;
+    border-radius:22px;
+  }
+  .portfolio-conversion h2{
+    font-size:30px;
+  }
+  .portfolio-conversion p{
+    font-size:16px;
+    line-height:1.75;
+  }
+  .portfolio-flow{
+    grid-template-columns:1fr;
+  }
+  .portfolio-final-cta{
+    display:block;
+  }
+  .portfolio-final-cta .cta-group{
+    margin-top:14px;
+  }
+  .portfolio-card-cta{
+    opacity:1;
+    transform:none;
+    bottom:12px;
+    left:12px;
+    right:12px;
+  }
+  .portfolio-card-cta .mini-copy{
+    font-size:12px;
+  }
+  .portfolio-sticky-cta{
+    left:12px;
+    right:12px;
+    bottom:12px;
+    justify-content:space-between;
+    border-radius:20px;
+    padding:10px;
+  }
+  .portfolio-sticky-cta .label{
+    display:none;
+  }
+  .portfolio-sticky-cta .sticky-primary,
+  .portfolio-sticky-cta .sticky-secondary{
+    flex:1;
+    padding:12px 10px;
+    font-size:14px;
+  }
+}
+</style>
 </head><body><main><section class="section" style="padding-top:34px"><div class="container"><h2 style="font-size:54px">포트폴리오</h2><p class="desc" style="font-size:20px">에스디컴퍼니의 박스 제작 포토폴리오 입니다.</p><div class="portfolio-toolbar" style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:18px;flex:1"></div><div><a class="btn primary" href="quote.html">견적 문의</a></div></div><div class="grid-4" id="portfolioGrid" style="margin-top:22px"></div></div></section></main><script>
 mountLayout("portfolio.html");
 const uploadedPortfolio = ["assets/portfolio-v16/칼라박스_01.png", "assets/portfolio-v16/칼라박스_02.png", "assets/portfolio-v16/칼라박스_03.png", "assets/portfolio-v16/칼라박스_05.png", "assets/portfolio-v16/칼라박스_06.png", "assets/portfolio-v16/칼라박스_07.png", "assets/portfolio-v16/칼라박스_08.png", "assets/portfolio-v16/칼라박스_09.png", "assets/portfolio-v16/칼라박스_10.png", "assets/portfolio-v16/칼라박스_11.png", "assets/portfolio-v16/칼라박스_13.png", "assets/portfolio-v16/칼라박스_14.png", "assets/portfolio-v16/칼라박스_04.png"];
@@ -89,6 +405,10 @@ document.getElementById("portfolioGrid").innerHTML = uploadedPortfolio.map((src,
     <article class="card" style="--tone-top:${tone.t};--tone-bottom:${tone.b};--tone-top-hover:${tone.th};--tone-bottom-hover:${tone.bh}">
       <div class="media">
         <img src="${src}" alt="박스 제작 포트폴리오 이미지 ${idx+1}" loading="lazy" decoding="async">
+              <div class="portfolio-card-cta">
+          <div class="mini-copy">비슷한 느낌으로 제작 문의</div>
+          <a class="mini-btn" href="quote_colorbox.html">바로 문의</a>
+        </div>
       </div>
     </article>
   `;
