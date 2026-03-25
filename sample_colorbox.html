@@ -32,52 +32,60 @@
 .material-note-tight{margin-top:0 !important;margin-bottom:8px !important;}
 }
 </style>
-<style id="visit-width-v37">
-/* 방문 희망 주소 입력칸 강제 확장 */
+<style id="visit-width-v38">
 #visitAddressRow .inline-row{
-  display:flex !important;
+  display:grid !important;
+  grid-template-columns:170px minmax(520px,1fr) !important;
   align-items:center !important;
   gap:16px !important;
   width:100% !important;
 }
 #visitAddressRow .inline-row label{
-  flex:0 0 145px !important;
-  width:145px !important;
-  min-width:145px !important;
-  max-width:145px !important;
+  width:170px !important;
+  min-width:170px !important;
+  max-width:170px !important;
   white-space:nowrap !important;
 }
 #visitAddressRow .inline-row > *:not(label){
-  flex:1 1 auto !important;
-  min-width:0 !important;
+  width:100% !important;
   max-width:none !important;
-  width:auto !important;
+  min-width:0 !important;
 }
 #visitAddressRow .inline-row input,
 #visitAddressRow input[type="text"],
 #visitAddressRow input[type="search"],
 #visitAddressRow input[type="url"]{
   display:block !important;
-  flex:1 1 auto !important;
   width:100% !important;
   min-width:0 !important;
   max-width:none !important;
   box-sizing:border-box !important;
   padding:18px 20px !important;
 }
+.formsubmit-note{
+  margin-top:12px;
+  color:#7f8da6;
+  font-size:14px;
+  line-height:1.7;
+}
+@media (max-width:1024px){
+  #visitAddressRow .inline-row{
+    grid-template-columns:150px minmax(420px,1fr) !important;
+  }
+}
 @media (max-width:768px){
   #visitAddressRow .inline-row{
-    display:block !important;
+    grid-template-columns:1fr !important;
+    gap:10px !important;
   }
   #visitAddressRow .inline-row label{
-    display:block !important;
     width:auto !important;
     min-width:0 !important;
     max-width:none !important;
-    margin-bottom:10px !important;
   }
-  #visitAddressRow .inline-row > *:not(label){
-    width:100% !important;
+  .formsubmit-note{
+    font-size:13px;
+    margin-top:10px;
   }
 }
 </style>
