@@ -23,6 +23,15 @@
   .field-note-material{padding:16px 18px;border-radius:18px;font-size:15px;}
 }
 </style>
+<style id="sample-form-layout-v33">
+.visit-row .inline-row{display:grid !important;grid-template-columns:150px minmax(0,1fr) !important;column-gap:14px !important;align-items:center !important;}
+.visit-row .inline-row input,.visit-row .inline-row textarea,.visit-row .inline-row select{width:100% !important;min-width:0 !important;max-width:none !important;}
+.material-note-tight{margin-top:-2px !important;margin-bottom:10px !important;}
+@media (max-width:768px){
+.visit-row .inline-row{grid-template-columns:1fr !important;row-gap:10px !important;}
+.material-note-tight{margin-top:0 !important;margin-bottom:8px !important;}
+}
+</style>
 </head><body><script>mountLayout('sample_colorbox.html');</script>
 <main class="section"><div class="container">
 <div class="kicker">Sample Request</div>
@@ -46,7 +55,7 @@
 <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"/></div>
 <div class="form-row"><label>사이즈(외경)mm</label><div class="field-inline"><input name="가로" placeholder="장(가로)" required=""/><input name="세로" placeholder="폭(세로)" required=""/><input name="높이" placeholder="고(높이)" required=""/></div></div>
 <div class="form-row"><label>종이재질</label><select name="종이재질"><option>모름</option><option>SC마닐라지</option><option>아이보리지</option><option>MGB지</option><option>로얄아이보리지</option></select></div>
-<div class="form-row form-row-note form-row-note-material">
+<div class="form-row form-row-note form-row-note-material material-note-tight">
   <label></label>
   <div class="field-note field-note-material">샘플은 골판지재질로 제작됩니다.</div>
 </div>
