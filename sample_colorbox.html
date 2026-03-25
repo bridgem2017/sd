@@ -5,24 +5,6 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/><script src="js/common.js"></script><script src="js/order-pages.js"></script>
-<style id="sample-material-note-v32">
-.form-row-note{margin-top:-8px;margin-bottom:12px;}
-.form-row-note label{visibility:hidden;}
-.field-note-material{
-  padding:18px 22px;
-  border-radius:22px;
-  border:1px solid #efd3b9;
-  background:#f7efe6;
-  color:#c67e2d;
-  font-size:16px;
-  line-height:1.6;
-  font-weight:400;
-}
-@media (max-width:768px){
-  .form-row-note{margin-top:-4px;margin-bottom:10px;}
-  .field-note-material{padding:16px 18px;border-radius:18px;font-size:15px;}
-}
-</style>
 </head><body><script>mountLayout('sample_colorbox.html');</script>
 <main class="section"><div class="container">
 <div class="kicker">Sample Request</div>
@@ -45,11 +27,7 @@
 <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required=""/></div>
 <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"/></div>
 <div class="form-row"><label>사이즈(외경)mm</label><div class="field-inline"><input name="가로" placeholder="장(가로)" required=""/><input name="세로" placeholder="폭(세로)" required=""/><input name="높이" placeholder="고(높이)" required=""/></div></div>
-<div class="form-row"><label>종이재질</label><select name="종이재질"><option>모름</option><option>SC마닐라지</option><option>아이보리지</option><option>MGB지</option><option>로얄아이보리지</option></select></div>
-<div class="form-row form-row-note form-row-note-material">
-  <label></label>
-  <div class="field-note field-note-material">샘플은 골판지재질로 제작됩니다.</div>
-</div>
+<div class="form-row"><label>종이재질</label><select name="종이재질"><option>모름</option><option>SC마닐라지</option><option>아이보리지</option><option>MGB지</option><option>로얄아이보리지</option></select><div class="field-note">샘플은 골판지재질로 제작됩니다.</div></div>
 <div class="form-row"><label>골판지 합지</label><select name="골판지합지유무"><option>없음</option><option>E골 합지</option><option>B골 합지</option></select></div>
 <div class="form-row"><label>인쇄</label><div class="field-stack"><select name="인쇄선택"><option>없음</option></select><div class="field-note">샘플은 인쇄가 지원되지 않습니다.</div></div></div>
 <div class="form-row"><label>코팅선택</label><select name="코팅선택"><option>코팅안함</option><option>오버코팅</option><option>유광라미</option><option>무광라미</option></select></div>
