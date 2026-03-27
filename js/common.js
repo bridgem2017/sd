@@ -42,7 +42,7 @@ function mountLayout(active=''){
         </div>
         <div class="footer-row">
           <span>영업시간 : 평일 09:00 - 18:00</span>
-          <span>주소 : 경기도 김포시 통진읍 마송2로104번길 155 가동</span>
+          <span>주소 : 경기도 김포시 통진읍 마송2로104번길 155</span>
         </div>
         <div class="footer-row footer-copy">
           <span>Copyrights 2026 SD COMPANY Co.,Ltd. All rights reserved.</span>
