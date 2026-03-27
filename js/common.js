@@ -19,7 +19,7 @@ function mountLayout(active=''){
     document.body.insertAdjacentHTML('beforeend', `<footer class="footer">
   <div class="container footer-shell">
     <div class="footer-brand footer-brand-compact">
-      <img src="assets/sd-company-logo-full.png" alt="에스디컴퍼니 로고">
+      <img src="assets/sd-company-logo-full.png" alt="브릿지엠 로고">
     </div>
     <div class="footer-info-column">
       <div class="footer-bottom-nav">
