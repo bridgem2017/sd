@@ -64,7 +64,7 @@ function mountOrderPage(kind, mode){
     fillShapeOptions(list, currentItem.name);
     buildThumbs(list, currentItem.name);
     renderPresetBanner();
-    if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[nextKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${currentItem.name}`;
+    if(subjectEl) subjectEl.value = `[브릿지엠] ${familyNames[nextKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${currentItem.name}`;
     if(submitBtn) submitBtn.textContent = mode==='sample' ? '샘플 요청' : '견적 요청';
   }
 
@@ -78,7 +78,7 @@ function mountOrderPage(kind, mode){
         if(shapeSel) shapeSel.value = found.name;
         if(orderBadge) orderBadge.textContent = `${found.name} ${titleSuffix}`;
         renderPresetBanner();
-        if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
+        if(subjectEl) subjectEl.value = `[브릿지엠] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
         document.querySelectorAll('.order-thumb').forEach(t=>t.classList.remove('active'));
         btn.classList.add('active');
       });
@@ -114,7 +114,7 @@ function mountOrderPage(kind, mode){
       if(mainImg){ mainImg.src = found.img; mainImg.alt = found.name; }
       if(orderBadge) orderBadge.textContent = `${found.name} ${titleSuffix}`;
       renderPresetBanner();
-      if(subjectEl) subjectEl.value = `[에스디컴퍼니] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
+      if(subjectEl) subjectEl.value = `[브릿지엠] ${familyNames[currentKind]} ${mode==='sample' ? '샘플 요청' : '견적 문의'} - ${found.name}`;
       document.querySelectorAll('.order-thumb').forEach(t=>t.classList.toggle('active', t.dataset.boxName===found.name));
     });
   }
