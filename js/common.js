@@ -45,7 +45,7 @@ function mountLayout(active=''){
           <span>주소 : 경기도 김포시 통진읍 마송2로104번길 155</span>
         </div>
         <div class="footer-row footer-copy">
-          <span>Copyrights 2026 SD COMPANY Co.,Ltd. All rights reserved.</span>
+          <span>Copyrights 2026 BRIDGEM Co.,Ltd. All rights reserved.</span>
         </div>
       </div>
     </div>
