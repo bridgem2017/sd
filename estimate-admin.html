@@ -1,158 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>관리자 견적 산출기 | 브릿지엠</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <script src="js/common.js"></script>
+  <style>
+    .estimate-admin-page{padding:28px 0 56px;}
+    .estimate-admin-page .container{max-width:1280px;}
+    .admin-hero{margin-bottom:20px;}
+    .admin-hero .kicker{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;background:#fff3e9;color:#d56d1f;font-weight:800;font-size:13px;border:1px solid #ffd6b8;}
+    .admin-hero h1{margin:14px 0 10px;font-size:40px;line-height:1.15;color:#14284b;}
+    .admin-hero p{margin:0;color:#66758f;line-height:1.7;}
+    .admin-gate{max-width:520px;}
+    .estimate-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(360px,0.9fr);gap:20px;align-items:start;}
+    .admin-panel{background:#fff;border:1px solid #e8edf5;border-radius:28px;padding:24px;box-shadow:0 16px 40px rgba(20,40,75,.06);}
+    .admin-panel h2,.admin-panel h3{margin:0 0 14px;color:#14284b;}
+    .admin-panel h2{font-size:28px;}
+    .admin-panel h3{font-size:20px;}
+    .admin-panel p.helper{margin:0 0 18px;color:#6d7c96;line-height:1.7;}
+    .estimate-form{display:grid;gap:18px;}
+    .estimate-row{display:grid;grid-template-columns:140px minmax(0,1fr);gap:14px;align-items:center;}
+    .estimate-row label{font-weight:800;color:#14284b;}
+    .estimate-row .field-stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+    .estimate-row input,.estimate-row select,.rate-add-row input,.rate-add-row select{width:100%;height:58px;border-radius:18px;border:1px solid #d8e1ef;background:#fff;padding:0 18px;font-size:18px;color:#152b4f;box-sizing:border-box;}
+    .estimate-row .combo-wrap{display:grid;grid-template-columns:140px minmax(0,1fr);gap:10px;}
+    .estimate-row .combo-wrap .current-price{height:58px;border-radius:18px;background:#fff7ef;border:1px solid #ffd7b9;display:flex;align-items:center;padding:0 18px;font-weight:800;color:#c96e23;}
+    .calc-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px;flex-wrap:wrap;}
+    .btn-estimate,.btn-secondary{appearance:none;border:none;border-radius:18px;padding:16px 24px;font-weight:800;font-size:17px;cursor:pointer;}
+    .btn-estimate{background:#ff9a46;color:#fff;box-shadow:0 14px 28px rgba(255,154,70,.28);}
+    .btn-secondary{background:#eff4fb;color:#1d355d;}
+    .result-card{display:grid;gap:14px;}
+    .result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+    .result-box{border:1px solid #e8edf5;border-radius:20px;padding:18px;background:#fbfcff;}
+    .result-box .label{display:block;font-size:13px;color:#7a88a0;margin-bottom:8px;}
+    .result-box strong{font-size:28px;color:#14284b;line-height:1.2;}
+    .result-highlight{border-radius:24px;padding:20px;background:linear-gradient(135deg,#fff5eb,#fff);border:1px solid #ffd6b7;}
+    .result-highlight .small{font-size:13px;color:#9a6a2b;}
+    .result-highlight .price{font-size:42px;font-weight:900;color:#d56d1f;line-height:1.1;margin-top:8px;}
+    .calc-breakdown{margin-top:6px;padding:18px;border-radius:20px;background:#f7f9fd;border:1px solid #e8edf5;color:#51627d;line-height:1.8;}
+    .calc-breakdown b{color:#14284b;}
+    .status-note{margin-top:10px;color:#c54a1f;font-size:14px;font-weight:700;}
+    .rate-manager-wrap{margin-top:20px;display:grid;gap:20px;}
+    .rate-toolbar{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;}
+    .rate-add-row{display:grid;grid-template-columns:110px minmax(0,1fr) 130px 120px;gap:10px;}
+    .rate-table-wrap{overflow:auto;border:1px solid #e8edf5;border-radius:20px;}
+    .rate-table{width:100%;border-collapse:collapse;min-width:720px;background:#fff;}
+    .rate-table th,.rate-table td{padding:12px 14px;border-bottom:1px solid #edf1f7;text-align:left;font-size:14px;}
+    .rate-table th{background:#f8fafc;color:#64738d;font-size:13px;font-weight:800;}
+    .rate-table td input{width:100%;height:42px;border-radius:12px;border:1px solid #d8e1ef;padding:0 12px;box-sizing:border-box;}
+    .mini-btn{height:42px;padding:0 14px;border:none;border-radius:12px;background:#14284b;color:#fff;font-weight:800;cursor:pointer;white-space:nowrap;}
+    .mini-btn.ghost{background:#eff4fb;color:#1d355d;}
+    .admin-table-wrap{overflow:auto;border:1px solid #e8edf5;border-radius:20px;}
+    .admin-table{width:100%;border-collapse:collapse;min-width:960px;background:#fff;}
+    .admin-table th,.admin-table td{padding:12px 14px;border-bottom:1px solid #edf1f7;text-align:left;vertical-align:top;font-size:14px;}
+    .admin-table th{background:#f8fafc;color:#64738d;font-size:13px;font-weight:800;}
+    .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+    .admin-tab{padding:10px 14px;border-radius:999px;border:1px solid #dbe4f1;background:#fff;color:#40506a;font-weight:800;cursor:pointer;}
+    .admin-tab.active{background:#14284b;border-color:#14284b;color:#fff;}
+    @media (max-width:1080px){.estimate-grid{grid-template-columns:1fr;}.admin-hero h1{font-size:34px;}}
+    @media (max-width:768px){.estimate-admin-page{padding:18px 0 40px;}.admin-panel{padding:18px;border-radius:22px;}.admin-hero h1{font-size:28px;}.estimate-row{grid-template-columns:1fr;gap:10px;}.estimate-row .field-stack,.estimate-row .combo-wrap,.rate-add-row,.result-grid{grid-template-columns:1fr;}.calc-actions{justify-content:stretch;}.btn-estimate,.btn-secondary{width:100%;}.rate-table,.admin-table{min-width:640px;}}
+  </style>
+</head>
+<body>
+<main class="section estimate-admin-page">
+  <div class="container">
+    <div class="admin-hero">
+      <span class="kicker">ADMIN ONLY</span>
+      <h1>관리자 견적 산출기</h1>
+      <p>관리자 비밀번호를 입력하면 골 유형·지종배합 단가 관리와 박스 견적 산출을 동시에 사용할 수 있습니다.</p>
+    </div>
+    <div class="order-form-card admin-gate" id="adminGate">
+      <div class="form-row"><label>관리자 비밀번호</label><input id="adminPw" type="password" placeholder="비밀번호를 입력해 주세요"/></div>
+      <div class="sample-footer-cta" style="margin-top:16px;"><button class="btn primary" id="adminLoginBtn" type="button">확인</button></div>
+    </div>
+    <div id="adminApp" style="display:none;">
+      <div class="estimate-grid">
+        <section class="admin-panel">
+          <h2>견적 산출</h2>
+          <p class="helper">규격, 골유형, 지종배합을 선택하면 원단폭·생산개수·최종단가(부가세 별도)를 자동 계산합니다.</p>
+          <div class="estimate-form">
+            <div class="estimate-row"><label>박스규격(mm)</label><div class="field-stack"><input id="dimL" type="number" min="0" placeholder="장(가로)"/><input id="dimW" type="number" min="0" placeholder="폭(세로)"/><input id="dimH" type="number" min="0" placeholder="고(높이)"/></div></div>
+            <div class="estimate-row"><label>골유형</label><select id="fluteType"><option value="A">A</option><option value="B">B</option><option value="E">E</option><option value="BA">BA</option><option value="BB">BB</option><option value="EB">EB</option></select></div>
+            <div class="estimate-row"><label>지종배합</label><div class="combo-wrap"><select id="mixType"></select><div class="current-price" id="selectedRateBox">단가 미입력</div></div></div>
+            <div class="estimate-row"><label>선택 단가</label><input id="selectedRateInput" type="number" min="0" step="1" placeholder="선택한 지종배합 단가"/></div>
+            <div class="calc-actions"><button class="btn-secondary" id="saveSelectedRateBtn" type="button">선택 단가 저장</button><button class="btn-estimate" id="calculateBtn" type="button">견적 계산</button></div>
+          </div>
+          <div class="status-note" id="calcStatus"></div>
+          <div class="result-card" style="margin-top:22px;">
+            <div class="result-grid"><div class="result-box"><span class="label">가로길이</span><strong id="outHorizontal">-</strong></div><div class="result-box"><span class="label">세로길이</span><strong id="outVertical">-</strong></div><div class="result-box"><span class="label">원단폭</span><strong id="outBoardWidth">-</strong></div><div class="result-box"><span class="label">생산개수</span><strong id="outPieces">-</strong></div></div>
+            <div class="result-highlight"><div class="small">최종단가 (원 / 부가세 별도)</div><div class="price" id="outFinalPrice">-</div></div>
+            <div class="calc-breakdown" id="calcBreakdown">계산 결과가 여기에 표시됩니다.</div>
+          </div>
+        </section>
+        <aside class="admin-panel">
+          <h3>골유형별 지종배합 단가 관리</h3>
+          <p class="helper">기본 단가는 자동 저장되어 반영되며, 비어있는 단가 항목도 직접 입력해 저장할 수 있습니다. 새 지종배합 추가도 가능합니다.</p>
+          <div class="rate-toolbar"><div class="admin-tabs" id="fluteTabs"></div><button class="mini-btn ghost" id="resetRatesBtn" type="button">기본 단가로 되돌리기</button></div>
+          <div class="rate-add-row"><select id="newFlute"><option value="A">A</option><option value="B">B</option><option value="E">E</option><option value="BA">BA</option><option value="BB">BB</option><option value="EB">EB</option></select><input id="newMix" type="text" placeholder="새 지종배합 입력 예: KLB.K.K"/><input id="newRate" type="number" min="0" step="1" placeholder="단가"/><button class="mini-btn" id="addRateBtn" type="button">단가 저장</button></div>
+          <div class="rate-manager-wrap"><div class="rate-table-wrap"><table class="rate-table"><thead><tr><th style="width:100px">골유형</th><th>지종배합</th><th style="width:150px">단가</th><th style="width:120px">저장</th></tr></thead><tbody id="rateRows"></tbody></table></div></div>
+        </aside>
+      </div>
+      <section class="admin-panel" style="margin-top:20px;">
+        <h3>저장된 견적 문의</h3>
+        <p class="helper">동일 브라우저 로컬 저장 기준으로 견적 문의 기록을 보여줍니다. 기존 문의 데이터는 유지됩니다.</p>
+        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>접수일시</th><th>구분</th><th>형태</th><th>제품</th><th>규격</th><th>수량</th><th>연락처</th><th>예상 단가</th><th>예상 총액</th></tr></thead><tbody id="adminRows"></tbody></table></div>
+      </section>
+    </div>
+  </div>
+</main>
 <script>
-const PASSWORD = "1234"; // 👉 원하는 비번으로 변경
-
-let priceTable = JSON.parse(localStorage.getItem("priceTable") || "{}");
-
-function login(){
-  const pw = document.getElementById("pw").value;
-  if(pw === PASSWORD){
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("app").style.display="block";
-  }else{
-    alert("비밀번호 틀림");
+(function(){
+  const PW='sd2026admin', RATE_KEY='bridgem_estimate_rates_v1';
+  const FLUTE_ORDER=['A','B','E','BA','BB','EB'];
+  const BOARD_WIDTHS=[950,1000,1050,1100,1150,1200,1250,1300,1350,1400,1450,1500,1550,1600,1650,1700,1750,1800,1900,2000,2100,2200,2300,2400];
+  const DEFAULT_RATES=[
+    {flute:'A',mix:'KLB.K.K',price:563},{flute:'A',mix:'SK.K.K',price:543},{flute:'A',mix:'SK.CK.K',price:''},{flute:'A',mix:'SK.S.K',price:''},
+    {flute:'B',mix:'KLB.K.K',price:''},{flute:'B',mix:'SK.S.K',price:498},
+    {flute:'E',mix:'SK.S.K',price:''},{flute:'E',mix:'KLB.K.K',price:582},
+    {flute:'BA',mix:'KLB.S.S.S.K',price:''},{flute:'BA',mix:'SK.S.S.S.K',price:716},{flute:'BA',mix:'KLB.S.S.K.K',price:''},{flute:'BA',mix:'SK.S.S.K.K',price:768},{flute:'BA',mix:'KLB.K.S.C.K',price:858},
+    {flute:'BB',mix:'KLB.S.S.S.K',price:''},{flute:'BB',mix:'KLB.S.S.S.K.K',price:''},{flute:'BB',mix:'SK.S.S.S.K',price:''},
+    {flute:'EB',mix:'SK.S.S.S.K',price:''},{flute:'EB',mix:'WK.S.S.S.K',price:''},{flute:'BA',mix:'KLB.K.K.K.KLB',price:924}
+  ];
+  const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+  const gate=$('#adminGate'), app=$('#adminApp'), btn=$('#adminLoginBtn'), pw=$('#adminPw'), adminRows=$('#adminRows');
+  const dimL=$('#dimL'), dimW=$('#dimW'), dimH=$('#dimH'), fluteType=$('#fluteType'), mixType=$('#mixType');
+  const selectedRateBox=$('#selectedRateBox'), selectedRateInput=$('#selectedRateInput'), saveSelectedRateBtn=$('#saveSelectedRateBtn'), calculateBtn=$('#calculateBtn'), calcStatus=$('#calcStatus');
+  const outHorizontal=$('#outHorizontal'), outVertical=$('#outVertical'), outBoardWidth=$('#outBoardWidth'), outPieces=$('#outPieces'), outFinalPrice=$('#outFinalPrice'), calcBreakdown=$('#calcBreakdown');
+  const fluteTabs=$('#fluteTabs'), rateRows=$('#rateRows'), resetRatesBtn=$('#resetRatesBtn'), newFlute=$('#newFlute'), newMix=$('#newMix'), newRate=$('#newRate'), addRateBtn=$('#addRateBtn');
+  let rates=[], activeFluteTab='A';
+  const fmt=n=>Number(n||0).toLocaleString('ko-KR');
+  const getEstimateStorageKey=()=> 'sdcompany_estimates_v1';
+  const loadEstimateSubmissions=()=>{ try{ return JSON.parse(localStorage.getItem(getEstimateStorageKey())||'[]'); }catch(e){ return []; } };
+  function loadRates(){ try{ const saved=JSON.parse(localStorage.getItem(RATE_KEY)||'null'); if(Array.isArray(saved)&&saved.length) return saved.map(v=>({flute:String(v.flute||'').toUpperCase(),mix:String(v.mix||'').trim(),price:v.price===''?'':Number(v.price||0)})); }catch(e){} localStorage.setItem(RATE_KEY, JSON.stringify(DEFAULT_RATES)); return DEFAULT_RATES.map(v=>({...v})); }
+  const saveRates=()=> localStorage.setItem(RATE_KEY, JSON.stringify(rates));
+  const getRatesByFlute=flute=> rates.filter(v=>v.flute===flute).sort((a,b)=>a.mix.localeCompare(b.mix,'ko'));
+  function renderFluteTabs(){ fluteTabs.innerHTML=FLUTE_ORDER.map(flute=>`<button type="button" class="admin-tab ${activeFluteTab===flute?'active':''}" data-flute="${flute}">${flute}</button>`).join(''); $$('#fluteTabs [data-flute]').forEach(el=>el.addEventListener('click',()=>{activeFluteTab=el.dataset.flute; renderFluteTabs(); renderRateRows();})); }
+  function renderMixOptions(){ const list=getRatesByFlute(fluteType.value); mixType.innerHTML=list.map(v=>`<option value="${v.mix}">${v.mix}</option>`).join('') || '<option value="">지종배합 없음</option>'; updateSelectedRateState(); }
+  const getSelectedRateRow=()=> rates.find(v=>v.flute===fluteType.value && v.mix===mixType.value) || null;
+  function updateSelectedRateState(){ const row=getSelectedRateRow(); if(!row){ selectedRateBox.textContent='단가 미입력'; selectedRateInput.value=''; return; } selectedRateBox.textContent=row.price===''?'단가 미입력':`${fmt(row.price)}원`; selectedRateInput.value=row.price===''?'':String(row.price); }
+  function renderRateRows(){ const list=getRatesByFlute(activeFluteTab); if(!list.length){ rateRows.innerHTML='<tr><td colspan="4">등록된 지종배합이 없습니다.</td></tr>'; return; } rateRows.innerHTML=list.map(row=>`<tr data-flute="${row.flute}" data-mix="${row.mix}"><td>${row.flute}</td><td>${row.mix}</td><td><input type="number" min="0" step="1" value="${row.price===''?'':row.price}" placeholder="단가 입력"></td><td><button type="button" class="mini-btn save-rate-btn">${row.price===''?'단가 저장':'업데이트'}</button></td></tr>`).join(''); $$('#rateRows .save-rate-btn').forEach(btnEl=>btnEl.addEventListener('click',()=>{ const tr=btnEl.closest('tr'); const found=rates.find(v=>v.flute===tr.dataset.flute && v.mix===tr.dataset.mix); if(!found) return; const val=tr.querySelector('input').value; found.price=val===''?'':Number(val); saveRates(); renderRateRows(); renderMixOptions(); calcStatus.textContent=`${found.flute} / ${found.mix} 단가가 저장되었습니다.`; })); }
+  function pickBoardWidth(vertical){ let best=null; for(const width of BOARD_WIDTHS){ const pieces=Math.floor((width-15)/vertical); if(pieces<1) continue; const score=width/pieces; if(!best || score<best.score || (score===best.score && width<best.width)){ best={width,pieces,score}; } } return best; }
+  function calculateEstimate(){ const L=Number(dimL.value||0), W=Number(dimW.value||0), H=Number(dimH.value||0), selected=getSelectedRateRow(); if(!(L>0&&W>0&&H>0)){ calcStatus.textContent='장, 폭, 고를 모두 입력해 주세요.'; return; } if(!selected){ calcStatus.textContent='지종배합을 먼저 선택해 주세요.'; return; } if(selected.price===''||!(Number(selected.price)>0)){ calcStatus.textContent='선택한 지종배합 단가가 비어 있습니다. 단가 저장 후 계산해 주세요.'; return; }
+    const horizontal=((L+W)*2)+35; const vertical=(W+H)+4; const boardPick=pickBoardWidth(vertical); if(!boardPick){ calcStatus.textContent='해당 규격에 맞는 원단폭을 찾지 못했습니다.'; return; }
+    const materialCost=(horizontal/1000)*(boardPick.width/1000)*Number(selected.price)/boardPick.pieces; const processingCost=((horizontal/1000)*(vertical/1000))*80; const finalUnitPrice=Math.round(materialCost+processingCost);
+    outHorizontal.textContent=`${fmt(horizontal)} mm`; outVertical.textContent=`${fmt(vertical)} mm`; outBoardWidth.textContent=`${fmt(boardPick.width)} mm`; outPieces.textContent=`${fmt(boardPick.pieces)} 개`; outFinalPrice.textContent=`${fmt(finalUnitPrice)}원`;
+    calcBreakdown.innerHTML=`<div><b>선택 단가</b> : ${selected.flute}골 / ${selected.mix} / ${fmt(selected.price)}원</div><div><b>가로길이</b> = (장 + 폭) × 2 + 35 = <b>${fmt(horizontal)} mm</b></div><div><b>세로길이</b> = (폭 + 고) + 4 = <b>${fmt(vertical)} mm</b></div><div><b>원단폭 선택 로직</b> : 후보 원단폭 중 <b>(원단폭 ÷ 생산개수)</b> 값이 가장 작은 조합 선택</div><div><b>선택 원단폭</b> : ${fmt(boardPick.width)} mm / <b>생산개수 ${fmt(boardPick.pieces)}개</b></div><div><b>원단비</b> = ${horizontal}/1000 × ${boardPick.width}/1000 × ${selected.price} ÷ ${boardPick.pieces} = <b>${fmt(Math.round(materialCost))}원</b></div><div><b>가공스퀘어비용</b> = (${horizontal}/1000 × ${vertical}/1000) × 80 = <b>${fmt(Math.round(processingCost))}원</b></div><div><b>최종단가</b> = 원단비 + 가공스퀘어비용 = <b>${fmt(finalUnitPrice)}원</b> <span style="color:#7a88a0">(부가세 별도)</span></div>`;
+    calcStatus.textContent='견적 계산이 완료되었습니다.';
   }
-}
-
-/* 골유형별 지종 */
-const fluteMap = {
-  A:["KLB.K.K","SK.K.K","SK.CK.K","SK.S.K"],
-  B:["KLB.K.K","SK.S.K"],
-  E:["SK.S.K","KLB.K.K"],
-  BA:["KLB.S.S.S.K","SK.S.S.S.K","KLB.S.S.K.K","SK.S.S.K.K"],
-  BB:["KLB.S.S.S.K","KLB.S.S.K.K"],
-  EB:["WK.S.S.S.K"]
-};
-
-function updatePaper(){
-  const flute = document.getElementById("flute").value;
-  const select = document.getElementById("paper");
-  select.innerHTML="";
-  fluteMap[flute].forEach(p=>{
-    let op = document.createElement("option");
-    op.value=p;
-    op.textContent=p;
-    select.appendChild(op);
-  });
-}
-
-/* 원단폭 계산 */
-function getSheetWidth(height){
-  let widths=[];
-  
-  for(let i=950;i<=1800;i+=50){ widths.push(i); }
-  for(let i=1900;i<=3000;i+=100){ widths.push(i); }
-
-  for(let w of widths){
-    let count = Math.floor(w / height);
-    let used = count * height;
-
-    if(count>0){
-      if(w-used >= -15){
-        return {width:w,count};
-      }
-    }
-  }
-
-  return {width:widths[widths.length-1],count:1};
-}
-
-/* 계산 */
-function calculate(){
-  let L = Number(document.getElementById("L").value);
-  let W = Number(document.getElementById("W").value);
-  let H = Number(document.getElementById("H").value);
-
-  let flute = document.getElementById("flute").value;
-  let paper = document.getElementById("paper").value;
-
-  let price = Number(document.getElementById("price").value);
-
-  if(!price){
-    alert("단가 입력해줘");
-    return;
-  }
-
-  let width = (L+W)*2 + 35;
-  let height = (W+H) + 4;
-
-  let sheet = getSheetWidth(height);
-
-  let result =
-    (width/1000) *
-    (sheet.width/1000) *
-    price /
-    sheet.count;
-
-  document.getElementById("result").innerHTML =
-    `
-    가로길이: ${width} mm <br>
-    세로길이: ${height} mm <br>
-    원단폭: ${sheet.width} mm <br>
-    생산개수: ${sheet.count} 개 <br><br>
-    👉 최종단가: <b>${Math.round(result)} 원</b>
-    `;
-}
-
-/* 단가 저장 */
-function savePrice(){
-  let flute = document.getElementById("flute").value;
-  let paper = document.getElementById("paper").value;
-  let price = document.getElementById("price").value;
-
-  priceTable[flute+"_"+paper] = price;
-  localStorage.setItem("priceTable",JSON.stringify(priceTable));
-
-  alert("저장됨");
-}
-
-/* 불러오기 */
-function loadPrice(){
-  let flute = document.getElementById("flute").value;
-  let paper = document.getElementById("paper").value;
-
-  let key = flute+"_"+paper;
-  document.getElementById("price").value = priceTable[key] || "";
-}
+  function renderSavedQuotes(){ const items=loadEstimateSubmissions().filter(v=>v.requestType==='quote'); if(!items.length){ adminRows.innerHTML='<tr><td colspan="9">저장된 견적 문의가 없습니다.</td></tr>'; return; } adminRows.innerHTML=items.map(item=>`<tr><td>${(item.createdAt||'').replace('T',' ').slice(0,16)}</td><td>${item.family==='colorbox'?'칼라박스':'골판지박스'}</td><td>${item.shape||''}</td><td>${item.product||''}</td><td>${[item.width,item.depth,item.height].filter(Boolean).join(' × ')}</td><td>${item.qty||''}</td><td>${item.name||''}<br>${item.phone||''}</td><td>${fmt(item.estimatedUnitPrice)}원</td><td>${fmt(item.estimatedTotalPrice)}원</td></tr>`).join(''); }
+  function boot(){ rates=loadRates(); renderFluteTabs(); renderRateRows(); renderMixOptions(); renderSavedQuotes(); }
+  fluteType.addEventListener('change', renderMixOptions); mixType.addEventListener('change', updateSelectedRateState);
+  saveSelectedRateBtn.addEventListener('click',()=>{ const row=getSelectedRateRow(); if(!row){ calcStatus.textContent='저장할 지종배합이 없습니다.'; return; } row.price=selectedRateInput.value===''?'':Number(selectedRateInput.value); saveRates(); renderRateRows(); renderMixOptions(); calcStatus.textContent=`${row.flute} / ${row.mix} 단가가 저장되었습니다.`; });
+  addRateBtn.addEventListener('click',()=>{ const flute=newFlute.value, mix=newMix.value.trim().toUpperCase(), price=newRate.value===''?'':Number(newRate.value); if(!mix){ alert('새 지종배합을 입력해 주세요.'); return; } const exists=rates.find(v=>v.flute===flute&&v.mix===mix); if(exists){ exists.price=price; } else { rates.push({flute,mix,price}); } saveRates(); activeFluteTab=flute; renderFluteTabs(); renderRateRows(); fluteType.value=flute; renderMixOptions(); mixType.value=mix; updateSelectedRateState(); newMix.value=''; newRate.value=''; calcStatus.textContent=`${flute} / ${mix} 항목이 저장되었습니다.`; });
+  resetRatesBtn.addEventListener('click',()=>{ if(!confirm('골유형별 지종배합 단가를 기본값으로 되돌릴까요?')) return; rates=DEFAULT_RATES.map(v=>({...v})); saveRates(); activeFluteTab='A'; fluteType.value='A'; renderFluteTabs(); renderRateRows(); renderMixOptions(); calcStatus.textContent='기본 단가로 되돌렸습니다.'; });
+  calculateBtn.addEventListener('click', calculateEstimate);
+  btn.addEventListener('click',()=>{ if(pw.value!==PW){ alert('비밀번호가 올바르지 않습니다.'); return; } gate.style.display='none'; app.style.display='block'; boot(); });
+  pw.addEventListener('keydown',e=>{ if(e.key==='Enter') btn.click(); });
+})();
 </script>
-
-<div id="loginBox">
-  <input id="pw" placeholder="비밀번호">
-  <button onclick="login()">확인</button>
-</div>
-
-<div id="app" style="display:none;">
-
-<h2>견적 산출</h2>
-
-장 <input id="L"><br>
-폭 <input id="W"><br>
-고 <input id="H"><br><br>
-
-골유형
-<select id="flute" onchange="updatePaper();loadPrice();">
-  <option>A</option>
-  <option>B</option>
-  <option>E</option>
-  <option>BA</option>
-  <option>BB</option>
-  <option>EB</option>
-</select><br><br>
-
-지종배합
-<select id="paper" onchange="loadPrice();"></select><br><br>
-
-단가
-<input id="price"><br>
-<button onclick="savePrice()">단가 저장</button>
-
-<br><br>
-
-<button onclick="calculate()">계산하기</button>
-
-<div id="result"></div>
-
-</div>
-
-<script>
-updatePaper();
-</script>
+</body>
+</html>
