@@ -24,7 +24,8 @@
 <p id="presetQuoteText">방금 본 박스의 종류와 형태가 미리 선택되어 있어 바로 수량과 사이즈만 입력하면 됩니다.</p>
 </div>
 <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
-<form action="https://formsubmit.co/sales@box.re.kr" class="order-form" data-family="corrugated" data-request-type="quote" id="mailForm" method="POST">
+<form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="d2bd4c21-ab9c-4bae-8920-6d23adac015e">
 <input type="hidden" name="_subject" value="[견적 요청] 골판지박스 문의"/>
 <input type="hidden" name="_template" value="table"/>
 <input type="hidden" name="_next" value="https://box.re.kr/thanks.html"/>
