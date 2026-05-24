@@ -33,12 +33,13 @@
 <h3>문의 안내</h3>
 <p>메일 주소를 복사해 보내는 방식 대신, 필요한 정보만 입력하면 바로 문의 내용을 정리할 수 있도록 폼 형태로 바꿨습니다. 제품 규격, 예상 수량, 사용 목적, 인쇄 유무, 참고 이미지를 함께 적어주시면 검토가 더 빨라집니다.</p>
 </div>
-<form action="https://formsubmit.co/sales@box.re.kr" class="inquiry-premium-form" id="supportInquiryForm" method="POST">
+<form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="d2bd4c21-ab9c-4bae-8920-6d23adac015e">
 <input type="hidden" name="_subject" value="[홈페이지 문의] support 페이지 접수"/>
 <input type="hidden" name="_template" value="table"/>
 <input type="hidden" name="_next" value="https://box.re.kr/thanks.html"/>
 <input type="hidden" name="_url" value="https://box.re.kr/"/>
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
+
 <div class="inquiry-grid">
 <label class="inquiry-field">
 <span>이름 / 업체명</span>
@@ -78,7 +79,7 @@
 <div class="inquiry-premium-foot">
 
 <button class="btn btn-primary inquiry-submit-btn" type="submit">문의 메일 보내기</button>
-<div class="support-formsubmit-note">문의 메일보내기 버튼을 누른 후 다음 화면에서 스팸 방지 체크해주셔야 문의가 정상 접수됩니다.</div>
+
 </div>
 </form>
 </article>

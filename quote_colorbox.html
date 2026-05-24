@@ -23,12 +23,13 @@
 <p id="presetQuoteText">방금 본 박스의 종류와 형태가 미리 선택되어 있어 바로 수량과 사이즈만 입력하면 됩니다.</p>
 </div>
 <div class="form-row form-row-spaced"><label>박스종류</label><select id="boxFamilySelect" name="박스종류"><option value="corrugated">골판지박스</option><option value="colorbox">칼라박스</option></select></div>
-<form action="https://formsubmit.co/sales@box.re.kr" class="order-form" data-family="colorbox" data-request-type="quote" id="mailForm" method="POST">
+<form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="d2bd4c21-ab9c-4bae-8920-6d23adac015e">
 <input type="hidden" name="_subject" value="[견적 요청] 칼라박스 문의"/>
 <input type="hidden" name="_template" value="table"/>
 <input type="hidden" name="_next" value="https://box.re.kr/thanks.html"/>
 <input type="hidden" name="_url" value="https://box.re.kr/"/>
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>
+
 <div class="form-row form-row-spaced"><label>박스형태</label><select id="boxShape" name="박스형태"></select></div>
 <div class="form-row"><label>사용제품</label><input name="사용제품" placeholder="예: 쿠키 세트 / 화장품 키트 / 문구류" required=""/></div>
 <div class="form-row"><label>제품무게</label><input name="제품무게" placeholder="예: 300g / 1.2kg"/></div>
@@ -50,7 +51,7 @@
 <div class="form-row"><label>회사명</label><input name="company"/></div>
 <div class="form-hint">입력한 내용은 메일로 정리되어 sales@box.re.kr 로 전달됩니다.</div>
 <div class="sample-footer-cta"><button class="btn primary" id="submitBtn" type="submit">견적 요청</button>
-<div class="quote-formsubmit-note">견적 문의 버튼을 누른 후 다음 화면에서 스팸 방지 체크해주셔야 문의가 정상 접수됩니다.</div></div>
+</div>
 </form>
 </section>
 </div>
