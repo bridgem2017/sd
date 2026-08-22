@@ -19,7 +19,7 @@ function mountLayout(active=''){
     document.body.insertAdjacentHTML('beforeend', `<footer class="footer">
   <div class="container footer-shell">
     <div class="footer-brand footer-brand-compact">
-      <img src="assets/sd-company-logo-full.png" alt="브릿지엠 로고">
+      <img src="assets/sd-company-logo-full.png" alt="(주)아르케 로고">
     </div>
     <div class="footer-info-column">
       <div class="footer-bottom-nav">
@@ -31,9 +31,9 @@ function mountLayout(active=''){
       </div>
       <div class="footer-contact-rows">
         <div class="footer-row">
-          <span>대표 : 김운기</span>
+          <span>대표 : 민성훈</span>
           <span>사업자등록번호 : 127-28-86665</span>
-          <span>개인정보책임자 : 박성인</span>
+          <span>개인정보책임자 : 정연경</span>
         </div>
         <div class="footer-row">
           <span>대표전화 : 0507-1330-1177</span>
@@ -42,10 +42,10 @@ function mountLayout(active=''){
         </div>
         <div class="footer-row">
           <span>영업시간 : 평일 09:00 - 18:00</span>
-          <span>주소 : 경기도 김포시 통진읍 마송2로104번길 155</span>
+          <span>주소 : 경기도 시흥시 대야동 146-11</span>
         </div>
         <div class="footer-row footer-copy">
-          <span>Copyrights 2026 BRIDGEM Co.,Ltd. All rights reserved.</span>
+          <span>Copyrights 2026 ARCHE Co.,Ltd. All rights reserved.</span>
         </div>
       </div>
     </div>
