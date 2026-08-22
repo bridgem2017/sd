@@ -37,7 +37,7 @@ function mountLayout(active=''){
         </div>
         <div class="footer-row">
           <span>대표전화 : 0507-1330-1177</span>
-          <span>팩스번호 : 070-4253-1177</span>
+          <span>팩스번호 : 031-404-9158</span>
           <span>상담 메일 : sales@box.re.kr</span>
         </div>
         <div class="footer-row">
