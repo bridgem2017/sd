@@ -42,7 +42,7 @@ function mountLayout(active=''){
         </div>
         <div class="footer-row">
           <span>영업시간 : 평일 09:00 - 18:00</span>
-          <span>주소 : 경기도 시흥시 대야동 146-11</span>
+          <span>주소 : 경기도 시흥시 윗대야2길 12</span>
         </div>
         <div class="footer-row footer-copy">
           <span>Copyrights 2026 ARCHE Co.,Ltd. All rights reserved.</span>
