@@ -32,7 +32,7 @@ function mountLayout(active=''){
       <div class="footer-contact-rows">
         <div class="footer-row">
           <span>대표 : 민성훈</span>
-          <span>사업자등록번호 : 127-28-86665</span>
+          <span>사업자등록번호 : 140-81-95008</span>
           <span>개인정보책임자 : 정연경</span>
         </div>
         <div class="footer-row">
